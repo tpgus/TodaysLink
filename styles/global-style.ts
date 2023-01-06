@@ -5,15 +5,16 @@ import { media } from "./theme";
 export const GlobalStyle = createGlobalStyle`
 //reset은 styled-component를 사용하며, 여러 브라우저마다 기본적으로 적용된 스타일을 지워주는 Node.js 패키지 : 스타일 초기화
     ${reset}
+
+    html {
+        font-size: 1rem;
+        font-family: 'Roboto','Noto',sans-serif; 
+    }
     body {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
-
-    /* ::-webkit-scrollbar {
-        display: none;
-    } */
 
     button {
         padding: 0;
@@ -26,6 +27,10 @@ export const GlobalStyle = createGlobalStyle`
 
     ul {
         list-style: none;   
+    }
+
+    a{
+        text-decoration: none;
     }
 
 
