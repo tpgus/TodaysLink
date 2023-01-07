@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const HeaderContainer = styled.div`
-  background-color: ${({ theme }) => theme.color.indigo};
+  position: fixed;
+  z-index: 10;
+  top: 0;
   width: 100%;
+  background-color: ${({ theme }) => theme.color.indigo};
 
   nav {
     ${media.pc} {
@@ -18,14 +21,15 @@ export const HeaderContainer = styled.div`
       width: 100%;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid ${({ theme }) => theme.color["indigo-500"]};
+      /* border-bottom: 1px solid ${({ theme }) =>
+        theme.color["indigo-500"]}; */
       padding: 1.5rem 0;
     }
 
     .login-wrapper {
       button {
         ${media.pc} {
-          padding: 0.5rem 1rem;
+          padding: 0.7rem 1rem;
           font-size: 1rem;
         }
 

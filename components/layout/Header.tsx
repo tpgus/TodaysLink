@@ -1,5 +1,4 @@
-import React from "react";
-import { HeaderContainer } from "./style/style-header";
+import { HeaderContainer } from "./style/style-Header";
 import Logo from "./Logo";
 import Search from "./Search";
 

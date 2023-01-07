@@ -29,8 +29,9 @@ export const GlobalStyle = createGlobalStyle`
         list-style: none;   
     }
 
-    a{
-        text-decoration: none;
+    a {
+       color:black;
+       text-decoration:none;
     }
 
 

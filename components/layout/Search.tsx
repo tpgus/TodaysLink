@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { SearchContainer } from "./style/style-Search";
 
