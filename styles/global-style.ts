@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto','Noto',sans-serif; 
     }
     body {
+        overflow: overlay;
         box-sizing: border-box;
         margin: 0;
         padding: 0;

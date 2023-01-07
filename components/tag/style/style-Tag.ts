@@ -7,7 +7,7 @@ export const TagContainer = styled.div`
   align-items: center;
   border-radius: 30rem;
   border: 1px solid rgb(200 200 229);
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   min-width: 4rem;
   font-weight: 500;
   color: rgb(30 64 175);

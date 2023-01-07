@@ -24,7 +24,7 @@ const Search = () => {
         placeholder="검색어를 입력하세요"
       />
       <button onClick={searchHandler}>
-        <AiOutlineSearch size={20} />
+        <AiOutlineSearch className="search-icon" size={20} />
       </button>
     </SearchContainer>
   );

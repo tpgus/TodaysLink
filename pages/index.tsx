@@ -7,7 +7,6 @@ import TagList from "../components/tag/TagList";
 const HomePage = () => {
   return (
     <>
-      <TagList />
       <LinkList />
     </>
   );

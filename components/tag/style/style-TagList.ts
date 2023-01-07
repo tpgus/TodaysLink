@@ -5,7 +5,7 @@ export const TagListContainer = styled.div`
   margin: 0 auto;
   display: flex;
   overflow: scroll;
-  /* max-width: 75rem; */
+  padding: 1rem 1rem;
 
   &::-webkit-scrollbar {
     display: none;
@@ -13,5 +13,7 @@ export const TagListContainer = styled.div`
 
   ${media.pc} {
     margin: 0.5rem auto;
+    max-width: 75rem;
+    padding: 0.5rem 2rem;
   }
 `;

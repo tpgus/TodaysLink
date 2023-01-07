@@ -33,6 +33,7 @@ export const SearchContainer = styled.div`
   button {
     ${media.pc} {
       padding: 0.5rem 1rem;
+      width: 3rem;
     }
 
     display: inline-block;

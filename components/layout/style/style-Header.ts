@@ -6,15 +6,16 @@ export const HeaderContainer = styled.div`
   z-index: 10;
   top: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.color.indigo};
+  background-color: white;
 
   nav {
+    background-color: ${({ theme }) => theme.color.indigo};
+    padding: 0 1rem;
+    margin: 0 auto;
+
     ${media.pc} {
       padding: 0 4rem;
     }
-
-    padding: 0 1rem;
-    margin: 0 auto;
 
     .nav-wrapper {
       display: flex;
@@ -26,13 +27,9 @@ export const HeaderContainer = styled.div`
       padding: 1.5rem 0;
     }
 
-    .login-wrapper {
+    .menu-wrapper {
       button {
-        ${media.pc} {
-          padding: 0.7rem 1rem;
-          font-size: 1rem;
-        }
-
+        margin: 0.4rem;
         border-radius: 0.375rem;
         border: transparent;
         padding: 0.3rem 0.75rem;
@@ -45,6 +42,11 @@ export const HeaderContainer = styled.div`
 
         &:hover {
           background-color: rgba(117, 119, 243, 0.8);
+        }
+
+        ${media.pc} {
+          padding: 0.7rem 1rem;
+          font-size: 1rem;
         }
       }
     }

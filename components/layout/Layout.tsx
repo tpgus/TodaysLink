@@ -24,6 +24,5 @@ const Main = styled.div`
   padding-top: 6.5rem;
   ${media.pc} {
     max-width: 75rem;
-    /* padding: 0rem 2rem; */
   }
 `;
