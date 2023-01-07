@@ -12,6 +12,8 @@ export const theme: DefaultTheme = {
     green: "#07b495",
     lightGreen: "#99ecdd",
     darkGray: "#54595d",
+    indigo: " #5047e5;",
+    "indigo-500": "#6D6DF0",
   },
   boxShadow: {
     normal: "0 3px 8px 0 rgb(0 0 0 / 10%)",
@@ -79,9 +81,11 @@ export const MIXINS = {
 //   }
 //  기존 3줄 이상 차지하는 flex box 코드를 한 줄로 줄일 수 있다.
 
-const customMediaQuery = (maxWidth: number): string =>
-  `@media (min-width: ${maxWidth}px)`;
+const customMediaQuery = (minWidth: number): string =>
+  `@media (min-width: ${minWidth}px)`;
+//min-width : 최소 ~ 이상일 때 적용한다.
 //min-width : 작은 사이즈(모바일)부터 스타일을 만들어 나간다 단순함 -> 복잡함 : 단순한 것을 복잡화 -> 추가하는 느낌 : 단순함에서 스타일을 추가? : 비교적 쉬움
+//max-width : 최대 ~ 이하일 때 적용한다.
 //max-width : 큰 사이즈(pc)부터 스타일을 만들어 나간다 복잡함 -> 단순함 : 복잡한 것을 단순화 -> 빼는 느낌 : 복잡한걸 단순화? 어려움
 
 export const media = {
@@ -92,7 +96,7 @@ export const media = {
 };
 
 //사용 방법
-//@media ${({theme}) => theme.media.pc} {
+//{media.pc} {
 // padding:1rem;
 // font-size:2rem;
 // }

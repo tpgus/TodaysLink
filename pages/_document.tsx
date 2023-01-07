@@ -44,6 +44,12 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap"
             rel="preload"
             as="style"
+            <meta property="og:type" content="website"> 
+            <meta property="og:title" content="페이지 제목">
+            <meta property="og:description" content="페이지 설명">
+            <meta property="og:image" content="http://www.mysite.com/myimage.jpg">
+            <meta property="og:url" content="http://www.mysite.com">
+            오픈 그래프 태그는 사이트가 소셜 미디어로 공유될 때 우선적으로 활용되는 정보입니다. 사이트의 제목, 설명과 더불어서 사이트를 대표하는 이미지도 같이 넣어주세요. 자세한 내용은 http://ogp.me를 참고하세요.
           />*/}
         </Head>
         <body>
