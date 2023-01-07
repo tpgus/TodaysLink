@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto','Noto',sans-serif; 
     }
     body {
+        overflow: overlay;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -29,8 +30,9 @@ export const GlobalStyle = createGlobalStyle`
         list-style: none;   
     }
 
-    a{
-        text-decoration: none;
+    a {
+       color:black;
+       text-decoration:none;
     }
 
 

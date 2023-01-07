@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { SearchContainer } from "./style/style-Search";
 
@@ -24,7 +24,7 @@ const Search = () => {
         placeholder="검색어를 입력하세요"
       />
       <button onClick={searchHandler}>
-        <AiOutlineSearch size={20} />
+        <AiOutlineSearch className="search-icon" size={20} />
       </button>
     </SearchContainer>
   );
