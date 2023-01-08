@@ -1,5 +1,5 @@
 import LinkList from "../components/link/LinkList";
-import TagList from "../components/tag/TagList";
+import TagList from "../components/tags/TagList";
 
 //참고 사이트
 //https://mniyunsu.github.io/nextjs-styled-component-setting/

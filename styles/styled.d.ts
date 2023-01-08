@@ -3,16 +3,18 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     //타입을 정의
-    //string 등 다양한 타입도 되지만, 아래와 같은 경우는 리터럴 타입을 사용 (이 문자열만 가능)
+    //string 등 다양한 타입도 되지만, 아래와 같은 경우는 리터럴 타입을 사용 (해당 문자열만 가능)
     color: {
-      purple: "#8661de";
-      blue: "#00bac7";
-      gray: "#f6f6f6";
-      green: "#07b495";
-      lightGreen: "#99ecdd";
-      darkGray: "#54595d";
       indigo: " #5047e5;";
-      "indigo-500": "#6D6DF0";
+      "indigo-100": "rgb(224 231 255);";
+      "indigo-200": "rgb(199 210 254);";
+      "indigo-300": "rgb(165 180 252);";
+      "indigo-400": "rgb(129 140 248);";
+      "indigo-500": "rgb(99 102 241);";
+      "indigo-600": "rgb(79 70 229);";
+      "indigo-700": "rgb(67 56 202);";
+      "indigo-800": "rgb(55 48 163);";
+      "indigo-900": "rgb(49 46 129);";
     };
     boxShadow: {
       normal: "0 3px 8px 0 rgb(0 0 0 / 10%)";

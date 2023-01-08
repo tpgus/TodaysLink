@@ -22,33 +22,7 @@ export const HeaderContainer = styled.div`
       width: 100%;
       align-items: center;
       justify-content: space-between;
-      /* border-bottom: 1px solid ${({ theme }) =>
-        theme.color["indigo-500"]}; */
       padding: 1.5rem 0;
-    }
-
-    .menu-wrapper {
-      button {
-        margin: 0.4rem;
-        border-radius: 0.375rem;
-        border: transparent;
-        padding: 0.3rem 0.75rem;
-        background-color: ${({ theme }) => theme.color["indigo-500"]};
-        font-size: 0.75rem;
-        line-height: 1.5rem;
-        font-weight: 500;
-        color: white;
-        display: inline-block;
-
-        &:hover {
-          background-color: rgba(117, 119, 243, 0.8);
-        }
-
-        ${media.pc} {
-          padding: 0.7rem 1rem;
-          font-size: 1rem;
-        }
-      }
     }
   }
 `;

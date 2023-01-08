@@ -12,11 +12,17 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>boilerplate code</title>
+        <meta
+          name="description"
+          content="무료로 쉽게 참여할 수 있는 각종 래플, 추첨 이벤트 링크 모음"
+        />
+        <title>투데이 링크</title>
       </Head>
 
       <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <div className="root"></div>
+        {/* Portal을 위한 div 태그 */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
