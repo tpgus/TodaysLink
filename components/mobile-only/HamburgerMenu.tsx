@@ -7,17 +7,11 @@ interface PropsType {
   isClicked: boolean;
 }
 
-let deviceHeight = 0;
 const HamburgerMenu = (props: PropsType) => {
-  useEffect(() => {
-    deviceHeight = window.innerHeight;
-    console.log(deviceHeight);
-  });
-
   return (
     <>
       {props.isClicked ? <Backrop /> : null}
-      <MenuContainer isClicked={props.isClicked} screenHeight={deviceHeight}>
+      <MenuContainer isClicked={props.isClicked}>
         <li>
           <BiUser />
           <p>로그인</p>
