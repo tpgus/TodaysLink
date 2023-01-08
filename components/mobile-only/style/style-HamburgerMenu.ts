@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
-export const MenuContainer = styled.ul<{
+interface PropsType {
   isClicked: boolean;
-  screenHeight: number;
-}>`
+}
+
+export const MenuContainer = styled.ul<PropsType>`
   /* 헤더에서 불러오고 있으므로 부모가 헤더이다  : nav-wrapper*/
   position: fixed;
   color: white;
   top: 0;
   right: ${({ isClicked }) => (isClicked ? "0" : "-50vw")};
   width: 50vw;
-  height: ${({ screenHeight }) => screenHeight - 80 + "px"};
+  height: 100vh;
   z-index: 11;
   background-color: ${({ theme }) => theme.color["indigo-600"]};
   padding-top: 5rem;

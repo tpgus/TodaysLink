@@ -9,12 +9,15 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 1rem;
         font-family: 'Roboto','Noto',sans-serif; 
+        height: -webkit-fill-available;
     }
     body {
         overflow: overlay;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
     }
 
     button {
