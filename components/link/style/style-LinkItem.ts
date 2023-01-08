@@ -11,8 +11,10 @@ export const ItemContainer = styled.div`
   background-color: white;
   cursor: pointer;
 
-  .group:hover {
-    opacity: 0.75;
+  &:hover {
+    .group {
+      opacity: 0.6;
+    }
   }
 
   .img-wrapper {

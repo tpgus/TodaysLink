@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from "styled-components";
+import { MobileLogo, PcLogo } from "./style/style-Logo";
 
 const Logo = () => {
   return (
@@ -13,15 +13,3 @@ const Logo = () => {
 };
 
 export default Logo;
-
-const MobileLogo = styled.span`
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: white;
-`;
-
-const PcLogo = styled.span`
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-`;

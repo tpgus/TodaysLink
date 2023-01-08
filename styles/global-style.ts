@@ -35,8 +35,6 @@ export const GlobalStyle = createGlobalStyle`
        text-decoration:none;
     }
 
-
-    //현재 theme.ts는 min-width 기준이며, 아래의 코드는 max-width 기준으로 작성된 코드 (수정 필요)
     .pc-tablet-only {
         display: none;
         ${media.mobile} {

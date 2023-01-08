@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const LinkListContainer = styled.ul`
-  margin-top: 2rem;
+  padding-top: 4rem;
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
