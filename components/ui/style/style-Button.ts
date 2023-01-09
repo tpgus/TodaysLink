@@ -6,14 +6,15 @@ export const Button = styled.button`
   border-radius: 0.375rem;
   border: transparent;
   padding: 0.3rem 0.75rem;
-  background-color: ${({ theme }) => theme.color["indigo-500"]};
+  background-color: white;
   font-size: 0.75rem;
   line-height: 1.5rem;
   font-weight: 500;
-  color: white;
+  color: black;
 
   &:hover {
-    background-color: rgba(117, 119, 243, 0.8);
+    /* background-color: ${({ theme }) => theme.color["indigo-400"]}; */
+    background-color: rgba(255, 255, 255, 0.9);
   }
 
   ${media.pc} {

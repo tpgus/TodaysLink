@@ -25,6 +25,10 @@ declare module "styled-components" {
       "gray-700": "rgb(55 65 81);";
       "gray-800": "rgb(31 41 55);";
       "gray-900": "rgb(17 24 39);";
+      dark: "#262220";
+      brown: "#A15C38";
+      lightBrown: "#C3A6A0";
+      light: "#F7F1F0";
     };
     boxShadow: {
       normal: "1px 1px 5px 0 rgb(0 0 0 / 10%)";

@@ -7,17 +7,20 @@ export const GlobalStyle = createGlobalStyle`
     ${reset}
 
     html {
+        height: 100%;
         font-size: 1rem;
         font-family: 'Roboto','Noto',sans-serif; 
-        height: -webkit-fill-available;
     }
     body {
+        height: 100%;
         overflow: overlay;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
+    }
+
+    #__next {
+        height: 100%; // or min-height
     }
 
     button {

@@ -11,7 +11,7 @@ export const MenuContainer = styled.ul<PropsType>`
   top: 0;
   right: ${({ isClicked }) => (isClicked ? "0" : "-50vw")};
   width: 50vw;
-  height: 100vh;
+  height: 100%;
   z-index: 11;
   background-color: white;
   color: ${({ theme }) => theme.color["gray-600"]};

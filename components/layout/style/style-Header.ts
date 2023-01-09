@@ -9,7 +9,7 @@ export const HeaderContainer = styled.div`
   background-color: ${({ theme }) => theme.color["gray-100"]};
 
   nav {
-    background-color: ${({ theme }) => theme.color.indigo};
+    background-color: ${({ theme }) => theme.color.dark};
     padding: 0 1rem;
     margin: 0 auto;
 
