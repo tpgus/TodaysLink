@@ -2,7 +2,7 @@ import React from "react";
 import HamburgerButton from "./HamburgerButton";
 import HamburgerMenu from "./HamburgerMenu";
 
-interface PropsType {
+export interface PropsType {
   isClickedHamburger: boolean;
   clickHamburgerHandler: () => void;
 }
