@@ -22,6 +22,7 @@ const LinkItem = () => {
         </div>
         <div className="link-detail">
           <h3>상품 제목</h3>
+          <br />
           <p>
             Get the full lineup of our Basic Tees. Have a fresh shirt all week,
             and an extra for laundry day
@@ -107,6 +108,144 @@ const LinkItem = () => {
             alt="thumbnail"
             width={288}
             height={384}
+          ></Image>
+        </div>
+        <div className="link-detail">
+          <h3>상품 제목</h3>
+          <br />
+          <p>
+            Get the full lineup of our Basic Tees. Have a fresh shirt all week,
+            and an extra for laundry day
+          </p>
+          <div>
+            <p>8 colors</p>
+            <p>$256</p>
+          </div>
+        </div>
+      </ItemContainer>
+      <ItemContainer>
+        <div className="img-wrapper group">
+          <Image
+            src={`/images/test5.webp`}
+            alt="thumbnail"
+            width={288}
+            height={384}
+            priority={true}
+          ></Image>
+        </div>
+        <div className="link-detail">
+          <h3>상품 제목</h3>
+          <br />
+          <p>
+            Get the full lineup of our Basic Tees. Have a fresh shirt all week,
+            and an extra for laundry day
+          </p>
+          <div>
+            <p>8 colors</p>
+            <p>$256</p>
+          </div>
+        </div>
+      </ItemContainer>
+      <ItemContainer>
+        <div className="img-wrapper group">
+          <Image
+            src={`/images/test1.webp`}
+            alt="thumbnail"
+            width={288}
+            height={384}
+            priority={true}
+          ></Image>
+        </div>
+        <div className="link-detail">
+          <h3>상품 제목</h3>
+          <br />
+          <p>
+            Get the full lineup of our Basic Tees. Have a fresh shirt all week,
+            and an extra for laundry day
+          </p>
+          <div>
+            <p>8 colors</p>
+            <p>$256</p>
+          </div>
+        </div>
+      </ItemContainer>{" "}
+      <ItemContainer>
+        <div className="img-wrapper group">
+          <Image
+            src={`/images/test3.webp`}
+            alt="thumbnail"
+            width={288}
+            height={384}
+            priority={true}
+          ></Image>
+        </div>
+        <div className="link-detail">
+          <h3>상품 제목</h3>
+          <br />
+          <p>
+            Get the full lineup of our Basic Tees. Have a fresh shirt all week,
+            and an extra for laundry day
+          </p>
+          <div>
+            <p>8 colors</p>
+            <p>$256</p>
+          </div>
+        </div>
+      </ItemContainer>
+      <ItemContainer>
+        <div className="img-wrapper group">
+          <Image
+            src={`/images/test5.webp`}
+            alt="thumbnail"
+            width={288}
+            height={384}
+            priority={true}
+          ></Image>
+        </div>
+        <div className="link-detail">
+          <h3>상품 제목</h3>
+          <br />
+          <p>
+            Get the full lineup of our Basic Tees. Have a fresh shirt all week,
+            and an extra for laundry day
+          </p>
+          <div>
+            <p>8 colors</p>
+            <p>$256</p>
+          </div>
+        </div>
+      </ItemContainer>
+      <ItemContainer>
+        <div className="img-wrapper group">
+          <Image
+            src={`/images/test1.webp`}
+            alt="thumbnail"
+            width={288}
+            height={384}
+            priority={true}
+          ></Image>
+        </div>
+        <div className="link-detail">
+          <h3>상품 제목</h3>
+          <br />
+          <p>
+            Get the full lineup of our Basic Tees. Have a fresh shirt all week,
+            and an extra for laundry day
+          </p>
+          <div>
+            <p>8 colors</p>
+            <p>$256</p>
+          </div>
+        </div>
+      </ItemContainer>{" "}
+      <ItemContainer>
+        <div className="img-wrapper group">
+          <Image
+            src={`/images/test3.webp`}
+            alt="thumbnail"
+            width={288}
+            height={384}
+            priority={true}
           ></Image>
         </div>
         <div className="link-detail">

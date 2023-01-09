@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { media } from "../../../styles/theme";
+import { media, theme } from "../../../styles/theme";
 
 export const HeaderContainer = styled.div`
   position: fixed;
   z-index: 10;
   top: 0;
   width: 100%;
-  background-color: white;
+  background-color: ${({ theme }) => theme.color["gray-100"]};
 
   nav {
     background-color: ${({ theme }) => theme.color.indigo};
@@ -26,5 +26,3 @@ export const HeaderContainer = styled.div`
     }
   }
 `;
-
-export const Logo = styled.div``;

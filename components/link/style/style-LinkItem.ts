@@ -11,6 +11,9 @@ export const ItemContainer = styled.div`
   background-color: white;
   cursor: pointer;
 
+  ${media.pc} {
+    box-shadow: ${({ theme }) => theme.boxShadow.normal};
+  }
   &:hover {
     .group {
       opacity: 0.6;
@@ -21,12 +24,12 @@ export const ItemContainer = styled.div`
     aspect-ratio: 1/1;
     width: 100%;
     background-color: rgb(229 231 235);
-    height: 20rem;
+    height: 15rem;
 
     ${media.pc} {
       aspect-ratio: 3/4;
       width: 100%;
-      height: 23rem;
+      height: 14rem;
     }
   }
   img {

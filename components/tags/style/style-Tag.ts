@@ -5,20 +5,21 @@ export const TagContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30rem;
-  border: 1px solid rgb(200 200 229);
-  line-height: 1.5rem;
+  border-radius: 20rem;
   min-width: 4rem;
-  font-weight: 500;
-  color: rgb(30 64 175);
-  background-color: rgba(229, 231, 235, 0.4);
-  margin: 0 0.1rem;
+  font-weight: 400;
+  padding: 0 0.4rem;
+  line-height: 1rem;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 0.2rem;
 
   ${media.pc} {
-    font-size: 1srem; /* 14px */
-    padding: 0.25rem 0.75rem;
-    border-radius: 30rem;
+    padding: 0 0.5rem;
     line-height: 2rem;
-    margin: 0 0.2rem;
+    margin: 0 0.3rem;
+    border: transparent;
+    font-weight: 500;
+    /* font-weight: bold; */
   }
 `;
