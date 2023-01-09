@@ -7,6 +7,8 @@ import { theme } from "../styles/theme";
 
 // _app.tsx는 서버로 요청이 들어왔을 때 가장 먼저 실행되는 컴포넌트로, 페이지에 적용할 공통 레이아웃의 역할을 수행한다.
 // 즉, 모든 컴포넌트에 공통적으로 적용할 속성들을 관리하기 위한 파일이다.
+
+const IGNORE_ROUTE = ["/*"];
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -22,7 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <div className="root"></div>
-        {/* Portal을 위한 div 태그 */}
         <Layout>
           <Component {...pageProps} />
         </Layout>

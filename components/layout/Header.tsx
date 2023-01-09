@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { HeaderContainer } from "./style/style-Header";
 import { useRouter } from "next/router";
-import HamburgerUI from "../mobile-only/Hamburger";
 import Logo from "../ui/Logo";
 import Search from "./Search";
 import TagList from "../tags/TagList";
 import Button from "../ui/Button";
-import HamburgerMenu from "../mobile-only/HamburgerMenu";
+import Hamburger from "../mobile-only/Hamburger/Hamburger";
 
-const ignoreRoute = ["/qna"];
+const IGNORE_ROUTE = ["/qna"];
 
 const Header = () => {
   const router = useRouter();
@@ -30,12 +29,11 @@ const Header = () => {
           <Logo />
           <Search />
           <div className="mobile-only">
-            {/* 모바일에서만 보이는 햄버거 UI */}
-            <HamburgerUI
-              isClicked={isClickedHamburger}
-              clickHandler={clickHamburgerHandler}
+            {/* 모바일에서만 보이는 햄버거 */}
+            <Hamburger
+              isClickedHamburger={isClickedHamburger}
+              clickHamburgerHandler={clickHamburgerHandler}
             />
-            <HamburgerMenu isClicked={isClickedHamburger} />
           </div>
           <div className="pc-tablet-only">
             <Button onClick={loginHandler}>로그인</Button>
@@ -43,7 +41,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      {ignoreRoute.includes(router.pathname) ? null : <TagList />}
+      {IGNORE_ROUTE.includes(router.pathname) ? null : <TagList />}
     </HeaderContainer>
   );
 };
