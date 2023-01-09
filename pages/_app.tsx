@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import { ThemeProvider } from "styled-components";
@@ -8,8 +9,10 @@ import { theme } from "../styles/theme";
 // _app.tsx는 서버로 요청이 들어왔을 때 가장 먼저 실행되는 컴포넌트로, 페이지에 적용할 공통 레이아웃의 역할을 수행한다.
 // 즉, 모든 컴포넌트에 공통적으로 적용할 속성들을 관리하기 위한 파일이다.
 
-const IGNORE_ROUTE = ["/*"];
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const NotFoundPage = <Component {...pageProps} />; //404페이지는 레이아웃이 감싸지 않는 형태 = 레이아웃 적용 X
+
   return (
     <>
       <Head>
@@ -23,10 +26,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <GlobalStyle />
       <ThemeProvider theme={theme}>
+        {/* createPortal을 위한 root 요소 */}
         <div className="root"></div>
-        <Layout>
+        {router.pathname === "/404" ? (
           <Component {...pageProps} />
-        </Layout>
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </ThemeProvider>
     </>
   );

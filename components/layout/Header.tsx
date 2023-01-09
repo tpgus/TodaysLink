@@ -5,7 +5,7 @@ import Logo from "../ui/Logo";
 import Search from "./Search";
 import TagList from "../tags/TagList";
 import Button from "../ui/Button";
-import Hamburger from "../mobile-only/Hamburger/Hamburger";
+import Hamburger from "../mobile-only/hamburger/Hamburger";
 
 const IGNORE_ROUTE = ["/qna"];
 

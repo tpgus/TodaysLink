@@ -6,7 +6,7 @@ const Logo = () => {
     <div>
       <Link href="/">
         <MobileLogo className="mobile-only">T</MobileLogo>
-        <PcLogo className="pc-tablet-only">TODAYS LINK</PcLogo>
+        <PcLogo className="pc-tablet-only">투데이 링크</PcLogo>
       </Link>
     </div>
   );
