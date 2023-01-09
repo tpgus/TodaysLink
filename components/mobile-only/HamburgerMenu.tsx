@@ -1,25 +1,40 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
 import { BiUser } from "react-icons/bi";
 import { BsQuestionCircle } from "react-icons/bs";
 import { MenuContainer, Backrop } from "./style/style-HamburgerMenu";
 
+const MENU = [
+  { name: "로그인", path: "/", icon: <BiUser /> },
+  { name: "Q&A", path: "/qna", icon: <BsQuestionCircle /> },
+];
+
 interface PropsType {
-  isClicked: boolean;
+  isClickedHamburger: boolean;
+  clickHamburgerHandler: () => void;
 }
 
 const HamburgerMenu = (props: PropsType) => {
+  const router = useRouter();
+
+  const clickMenuHandler = (path: string) => {
+    props.clickHamburgerHandler();
+    router.push(path);
+  };
+
   return (
     <>
-      {props.isClicked ? <Backrop /> : null}
-      <MenuContainer isClicked={props.isClicked}>
-        <li>
-          <BiUser />
-          <p>로그인</p>
-        </li>
-        <li>
-          <BsQuestionCircle />
-          <p>Q&A</p>
-        </li>
+      {props.isClickedHamburger ? (
+        <Backrop onClick={props.clickHamburgerHandler} />
+      ) : null}
+      <MenuContainer isClicked={props.isClickedHamburger}>
+        {MENU.map((menu) => (
+          <li key={uuidv4()} onClick={() => clickMenuHandler(menu.path)}>
+            {menu.icon}
+            <p>{menu.name}</p>
+          </li>
+        ))}
       </MenuContainer>
     </>
   );

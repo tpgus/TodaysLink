@@ -13,22 +13,18 @@ export const MenuContainer = styled.ul<PropsType>`
   width: 50vw;
   height: 100vh;
   z-index: 11;
-  background-color: ${({ theme }) => theme.color["indigo-600"]};
+  background-color: white;
+  color: ${({ theme }) => theme.color["gray-600"]};
   padding-top: 5rem;
   text-align: center;
   transition: all 0.6s;
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
 
   li {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 2rem;
+    height: 2.5rem;
     font-weight: 500;
-  }
-  li:hover {
-    background-color: rgba(0, 0, 0, 0.3);
   }
 
   li p {
