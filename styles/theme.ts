@@ -107,12 +107,7 @@ const customMediaQuery = (minWidth: number): string =>
 export const media = {
   custom: customMediaQuery,
   pc: customMediaQuery(1024),
-  tablet: customMediaQuery(768),
+  tablet: `@media (min-width:641px) and (max-width:1023px)`,
   mobile: customMediaQuery(640),
+  "fix-mobile": `@media (max-width: 640px)`,
 };
-
-//사용 방법
-//{media.pc} {
-// padding:1rem;
-// font-size:2rem;
-// }

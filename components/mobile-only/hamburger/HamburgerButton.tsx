@@ -1,10 +1,6 @@
 import React from "react";
 import { HamburgerContainer } from "./style/style-Hamburger";
-
-interface PropsType {
-  isClickedHamburger: boolean;
-  clickHamburgerHandler: () => void;
-}
+import type { PropsType } from "./Hamburger";
 
 const HamburgerButton = (props: PropsType) => {
   return (

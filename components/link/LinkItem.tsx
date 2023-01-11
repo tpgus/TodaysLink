@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ItemContainer } from "./style/style-LinkItem";
+import { useState } from "react";
 
 //아이디
 //제목
@@ -8,9 +9,15 @@ import { ItemContainer } from "./style/style-LinkItem";
 //기타정보
 
 const LinkItem = () => {
+  const [isHover, setIsHover] = useState(false);
+
   return (
     <>
-      <ItemContainer>
+      <ItemContainer
+        isHover={isHover}
+        onMouseOver={() => setIsHover(true)}
+        onMouseOut={() => setIsHover(false)}
+      >
         <div className="img-wrapper group">
           <Image
             src={`/images/test5.webp`}
@@ -19,6 +26,11 @@ const LinkItem = () => {
             height={384}
             priority={true}
           ></Image>
+          {isHover ? (
+            <button onClick={() => console.log("버튼 클릭")}>
+              자세히 보기
+            </button>
+          ) : null}
         </div>
         <div className="link-detail">
           <h3>상품 제목</h3>
@@ -33,7 +45,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test1.webp`}
@@ -56,7 +68,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>{" "}
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test3.webp`}
@@ -79,7 +91,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test4.webp`}
@@ -101,7 +113,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>{" "}
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test1.webp`}
@@ -123,7 +135,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test5.webp`}
@@ -146,7 +158,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test1.webp`}
@@ -169,7 +181,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>{" "}
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test3.webp`}
@@ -192,7 +204,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test5.webp`}
@@ -215,7 +227,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test1.webp`}
@@ -238,7 +250,7 @@ const LinkItem = () => {
           </div>
         </div>
       </ItemContainer>{" "}
-      <ItemContainer>
+      <ItemContainer isHover={false}>
         <div className="img-wrapper group">
           <Image
             src={`/images/test3.webp`}

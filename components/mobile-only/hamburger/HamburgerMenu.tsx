@@ -4,16 +4,12 @@ import { useRouter } from "next/router";
 import { BiUser } from "react-icons/bi";
 import { BsQuestionCircle } from "react-icons/bs";
 import { MenuContainer, Backrop } from "./style/style-HamburgerMenu";
+import type { PropsType } from "./Hamburger";
 
 const MENU = [
   { name: "로그인", path: "/", icon: <BiUser /> },
-  { name: "Q&A", path: "/qna", icon: <BsQuestionCircle /> },
+  { name: "FAQ", path: "/help/faq", icon: <BsQuestionCircle /> },
 ];
-
-interface PropsType {
-  isClickedHamburger: boolean;
-  clickHamburgerHandler: () => void;
-}
 
 const HamburgerMenu = (props: PropsType) => {
   const router = useRouter();

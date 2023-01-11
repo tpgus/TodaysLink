@@ -3,16 +3,15 @@ import { reset } from "styled-reset";
 import { media } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
-    //reset은 styled-component를 사용하며, 여러 브라우저마다 기본적으로 적용된 스타일을 지워주는 Node.js 패키지 : 스타일 초기화
     ${reset}
 
     html {
-        height: 100%;
+        height: 100vh;
         font-size: 1rem;
         font-family: 'Roboto','Noto',sans-serif; 
     }
     body {
-        height: 100%;
+        height: 100vh;
         overflow: overlay;
         box-sizing: border-box;
         margin: 0;

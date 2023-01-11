@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const Button = styled.button`
-  margin: 0.4rem;
+  margin-right: 1rem;
   border-radius: 0.375rem;
   border: transparent;
   padding: 0.3rem 0.75rem;
@@ -13,7 +13,6 @@ export const Button = styled.button`
   color: black;
 
   &:hover {
-    /* background-color: ${({ theme }) => theme.color["indigo-400"]}; */
     background-color: rgba(255, 255, 255, 0.9);
   }
 

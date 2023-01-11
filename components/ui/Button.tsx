@@ -4,11 +4,16 @@ import { Button as CustomButton } from "./style/style-Button";
 
 interface PropsType extends CompositionType {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
   type?: "submit";
 }
 
 const Button = (props: PropsType) => {
-  return <CustomButton onClick={props.onClick}>{props.children}</CustomButton>;
+  return (
+    <CustomButton className={props.className} onClick={props.onClick}>
+      {props.children}
+    </CustomButton>
+  );
 };
 
 export default Button;
