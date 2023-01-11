@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.div<{ isHover: boolean }>`
+  width: 90%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,16 +12,26 @@ export const ItemContainer = styled.div`
   background-color: white;
   cursor: pointer;
 
+  ${media["fix-mobile"]} {
+    left: 50%;
+    transform: translateX(-50%);
+    /* width: 90%; */
+  }
+
   ${media.pc} {
+    width: 100%;
     box-shadow: ${({ theme }) => theme.boxShadow.normal};
+    transform: ${({ isHover }) => (isHover ? "scale(1.01)" : "")};
+    transition: all 0.2s;
   }
   &:hover {
     .group {
-      opacity: 0.6;
+      /* opacity: 0.5; */
     }
   }
 
   .img-wrapper {
+    position: relative;
     aspect-ratio: 1/1;
     width: 100%;
     background-color: rgb(229 231 235);
@@ -30,6 +41,23 @@ export const ItemContainer = styled.div`
       aspect-ratio: 3/4;
       width: 100%;
       height: 14rem;
+    }
+
+    button {
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10;
+      border-radius: 5px;
+      width: 80%;
+      padding: 0.3rem 0;
+      border: transparent;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      text-align: center;
+      color: white;
+      font-weight: 500;
     }
   }
   img {
