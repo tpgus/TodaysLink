@@ -8,7 +8,7 @@ import type { PropsType } from "./Hamburger";
 
 const MENU = [
   { name: "로그인", path: "/", icon: <BiUser /> },
-  { name: "Q&A", path: "/qna", icon: <BsQuestionCircle /> },
+  { name: "FAQ", path: "/help/faq", icon: <BsQuestionCircle /> },
 ];
 
 const HamburgerMenu = (props: PropsType) => {
