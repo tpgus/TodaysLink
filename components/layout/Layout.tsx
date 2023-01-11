@@ -1,11 +1,8 @@
 import Header from "./Header";
 import { Main } from "./style/style-Layout";
+import type { CompositionType } from "../../types";
 
-interface PropsType {
-  children: React.ReactNode;
-}
-
-const Layout = (props: PropsType) => {
+const Layout = (props: CompositionType) => {
   return (
     <>
       <Header />

@@ -1,20 +1,21 @@
 import styled from "styled-components";
-import { media, theme } from "../../../styles/theme";
+import { media } from "../../../styles/theme";
 
 export const HeaderContainer = styled.div`
   position: fixed;
   z-index: 10;
   top: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.color["gray-100"]};
 
   nav {
     background-color: ${({ theme }) => theme.color.dark};
     padding: 0 1rem;
     margin: 0 auto;
+    height: 5rem;
 
     ${media.pc} {
-      padding: 0 4rem;
+      padding: 0.4rem 4rem;
+      height: 6rem;
     }
 
     .nav-wrapper {
