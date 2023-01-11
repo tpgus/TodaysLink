@@ -11,6 +11,8 @@
 - 2023.01.09 : **404** 페이지 추가 완료
 
 - 2023.01.09 : 사이트 테마 색 변경
+
+- [2023.01.11 : FAQ 페이지 디자인 (블로그 기록)](https://velog.io/@tpgus758/%EC%95%84%EC%BD%94%EB%94%94%EC%96%B8Accordian-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-styled-components)
 </div>
 </details>
 
