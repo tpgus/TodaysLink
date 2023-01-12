@@ -1,7 +1,7 @@
 import React from "react";
 
-const write = () => {
+const QNA = () => {
   return <div></div>;
 };
 
-export default write;
+export default QNA;

@@ -7,11 +7,14 @@ export const LinkListContainer = styled.ul`
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem 0;
+    width: 90%;
+    margin: 0 auto;
 
     ${media.pc} {
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 3rem 3rem;
       padding-top: 6rem;
+      max-width: 75rem;
     }
 
     ${media.tablet} {
