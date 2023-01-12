@@ -24,6 +24,12 @@ export const HeaderContainer = styled.div`
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 0;
+
+      a {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
     }
   }
 `;

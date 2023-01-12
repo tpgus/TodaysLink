@@ -10,6 +10,11 @@ export const NotFoundContainer = styled.div`
     display: grid;
     place-items: center;
     padding: 0;
+    margin-top: -6.8rem;
+    //현재 헤더의 높이는 6.8rem이기 때문에 메인 컴포넌트는 기본적으로 padding-top 6.8rem이 붙어 있는 상태
+    //이때, 404 페이지는 메인 컴포넌트 안에 들어가지만, 헤더는 보여주지 않는 페이지이기도 함.
+    //따라서 NotFound 페이지는 기본적으로 상단으로부터 6.8rem 만큼 떨어져 있는 상태
+    //중앙 정렬을 위해 헤더의 높이만큼 다시 -6.8rem
   }
 
   main {
