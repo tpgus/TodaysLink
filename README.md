@@ -16,3 +16,10 @@
 </div>
 </details>
 
+<details>
+<summary>Todo List</summary>
+<div markdown="1">
+
+- FAQ 페이지 카테고리 분리
+- 소셜 로그인 (카카오톡 우선)
+</details>
