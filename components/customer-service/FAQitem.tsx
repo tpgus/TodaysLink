@@ -14,7 +14,7 @@ interface PropsType {
 const FAQitem = (props: PropsType) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
-  const [isClosed, setIsClosed] = useState(false);
+  const [isOpen, setIsClosed] = useState(false);
 
   const clickQuestionHandler = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -34,8 +34,8 @@ const FAQitem = (props: PropsType) => {
   };
 
   return (
-    <FAQCItemcontainer onClick={clickQuestionHandler}>
-      <TitleWrapper isClosed={isClosed}>
+    <FAQCItemcontainer>
+      <TitleWrapper onClick={clickQuestionHandler} isOpen={isOpen}>
         <h3>
           <span>Q. </span> {props.title}
         </h3>

@@ -8,7 +8,7 @@ export const FAQCItemcontainer = styled.div`
   }
 `;
 
-export const TitleWrapper = styled.div<{ isClosed: boolean }>`
+export const TitleWrapper = styled.div<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +23,7 @@ export const TitleWrapper = styled.div<{ isClosed: boolean }>`
   }
 
   .icon {
-    transform: ${({ isClosed }) => (isClosed ? "rotate(-180deg)" : "")};
+    transform: ${({ isOpen }) => (isOpen ? "rotate(-180deg)" : "")};
   }
 `;
 
@@ -31,8 +31,6 @@ export const ContentWrapper = styled.div`
   height: 0;
   overflow: hidden;
   transition: height 0.35s ease;
-  border-left: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
 
   div {
     background-color: ${({ theme }) => theme.color["gray-200"]};
