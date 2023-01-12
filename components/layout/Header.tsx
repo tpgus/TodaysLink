@@ -6,8 +6,15 @@ import Logo from "../ui/Logo";
 import Search from "./Search";
 import Hamburger from "../mobile-only/hamburger/Hamburger";
 
+const NAVIGATION_MENU = [
+  { name: "로그인", path: "/member/login" },
+  { name: "FAQ", path: "/help/faq" },
+];
+
 const Header = () => {
   const [isClickedHamburger, setIsClickedHamburger] = useState(false); // 모바일 햄버거 버튼 상태
+  const router = useRouter();
+  const currentPath = router.pathname;
 
   //모바일 햄버거 클릭 핸들러
   const clickHamburgerHandler = () => {
@@ -28,8 +35,18 @@ const Header = () => {
             />
           </div>
           <div className="pc-tablet-only menu">
-            <Link href={"/member/login"}>로그인</Link>
-            <Link href={"/help/faq"}>FAQ</Link>
+            <Link
+              href={"/member/login"}
+              className={router.pathname === "/member/login" ? "active" : ""}
+            >
+              로그인
+            </Link>
+            <Link
+              href={"/help/faq"}
+              className={router.pathname.includes("/help") ? "active" : ""}
+            >
+              FAQ
+            </Link>
           </div>
         </div>
       </nav>

@@ -29,6 +29,16 @@ export const HeaderContainer = styled.div`
         color: white;
         font-size: 1.2rem;
         font-weight: 500;
+
+        &:not(:nth-of-type(1)) {
+          margin-left: 1.2rem;
+        }
+      }
+
+      .active {
+        color: white;
+        border-bottom: 3px solid #ff0000;
+        padding-bottom: 0.3rem;
       }
     }
   }

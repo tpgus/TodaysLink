@@ -34,7 +34,7 @@ const HelpPageLayout = (props: CompositionType) => {
         </SideMenu>
       </SideMenuContainer>
       <Main>{props.children}</Main>
-      <AdBanner />
+      <AdBanner>광고 영역</AdBanner>
     </LayoutContainer>
   );
 };
