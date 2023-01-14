@@ -23,3 +23,13 @@
 - FAQ 페이지 카테고리 분리
 - 소셜 로그인 (카카오톡 우선)
 </details>
+
+
+
+<details>
+<summary>상세 페이지 디자인 참고</summary>
+<div markdown="1">
+
+- [링크](https://kream.co.kr/products/95203)
+
+</details>
