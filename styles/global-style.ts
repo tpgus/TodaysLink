@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-       color:black;
+       color:#000;
        text-decoration:none;
     }
 

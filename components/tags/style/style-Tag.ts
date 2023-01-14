@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const TagContainer = styled.div`
+export const TagContainer = styled.li<{ activated: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 20rem;
   min-width: 4rem;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: ${({ activated }) => (activated ? "bold" : "500")};
   padding: 0.4rem 0.4rem;
   line-height: 1rem;
-  background-color: white;
-  color: ${({ theme }) => theme.color.dark};
+  background-color: ${({ activated }) => (activated ? "#000" : "#fff")};
+  color: ${({ activated, theme }) => (activated ? "#fff" : theme.color.dark)};
   margin: 0 0.2rem;
+  cursor: pointer;
 
   ${media.pc} {
     padding: 0 0.5rem;

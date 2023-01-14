@@ -1,12 +1,6 @@
+import { useState } from "react";
 import Image from "next/image";
 import { ItemContainer } from "./style/style-LinkItem";
-import { useState } from "react";
-
-//아이디
-//제목
-//링크
-//일정
-//기타정보
 
 const LinkItem = () => {
   const [isHover, setIsHover] = useState(false);

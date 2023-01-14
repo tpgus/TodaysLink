@@ -1,8 +1,15 @@
 import React from "react";
-import FAQList from "../../components/customer-service/FAQList";
+import type { ReactElement } from "react";
+import type { NextPageWithLayout } from "../../pages/_app";
+import FAQList from "../../components/help/FAQList";
+import HelpPageLayout from "../../components/help/HelpPageLayout";
 
-const faq = () => {
+const FAQPage: NextPageWithLayout = () => {
   return <FAQList />;
 };
 
-export default faq;
+FAQPage.getLayout = function getLayout(page: ReactElement) {
+  return <HelpPageLayout>{page}</HelpPageLayout>;
+};
+
+export default FAQPage;

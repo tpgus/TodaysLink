@@ -6,12 +6,19 @@ import Logo from "../ui/Logo";
 import Search from "./Search";
 import Hamburger from "../mobile-only/hamburger/Hamburger";
 
-const Header = () => {
-  const [isClickedHamburger, setIsClickedHamburger] = useState(false); // 모바일 햄버거 버튼 상태
+const NAVIGATION_MENU = [
+  { name: "로그인", path: "/auth/signIn" },
+  { name: "FAQ", path: "/help/faq" },
+  { name: "Q&A", path: "/help/qna" },
+];
 
-  //모바일 햄버거 클릭 핸들러
-  const clickHamburgerHandler = () => {
-    setIsClickedHamburger((prevState) => !prevState);
+const Header = () => {
+  const [isClickedHamburgerBtn, setIsClickedHamburgerBtn] = useState(false); // 모바일 햄버거 버튼
+  const router = useRouter();
+  const currentPath = router.pathname;
+
+  const handleHamburgerBtnClick = () => {
+    setIsClickedHamburgerBtn((prevState) => !prevState);
   };
 
   return (
@@ -20,16 +27,26 @@ const Header = () => {
         <div className="nav-wrapper">
           <Logo />
           <Search />
+          {/* 모바일에서만 보이는 햄버거 버튼*/}
           <div className="mobile-only">
-            {/* 모바일에서만 보이는 햄버거 */}
             <Hamburger
-              isClickedHamburger={isClickedHamburger}
-              clickHamburgerHandler={clickHamburgerHandler}
+              isClickedHamburger={isClickedHamburgerBtn}
+              onClickHamburger={handleHamburgerBtnClick}
             />
           </div>
           <div className="pc-tablet-only menu">
-            <Link href={"/member/login"}>로그인</Link>
-            <Link href={"/help/faq"}>FAQ</Link>
+            <Link
+              href={"/help/faq"}
+              className={router.pathname.includes("/help") ? "active" : ""}
+            >
+              FAQ
+            </Link>
+            <Link
+              href={"/auth/signIn"}
+              className={router.pathname === "/auth/signIn" ? "active" : ""}
+            >
+              로그인
+            </Link>
           </div>
         </div>
       </nav>

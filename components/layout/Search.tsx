@@ -5,25 +5,28 @@ import { SearchContainer } from "./style/style-Search";
 const Search = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const searchHandler = () => {
-    alert("검색 클릭!");
+  const search = () => {
+    // 실제 검색 요청과 관련된 코드
+    alert("검색 시작");
   };
 
-  const inputSearchHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      alert(`엔터 눌림 :${searchInputRef.current!.value}`);
-    }
+  const handleSearchBtnClick = () => {
+    search();
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    event.key === "Enter" && search();
   };
 
   return (
     <SearchContainer>
       <input
-        onKeyPress={inputSearchHandler}
+        onKeyDown={handleKeyPress}
         ref={searchInputRef}
         type="text"
         placeholder="검색어를 입력하세요"
       />
-      <button onClick={searchHandler}>
+      <button onClick={handleSearchBtnClick}>
         <AiOutlineSearch className="search-icon" size={20} />
       </button>
     </SearchContainer>

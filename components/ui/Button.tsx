@@ -1,18 +1,24 @@
 import React from "react";
 import type { CompositionType } from "../../types";
-import { Button as CustomButton } from "./style/style-Button";
+import * as S from "./style/style-Button";
 
 interface PropsType extends CompositionType {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  bg?: string;
   type?: "submit";
 }
 
 const Button = (props: PropsType) => {
   return (
-    <CustomButton className={props.className} onClick={props.onClick}>
+    <S.Button
+      className={props.className}
+      onClick={props.onClick}
+      bg={props.bg}
+      type={props.type}
+    >
       {props.children}
-    </CustomButton>
+    </S.Button>
   );
 };
 

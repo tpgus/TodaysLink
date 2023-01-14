@@ -3,10 +3,10 @@ import { media } from "../../../styles/theme";
 
 export const NotFoundContainer = styled.div`
   padding: 30% 10%;
-  background-color: white;
+  background-color: #fff;
 
   ${media.pc} {
-    height: 100%;
+    height: 100vh;
     display: grid;
     place-items: center;
     padding: 0;

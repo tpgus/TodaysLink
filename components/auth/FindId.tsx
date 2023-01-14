@@ -1,7 +1,7 @@
 import React from "react";
 
-const write = () => {
+const FindId = () => {
   return <div></div>;
 };
 
-export default write;
+export default FindId;

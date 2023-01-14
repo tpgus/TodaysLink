@@ -18,10 +18,6 @@ export const SidebarContainer = styled.div`
     display: none;
   }
 
-  div {
-    /* text-align: center; */
-  }
-
   & > div {
     width: 50%;
     background-color: #fff;
@@ -66,10 +62,12 @@ export const FilterContainer = styled.div`
   justify-content: center;
 `;
 
-export const Checkbox = styled.div`
+export const CheckboxWrapper = styled.div`
   display: flex;
   align-items: center;
+  max-width: max-content;
   margin-top: 0.5rem;
+
   input {
     height: 1rem;
     width: 1rem;
