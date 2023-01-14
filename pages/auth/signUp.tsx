@@ -1,9 +1,10 @@
 import React, { ReactElement } from "react";
 import AuthPageLayout from "../../components/auth/AuthPageLayout";
+import SignUp from "../../components/auth/SignUp";
 import type { NextPageWithLayout } from "../../pages/_app";
 
 const SignUpPage: NextPageWithLayout = () => {
-  return <div>회원가입 페이지</div>;
+  return <SignUp />;
 };
 
 SignUpPage.getLayout = function getLayout(page: ReactElement) {

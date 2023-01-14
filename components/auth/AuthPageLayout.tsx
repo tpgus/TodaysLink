@@ -8,7 +8,7 @@ const AuthPageLayout = (props: PropsType) => {
     <S.LayoutContainer>
       <S.Main>
         <div className="logo-wrapper">
-          <Logo txtColor="black" />
+          <Logo pc={true} txtColor="black" />
         </div>
         {props.children}
       </S.Main>

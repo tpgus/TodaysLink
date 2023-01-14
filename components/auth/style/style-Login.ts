@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../../styles/theme";
 import Button from "../../ui/Button";
 
 export const LoginLayout = styled.div`
@@ -19,7 +20,7 @@ export const LoginLayout = styled.div`
 
 export const LoginContainer = styled.section`
   width: 80%;
-  margin-top: 20%;
+  margin-top: 15%;
 
   .signup__btn {
     margin-top: 5rem;
@@ -32,11 +33,7 @@ export const LoginForm = styled.form`
   flex-direction: column;
   width: 100%;
 
-  div {
-    height: 4rem;
-  }
-
-  .form--password {
+  .password-wrap {
     margin-top: 0.5rem;
   }
 
@@ -53,14 +50,15 @@ export const LoginForm = styled.form`
     margin-top: 0.25rem;
     width: calc(100% - 1.5rem);
     height: 1.5rem;
-    appearance: none;
     border-radius: 0.375rem;
     border: 1px solid ${({ theme }) => theme.color["gray-300"]};
     padding: 0.5rem 0.75rem;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    appearance: none;
 
     &:focus {
       border: 2px solid ${({ theme }) => theme.color["indigo-500"]};
+      height: calc(1.5rem - 2px);
       outline: none;
     }
 
