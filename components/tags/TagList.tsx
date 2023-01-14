@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Tag from "./Tag";
 import { TagListContainer } from "./style/style-TagList";
 import { v4 as uuidv4 } from "uuid";
@@ -18,10 +19,21 @@ const Tags = [
 ];
 
 const TagList = () => {
+  const [clickedTagIdx, setClickedTagIdx] = useState(0);
+
+  const clickTagHandler = (index: number) => {
+    setClickedTagIdx(index);
+  };
+
   return (
     <TagListContainer>
-      {Tags.map((tag) => (
-        <Tag key={uuidv4()} tag={tag} />
+      {Tags.map((tag, idx) => (
+        <Tag
+          key={uuidv4()}
+          tag={tag}
+          activated={idx === clickedTagIdx}
+          clickHandler={() => clickTagHandler(idx)}
+        />
       ))}
     </TagListContainer>
   );

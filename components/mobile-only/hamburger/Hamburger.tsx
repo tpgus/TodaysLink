@@ -4,7 +4,7 @@ import HamburgerMenu from "./HamburgerMenu";
 
 export interface PropsType {
   isClickedHamburger: boolean;
-  clickHamburgerHandler: () => void;
+  onClickHamburger: () => void;
 }
 
 const Hamburger = (props: PropsType) => {

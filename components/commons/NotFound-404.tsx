@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { NotFoundContainer } from "./style/style-NotFound";
+import * as S from "./style/style-NotFound";
 
 const NotFound = () => {
   return (
-    <NotFoundContainer>
+    <S.NotFoundContainer>
       <main>
         <p>404</p>
         <div>
@@ -18,7 +18,7 @@ const NotFound = () => {
           </div>
         </div>
       </main>
-    </NotFoundContainer>
+    </S.NotFoundContainer>
   );
 };
 

@@ -1,18 +1,34 @@
 import styled from "styled-components";
+import { media } from "../../../styles/theme";
 
 export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: 5rem;
-  border: 1px solid blue;
+
+  ${media.tablet} {
+    padding-top: 7rem;
+  }
+
+  ${media.pc} {
+    padding-top: 4rem;
+  }
 `;
 
 export const Main = styled.div`
   margin: 0 auto;
-  max-width: 75rem;
+  width: 100%;
+
+  ${media.tablet} {
+    max-width: 70%;
+  }
+  ${media.pc} {
+    max-width: 65%;
+  }
 `;
 
 export const SideMenuContainer = styled.div`
+  top: 25%;
   position: fixed;
   text-align: center;
   width: 20%;
@@ -34,6 +50,9 @@ export const SideMenu = styled.div`
     padding: 0.7rem 0;
     font-weight: 500;
     font-size: 1.3rem;
+    ${media.tablet} {
+      font-size: 0.9rem;
+    }
   }
 
   ul {
@@ -48,8 +67,14 @@ export const SideMenu = styled.div`
     align-items: center;
     height: 2.5rem;
     text-align: center;
-    padding-left: 1rem;
+    padding: 0 1rem;
+    justify-content: space-between;
     cursor: pointer;
+
+    ${media.tablet} {
+      font-size: 0.7rem;
+      font-weight: 400;
+    }
 
     &:hover {
       background-color: ${({ theme }) => theme.color["gray-100"]};
@@ -57,6 +82,10 @@ export const SideMenu = styled.div`
 
     &:not(:nth-of-type(1)) {
       border-top: 1px solid lightgray;
+    }
+
+    span {
+      font-weight: bold;
     }
   }
 `;

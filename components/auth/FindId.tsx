@@ -1,7 +1,7 @@
 import React from "react";
 
-const QNA = () => {
+const FindId = () => {
   return <div></div>;
 };
 
-export default QNA;
+export default FindId;

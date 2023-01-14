@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const TagListContainer = styled.div`
+export const TagListContainer = styled.ul`
   position: fixed;
   left: 0;
   top: 5rem;

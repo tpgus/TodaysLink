@@ -5,7 +5,7 @@ import type { ReactElement, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
-import Layout from "../components/layout/Layout";
+import AppLayout from "../components/layout/AppLayout";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -30,11 +30,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       {/* 포탈 위치 */}
       <div className="root"></div>
-
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        {/* 오버레이를 위한 root 요소 */}
-        <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+        <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
       </ThemeProvider>
     </>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../pages/_app";
-import FAQList from "../../components/help-page/FAQList";
-import HelpPageLayout from "../../components/help-page/HelpPageLayout";
+import FAQList from "../../components/help/FAQList";
+import HelpPageLayout from "../../components/help/HelpPageLayout";
 
 const FAQPage: NextPageWithLayout = () => {
   return <FAQList />;

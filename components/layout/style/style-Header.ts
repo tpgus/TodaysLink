@@ -26,7 +26,7 @@ export const HeaderContainer = styled.div`
       padding: 1.5rem 0;
 
       a {
-        color: white;
+        color: #fff;
         font-size: 1.2rem;
         font-weight: 500;
 
@@ -36,9 +36,9 @@ export const HeaderContainer = styled.div`
       }
 
       .active {
-        color: white;
-        border-bottom: 3px solid #ff0000;
-        padding-bottom: 0.3rem;
+        color: #fff;
+        border-bottom: 3px solid #fff;
+        padding-bottom: 0.4rem;
       }
     }
   }
