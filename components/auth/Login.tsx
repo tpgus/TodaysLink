@@ -17,7 +17,7 @@ const Login = () => {
             <label htmlFor="id">아이디</label>
             <input id="id" type="text" name="id" />
           </div>
-          <div className="form--password">
+          <div className="password-wrap">
             <label htmlFor="password">비밀번호</label>
             <input id="password" type="password" name="password" />
           </div>
