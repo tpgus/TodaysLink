@@ -17,13 +17,14 @@ export const LayoutContainer = styled.div`
 
 export const Main = styled.div`
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
+  /* max-width: 100%; */
 
   ${media.tablet} {
     max-width: 70%;
   }
   ${media.pc} {
-    max-width: 65%;
+    max-width: 60%;
   }
 `;
 

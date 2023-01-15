@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { ItemContainer } from "./style/style-LinkItem";
 
 const LinkItem = () => {
   const [isHover, setIsHover] = useState(false);
+  const router = useRouter();
 
   return (
     <>
       <ItemContainer
         isHover={isHover}
+        onClick={() => router.push("/detail/1")}
         onMouseOver={() => setIsHover(true)}
         onMouseOut={() => setIsHover(false)}
       >
@@ -20,11 +23,7 @@ const LinkItem = () => {
             height={384}
             priority={true}
           ></Image>
-          {isHover ? (
-            <button onClick={() => console.log("버튼 클릭")}>
-              자세히 보기
-            </button>
-          ) : null}
+          {isHover ? <span>자세히 보기</span> : null}
         </div>
         <div className="link-detail">
           <h3>상품 제목</h3>

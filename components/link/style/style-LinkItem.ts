@@ -24,11 +24,10 @@ export const ItemContainer = styled.div<{ isHover: boolean }>`
     transform: ${({ isHover }) => (isHover ? "scale(1.01)" : "")};
     transition: all 0.2s;
   }
-  &:hover {
+  /* &:hover {
     .group {
-      /* opacity: 0.5; */
     }
-  }
+  } */
 
   .img-wrapper {
     position: relative;
@@ -43,12 +42,12 @@ export const ItemContainer = styled.div<{ isHover: boolean }>`
       height: 14rem;
     }
 
-    button {
+    span {
       background-color: rgba(0, 0, 0, 0.6);
       z-index: 10;
       border-radius: 5px;
       width: 80%;
-      padding: 0.3rem 0;
+      padding: 0.6rem 0;
       border: transparent;
       position: absolute;
       bottom: 0;
@@ -60,6 +59,7 @@ export const ItemContainer = styled.div<{ isHover: boolean }>`
       font-weight: 500;
     }
   }
+
   img {
     width: 100%;
     height: 100%;
