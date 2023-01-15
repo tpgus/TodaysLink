@@ -7,7 +7,6 @@ import QNAList from "../../components/help/QnAList";
 const QNAPage: NextPageWithLayout = () => {
   return (
     <>
-      <h1>1:1 문의 (Q&A)</h1>
       <QNAList />
     </>
   );

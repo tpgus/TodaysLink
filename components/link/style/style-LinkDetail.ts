@@ -9,15 +9,25 @@ export const LinkDetailLayout = styled.div`
 export const LinkDetailContainer = styled.div`
   display: flex;
   position: relative;
-  flex-direction: column;
 
   ${media.pc} {
     flex-direction: row;
   }
 
+  ${media.tablet} {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+  }
+
   .img {
     position: fixed;
     top: 9.8rem;
+
+    ${media.tablet} {
+      position: unset;
+      width: 50%;
+    }
   }
 `;
 
@@ -26,6 +36,10 @@ export const InfoContainer = styled.div`
   padding: 0 2rem;
   right: 0;
   width: 50%;
+
+  ${media.tablet} {
+    position: unset;
+  }
 
   ::before {
     content: "";
@@ -48,6 +62,9 @@ export const InfoContainer = styled.div`
     top: 6.8rem;
     background-color: #fff;
     z-index: 1;
+    ${media.tablet} {
+      position: unset;
+    }
   }
 
   .item-description {
