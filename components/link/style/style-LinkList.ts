@@ -15,6 +15,7 @@ export const LinkListContainer = styled.ul`
       gap: 3rem 3rem;
       padding-top: 6rem;
       max-width: 75rem;
+      /* max-width: 1280px; */
     }
 
     ${media.tablet} {

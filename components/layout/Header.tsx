@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { HeaderContainer } from "./style/style-Header";
 import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import Logo from "../ui/Logo";
 import Search from "./Search";
-import Hamburger from "../mobile-only/hamburger/Hamburger";
+import Hamburger from "./mobile-only/hamburger/Hamburger";
 
 const NAVIGATION_MENU = [
-  { name: "로그인", path: "/auth/signIn" },
   { name: "FAQ", path: "/help/faq" },
   { name: "Q&A", path: "/help/qna" },
+  { name: "로그인", path: "/auth/signIn" },
 ];
 
 const Header = () => {
@@ -35,18 +36,15 @@ const Header = () => {
             />
           </div>
           <div className="pc-tablet-only menu">
-            <Link
-              href={"/help/faq"}
-              className={router.pathname.includes("/help") ? "active" : ""}
-            >
-              FAQ
-            </Link>
-            <Link
-              href={"/auth/signIn"}
-              className={router.pathname === "/auth/signIn" ? "active" : ""}
-            >
-              로그인
-            </Link>
+            {NAVIGATION_MENU.map((menu) => (
+              <Link
+                href={menu.path}
+                key={uuidv4()}
+                className={router.pathname === menu.path ? "active" : ""}
+              >
+                {menu.name}
+              </Link>
+            ))}
           </div>
         </div>
       </nav>
