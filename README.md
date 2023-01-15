@@ -34,5 +34,6 @@
 - [FAQ, Q&A 페이지 디자인 참고 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005)
 - [메인 페이지 헤더 및 태그 디자인 참고 - 유튜브](https://www.youtube.com/)
 - [로그인 및 회원가입 디자인 참고 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
+- [기본 요소 디자인 참고 - Tailwind](https://tailwindui.com/components)
 
 </details>
