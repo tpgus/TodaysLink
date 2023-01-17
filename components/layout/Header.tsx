@@ -10,7 +10,7 @@ import Hamburger from "./mobile-only/hamburger/Hamburger";
 const NAVIGATION_MENU = [
   { name: "FAQ", path: "/help/faq" },
   { name: "Q&A", path: "/help/qna" },
-  { name: "로그인", path: "/auth/signIn" },
+  { name: "배포테스트", path: "/auth/signIn" },
 ];
 
 const Header = () => {

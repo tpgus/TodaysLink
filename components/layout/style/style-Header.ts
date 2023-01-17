@@ -34,6 +34,10 @@ export const HeaderContainer = styled.div`
         font-size: 1.2rem;
         font-weight: 500;
 
+        &:hover {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
         &:not(:nth-of-type(1)) {
           margin-left: 1.2rem;
         }
@@ -44,7 +48,7 @@ export const HeaderContainer = styled.div`
       }
 
       .active {
-        color: #fff;
+        color: rgba(255, 255, 255, 0.7);
         border-bottom: 3px solid #fff;
         padding-bottom: 0.4rem;
       }
