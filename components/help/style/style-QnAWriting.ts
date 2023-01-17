@@ -57,7 +57,6 @@ export const WritingContainer = styled.div`
 
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
 
     &:focus {
@@ -75,7 +74,6 @@ export const WritingContainer = styled.div`
 
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
 
     &:focus {
@@ -96,7 +94,6 @@ export const WritingContainer = styled.div`
 
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
 
     &:focus {
@@ -105,12 +102,18 @@ export const WritingContainer = styled.div`
     }
   }
 
-  .registration__btn {
-    margin-top: 1rem;
-  }
-
   .actions-wrap {
     padding-left: 2rem;
     text-align: right;
+  }
+
+  .registration__btn {
+    margin-top: 1rem;
+
+    ${media["fix-mobile"]} {
+      padding: initial;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
   }
 `;

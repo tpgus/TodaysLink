@@ -10,24 +10,28 @@ const QnAWriting = () => {
       <div className="form-wrap">
         <form onSubmit={handleSubmit}>
           <div className="input-wrap">
-            <label htmlFor="asd">문의 유형</label>
-            <select>
+            <label htmlFor="type">문의 유형</label>
+            <select id="type">
               <option>기타</option>
               <option>사이트 이용</option>
               <option>계정</option>
             </select>
           </div>
           <div className="input-wrap">
-            <label>제목</label>
+            <label htmlFor="title">제목</label>
             <input
+              id="title"
               placeholder="최대 100자 이내로 작성해 주세요"
+              minLength={3}
               maxLength={100}
             />
           </div>
           <div className="input-wrap">
-            <label>문의 내용</label>
+            <label htmlFor="content">문의 내용</label>
             <textarea
+              id="content"
               placeholder="최대 500자 이내로 작성해 주세요"
+              minLength={10}
               maxLength={500}
             />
           </div>
