@@ -11,7 +11,7 @@ export const TagListContainer = styled.ul`
   display: flex;
   justify-content: start;
   overflow: scroll;
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 0;
   background-color: ${({ theme }) => theme.color["gray-100"]};
 
   &::-webkit-scrollbar {
