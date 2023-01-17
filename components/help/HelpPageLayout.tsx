@@ -1,9 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
-import type { CompositionType as PropsType } from "../../types";
 import { IoMdArrowDropright } from "react-icons/io";
 import * as S from "./style/style-HelpPageLayout";
+
+interface PropsType {
+  children: React.ReactNode;
+}
 
 const MENU_LIST = [
   { name: "자주 묻는 질문", path: "/help/faq" },

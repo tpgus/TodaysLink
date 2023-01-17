@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
 import Header from "./Header";
 import * as S from "./style/style-Layout";
-import type { CompositionType as LayoutPropsType } from "../../types";
+
+interface PropsType {
+  children: React.ReactNode;
+}
 
 const HEADER_HIDING_ROUTES = ["/404", "/auth"];
 
-const AppLayout = (props: LayoutPropsType) => {
+const AppLayout = (props: PropsType) => {
   const router = useRouter();
   const showHeader = !HEADER_HIDING_ROUTES.find((route) =>
     router.pathname.includes(route)

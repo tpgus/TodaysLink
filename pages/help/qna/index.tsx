@@ -1,4 +1,3 @@
-import React from "react";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../../pages/_app";
 import HelpPageLayout from "../../../components/help/HelpPageLayout";

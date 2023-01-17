@@ -37,6 +37,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
           {/* 컴포넌트들에 공통적으로 적용되는 각종 메타 태그 및 웹 폰트 
           <meta name="keywords" content="" />
           <link

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AiFillHome } from "react-icons/ai";
 import { MobileLogo, PcLogo } from "./style/style-Logo";
 
 interface PropsType {
@@ -21,7 +22,7 @@ const Logo = (props: PropsType) => {
     <div>
       <Link href="/">
         <MobileLogo txtColor={props.txtColor} className="mobile-only">
-          T
+          <AiFillHome />
         </MobileLogo>
         <PcLogo txtColor={props.txtColor} className="pc-tablet-only">
           Todays Link
