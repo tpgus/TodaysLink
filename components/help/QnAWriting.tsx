@@ -12,9 +12,9 @@ const QnAWriting = () => {
           <div className="input-wrap">
             <label htmlFor="type">문의 유형</label>
             <select id="type">
-              <option>기타</option>
-              <option>사이트 이용</option>
-              <option>계정</option>
+              <option value="기타">기타</option>
+              <option value="사이트 이용">사이트 이용</option>
+              <option value="계정">계정</option>
             </select>
           </div>
           <div className="input-wrap">

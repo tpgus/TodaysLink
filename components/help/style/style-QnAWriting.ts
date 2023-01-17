@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const WritingContainer = styled.div`
-  background-color: ${({ theme }) => theme.color["gray-200"]};
+  background-color: ${({ theme }) => theme.color["gray-100"]};
 
   ${media.tablet} {
     padding: 1rem 0;
@@ -10,7 +10,6 @@ export const WritingContainer = styled.div`
 
   ${media.pc} {
     padding: 1rem 1rem;
-    background-color: ${({ theme }) => theme.color["gray-200"]};
   }
 
   h2 {
@@ -43,17 +42,35 @@ export const WritingContainer = styled.div`
     color: ${({ theme }) => theme.color["gray-700"]};
   }
 
-  .input-wrap {
+  .input-wrap:not(:nth-of-type(1)) {
     margin-top: 1rem;
   }
 
   input {
-    width: calc(100% - 2rem);
-    display: block;
+    background-color: #fff;
     border-radius: 0.375rem;
-    font-size: 1rem;
     border: 1px solid ${({ theme }) => theme.color["gray-300"]};
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+    width: calc(100% - 1rem);
+
+    ${media.pc} {
+      width: calc(100% - 2rem);
+      display: block;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      border: 1px solid ${({ theme }) => theme.color["gray-300"]};
+      padding: 0.75rem 1rem;
+    }
+
+    ${media.tablet} {
+      width: calc(100% - 2rem);
+      display: block;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      border: 1px solid ${({ theme }) => theme.color["gray-300"]};
+      padding: 0.75rem 1rem;
+    }
 
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
@@ -69,8 +86,24 @@ export const WritingContainer = styled.div`
     background-color: #fff;
     border-radius: 0.375rem;
     border: 1px solid ${({ theme }) => theme.color["gray-300"]};
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+
+    ${media.tablet} {
+      background-color: #fff;
+      border-radius: 0.375rem;
+      border: 1px solid ${({ theme }) => theme.color["gray-300"]};
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+
+    ${media.pc} {
+      background-color: #fff;
+      border-radius: 0.375rem;
+      border: 1px solid ${({ theme }) => theme.color["gray-300"]};
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
 
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
@@ -84,13 +117,37 @@ export const WritingContainer = styled.div`
 
   textarea {
     width: calc(100% - 2rem);
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: block;
     border-radius: 0.375rem;
     border: 1px solid ${({ theme }) => theme.color["gray-300"]};
     padding: 0.75rem 1rem;
     height: 10rem;
     resize: none;
+
+    ${media.pc} {
+      border: 1px solid red;
+      width: calc(100% - 2rem);
+      font-size: 1rem;
+      display: block;
+      border-radius: 0.375rem;
+      border: 1px solid ${({ theme }) => theme.color["gray-300"]};
+      padding: 0.75rem 1rem;
+      height: 10rem;
+      resize: none;
+    }
+
+    ${media.tablet} {
+      width: calc(100% - 2rem);
+      font-size: 1rem;
+      display: block;
+      border-radius: 0.375rem;
+      border: 1px solid ${({ theme }) => theme.color["gray-300"]};
+      padding: 0.75rem 1rem;
+      height: 10rem;
+      resize: none;
+      border: 1px solid red;
+    }
 
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
