@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { ReactElement, ReactNode } from "react";
 import type { AppProps } from "next/app";
 import type { NextPage } from "next";
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       {/* 포탈 위치 */}
       <div className="root"></div>
+      <Analytics />
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
