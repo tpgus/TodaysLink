@@ -84,14 +84,7 @@ interface PropsType {
 }
 
 const ItemDetailPage = (props: PropsType) => {
-  return (
-    <>
-      {/* <div className="pc-tablet-only"> */}
-      <LinkItemDetail item={props.item} />
-      {/* </div> */}
-      <div className="mobile-only"></div>
-    </>
-  );
+  return <LinkItemDetail item={props.item} />;
 };
 
 export default ItemDetailPage;

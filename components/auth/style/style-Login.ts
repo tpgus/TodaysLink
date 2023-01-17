@@ -80,6 +80,7 @@ export const UtilBox = styled.div`
   display: flex;
   margin-top: 1rem;
   justify-content: space-between;
+  align-items: center;
 
   ${media["fix-mobile"]} {
     align-items: center;

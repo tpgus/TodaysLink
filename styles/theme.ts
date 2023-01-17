@@ -87,15 +87,6 @@ export const MIXINS = {
     return;
   },
 };
-//사용 방법
-//  ${({ theme }) => theme.MIXINS.flexBox('column')}
-
-// {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//   }
-//  기존 3줄 이상 차지하는 flex box 코드를 한 줄로 줄일 수 있다.
 
 const customMediaQuery = (minWidth: number): string =>
   `@media (min-width: ${minWidth}px)`;

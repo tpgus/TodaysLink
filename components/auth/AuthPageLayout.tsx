@@ -1,7 +1,10 @@
 import React from "react";
 import * as S from "./style/style-Layout";
 import Logo from "../ui/Logo";
-import type { CompositionType as PropsType } from "../../types";
+
+interface PropsType {
+  children: React.ReactNode;
+}
 
 const AuthPageLayout = (props: PropsType) => {
   return (

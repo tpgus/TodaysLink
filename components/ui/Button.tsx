@@ -1,8 +1,8 @@
 import React from "react";
-import type { CompositionType } from "../../types";
 import * as S from "./style/style-Button";
 
-interface PropsType extends CompositionType {
+interface PropsType {
+  children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   bg?: string;
