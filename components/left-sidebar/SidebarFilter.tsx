@@ -27,7 +27,7 @@ const NUM_OF_WINNER = [
 const SidebarFilter = () => {
   return (
     <SidebarContainer>
-      <div className="pc-tablet-only">
+      <div className="pc-only">
         <form>
           <div>
             <fieldset>

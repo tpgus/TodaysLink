@@ -2,8 +2,14 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const SearchContainer = styled.div`
+  width: 60%;
+
   ${media.pc} {
     width: 30%;
+  }
+
+  ${media.tablet} {
+    width: 40%;
   }
 
   display: flex;
@@ -13,6 +19,8 @@ export const SearchContainer = styled.div`
   border-radius: 10rem;
 
   input {
+    width: 100%;
+
     ${media.pc} {
       width: 100%;
       font-size: 1rem;

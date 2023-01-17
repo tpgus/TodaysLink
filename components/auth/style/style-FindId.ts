@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../../styles/theme";
 
 export const FindIdLayout = styled.div`
   display: flex;
@@ -13,6 +14,12 @@ export const FindIdLayout = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.color["gray-600"]};
     margin-top: 20%;
+  }
+
+  label {
+    ${media["galaxy-fold"]} {
+      font-size: 0.8rem;
+    }
   }
 
   form {

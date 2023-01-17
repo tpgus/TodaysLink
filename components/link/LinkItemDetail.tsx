@@ -12,7 +12,7 @@ interface PropsType {
     endDate: Date;
     announcementDate: Date;
     image: string;
-    tag: string[];
+    tags: string[];
     warnings: string[];
     link: string;
     numOfWinner: string;

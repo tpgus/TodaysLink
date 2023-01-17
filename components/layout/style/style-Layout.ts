@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const Main = styled.div`
-  /* max-width: 90%; */
   margin: 0 auto;
   ${media["fix-mobile"]} {
     padding-top: 5rem;

@@ -4,7 +4,7 @@ import { media } from "../../../styles/theme";
 export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 5rem;
+  padding: 3rem 0;
 
   ${media.tablet} {
     padding-top: 7rem;
@@ -43,6 +43,10 @@ export const SideMenu = styled.div`
   margin: 0 auto;
   width: 70%;
   border: 1px solid lightgray;
+
+  ${media.tablet} {
+    display: none;
+  }
 
   h2 {
     background-color: ${({ theme }) => theme.color["gray-400"]};

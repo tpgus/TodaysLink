@@ -45,8 +45,12 @@ const SignUp = () => {
             </div>
           </div>
           <div className="form__div form__div--agreement">
-            <input type="checkbox" className="agreement__checkbox" />
-            <label>
+            <input
+              id="checkobx"
+              type="checkbox"
+              className="agreement__checkbox"
+            />
+            <label htmlFor="checkobx">
               [필수] 개인정보 수집 및 이용 동의
               <button className="agreement__btn--detail">자세히 보기</button>
             </label>

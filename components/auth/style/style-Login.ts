@@ -81,6 +81,17 @@ export const UtilBox = styled.div`
   margin-top: 1rem;
   justify-content: space-between;
 
+  ${media["fix-mobile"]} {
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  ${media["galaxy-fold"]} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   nav {
     display: flex;
   }
@@ -88,7 +99,10 @@ export const UtilBox = styled.div`
   a {
     color: ${({ theme }) => theme.color["gray-500"]};
     display: inline-block;
-    margin-left: 0.5rem;
+
+    :nth-of-type(2) {
+      margin-left: 0.5rem;
+    }
   }
 
   .nav__link--id {
