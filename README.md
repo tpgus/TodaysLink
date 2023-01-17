@@ -1,5 +1,7 @@
 # TodaysLink
 
+- [배포 : https://www.todayslink.net](www.todayslink.net)
+
 <details>
 <summary>개발 기록</summary>
 <div markdown="1">
