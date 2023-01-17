@@ -88,6 +88,11 @@ export const UtilBox = styled.div`
     font-size: 1rem;
   }
 
+  .keep-wrap {
+    display: flex;
+    align-items: center;
+  }
+
   ${media["galaxy-fold"]} {
     flex-direction: column;
     align-items: flex-start;

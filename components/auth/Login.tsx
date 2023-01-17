@@ -24,7 +24,7 @@ const Login = () => {
           <Button onClick={() => alert("클릭")}>로그인</Button>
         </S.LoginForm>
         <S.UtilBox>
-          <div>
+          <div className="keep-wrap">
             <input id="keep-login" type="checkbox" />
             <label htmlFor="keep-login">로그인 유지</label>
           </div>

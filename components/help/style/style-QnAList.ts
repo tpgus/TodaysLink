@@ -32,6 +32,7 @@ export const ListContainer = styled.div`
   }
 
   h1 {
+    font-size: 1.5rem;
     ${media.pc} {
       font-size: 2.5rem;
       font-weight: 500;
@@ -97,6 +98,11 @@ export const ListContainer = styled.div`
     font-size: 1rem;
     line-height: 1.25rem;
     color: #fff;
+
+    ${media["fix-mobile"]} {
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+    }
 
     ${media.pc} {
       width: auto;
