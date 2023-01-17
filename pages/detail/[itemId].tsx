@@ -11,7 +11,7 @@ const dummyData = [
     endDate: "2023-1-27",
     announcementDate: "2023-01-28",
     image: "/images/test1.webp",
-    tag: "[]",
+    tags: "[]",
     link: "https://kream.co.kr/exhibitions/696",
     warnings: [
       "본 이벤트는 KREAM 전 회원을 대상으로 진행됩니다",
@@ -59,7 +59,7 @@ const dummyData = [
     endDate: "2023-1-27",
     announcementDate: "2023-01-28",
     image: "/images/test2.webp",
-    tag: "[]",
+    tags: "[]",
     link: "https://kream.co.kr/exhibitions/696",
     warnings:
       "[본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다. (23년 1월 1일 이후 가입 회원 대상),본인 인증을 한 회원만 응모 가능합니다.,사이즈는 랜덤으로 지급되며, 교환 및 환불이 불가능합니다.,당첨자에 한하여 개별 메시지를 발송 드리며, 미당첨자에게는 별도의 연락을 드리지 않습니다.]",
@@ -77,7 +77,7 @@ interface PropsType {
     numOfWinner: string;
     announcementDate: Date;
     image: string;
-    tag: string[];
+    tags: string[];
     warnings: string[];
     link: string;
   };
@@ -86,9 +86,9 @@ interface PropsType {
 const ItemDetailPage = (props: PropsType) => {
   return (
     <>
-      <div className="pc-tablet-only">
-        <LinkItemDetail item={props.item} />
-      </div>
+      {/* <div className="pc-tablet-only"> */}
+      <LinkItemDetail item={props.item} />
+      {/* </div> */}
       <div className="mobile-only"></div>
     </>
   );

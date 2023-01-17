@@ -40,6 +40,13 @@ export const GlobalStyle = createGlobalStyle`
        text-decoration:none;
     }
 
+    .pc-only{
+        display:none;
+        ${media.pc}{
+            display:block;
+        }
+    }
+
     .pc-tablet-only {
         display: none;
         ${media.mobile} {

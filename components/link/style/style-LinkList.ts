@@ -14,11 +14,12 @@ export const LinkListContainer = styled.ul`
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 3rem 3rem;
       padding-top: 6rem;
-      max-width: 75rem;
+      max-width: 65%;
       /* max-width: 1280px; */
     }
 
     ${media.tablet} {
+      padding-top: 10rem;
       grid-template-columns: 1fr 1fr;
       place-items: center;
     }

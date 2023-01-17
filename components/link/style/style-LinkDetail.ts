@@ -9,6 +9,7 @@ export const LinkDetailLayout = styled.div`
 export const LinkDetailContainer = styled.div`
   display: flex;
   position: relative;
+  flex-direction: column;
 
   ${media.pc} {
     flex-direction: row;
@@ -17,12 +18,20 @@ export const LinkDetailContainer = styled.div`
   ${media.tablet} {
     flex-direction: column;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 15%;
   }
 
   .img {
-    position: fixed;
-    top: 9.8rem;
+    ${media["fix-mobile"]} {
+      margin: 2rem auto;
+      width: 70%;
+      height: 70%;
+    }
+
+    ${media.pc} {
+      position: fixed;
+      top: 9.8rem;
+    }
 
     ${media.tablet} {
       position: unset;
@@ -32,13 +41,23 @@ export const LinkDetailContainer = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  position: absolute;
-  padding: 0 2rem;
-  right: 0;
-  width: 50%;
+  margin: 0 auto;
+  width: 90%;
+
+  ${media["fix-mobile"]} {
+    font-size: 0.8rem;
+  }
+
+  ${media.pc} {
+    position: absolute;
+    padding: 0 2rem;
+    right: 0;
+    width: 50%;
+  }
 
   ${media.tablet} {
     position: unset;
+    margin-top: 3rem;
   }
 
   ::before {
@@ -57,11 +76,14 @@ export const InfoContainer = styled.div`
   }
 
   .info__div--header {
-    position: sticky;
-    padding-top: 3rem;
-    top: 6.8rem;
-    background-color: #fff;
-    z-index: 1;
+    ${media.pc} {
+      position: sticky;
+      padding-top: 3rem;
+      top: 6.8rem;
+      background-color: #fff;
+      z-index: 1;
+    }
+
     ${media.tablet} {
       position: unset;
     }
@@ -87,6 +109,12 @@ export const InfoContainer = styled.div`
     display: block;
     width: 40%;
     margin-right: 2rem;
+    ${media["fix-mobile"]} {
+      padding: unset;
+      padding: 0.5rem 0.5rem;
+      width: 50%;
+      font-size: 0.8rem;
+    }
   }
 
   dl {

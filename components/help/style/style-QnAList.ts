@@ -61,7 +61,7 @@ export const ListContainer = styled.div`
     }
   }
 
-  button {
+  .qna-write__link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -69,9 +69,9 @@ export const ListContainer = styled.div`
     border: transparent;
     background-color: ${({ theme }) => theme.color.dark};
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25rem;
     color: #fff;
 
@@ -83,10 +83,39 @@ export const ListContainer = styled.div`
       width: auto;
     }
   }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    border: transparent;
+    background-color: ${({ theme }) => theme.color.dark};
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: #fff;
+
+    ${media.pc} {
+      width: auto;
+    }
+
+    ${media.tablet} {
+      width: auto;
+    }
+  }
+
+  .parent {
+    overflow: hidden;
+    height: 0;
+    margin-top: 1rem;
+  }
 `;
 
 export const Table = styled.div`
-  margin: 2rem -1rem 0 -1rem;
+  margin-top: 2rem;
   overflow: hidden;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   border: 1px solid rgba(167, 164, 164, 0.5);

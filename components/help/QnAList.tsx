@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import QnAWriting from "./QnAWriting";
 import * as S from "./style/style-QnAList";
 
 const QnA = () => {
+  const parentRef = useRef<HTMLDivElement>(null);
+  const childRef = useRef<HTMLDivElement>(null);
+  const [isActiveWritingArea, setIsActiveWritingArea] = useState(false);
+
+  const handleClickWritingBtn = () => {
+    if (parentRef.current === null || childRef.current === null) return;
+
+    if (parentRef.current.clientHeight > 0) {
+      parentRef.current.style.height = "0";
+    } else {
+      parentRef.current.style.height = childRef.current.clientHeight + "px";
+    }
+
+    setIsActiveWritingArea((prevState) => !prevState);
+  };
+
+  // 문의 내용 글자 짜르기
   return (
     <S.ListContainer>
       <div className="qna-header">
@@ -9,7 +27,14 @@ const QnA = () => {
           <h1>1:1 문의 (Q&A)</h1>
         </div>
         <div className="btn-wrap">
-          <button>문의하기</button>
+          <button onClick={handleClickWritingBtn}>
+            {!isActiveWritingArea ? "문의하기" : "닫기"}
+          </button>
+        </div>
+      </div>
+      <div className="parent" ref={parentRef}>
+        <div ref={childRef}>
+          <QnAWriting />
         </div>
       </div>
       <S.Table>
@@ -26,7 +51,10 @@ const QnA = () => {
             <tr className={"tb-row"}>
               <td className="td-status">답변 대기</td>
               <td className="td-type pc-tablet-only">사이트 이용</td>
-              <td className="td-content">어떤 사이트인가요?</td>
+              <td className="td-content">
+                어떤
+                사이트인가요사이트인가요사이트인가요사이트인가요사이트인가요사이트인가요?
+              </td>
               <td className="td-date pc-tablet-only">2023.01.15</td>
             </tr>
             <tr className={"tb-row"}>

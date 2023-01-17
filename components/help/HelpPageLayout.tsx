@@ -3,13 +3,7 @@ import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
 import type { CompositionType as PropsType } from "../../types";
 import { IoMdArrowDropright } from "react-icons/io";
-import {
-  LayoutContainer,
-  SideMenuContainer,
-  AdBanner,
-  Main,
-  SideMenu,
-} from "./style/style-HelpPageLayout";
+import * as S from "./style/style-HelpPageLayout";
 
 const MENU_LIST = [
   { name: "자주 묻는 질문", path: "/help/faq" },
@@ -25,9 +19,9 @@ const HelpPageLayout = (props: PropsType) => {
   };
 
   return (
-    <LayoutContainer>
-      <SideMenuContainer className="pc-tablet-only">
-        <SideMenu>
+    <S.LayoutContainer>
+      <S.SideMenuContainer className="pc-tablet-only">
+        <S.SideMenu>
           <h2>메뉴</h2>
           <ul>
             {MENU_LIST.map((menu) => (
@@ -43,11 +37,11 @@ const HelpPageLayout = (props: PropsType) => {
               </li>
             ))}
           </ul>
-        </SideMenu>
-      </SideMenuContainer>
-      <Main>{props.children}</Main>
+        </S.SideMenu>
+      </S.SideMenuContainer>
+      <S.Main>{props.children}</S.Main>
       {/* <AdBanner>광고 영역</AdBanner> */}
-    </LayoutContainer>
+    </S.LayoutContainer>
   );
 };
 

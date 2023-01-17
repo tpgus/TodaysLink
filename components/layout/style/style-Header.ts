@@ -18,6 +18,10 @@ export const HeaderContainer = styled.div`
       height: 6rem;
     }
 
+    ${media.tablet} {
+      padding: 0 2rem;
+    }
+
     .nav-wrapper {
       display: flex;
       width: 100%;
@@ -32,6 +36,10 @@ export const HeaderContainer = styled.div`
 
         &:not(:nth-of-type(1)) {
           margin-left: 1.2rem;
+        }
+
+        ${media.tablet} {
+          font-size: 1.1rem;
         }
       }
 
