@@ -1,6 +1,5 @@
-import React from "react";
-import * as S from "./style/style-Layout";
 import Logo from "../ui/Logo";
+import * as S from "./style/style-Layout";
 
 interface PropsType {
   children: React.ReactNode;

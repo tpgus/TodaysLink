@@ -1,7 +1,6 @@
-import React from "react";
-import * as S from "./style/style-FAQList";
 import FAQitem from "./FAQitem";
 import { v4 as uuidv4 } from "uuid";
+import * as S from "./style/style-FAQList";
 import type { FaqListType } from "../../types/commonType";
 
 interface PropsType {

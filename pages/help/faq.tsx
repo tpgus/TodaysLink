@@ -31,6 +31,23 @@ export const getStaticProps: GetStaticProps = async () => {
   const jsonData = await fs.readFile(filePath);
   const parsedData = JSON.parse(jsonData.toString());
 
+  //지우기
+  if (parsedData.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+
+  //지우기
+  if (!parsedData) {
+    return {
+      props: { data: null },
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
+
   return {
     props: {
       faqList: parsedData.faqList,

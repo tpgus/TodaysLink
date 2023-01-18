@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import * as S from "./style/style-Login";

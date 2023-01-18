@@ -1,7 +1,6 @@
-import React from "react";
-import * as S from "./style/style-FindId";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import * as S from "./style/style-FindId";
 
 const FindId = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

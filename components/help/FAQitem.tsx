@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import * as S from "./style/style-FAQItem";
+import { useState, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import * as S from "./style/style-FAQItem";
 
 interface PropsType {
   question: string;

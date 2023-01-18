@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { SearchContainer } from "./style/style-Search";
+import * as S from "./style/style-Search";
 
 const Search = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -19,7 +19,7 @@ const Search = () => {
   };
 
   return (
-    <SearchContainer>
+    <S.SearchContainer>
       <input
         onKeyDown={handleKeyPress}
         ref={searchInputRef}
@@ -29,7 +29,7 @@ const Search = () => {
       <button onClick={handleSearchBtnClick}>
         <AiOutlineSearch className="search-icon" size={20} />
       </button>
-    </SearchContainer>
+    </S.SearchContainer>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import QnAWriting from "./QnAWriting";
 import * as S from "./style/style-QnAList";
 

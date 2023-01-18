@@ -1,5 +1,4 @@
-import React from "react";
-import { HamburgerContainer } from "./style/style-Hamburger";
+import { HamburgerContainer } from "./style/style-HamburgerButton";
 import type { PropsType } from "./Hamburger";
 
 const HamburgerButton = (props: PropsType) => {

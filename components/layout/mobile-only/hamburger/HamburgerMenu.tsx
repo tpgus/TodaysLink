@@ -1,6 +1,5 @@
-import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
 import { BiUser } from "react-icons/bi";
 import { BsQuestionCircle } from "react-icons/bs";
 import { RiQuestionAnswerLine } from "react-icons/ri";
@@ -30,7 +29,7 @@ const HamburgerMenu = (props: PropsType) => {
         {NAV_LINK.map((link) => (
           <li key={uuidv4()} onClick={() => handleClickMenu(link.path)}>
             {link.icon}
-            <p>{link.name}</p>
+            <span>{link.name}</span>
           </li>
         ))}
       </MenuContainer>

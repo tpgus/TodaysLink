@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Header from "./Header";
-import * as S from "./style/style-Layout";
+import * as S from "./style/style-AppLayout";
 
 interface PropsType {
   children: React.ReactNode;

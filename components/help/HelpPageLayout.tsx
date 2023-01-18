@@ -1,4 +1,3 @@
-import React from "react";
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
 import { IoMdArrowDropright } from "react-icons/io";

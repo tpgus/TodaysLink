@@ -27,7 +27,7 @@ export const MenuContainer = styled.ul<PropsType>`
     font-weight: 500;
   }
 
-  li p {
+  span {
     width: 40%;
   }
 `;

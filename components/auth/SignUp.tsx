@@ -1,7 +1,6 @@
-import React from "react";
-import * as S from "./style/style-SignUp";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import * as S from "./style/style-SignUp";
 
 const SignUp = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

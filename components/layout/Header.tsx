@@ -35,12 +35,15 @@ const Header = () => {
               onClickHamburger={handleHamburgerBtnClick}
             />
           </div>
-          <div className="pc-tablet-only menu">
+          <div className="pc-tablet-only">
             {NAVIGATION_MENU.map((menu) => (
               <Link
                 href={menu.path}
                 key={uuidv4()}
-                className={router.pathname === menu.path ? "active" : ""}
+                className={
+                  "nav__link" +
+                  `${router.pathname === menu.path ? " active" : ""}`
+                }
               >
                 {menu.name}
               </Link>

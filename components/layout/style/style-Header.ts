@@ -17,41 +17,37 @@ export const HeaderContainer = styled.div`
       padding: 0.4rem 4rem;
       height: 6rem;
     }
-
     ${media.tablet} {
       padding: 0 2rem;
     }
+  }
 
-    .nav-wrapper {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 0;
+  .nav-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+  }
 
-      a {
-        color: #fff;
-        font-size: 1.2rem;
-        font-weight: 500;
-
-        &:hover {
-          color: rgba(255, 255, 255, 0.7);
-        }
-
-        &:not(:nth-of-type(1)) {
-          margin-left: 1.2rem;
-        }
-
-        ${media.tablet} {
-          font-size: 1.1rem;
-        }
-      }
-
-      .active {
-        color: rgba(255, 255, 255, 0.7);
-        border-bottom: 3px solid #fff;
-        padding-bottom: 0.4rem;
-      }
+  .nav__link {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
     }
+    &:not(:nth-of-type(1)) {
+      margin-left: 1.2rem;
+    }
+    ${media.tablet} {
+      font-size: 1.1rem;
+    }
+  }
+
+  .active {
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 3px solid #fff;
+    padding-bottom: 0.4rem;
   }
 `;
