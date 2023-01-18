@@ -1,45 +1,21 @@
 import React from "react";
 import * as S from "./style/style-FAQList";
 import FAQitem from "./FAQitem";
-const FAQList = () => {
+import { v4 as uuidv4 } from "uuid";
+import type { FaqListType } from "../../types/commonType";
+
+interface PropsType {
+  faqList: FaqListType;
+}
+
+const FAQList = (props: PropsType) => {
   return (
     <S.FAQListLayout>
       <h1>자주 묻는 질문</h1>
       <S.FAQListContainer>
-        <FAQitem
-          title={"이 사이트는 누가 만든 것 인가요?"}
-          content={"제가 만드는 중입니다^^ ㄱㄷㄱㄷ"}
-        />{" "}
-        <FAQitem
-          title={"이 사이트는 누가 만든 것 인가요?"}
-          content={
-            "제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다."
-          }
-        />{" "}
-        <FAQitem
-          title={"이 사이트는 누가 만든 것 인가요?"}
-          content={
-            "제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다."
-          }
-        />{" "}
-        <FAQitem
-          title={"이 사이트는 누가 만든 것 인가요?"}
-          content={
-            "제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다."
-          }
-        />{" "}
-        <FAQitem
-          title={"이 사이트는 누가 만든 것 인가요?"}
-          content={
-            "제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다."
-          }
-        />{" "}
-        <FAQitem
-          title={"이 사이트는 누가 만든 것 인가요?"}
-          content={
-            "제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다.제가 만들었습니다."
-          }
-        />
+        {props.faqList.map((faq) => (
+          <FAQitem key={uuidv4()} question={faq.question} answer={faq.answer} />
+        ))}
       </S.FAQListContainer>
     </S.FAQListLayout>
   );

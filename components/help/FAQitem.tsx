@@ -3,8 +3,8 @@ import * as S from "./style/style-FAQItem";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface PropsType {
-  title: string;
-  content: string;
+  question: string;
+  answer: string;
 }
 
 const FAQitem = (props: PropsType) => {
@@ -31,7 +31,7 @@ const FAQitem = (props: PropsType) => {
     <S.FAQCItemcontainer>
       <S.TitleWrapper onClick={handleClickQuestion} isOpen={isOpen}>
         <h3>
-          <span>Q. </span> {props.title}
+          <span>Q. </span> {props.question}
         </h3>
         <button>
           <IoIosArrowDown className="icon" />
@@ -40,7 +40,7 @@ const FAQitem = (props: PropsType) => {
       <S.ContentWrapper ref={parentRef}>
         <div ref={childRef}>
           <span>A. </span>
-          {props.content}
+          {props.answer}
         </div>
       </S.ContentWrapper>
     </S.FAQCItemcontainer>

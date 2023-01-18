@@ -28,6 +28,10 @@ export const TitleWrapper = styled.div<{ isOpen: boolean }>`
     padding: 1.5rem 1rem;
   }
 
+  h3 {
+    font-weight: bold;
+  }
+
   button {
     border: transparent;
     background-color: transparent;
