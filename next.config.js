@@ -13,6 +13,7 @@ const nextConfig = (phase) => {
     };
   }
   //배포단계
+  //테스트
   return {
     env: {
       mysql_username: "",
