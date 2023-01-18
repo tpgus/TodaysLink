@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const ListContainer = styled.div`
+export const FAQListLayout = styled.div`
   margin: 0 auto;
   padding: 0 1rem;
   width: 90%;
@@ -31,4 +31,8 @@ export const ListContainer = styled.div`
       margin-bottom: 2rem;
     }
   }
+`;
+
+export const FAQListContainer = styled.ul`
+  margin-top: 2rem;
 `;

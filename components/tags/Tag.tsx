@@ -1,4 +1,4 @@
-import { TagContainer } from "./style/style-Tag";
+import * as S from "./style/style-Tag";
 
 interface PropsType {
   tag: string;
@@ -8,9 +8,9 @@ interface PropsType {
 
 const Tag = (props: PropsType) => {
   return (
-    <TagContainer activated={props.activated} onClick={props.clickHandler}>
+    <S.TagContainer activated={props.activated} onClick={props.clickHandler}>
       {props.tag}
-    </TagContainer>
+    </S.TagContainer>
   );
 };
 

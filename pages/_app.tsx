@@ -1,12 +1,12 @@
 import { Analytics } from "@vercel/analytics/react";
-import type { ReactElement, ReactNode } from "react";
-import type { AppProps } from "next/app";
-import type { NextPage } from "next";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
-import Head from "next/head";
 import AppLayout from "../components/layout/AppLayout";
+import Head from "next/head";
+import type { ReactElement, ReactNode } from "react";
+import type { AppProps } from "next/app";
+import type { NextPage } from "next";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;

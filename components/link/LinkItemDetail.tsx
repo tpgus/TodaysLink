@@ -1,7 +1,6 @@
-import React from "react";
+import * as S from "./style/style-LinkDetail";
 import Image from "next/image";
 import Button from "../ui/Button";
-import * as S from "./style/style-LinkDetail";
 
 interface PropsType {
   item: {
@@ -21,12 +20,10 @@ interface PropsType {
 
 const LinkItemDetail = (props: PropsType) => {
   const { item } = props;
-  console.log(item);
 
   return (
     <S.LinkDetailLayout>
       <S.LinkDetailContainer>
-        <div className="test"></div>
         <Image
           className="img"
           src={item.image}
@@ -45,29 +42,27 @@ const LinkItemDetail = (props: PropsType) => {
               <Button className="actions__btn">참여 완료</Button>
             </div>
           </div>
-          <div className="info__div info__div--period">
+          <div className="info__div">
             <dl>
               <dt>응모 기간</dt>
-              <dd className="period-info__description">
+              <dd>
                 {item.startDate.toString()} - {item.endDate.toString()}
               </dd>
             </dl>
           </div>
-          <div className="info__div info__div--announcement">
+          <div className="info__div">
             <dl>
               <dt>당첨자 발표</dt>
-              <dd className="announcement__description">
-                {item.announcementDate.toString()}
-              </dd>
+              <dd>{item.announcementDate.toString()}</dd>
             </dl>
           </div>
-          <div className="info__div info__div--announcement">
+          <div className="info__div">
             <dl>
               <dt>당첨 인원</dt>
               <dd>{item.numOfWinner}</dd>
             </dl>
           </div>
-          <div className="info__div info__div--announcement">
+          <div className="info__div">
             <dl>
               <dt>유의 사항</dt>
               <dd>

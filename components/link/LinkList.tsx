@@ -1,21 +1,21 @@
+import * as S from "./style/style-LinkList";
 import LinkItem from "./LinkItem";
-import { LinkListContainer, MoreButtonContainer } from "./style/style-LinkList";
 import Button from "../ui/Button";
 
 const LinkList = () => {
   return (
     <>
-      <LinkListContainer>
+      <S.LinkListContainer>
         <div className="grid-container">
           <LinkItem />
         </div>
-      </LinkListContainer>
-      <MoreButtonContainer>
-        <Button className="btn-more" onClick={() => alert("더 보기 클릭")}>
+      </S.LinkListContainer>
+      <S.MoreButtonContainer>
+        <Button onClick={() => alert("더 보기 클릭")}>
           더 보기&nbsp;
           <span>1/3</span>
         </Button>
-      </MoreButtonContainer>
+      </S.MoreButtonContainer>
     </>
   );
 };

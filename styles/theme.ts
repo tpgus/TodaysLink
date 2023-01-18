@@ -37,37 +37,8 @@ export const theme: DefaultTheme = {
     blue: "0 3px 8px 0 #b3e2e6",
   },
 };
-//혹은 아래와 같이 사용 가능
-// const colors = {
-//   header: "#1565C0",
-//   primary: "#2196F3",
-//   white: "#ffffff",
-//   black: "#000000",
-//   buttonOrange: "#FFA000",
-//   dateText: "#939FA5",
-//   border: "#E5E5E5",
-//   toggleOn: "#2196F3",
-//   toggleOff: "#F5F5F5",
-// };
-
-// const fontSize = {
-//   title: 20,
-//   subTitle: 16,
-//   text: 14,
-// };
-
-// export type FontType = typeof fontSize;
-// export type ColorsType = typeof colors;
-
-// const theme: DefaultTheme = {
-//     colors,
-//     fontSize,
-//   };
-
-//   export default theme;
 
 export const MIXINS = {
-  // flex
   flexBox: (direction = "row", align = "center", justify = "center") => `
       display: flex;
       flex-direction: ${direction};
@@ -75,7 +46,6 @@ export const MIXINS = {
       justify-content: ${justify};
     `,
 
-  // positions
   positionCenter: (type = "absolute") => {
     if (type === "absolute" || type === "fixed")
       return `

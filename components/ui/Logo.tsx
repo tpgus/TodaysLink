@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AiFillHome } from "react-icons/ai";
-import { MobileLogo, PcLogo } from "./style/style-Logo";
+import * as S from "./style/style-Logo";
 
 interface PropsType {
   txtColor?: string;
@@ -8,11 +8,12 @@ interface PropsType {
 }
 
 const Logo = (props: PropsType) => {
+  //모바일임에도 PC와 같은 로고를 보여줘야 할 경우
   if (props.pc) {
     return (
       <div>
         <Link href="/">
-          <PcLogo txtColor={props.txtColor}>Todays Link</PcLogo>
+          <S.PcLogo txtColor={props.txtColor}>Todays Link</S.PcLogo>
         </Link>
       </div>
     );
@@ -21,12 +22,12 @@ const Logo = (props: PropsType) => {
   return (
     <div>
       <Link href="/">
-        <MobileLogo txtColor={props.txtColor} className="mobile-only">
+        <S.MobileLogo txtColor={props.txtColor} className="mobile-only">
           <AiFillHome />
-        </MobileLogo>
-        <PcLogo txtColor={props.txtColor} className="pc-tablet-only">
+        </S.MobileLogo>
+        <S.PcLogo txtColor={props.txtColor} className="pc-tablet-only">
           Todays Link
-        </PcLogo>
+        </S.PcLogo>
       </Link>
     </div>
   );

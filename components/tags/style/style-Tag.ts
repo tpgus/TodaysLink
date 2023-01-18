@@ -14,6 +14,7 @@ export const TagContainer = styled.li<{ activated: boolean }>`
   background-color: ${({ activated }) => (activated ? "#000" : "#fff")};
   color: ${({ activated, theme }) => (activated ? "#fff" : theme.color.dark)};
   margin: 0 0.2rem;
+  cursor: pointer;
 
   :nth-of-type(1) {
     margin-left: 1rem;
@@ -21,8 +22,6 @@ export const TagContainer = styled.li<{ activated: boolean }>`
   :nth-last-child(1) {
     margin-right: 1rem;
   }
-
-  cursor: pointer;
 
   ${media.pc} {
     padding: 0 0.5rem;

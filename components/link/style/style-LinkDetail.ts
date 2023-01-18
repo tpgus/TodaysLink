@@ -16,7 +16,6 @@ export const LinkDetailContainer = styled.div`
   }
 
   ${media.tablet} {
-    flex-direction: column;
     align-items: center;
     margin-top: 15%;
   }
@@ -24,12 +23,15 @@ export const LinkDetailContainer = styled.div`
   .img {
     ${media["fix-mobile"]} {
       margin: 2rem auto;
-      width: 70%;
-      height: 70%;
+      width: 80%;
+      height: 30%;
     }
 
     ${media.pc} {
+      height: 50%;
       position: fixed;
+      /* top: 50%;
+      transform: translateY(-50%); */
       top: 9.8rem;
     }
 
@@ -70,9 +72,9 @@ export const InfoContainer = styled.div`
     border-left: 1px solid #ebebeb;
   }
 
-  .item-title {
-    font-weight: 500;
-    font-size: 1.5rem;
+  .info__div {
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 2rem;
   }
 
   .info__div--header {
@@ -89,6 +91,11 @@ export const InfoContainer = styled.div`
     }
   }
 
+  .item-title {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
   .item-description {
     color: #aaa;
     margin-top: 0.2rem;
@@ -98,11 +105,6 @@ export const InfoContainer = styled.div`
     margin-top: 2rem;
     background-color: #fff;
     display: flex;
-  }
-
-  .info__div {
-    border-bottom: 1px solid #ebebeb;
-    padding-bottom: 2rem;
   }
 
   .actions__btn {

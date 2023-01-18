@@ -7,13 +7,13 @@ interface PropsType {
 export const MenuContainer = styled.ul<PropsType>`
   /* 헤더에서 불러오고 있으므로 부모가 헤더이다  : nav-wrapper*/
   position: fixed;
-  color: white;
+  color: #fff;
   top: 0;
   right: ${({ isClicked }) => (isClicked ? "0" : "-50vw")};
   width: 50vw;
   height: 100%;
   z-index: 11;
-  background-color: white;
+  background-color: #fff;
   color: ${({ theme }) => theme.color["gray-600"]};
   padding-top: 5rem;
   text-align: center;

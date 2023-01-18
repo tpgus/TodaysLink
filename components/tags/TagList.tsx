@@ -1,7 +1,7 @@
+import * as S from "./style/style-TagList";
 import { useState } from "react";
-import Tag from "./Tag";
-import { TagListContainer } from "./style/style-TagList";
 import { v4 as uuidv4 } from "uuid";
+import Tag from "./Tag";
 
 const Tags = [
   "전부 보기",
@@ -21,21 +21,21 @@ const Tags = [
 const TagList = () => {
   const [clickedTagIdx, setClickedTagIdx] = useState(0);
 
-  const clickTagHandler = (index: number) => {
+  const handleClickTag = (index: number) => {
     setClickedTagIdx(index);
   };
 
   return (
-    <TagListContainer>
+    <S.TagListContainer>
       {Tags.map((tag, idx) => (
         <Tag
           key={uuidv4()}
           tag={tag}
           activated={idx === clickedTagIdx}
-          clickHandler={() => clickTagHandler(idx)}
+          clickHandler={() => handleClickTag(idx)}
         />
       ))}
-    </TagListContainer>
+    </S.TagListContainer>
   );
 };
 

@@ -12,7 +12,7 @@ export const HamburgerContainer = styled.div<{ isClicked: boolean }>`
     width: 100%;
     height: 2px;
     background-color: ${({ isClicked, theme }) =>
-      isClicked ? theme.color["gray-600"] : "white"};
+      isClicked ? theme.color["gray-600"] : "#fff"};
     border-radius: 10rem;
     transition: all 0.35s;
   }

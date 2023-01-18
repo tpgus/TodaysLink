@@ -13,34 +13,28 @@ export const SidebarContainer = styled.div`
     align-items: center;
     padding-top: 6rem;
   }
-
   @media (max-width: 1750px) {
     display: none;
   }
-
   & > div {
     width: 50%;
     background-color: #fff;
   }
-
   form > div {
     border-top: 1px solid ${({ theme }) => theme.color["gray-200"]};
     padding-top: 1rem;
     padding-bottom: 2rem;
   }
-
   legend {
     width: 100%;
     text-align: center;
   }
-
   span {
     font-size: 1rem;
     line-height: 1.25rem;
     font-weight: 500;
     color: ${({ theme }) => theme.color.dark};
   }
-
   button {
     border: transparent;
     font-weight: 500;
@@ -49,7 +43,6 @@ export const SidebarContainer = styled.div`
     padding: 0.5rem 1rem;
     background-color: ${({ theme }) => theme.color["gray-200"]};
     display: inline-flex;
-
     ${media["fix-mobile"]} {
       display: none;
     }
@@ -67,14 +60,12 @@ export const CheckboxWrapper = styled.div`
   align-items: center;
   max-width: max-content;
   margin-top: 0.5rem;
-
   input {
     height: 1rem;
     width: 1rem;
     border-radius: 0.25rem;
     accent-color: #000;
   }
-
   label {
     margin-left: 0.3rem;
     color: ${({ theme }) => theme.color["gray-500"]};

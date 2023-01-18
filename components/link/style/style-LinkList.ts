@@ -28,10 +28,16 @@ export const LinkListContainer = styled.ul`
 
 export const MoreButtonContainer = styled.div`
   text-align: center;
-  .btn-more {
+
+  button {
+    ${media["fix-mobile"]} {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+
     margin: 3rem 0;
     background-color: #000;
-    color: white;
+    color: #fff;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.7);

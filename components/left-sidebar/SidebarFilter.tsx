@@ -1,10 +1,6 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import {
-  SidebarContainer,
-  FilterContainer,
-  CheckboxWrapper,
-} from "./style/style-SidebarFilter";
+import * as S from "./style/style-SidebarFilter";
 import { BiRefresh } from "react-icons/bi";
 
 const PLATFORMS = [
@@ -26,7 +22,7 @@ const NUM_OF_WINNER = [
 
 const SidebarFilter = () => {
   return (
-    <SidebarContainer>
+    <S.SidebarContainer>
       <div className="pc-only">
         <form>
           <div>
@@ -34,45 +30,45 @@ const SidebarFilter = () => {
               <legend>
                 <span>플랫폼</span>
               </legend>
-              <FilterContainer>
+              <S.FilterContainer>
                 <div>
                   {PLATFORMS.map((flatform) => (
-                    <CheckboxWrapper key={uuidv4()}>
+                    <S.CheckboxWrapper key={uuidv4()}>
                       <input
                         type="checkbox"
                         value={flatform.name}
                         id={flatform.id}
                       />
                       <label htmlFor={flatform.id}>{flatform.name}</label>
-                    </CheckboxWrapper>
+                    </S.CheckboxWrapper>
                   ))}
                 </div>
-              </FilterContainer>
+              </S.FilterContainer>
             </fieldset>
           </div>
         </form>
       </div>
-      <div className="pc-tablet-only">
+      <div className="pc-only">
         <form>
           <div>
             <fieldset>
               <legend>
                 <span>당첨자 수</span>
               </legend>
-              <FilterContainer>
+              <S.FilterContainer>
                 <div>
                   {NUM_OF_WINNER.map((winner) => (
-                    <CheckboxWrapper key={uuidv4()}>
+                    <S.CheckboxWrapper key={uuidv4()}>
                       <input
                         type="checkbox"
                         value={winner.value}
                         id={winner.name}
                       />
                       <label htmlFor={winner.name}>{winner.name}</label>
-                    </CheckboxWrapper>
+                    </S.CheckboxWrapper>
                   ))}
                 </div>
-              </FilterContainer>
+              </S.FilterContainer>
             </fieldset>
           </div>
         </form>
@@ -81,7 +77,7 @@ const SidebarFilter = () => {
         <BiRefresh size={20} />
         &nbsp; 선택 초기화
       </button>
-    </SidebarContainer>
+    </S.SidebarContainer>
   );
 };
 
