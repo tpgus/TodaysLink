@@ -1,9 +1,9 @@
-import fs from "fs/promises";
-import path from "path";
 import Head from "next/head";
-import { GetStaticProps } from "next";
 import FAQList from "../../components/help/FAQList";
 import HelpPageLayout from "../../components/help/HelpPageLayout";
+import fs from "fs/promises";
+import path from "path";
+import type { GetStaticProps } from "next";
 import type { FaqListType } from "../../types/commonType";
 import type { ReactElement } from "react";
 
@@ -18,20 +18,9 @@ const FAQPage = (props: PropsType) => {
         <title>투데이 링크 - 자주 묻는 질문</title>
         <meta
           name="description"
-          content="투데이 링크 사이트 이용과 관련된 자주 묻는 질문들과 답변을 확인하실 수 있습니다."
+          content="투데이 링크 사이트 이용과 관련되어 자주 묻는 질문들과 답변을 확인하실 수 있습니다."
         />
-        {/* https://nextjs.org/learn/seo/rendering-and-ranking/metadata */}
-        {/* <meta property="og:title" content="Social Title for Cool Page" />
-        <meta
-          property="og:description"
-          content="And a social description for our cool page"
-        />
-        <meta
-          property="og:image"
-          content="https://example.com/images/cool-page.jpg"
-        /> */}
       </Head>
-      <h1></h1>
       <FAQList faqList={props.faqList} />
     </>
   );
@@ -42,23 +31,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const jsonData = await fs.readFile(filePath);
   const parsedData = JSON.parse(jsonData.toString());
   const faqList: FaqListType = parsedData.faqList;
-
-  //지우기
-  if (faqList.length === 0) {
-    return {
-      notFound: true,
-    };
-  }
-
-  //지우기
-  if (!parsedData) {
-    return {
-      props: { data: null },
-      redirect: {
-        destination: "/",
-      },
-    };
-  }
 
   return {
     props: {

@@ -1,10 +1,19 @@
-import React, { ReactElement } from "react";
 import FindId from "../../components/auth/FindId";
 import AuthPageLayout from "../../components/auth/AuthPageLayout";
+import Head from "next/head";
+import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../pages/_app";
 
 const findIdPage: NextPageWithLayout = () => {
-  return <FindId />;
+  return (
+    <>
+      <Head>
+        <title>투데이 링크 - 아이디 찾기</title>
+        <meta name="description" content="투데이 링크 아이디 찾기" />
+      </Head>
+      <FindId />
+    </>
+  );
 };
 
 findIdPage.getLayout = function getLayout(page: ReactElement) {

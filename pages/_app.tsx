@@ -22,16 +22,13 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>투데이 링크</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="누구나 쉽게 무료로 참여할 수 있는 각종 이벤트, 응모 링크 모음"
+          content="누구나 쉽게 참여할 수 있는 다양한 추첨 이벤트 링크를 제공합니다."
         />
-
-        <title>투데이 링크</title>
       </Head>
-      {/* 포탈 위치 */}
-      <div className="root"></div>
       <Analytics />
       <GlobalStyle />
       <ThemeProvider theme={theme}>

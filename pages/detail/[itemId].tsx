@@ -1,6 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import { ParsedUrlQuery } from "querystring";
 import LinkItemDetail from "../../components/link/LinkItemDetail";
+import Head from "next/head";
+import type { ParsedUrlQuery } from "querystring";
+import type { GetStaticPaths, GetStaticProps } from "next";
 
 const dummyData = [
   {
@@ -83,9 +84,20 @@ interface PropsType {
   };
 }
 
-const ItemDetailPage = (props: PropsType) => {
+const ItemDetailPage = ({ item }: PropsType) => {
   //true일 경우 폴백체크 필요
-  return <LinkItemDetail item={props.item} />;
+  return (
+    <>
+      <Head>
+        <title>{item.title}</title>
+        <meta
+          name="description"
+          content={`${item.title} - ${item.description}`}
+        />
+      </Head>
+      <LinkItemDetail item={item} />
+    </>
+  );
 };
 
 export default ItemDetailPage;
@@ -95,6 +107,8 @@ interface Params extends ParsedUrlQuery {
 }
 
 //첫 페이지의 링크 아이템을 정적 생성? 아니면 동적 생성?해야 하는 것인가
+//121번 강의에서 이런 데이터는 staticProps 이용했음.
+//댓글 같은 기능이 있따면 serverSideProps가 적합했을 듯
 //만약, getStaticProps를 이용하면, 나중에 데이터가 추가될 수 있으니 revalidate를 이용
 //현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -120,5 +134,6 @@ export const getStaticPaths: GetStaticPaths = () => {
     fallback: false,
     //true일 경우 컴포넌트 코드에서 폴백체크 : 나중에 true 코드로 변경 예정
     //나중에 화면에 12개의 데이터를 보여줄 때에는 ->
+    // fallback true이고, notFound 처리 ㄱㄱ
   };
 };
