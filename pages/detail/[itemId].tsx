@@ -84,6 +84,7 @@ interface PropsType {
 }
 
 const ItemDetailPage = (props: PropsType) => {
+  //true일 경우 폴백체크 필요
   return <LinkItemDetail item={props.item} />;
 };
 
@@ -93,9 +94,21 @@ interface Params extends ParsedUrlQuery {
   itemId: string;
 }
 
+//첫 페이지의 링크 아이템을 정적 생성? 아니면 동적 생성?해야 하는 것인가
+//만약, getStaticProps를 이용하면, 나중에 데이터가 추가될 수 있으니 revalidate를 이용
+//현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
 export const getStaticProps: GetStaticProps = async (context) => {
   const { itemId } = context.params as Params;
   const linkItem = dummyData.filter((data) => data.id === itemId);
+
+  if (!linkItem) {
+    //fallback:true이지만(=주어진 경로값 이외에 여러 경로값의 입력을 허용하지만), 해당 경로 값에 대한 데이터를 찾지 못한 경우
+    //404 페이지가 보여진다.
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { item: linkItem[0] },
   };
@@ -105,5 +118,7 @@ export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [{ params: { itemId: "1" } }],
     fallback: false,
+    //true일 경우 컴포넌트 코드에서 폴백체크 : 나중에 true 코드로 변경 예정
+    //나중에 화면에 12개의 데이터를 보여줄 때에는 ->
   };
 };

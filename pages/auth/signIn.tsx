@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import AuthPageLayout from "../../components/auth/AuthPageLayout";
-import type { NextPageWithLayout } from "../../pages/_app";
 import Login from "../../components/auth/Login";
+import type { NextPageWithLayout } from "../../pages/_app";
 
 const LoginPage: NextPageWithLayout = () => {
   return <Login />;

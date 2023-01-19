@@ -20,7 +20,18 @@ const FAQPage = (props: PropsType) => {
           name="description"
           content="투데이 링크 사이트 이용과 관련된 자주 묻는 질문들과 답변을 확인하실 수 있습니다."
         />
+        {/* https://nextjs.org/learn/seo/rendering-and-ranking/metadata */}
+        {/* <meta property="og:title" content="Social Title for Cool Page" />
+        <meta
+          property="og:description"
+          content="And a social description for our cool page"
+        />
+        <meta
+          property="og:image"
+          content="https://example.com/images/cool-page.jpg"
+        /> */}
       </Head>
+      <h1></h1>
       <FAQList faqList={props.faqList} />
     </>
   );
@@ -30,9 +41,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const filePath = path.join(process.cwd(), "public", "data", "faq.json");
   const jsonData = await fs.readFile(filePath);
   const parsedData = JSON.parse(jsonData.toString());
+  const faqList: FaqListType = parsedData.faqList;
 
   //지우기
-  if (parsedData.length === 0) {
+  if (faqList.length === 0) {
     return {
       notFound: true,
     };
@@ -50,7 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      faqList: parsedData.faqList,
+      faqList,
     },
   };
 };

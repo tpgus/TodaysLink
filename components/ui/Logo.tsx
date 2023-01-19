@@ -12,7 +12,7 @@ const Logo = (props: PropsType) => {
   if (props.pc) {
     return (
       <div>
-        <Link href="/">
+        <Link href="/" passHref>
           <S.PcLogo txtColor={props.txtColor}>Todays Link</S.PcLogo>
         </Link>
       </div>
@@ -21,7 +21,7 @@ const Logo = (props: PropsType) => {
 
   return (
     <div>
-      <Link href="/">
+      <Link href="/" passHref>
         <S.MobileLogo txtColor={props.txtColor} className="mobile-only">
           <AiFillHome />
         </S.MobileLogo>

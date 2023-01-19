@@ -37,7 +37,7 @@ export const LinkDetailContainer = styled.div`
 
     ${media.tablet} {
       position: unset;
-      width: 50%;
+      width: 70%;
     }
   }
 `;
@@ -58,6 +58,7 @@ export const InfoContainer = styled.div`
   }
 
   ${media.tablet} {
+    width: 70%;
     position: unset;
     margin-top: 3rem;
   }
