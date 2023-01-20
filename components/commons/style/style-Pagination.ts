@@ -17,7 +17,7 @@ export const ButtonContainer = styled.ul`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.a`
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.5);
   background-color: transparent;

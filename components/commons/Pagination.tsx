@@ -13,13 +13,13 @@ const Pagination = (props: PropsType) => {
   const numOfPages = Math.ceil(props.lengthOfItems / props.itemsPerPage);
   const tempArrayForBtns = new Array(numOfPages).fill(null);
   const totalButtons = tempArrayForBtns.map((_, idx) => idx + 1);
-  console.log(props.currentPage);
 
   return (
     <S.ButtonContainer>
       {totalButtons.map((pageNumber) => (
         <li key={uuidv4()}>
           <S.Button
+            href="#"
             className={pageNumber === props.currentPage ? "active" : ""}
             onClick={() => props.onChangePage(pageNumber)}
           >

@@ -9,7 +9,7 @@ interface PropsType {
   faqList: FaqListType;
 }
 
-const itemsPerPage = 10;
+const itemsPerPage = 9;
 
 const FAQList = (props: PropsType) => {
   const [currentPage, setCurrentPage] = useState(1);
