@@ -97,7 +97,7 @@ export const InfoContainer = styled.div`
 
   .item-description {
     color: #aaa;
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
   }
 
   .actions {

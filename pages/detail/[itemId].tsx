@@ -56,7 +56,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: { linkItem },
-    revalidate: 1800,
   };
 };
 
