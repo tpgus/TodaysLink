@@ -124,7 +124,7 @@ export const InfoContainer = styled.div`
     font-weight: 500;
     text-align: center;
     color: #fff;
-    background-color: ${({ theme, bg }) => bg || theme.color.dark};
+    background-color: ${({ theme }) => theme.color.dark};
     width: 80%;
     margin-right: 2rem;
     ${media["fix-mobile"]} {
