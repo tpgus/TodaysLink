@@ -30,8 +30,6 @@ export const LinkDetailContainer = styled.div`
     ${media.pc} {
       height: 50%;
       position: fixed;
-      /* top: 50%;
-      transform: translateY(-50%); */
       top: 9.8rem;
     }
 
