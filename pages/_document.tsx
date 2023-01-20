@@ -40,12 +40,18 @@ class MyDocument extends Document {
       <Html lang="ko-KR">
         {/* 이곳의 Head는 next/head와 다름 */}
         <Head>
-          <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/logo.png"
+          />
           {/* 컴포넌트들에 공통적으로 적용되는 각종 메타 태그 및 웹 폰트 
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap"
             rel="preload"
     as="style"/> */}
+          {/* og 이미지 태그 동작 확인하기*/}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://todayslink.net/" />
           <meta

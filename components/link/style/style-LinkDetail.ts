@@ -106,11 +106,42 @@ export const InfoContainer = styled.div`
     margin-top: 2rem;
     background-color: #fff;
     display: flex;
+    align-items: center;
+  }
+
+  .actions__div {
+    width: 50%;
+    text-align: center;
+  }
+
+  .actions__link {
+    display: block;
+    border-radius: 0.375rem;
+    border: transparent;
+    padding: 0.7rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    background-color: ${({ theme, bg }) => bg || theme.color.dark};
+    width: 80%;
+    margin-right: 2rem;
+    ${media["fix-mobile"]} {
+      padding: unset;
+      padding: 0.5rem 0.5rem;
+      width: 50%;
+      font-size: 0.8rem;
+    }
+    ${media.pc} {
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+    }
   }
 
   .actions__btn {
     display: block;
-    width: 40%;
+    width: 80%;
     margin-right: 2rem;
     ${media["fix-mobile"]} {
       padding: unset;

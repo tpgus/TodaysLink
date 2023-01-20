@@ -1,11 +1,10 @@
 import Head from "next/head";
 import FAQList from "../../components/help/FAQList";
 import HelpPageLayout from "../../components/help/HelpPageLayout";
-import fs from "fs/promises";
-import path from "path";
+import { buildFilePath, readFileData } from "../../api-helper";
 import type { GetStaticProps } from "next";
-import type { FaqListType } from "../../types/commonType";
 import type { ReactElement } from "react";
+import type { FaqListType } from "../../types/commonType";
 
 interface PropsType {
   faqList: FaqListType;
@@ -27,10 +26,8 @@ const FAQPage = (props: PropsType) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const filePath = path.join(process.cwd(), "public", "data", "faq.json");
-  const jsonData = await fs.readFile(filePath);
-  const parsedData = JSON.parse(jsonData.toString());
-  const faqList: FaqListType = parsedData.faqList;
+  const filePath = buildFilePath("faq.json");
+  const faqList = await readFileData<FaqListType>(filePath);
 
   return {
     props: {

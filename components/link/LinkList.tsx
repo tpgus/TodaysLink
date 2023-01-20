@@ -1,13 +1,21 @@
 import * as S from "./style/style-LinkList";
+import { v4 as uuidv4 } from "uuid";
 import LinkItem from "./LinkItem";
 import Button from "../ui/Button";
+import type { LinkListType } from "../../types/commonType";
 
-const LinkList = () => {
+interface PropsType {
+  linkList: LinkListType;
+}
+
+const LinkList = (props: PropsType) => {
   return (
     <>
       <S.LinkListContainer>
         <div className="grid-container">
-          <LinkItem />
+          {props.linkList.map((link) => (
+            <LinkItem key={uuidv4()} linkItem={link} />
+          ))}
         </div>
       </S.LinkListContainer>
       <S.MoreButtonContainer>

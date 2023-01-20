@@ -2,6 +2,10 @@
 
 package-lock.json
 
+# api-helper는 api 또는 사전 생성 함수에서만 호출되는 helper 함수이다. 따라서 클라이언트 코드 번들에는 포함되지 않는다.
+# 하지만 일단 db정보 등이 들어가 있을 수도 있으니 깃허브에 푸시되지 않도록 gitignore 처리
+/api-helper
+
 # dependencies
 /node_modules
 /.pnp
