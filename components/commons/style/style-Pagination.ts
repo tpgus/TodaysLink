@@ -15,6 +15,10 @@ export const ButtonContainer = styled.ul`
     color: #000;
     font-weight: bold;
   }
+
+  li:not(:nth-of-type(1)) {
+    margin-left: 0.3rem;
+  }
 `;
 
 export const Button = styled.a`

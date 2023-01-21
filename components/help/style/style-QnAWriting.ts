@@ -9,7 +9,7 @@ export const WritingContainer = styled.div`
   }
 
   ${media.pc} {
-    padding: 1rem 1rem;
+    padding: 1rem;
   }
 
   h2 {
@@ -75,7 +75,6 @@ export const WritingContainer = styled.div`
     &::placeholder {
       color: ${({ theme }) => theme.color["gray-500"]};
     }
-
     &:focus {
       outline: none;
       border: 1px solid ${({ theme }) => theme.color["indigo-500"]};
@@ -86,8 +85,8 @@ export const WritingContainer = styled.div`
     background-color: #fff;
     border-radius: 0.375rem;
     border: 1px solid ${({ theme }) => theme.color["gray-300"]};
-    padding: 0.5rem 0.5rem;
-    font-size: 0.8rem;
+    padding: 0.35rem 0.4rem;
+    font-size: 0.6rem;
 
     ${media.tablet} {
       background-color: #fff;
@@ -101,7 +100,7 @@ export const WritingContainer = styled.div`
       background-color: #fff;
       border-radius: 0.375rem;
       border: 1px solid ${({ theme }) => theme.color["gray-300"]};
-      padding: 0.75rem 1rem;
+      padding: 0.5rem 1rem;
       font-size: 1rem;
     }
 
@@ -146,7 +145,6 @@ export const WritingContainer = styled.div`
       padding: 0.75rem 1rem;
       height: 10rem;
       resize: none;
-      border: 1px solid red;
     }
 
     &::placeholder {
@@ -171,6 +169,91 @@ export const WritingContainer = styled.div`
       padding: initial;
       padding: 0.5rem;
       font-size: 0.8rem;
+    }
+  }
+`;
+
+export const QnAHeaderContainer = styled.div`
+  width: 90%;
+  display: flex;
+  padding: 0 1rem;
+  flex-direction: column;
+  ${media.tablet} {
+    padding: 1.5rem;
+  }
+  ${media.pc} {
+    padding: 2rem;
+  }
+
+  .header-wrap {
+    ${media.tablet} {
+      display: flex;
+      align-items: center;
+    }
+    ${media.pc} {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .title-wrap {
+    flex: 1 1 auto;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    ${media.pc} {
+      font-size: 2.5rem;
+      font-weight: 500;
+      padding-bottom: 1rem;
+    }
+    ${media.tablet} {
+      font-size: 2rem;
+      font-weight: 400;
+      padding-bottom: 1rem;
+    }
+  }
+  .btn-wrap {
+    margin-top: 1rem;
+    ${media.pc} {
+      margin-top: 0;
+      margin-left: -4rem;
+      flex: none;
+    }
+    ${media.tablet} {
+      margin-top: 0;
+      margin-left: -4rem;
+      flex: none;
+    }
+  }
+  .parent {
+    overflow: hidden;
+    height: 0;
+    margin-top: 1rem;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    border: transparent;
+    background-color: ${({ theme }) => theme.color.dark};
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: #fff;
+    ${media["fix-mobile"]} {
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+    }
+    ${media.pc} {
+      width: auto;
+    }
+    ${media.tablet} {
+      width: auto;
     }
   }
 `;

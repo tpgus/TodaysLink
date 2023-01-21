@@ -6,7 +6,7 @@ export const LinkListContainer = styled.ul`
     padding-top: 4.5rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem 0;
+    gap: 2rem 0;
     width: 90%;
     margin: 0 auto;
 

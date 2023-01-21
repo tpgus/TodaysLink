@@ -2,7 +2,7 @@ import LinkList from "../components/link/LinkList";
 import SidebarFilter from "../components/left-sidebar/SidebarFilter";
 import TagList from "../components/tags/TagList";
 import Head from "next/head";
-import { buildFilePath, readFileData } from "../api-helper";
+import { buildFilePath, readFileData } from "../helpers/api-util";
 import { GetStaticProps } from "next";
 import type { LinkListType } from "../types/commonType";
 

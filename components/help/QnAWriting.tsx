@@ -1,16 +1,85 @@
-import Button from "../ui/Button";
 import * as S from "./style/style-QnAWriting";
+import { useRef, useState } from "react";
+import { validate } from "../../helpers/validation-util";
+import { showNotification } from "../../store/notificationSlice";
+import { useAppDispatch, useAppSelector } from "../../store";
+import Joi from "joi";
+import Notification from "../commons/Notification";
+import Button from "../ui/Button";
 
-const QnAWriting = () => {
-  const handleSubmit = () => {};
+interface PropsType {
+  onComplete: () => void;
+}
+
+const QnAWriting = (props: PropsType) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const questionTypeRef = useRef<HTMLSelectElement>(null);
+  const questionTitleRef = useRef<HTMLInputElement>(null);
+  const questionContentRef = useRef<HTMLTextAreaElement>(null);
+  const notificationState = useAppSelector((state) => state.notification);
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (
+      questionTitleRef.current === null ||
+      questionContentRef.current === null ||
+      questionTypeRef.current === null
+    ) {
+      return;
+    }
+    const title = questionTitleRef.current.value;
+    const content = questionContentRef.current.value;
+    const type = questionTypeRef.current.value;
+
+    const validationOptions = Joi.object({
+      title: Joi.string().min(10).max(100).required().label("제목"),
+      content: Joi.string().min(10).max(500).required().label("내용"),
+    });
+
+    const validationResult = await validate(validationOptions, {
+      title,
+      content,
+    });
+
+    if (validationResult.errorMessage) {
+      dispatch(
+        showNotification({
+          isPositive: false,
+          message: validationResult.errorMessage,
+        })
+      );
+      return;
+    }
+
+    const bodyData = JSON.stringify({ type, title, content });
+    setIsLoading(true);
+    fetch("/api/qna", {
+      method: "POST",
+      body: bodyData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setIsLoading(false);
+        questionTitleRef.current!.value = "";
+        questionContentRef.current!.value = "";
+        questionTypeRef.current!.value = "기타";
+        dispatch(showNotification({ isPositive: true, message: "등록완료" }));
+        props.onComplete();
+      });
+  };
 
   return (
     <S.WritingContainer>
+      {notificationState.isActive ? <Notification /> : null}
       <div className="form-wrap">
         <form onSubmit={handleSubmit}>
           <div className="input-wrap">
             <label htmlFor="type">문의 유형</label>
-            <select id="type">
+            <select ref={questionTypeRef} id="type">
               <option value="기타">기타</option>
               <option value="사이트 이용">사이트 이용</option>
               <option value="계정">계정</option>
@@ -19,28 +88,26 @@ const QnAWriting = () => {
           <div className="input-wrap">
             <label htmlFor="title">제목</label>
             <input
+              ref={questionTitleRef}
               id="title"
               placeholder="최대 100자 이내로 작성해 주세요"
-              minLength={3}
-              maxLength={100}
             />
           </div>
           <div className="input-wrap">
             <label htmlFor="content">문의 내용</label>
             <textarea
+              ref={questionContentRef}
               id="content"
               placeholder="최대 500자 이내로 작성해 주세요"
-              minLength={10}
-              maxLength={500}
             />
           </div>
           <div className="actions-wrap">
             <Button
               className="registration__btn"
-              onClick={() => alert("클릭")}
               type="submit"
+              disable={isLoading}
             >
-              등록하기
+              {isLoading ? "등록 중..." : "등록하기"}
             </Button>
           </div>
         </form>

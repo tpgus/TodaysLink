@@ -1,6 +1,6 @@
 import LinkItemDetail from "../../components/link/LinkItemDetail";
 import Head from "next/head";
-import { buildFilePath, readFileData } from "../../api-helper";
+import { buildFilePath, readFileData } from "../../helpers/api-util";
 import type { LinkItemType, LinkListType } from "../../types/commonType";
 import type { ParsedUrlQuery } from "querystring";
 import type { GetStaticPaths, GetStaticProps } from "next";

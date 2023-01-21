@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 import * as S from "./style/style-SignUp";
 
 const SignUp = () => {
+  //유효성 검사는 서버 APIㅇㅔ서도 수행해야 한다.
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };

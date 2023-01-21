@@ -9,10 +9,6 @@ export const LayoutContainer = styled.div`
   ${media.tablet} {
     padding-top: 7rem;
   }
-
-  ${media.pc} {
-    padding-top: 4rem;
-  }
 `;
 
 export const Main = styled.div`

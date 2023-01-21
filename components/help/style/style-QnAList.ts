@@ -4,124 +4,18 @@ import { media } from "../../../styles/theme";
 export const ListContainer = styled.div`
   width: 90%;
   display: flex;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
   flex-direction: column;
 
   ${media.tablet} {
     padding: 1.5rem;
   }
-
   ${media.pc} {
-    padding: 2rem;
-  }
-
-  .qna-header {
-    ${media.tablet} {
-      display: flex;
-      align-items: center;
-    }
-
-    ${media.pc} {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .title-wrap {
-    flex: 1 1 auto;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-    ${media.pc} {
-      font-size: 2.5rem;
-      font-weight: 500;
-      padding-bottom: 1rem;
-    }
-
-    ${media.tablet} {
-      font-size: 2rem;
-      font-weight: 400;
-      padding-bottom: 1rem;
-    }
-  }
-
-  .btn-wrap {
-    margin-top: 1rem;
-
-    ${media.pc} {
-      margin-top: 0;
-      margin-left: -4rem;
-      flex: none;
-    }
-
-    ${media.tablet} {
-      margin-top: 0;
-      margin-left: -4rem;
-      flex: none;
-    }
-  }
-
-  .qna-write__link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.375rem;
-    border: transparent;
-    background-color: ${({ theme }) => theme.color.dark};
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    padding: 0.75rem 1rem;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    color: #fff;
-
-    ${media.pc} {
-      width: auto;
-    }
-
-    ${media.tablet} {
-      width: auto;
-    }
-  }
-
-  button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.375rem;
-    border: transparent;
-    background-color: ${({ theme }) => theme.color.dark};
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    padding: 0.75rem 1rem;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    color: #fff;
-
-    ${media["fix-mobile"]} {
-      font-size: 0.8rem;
-      padding: 0.5rem 1rem;
-    }
-
-    ${media.pc} {
-      width: auto;
-    }
-
-    ${media.tablet} {
-      width: auto;
-    }
-  }
-
-  .parent {
-    overflow: hidden;
-    height: 0;
-    margin-top: 1rem;
+    padding: 0 2rem;
   }
 `;
 
 export const Table = styled.div`
-  margin-top: 2rem;
   overflow: hidden;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   border: 1px solid rgba(167, 164, 164, 0.5);
@@ -132,12 +26,10 @@ export const Table = styled.div`
     border-bottom-width: 0px;
     border-color: rgb(209 213 219);
   }
-
   thead {
     background-color: ${({ theme }) => theme.color["gray-100"]};
     border-bottom: 1px solid ${({ theme }) => theme.color["gray-200"]};
   }
-
   th {
     text-align: left;
     font-size: 0.875rem;
@@ -146,7 +38,6 @@ export const Table = styled.div`
     white-space: nowrap;
     color: ${({ theme }) => theme.color["gray-900"]};
   }
-
   .th-status {
     padding: 1rem 0.75rem 1rem 1rem;
     ${media.tablet} {
@@ -156,19 +47,15 @@ export const Table = styled.div`
       padding-left: 1.5rem;
     }
   }
-
   .th-type {
     padding: 1rem 0.75rem;
   }
-
   .th-content {
     padding: 1rem 0.75rem;
   }
-
   .th-date {
     padding: 1rem 0.75rem;
   }
-
   .tb-row {
     cursor: pointer;
     :hover {
@@ -176,13 +63,11 @@ export const Table = styled.div`
       background-color: rgba(167, 164, 164, 0.1);
     }
   }
-
   td {
     white-space: nowrap;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-
   .td-status {
     padding: 1rem 0.75rem 1rem 1rem;
     font-size: 500;
@@ -194,17 +79,14 @@ export const Table = styled.div`
       padding-left: 1.5rem;
     }
   }
-
   .td-type {
     padding: 1rem 0.75rem;
     color: ${({ theme }) => theme.color["gray-500"]};
   }
-
   .td-content {
     padding: 1rem 0.75rem;
     color: ${({ theme }) => theme.color["gray-500"]};
   }
-
   .td-date {
     padding: 1rem 0.75rem;
     color: ${({ theme }) => theme.color["gray-500"]};

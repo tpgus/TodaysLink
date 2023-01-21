@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 import * as S from "./style/style-Login";
 
 const Login = () => {
+  //유효성 검사는 서버 APIㅇㅔ서도 수행해야 한다.
   const hanldeSumbit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };

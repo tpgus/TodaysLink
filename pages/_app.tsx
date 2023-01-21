@@ -2,6 +2,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
+import { store } from "../store";
+import { Provider } from "react-redux";
 import AppLayout from "../components/layout/AppLayout";
 import Head from "next/head";
 import type { ReactElement, ReactNode } from "react";
@@ -32,7 +34,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Analytics />
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+        <Provider store={store}>
+          <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+        </Provider>
       </ThemeProvider>
     </>
   );
