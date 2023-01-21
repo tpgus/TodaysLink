@@ -1,4 +1,4 @@
-import NotFound from "../components/commons/NotFound-404";
+import NotFound from "../components/common/NotFound-404";
 import Head from "next/head";
 
 const NotFoundPage = () => {
