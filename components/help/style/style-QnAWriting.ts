@@ -85,7 +85,7 @@ export const WritingContainer = styled.div`
     background-color: #fff;
     border-radius: 0.375rem;
     border: 1px solid ${({ theme }) => theme.color["gray-300"]};
-    padding: 0.35rem 0.4rem;
+    padding: 0.5rem 0.4rem;
     font-size: 0.6rem;
 
     ${media.tablet} {
