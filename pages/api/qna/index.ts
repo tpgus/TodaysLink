@@ -38,7 +38,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   client.close();
 };
 
-//get 요청은 find().toArray() 해줘야 함
-//최신 게시물 ? 필터 조건 sort({_id:-1})
-
 export default handler;

@@ -4,7 +4,7 @@ import { validate } from "../../helpers/validation-util";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 import Joi from "joi";
-import Notification from "../commons/Notification";
+import Notification from "../common/Notification";
 import Button from "../ui/Button";
 
 interface PropsType {

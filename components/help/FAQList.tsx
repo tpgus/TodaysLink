@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import Pagination from "../commons/Pagination";
+import Pagination from "../common/Pagination";
 import FAQitem from "./FAQitem";
 import * as S from "./style/style-FAQList";
 import type { FaqListType } from "../../types/commonType";
