@@ -7,8 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     client = await connectDB();
   } catch (error) {
-    console.log(process.env);
-    res.status(500).json({ message: "db 연결 실패" });
+    res.status(500).json({ message: process.env });
     return;
   }
 
