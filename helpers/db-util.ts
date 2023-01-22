@@ -6,7 +6,7 @@ const DB_NAME = `${process.env.db_name}`;
 
 export const connectDB = async () => {
   const client = await MongoClient.connect(
-    `mongodb+srv://${process.env.db_user}:${process.env.db_pwd}@${process.env.db_cluster}.40qmpum.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.db_user}:${process.env.db_pwd}@${process.env.db_cluster}.40qmpum.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`
   );
 
   return client;

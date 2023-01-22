@@ -61,14 +61,23 @@ const QnAWriting = (props: PropsType) => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
-      .then(() => {
+      .then(async (response) => {
+        let result = await response.json();
+        if (response.ok) {
+          questionTitleRef.current!.value = "";
+          questionContentRef.current!.value = "";
+          questionTypeRef.current!.value = "기타";
+          dispatch(showNotification({ isPositive: true, message: "등록완료" }));
+          props.onComplete();
+        } else {
+          throw new Error(result.message);
+        }
+      })
+      .catch((err) =>
+        dispatch(showNotification({ isPositive: false, message: err.message }))
+      )
+      .finally(() => {
         setIsLoading(false);
-        questionTitleRef.current!.value = "";
-        questionContentRef.current!.value = "";
-        questionTypeRef.current!.value = "기타";
-        dispatch(showNotification({ isPositive: true, message: "등록완료" }));
-        props.onComplete();
       });
   };
 
