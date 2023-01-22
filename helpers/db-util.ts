@@ -5,6 +5,7 @@ type CollectionType = "qna" | "test"; //컬렉션 종류
 const DB_NAME = `${process.env.db_name}`;
 
 export const connectDB = async () => {
+  console.log(process.env.db_cluster);
   console.log(process.env.db_user);
   console.log(process.env.db_pwd);
   console.log(process.env.db_name);
