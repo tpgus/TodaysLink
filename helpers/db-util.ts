@@ -9,6 +9,7 @@ export const connectDB = async () => {
   console.log(process.env.DB_USER);
   console.log(process.env.DB_PWD);
   console.log(process.env.DB_CLUSTER);
+  //
   const client = await MongoClient.connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_CLUSTER}.40qmpum.mongodb.net?retryWrites=true&w=majority`
   );
