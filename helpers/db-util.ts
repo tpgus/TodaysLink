@@ -8,7 +8,6 @@ export const connectDB = async () => {
   const client = await MongoClient.connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_CLUSTER}.40qmpum.mongodb.net?retryWrites=true&w=majority`
   );
-
   return client;
 };
 

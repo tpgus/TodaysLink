@@ -16,6 +16,7 @@ const QnAPage: NextPageWithLayout = () => {
   const [isActiveWritingArea, setIsActiveWritingArea] = useState(false);
   const [qnaList, setQnaList] = useState<QnaType[] | null>(null);
 
+  //수정
   useEffect(() => {
     setIsLoading(true);
     fetch("/api/qna")
