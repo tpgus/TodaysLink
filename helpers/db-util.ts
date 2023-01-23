@@ -10,6 +10,7 @@ export const connectDB = async () => {
   );
   return client;
 };
+//테스트
 
 export const insertData = async (
   client: MongoClient,
