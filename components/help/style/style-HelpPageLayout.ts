@@ -63,11 +63,11 @@ export const SideMenu = styled.div`
   }
 
   li {
+    position: relative;
     display: flex;
     align-items: center;
     height: 2.5rem;
     text-align: center;
-    padding: 0 1rem;
     justify-content: space-between;
     cursor: pointer;
 
@@ -83,10 +83,20 @@ export const SideMenu = styled.div`
     &:not(:nth-of-type(1)) {
       border-top: 1px solid lightgray;
     }
+  }
 
-    span {
-      font-weight: bold;
-    }
+  a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #000;
+    flex: 1;
+  }
+
+  .icon {
+    position: absolute;
+    right: 0;
   }
 `;
 

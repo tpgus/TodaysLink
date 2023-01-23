@@ -35,7 +35,7 @@ const QnAWriting = (props: PropsType) => {
     const type = questionTypeRef.current.value;
 
     const validationOptions = Joi.object({
-      title: Joi.string().min(3).max(100).required().label("제목"),
+      title: Joi.string().min(3).max(30).required().label("제목"),
       content: Joi.string().min(10).max(500).required().label("내용"),
     });
 

@@ -5,11 +5,6 @@ type CollectionType = "qna" | "test"; //컬렉션 종류
 const DB_NAME = `${process.env.DB_NAME}`;
 
 export const connectDB = async () => {
-  console.log(process.env.DB_NAME);
-  console.log(process.env.DB_USER);
-  console.log(process.env.DB_PWD);
-  console.log(process.env.DB_CLUSTER);
-  //
   const client = await MongoClient.connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_CLUSTER}.40qmpum.mongodb.net?retryWrites=true&w=majority`
   );

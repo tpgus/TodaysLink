@@ -1,7 +1,13 @@
-import React from "react";
+import QnADetail from "../../../components/help/QnADetail";
+import HelpPageLayout from "../../../components/help/HelpPageLayout";
+import type { ReactElement } from "react";
 
-const qnaDetail = () => {
-  return <div></div>;
+const QnaDetailPage = () => {
+  return <QnADetail />;
 };
 
-export default qnaDetail;
+export default QnaDetailPage;
+
+QnaDetailPage.getLayout = function getLayout(page: ReactElement) {
+  return <HelpPageLayout>{page}</HelpPageLayout>;
+};

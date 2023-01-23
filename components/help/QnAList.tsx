@@ -1,11 +1,11 @@
 import * as S from "./style/style-QnAList";
 import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Pagination from "../common/Pagination";
 import QnAItem from "./QnAItem";
-import qnaDetail from "../../pages/help/qna/[qnaId]";
 import type { QnaType } from "../../types/commonType";
-import QnADetail from "./QnADetail";
 
 interface PropsType {
   qnaList: QnaType[];
@@ -15,26 +15,15 @@ interface PropsType {
 const itemsPerPage = 10;
 
 const QnAList = (props: PropsType) => {
-  const [clickedQnaItem, setClickedQnaItem] = useState<QnaType | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
   const qnaList = props.qnaList
     .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
-    .map((qna) => (
-      <QnAItem key={uuidv4()} qna={qna} onClickItem={setClickedQnaItem} />
-    ));
-
-  const closeModal = () => {
-    document.body.style.overflow = "auto";
-    setClickedQnaItem(null);
-  };
+    .map((qna) => <QnAItem qna={qna} key={uuidv4()} />);
 
   return (
     <S.ListContainer>
-      {clickedQnaItem ? (
-        <QnADetail onClose={closeModal} qna={clickedQnaItem} />
-      ) : null}
       <S.Table>
         <table>
           <thead>

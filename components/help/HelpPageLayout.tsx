@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -17,7 +18,7 @@ const HelpPageLayout = (props: PropsType) => {
   const currentPath = router.pathname;
 
   const isSamePath = (pathname: string) => {
-    return currentPath === pathname;
+    return currentPath.includes(pathname);
   };
 
   return (
@@ -27,14 +28,10 @@ const HelpPageLayout = (props: PropsType) => {
           <h2>메뉴</h2>
           <ul>
             {MENU_LIST.map((menu) => (
-              <li
-                key={uuidv4()}
-                onClick={() => router.push(`${menu.path}`)}
-                className={isSamePath(menu.path) ? "activated" : ""}
-              >
-                {menu.name}
+              <li key={uuidv4()}>
+                <Link href={menu.path}>{menu.name}</Link>
                 {isSamePath(menu.path) ? (
-                  <IoMdArrowDropright size={20} />
+                  <IoMdArrowDropright size={20} className="icon" />
                 ) : null}
               </li>
             ))}

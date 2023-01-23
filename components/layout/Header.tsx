@@ -22,6 +22,10 @@ const Header = () => {
     setIsClickedHamburgerBtn((prevState) => !prevState);
   };
 
+  const isActivePath = (pathname: string) => {
+    return currentPath.includes(pathname);
+  };
+
   return (
     <HeaderContainer>
       <nav>
@@ -41,8 +45,7 @@ const Header = () => {
                 href={menu.path}
                 key={uuidv4()}
                 className={
-                  "nav__link" +
-                  `${router.pathname === menu.path ? " active" : ""}`
+                  "nav__link" + `${isActivePath(menu.path) ? " active" : ""}`
                 }
               >
                 {menu.name}
