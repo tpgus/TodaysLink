@@ -60,6 +60,9 @@ export const Table = styled.div`
 
   .th-title {
     flex: 6;
+    ${media["fix-mobile"]} {
+      flex: 3;
+    }
   }
 
   .th-date {
@@ -100,6 +103,9 @@ export const Table = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     color: ${({ theme }) => theme.color["gray-500"]};
+    ${media["fix-mobile"]} {
+      flex: 3;
+    }
   }
 
   .td-date {
