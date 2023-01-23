@@ -1,4 +1,5 @@
 import { connectDB, insertData, getAllData } from "../../../helpers/db-util";
+import { QnaType } from "../../../types/commonType";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -7,30 +8,47 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     client = await connectDB();
   } catch (error) {
-    res.status(500).json({ message: process.env });
+    res.status(500).json({ message: "DB 연결 실패" });
     return;
   }
 
   //POST
   if (req.method === "POST") {
-    const { title, content } = req.body;
-    const newQuestion = { title, content };
+    const { type, title, content } = req.body;
+    const question: QnaType = {
+      _id: null,
+      type,
+      title,
+      content,
+      userId: "", //유저 아이디 추가
+      answer: null,
+      registeredDate: new Date(Date.now()),
+      answeredDate: null,
+      resolved: false,
+    };
 
     try {
-      const result = await insertData(client, "qna", newQuestion);
-      //_id 추가 구문 작성
+      const result = await insertData(client, "qna", question);
+      const createdQuestion: QnaType = {
+        ...question,
+        _id: result.insertedId,
+      };
+
       res
         .status(201)
-        .json({ message: "문의 등록 완료", question: newQuestion });
+        .json({ message: "문의 등록 완료", question: createdQuestion });
     } catch (error) {
       res.status(500).json({ message: "문의 등록 실패" });
     }
   }
+
   //GET
   else if (req.method === "GET") {
     try {
-      const result = await getAllData(client, "qna");
-      res.status(200).json({ message: "내 문의 조회 완료", questions: result });
+      const myQuestion = await getAllData(client, "qna", { _id: -1 });
+      res
+        .status(200)
+        .json({ message: "내 문의 조회 완료", qnaList: myQuestion });
     } catch (error) {
       res.status(500).json({ message: "내 문의 조회 실패" });
     }

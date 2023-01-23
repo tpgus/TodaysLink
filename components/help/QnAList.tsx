@@ -1,25 +1,25 @@
-import { useState, useRef } from "react";
-import QnAWriting from "./QnAWriting";
 import * as S from "./style/style-QnAList";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
+import Pagination from "../common/Pagination";
+import QnAItem from "./QnAItem";
+import type { QnaType } from "../../types/commonType";
 
-const QnA = () => {
-  // const parentRef = useRef<HTMLDivElement>(null);
-  // const childRef = useRef<HTMLDivElement>(null);
-  // const [isActiveWritingArea, setIsActiveWritingArea] = useState(false);
+interface PropsType {
+  qnaList: QnaType[];
+  isLoading: boolean;
+}
 
-  // const toggleWritingBtn = () => {
-  //   if (parentRef.current === null || childRef.current === null) return;
+const itemsPerPage = 10;
 
-  //   if (parentRef.current.clientHeight > 0) {
-  //     parentRef.current.style.height = "0";
-  //   } else {
-  //     parentRef.current.style.height = childRef.current.clientHeight + "px";
-  //   }
+const QnAList = (props: PropsType) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
-  //   setIsActiveWritingArea((prevState) => !prevState);
-  // };
+  const qnaList = props.qnaList
+    .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
+    .map((qna) => <QnAItem key={uuidv4()} qna={qna} />);
 
-  // 문의 내용 글자 짜르기
   return (
     <S.ListContainer>
       <S.Table>
@@ -28,31 +28,24 @@ const QnA = () => {
             <tr>
               <th className="th-status">상태</th>
               <th className="th-type pc-tablet-only">문의 유형</th>
-              <th className="th-content">문의 내용</th>
+              <th className="th-title">문의 내용</th>
               <th className="th-date pc-tablet-only">작성일</th>
             </tr>
           </thead>
-          <tbody>
-            <tr className={"tb-row"}>
-              <td className="td-status">답변 대기</td>
-              <td className="td-type pc-tablet-only">사이트 이용</td>
-              <td className="td-content">
-                어떤
-                사이트인가요사이트인가요사이트인가요사이트인가요사이트인가요사이트인가요?
-              </td>
-              <td className="td-date pc-tablet-only">2023.01.15</td>
-            </tr>
-            <tr className={"tb-row"}>
-              <td className="td-status">답변 대기</td>
-              <td className="td-type pc-tablet-only">사이트 이용</td>
-              <td className="td-content">어떤 사이트인가요?</td>
-              <td className="td-date pc-tablet-only">2023.01.15</td>
-            </tr>
-          </tbody>
+          {qnaList}
         </table>
+        {props.qnaList.length === 0 ? (
+          <S.NoData>문의 내역이 존재하지 않습니다.</S.NoData>
+        ) : null}
       </S.Table>
+      <Pagination
+        lengthOfItems={props.qnaList.length}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        onChangePage={setCurrentPage}
+      />
     </S.ListContainer>
   );
 };
 
-export default QnA;
+export default QnAList;

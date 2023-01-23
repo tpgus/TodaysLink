@@ -6,9 +6,11 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import Joi from "joi";
 import Notification from "../common/Notification";
 import Button from "../ui/Button";
+import type { QnaType } from "../../types/commonType";
 
 interface PropsType {
   onComplete: () => void;
+  onUpdateQnaList: (qna: QnaType) => void;
 }
 
 const QnAWriting = (props: PropsType) => {
@@ -33,7 +35,7 @@ const QnAWriting = (props: PropsType) => {
     const type = questionTypeRef.current.value;
 
     const validationOptions = Joi.object({
-      title: Joi.string().min(10).max(100).required().label("제목"),
+      title: Joi.string().min(3).max(100).required().label("제목"),
       content: Joi.string().min(10).max(500).required().label("내용"),
     });
 
@@ -69,6 +71,7 @@ const QnAWriting = (props: PropsType) => {
           questionTypeRef.current!.value = "기타";
           dispatch(showNotification({ isPositive: true, message: "등록완료" }));
           props.onComplete();
+          props.onUpdateQnaList(result.question);
         } else {
           throw new Error(result.message);
         }

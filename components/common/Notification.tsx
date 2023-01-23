@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { hideNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 import * as S from "./style/style-Notification";
@@ -9,7 +9,8 @@ const Notification = () => {
   const { isActive, isPositive, message } = useAppSelector(
     (state) => state.notification
   );
-  const portalElement = document.getElementById("overlay-root") as Element;
+
+  const portalElement = document.getElementById("overlay-root") as HTMLElement;
 
   useEffect(() => {
     if (isActive) {
