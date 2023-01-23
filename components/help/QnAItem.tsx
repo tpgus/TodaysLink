@@ -1,7 +1,9 @@
+import { Dispatch, SetStateAction } from "react";
 import type { QnaType } from "../../types/commonType";
 
 interface PropsType {
   qna: QnaType;
+  onClickItem: Dispatch<SetStateAction<QnaType | null>>;
 }
 
 const QnAItem = (props: PropsType) => {
@@ -13,7 +15,7 @@ const QnAItem = (props: PropsType) => {
   const day = registeredDate.getDate();
 
   return (
-    <tbody>
+    <tbody onClick={() => props.onClickItem(qna)}>
       <tr className={"tb-row"}>
         <td className="td-status">
           {qna.resolved ? "답변 완료" : "답변 대기"}
