@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Pagination from "../common/Pagination";
 import QnAItem from "./QnAItem";
 import type { QnaType } from "../../types/commonType";
+import axios from "axios";
 
 const itemsPerPage = 10;
 
@@ -19,12 +20,10 @@ const QnAList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("/api/qna")
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setQnaList(data.qnaList);
-      });
+    axios.get<QnaType[]>("/api/qna").then((data) => {
+      setIsLoading(false);
+      setQnaList(data.data);
+    });
   }, []);
 
   useEffect(() => {
