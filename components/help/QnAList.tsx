@@ -2,28 +2,38 @@ import * as S from "./style/style-QnAList";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import LoadingSpinner from "../common/LoadingSpinner";
+import { useState, useEffect } from "react";
 import Pagination from "../common/Pagination";
 import QnAItem from "./QnAItem";
 import type { QnaType } from "../../types/commonType";
 
-interface PropsType {
-  qnaList: QnaType[];
-  isLoading: boolean;
-}
-
 const itemsPerPage = 10;
 
-const QnAList = (props: PropsType) => {
+const QnAList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
-  const qnaList = props.qnaList
-    .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
-    .map((qna) => <QnAItem qna={qna} key={uuidv4()} />);
+  const [aqnaList, setQnaList] = useState<QnaType[] | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("/api/qna")
+      .then((response) => response.json())
+      .then((data) => {
+        setIsLoading(false);
+        setQnaList(data.qnaList);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(aqnaList);
+  }, [aqnaList]);
 
   return (
     <S.ListContainer>
+      {isLoading ? <LoadingSpinner /> : null}
       <S.Table>
         <table>
           <thead>
@@ -34,14 +44,10 @@ const QnAList = (props: PropsType) => {
               <th className="th-date pc-tablet-only">작성일</th>
             </tr>
           </thead>
-          {qnaList}
         </table>
-        {props.qnaList.length === 0 ? (
-          <S.NoData>문의 내역이 존재하지 않습니다.</S.NoData>
-        ) : null}
       </S.Table>
       <Pagination
-        lengthOfItems={props.qnaList.length}
+        lengthOfItems={10}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onChangePage={setCurrentPage}
