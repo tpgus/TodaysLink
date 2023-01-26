@@ -53,7 +53,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json({ message: "내 문의 조회 실패" });
     }
   }
-  client.close();
 };
 
 export default handler;
