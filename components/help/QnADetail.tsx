@@ -10,9 +10,15 @@ interface PropsType {
 const QnADetail = (props: PropsType) => {
   const router = useRouter();
   const { qna } = props;
+
   if (!qna) return <p>다시 시도해 주세요</p>;
 
-  console.log(qna);
+  const registeredDate = new Date(qna.registeredDate);
+  const year = registeredDate.getFullYear();
+  const month = registeredDate.getMonth() + 1;
+  const day = registeredDate.getDate();
+  const hour = registeredDate.getHours();
+  const min = registeredDate.getMinutes();
 
   return (
     <S.QnALayout>
@@ -27,7 +33,7 @@ const QnADetail = (props: PropsType) => {
       </li>
       <li>
         <span>작성일</span>
-        <p>{qna.registeredDate.toString()}</p>
+        <p>{`${year}-${month}-${day} ${hour}:${min}`}</p>
       </li>
       <li className="content">
         <span className="content__span">문의 내용</span>
