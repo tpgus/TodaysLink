@@ -1,9 +1,10 @@
 import { connectDB, insertData, getAllData } from "../../../helpers/db-util";
 import { QnaType } from "../../../types/commonType";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { MongoClient } from "mongodb";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  let client = null;
+  let client;
   try {
     client = await connectDB();
   } catch (error) {
@@ -27,7 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
-      const result = await insertData(client, "qna", question);
+      const result = await insertData(client!, "qna", question);
       const createdQuestion: QnaType = {
         ...question,
         _id: result.insertedId,
@@ -44,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //GET
   else if (req.method === "GET") {
     try {
-      const myQuestion = await getAllData(client, "qna", { _id: -1 });
+      const myQuestion = await getAllData(client!, "qna", { _id: -1 });
       res
         .status(200)
         .json({ message: "내 문의 조회 완료", qnaList: myQuestion });

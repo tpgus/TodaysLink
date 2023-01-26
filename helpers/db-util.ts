@@ -4,9 +4,9 @@ import type { Document, Sort } from "mongodb";
 type CollectionType = "qna" | "test"; //컬렉션 종류
 const DB_NAME = `${process.env.DB_NAME}`;
 
-let client: MongoClient | null = null;
+let client: MongoClient | null;
 export const connectDB = async () => {
-  if (!client) return;
+  if (client) return client;
   client = await MongoClient.connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_CLUSTER}.40qmpum.mongodb.net?retryWrites=true&w=majority`
   );

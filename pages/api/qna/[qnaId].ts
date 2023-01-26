@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const myQuestion = await findById(client, "qna", {
+    const myQuestion = await findById(client!, "qna", {
       _id: new ObjectId(qnaId as string),
     });
     res.status(200).json({ message: "내 문의 조회 완료", qnaItem: myQuestion });
