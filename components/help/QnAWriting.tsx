@@ -11,6 +11,7 @@ import type { QnaType } from "../../types/commonType";
 
 interface PropsType {
   onComplete: () => void;
+  onAddQnaToList: (qna: QnaType) => void;
 }
 
 const QnAWriting = (props: PropsType) => {
@@ -71,6 +72,7 @@ const QnAWriting = (props: PropsType) => {
           questionTypeRef.current!.value = "기타";
           dispatch(showNotification({ isPositive: true, message: "등록완료" }));
           props.onComplete();
+          props.onAddQnaToList(result.question);
         } else {
           throw new Error(result.message);
         }

@@ -67,7 +67,7 @@ const QnAPage: NextPageWithLayout = () => {
           <div ref={childRef}>
             <QnAWriting
               onComplete={toggleWritingBtn}
-              onUpdateQnaList={addNewQna}
+              onAddQnaToList={addNewQna}
             />
           </div>
         </div>
