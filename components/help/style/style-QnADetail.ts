@@ -1,20 +1,30 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const ModalContainer = styled.div`
-  width: 80%;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 0.375rem;
-
+export const QnALayout = styled.div`
+  width: 90%;
+  display: flex;
+  padding: 0 1rem;
+  flex-direction: column;
+  ${media.tablet} {
+    padding: 1.5rem;
+  }
   ${media.pc} {
-    width: 30%;
-    padding: 2rem 3rem;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    ${media.pc} {
+      font-size: 2.5rem;
+      font-weight: 500;
+      padding-bottom: 1rem;
+    }
+    ${media.tablet} {
+      font-size: 2rem;
+      font-weight: 400;
+      padding-bottom: 1rem;
+    }
   }
 
   li {
@@ -60,12 +70,10 @@ export const ModalContainer = styled.div`
   .content__p {
     padding-right: 2rem;
     height: auto;
-    max-height: 10rem;
     border: 1px solid red;
     line-height: 2.5rem;
     border: transparent;
     white-space: normal;
-    overflow-y: auto;
 
     ${media.pc} {
       height: auto;
@@ -86,12 +94,10 @@ export const ModalContainer = styled.div`
   .answer__p {
     padding-right: 2rem;
     height: auto;
-    max-height: 10rem;
     border: 1px solid red;
     line-height: 2.5rem;
     border: transparent;
     white-space: normal;
-    overflow-y: auto;
 
     ${media.pc} {
       height: auto;
@@ -105,46 +111,37 @@ export const ModalContainer = styled.div`
   }
 
   button {
+    margin: 0 auto;
     ${media["fix-mobile"]} {
       padding: 0.5rem;
     }
   }
 `;
 
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-`;
+// export const QnALayout = styled.div`
+//   width: 90%;
+//   display: flex;
+//   padding: 0 1rem;
+//   flex-direction: column;
+//   ${media.tablet} {
+//     padding: 1.5rem;
+//   }
+//   ${media.pc} {
+//     padding: 2rem;
+//   }
+//   h1 {
+//     font-size: 1.5rem;
+//     ${media.pc} {
+//       font-size: 2.5rem;
+//       font-weight: 500;
+//       padding-bottom: 1rem;
+//     }
+//     ${media.tablet} {
+//       font-size: 2rem;
+//       font-weight: 400;
+//       padding-bottom: 1rem;
+//     }
+//   }
+// `;
 
-export const QnALayout = styled.div`
-  width: 90%;
-  display: flex;
-  padding: 0 1rem;
-  flex-direction: column;
-  ${media.tablet} {
-    padding: 1.5rem;
-  }
-  ${media.pc} {
-    padding: 2rem;
-  }
-  h1 {
-    font-size: 1.5rem;
-    ${media.pc} {
-      font-size: 2.5rem;
-      font-weight: 500;
-      padding-bottom: 1rem;
-    }
-    ${media.tablet} {
-      font-size: 2rem;
-      font-weight: 400;
-      padding-bottom: 1rem;
-    }
-  }
-`;
-
-export const QnAContainer = styled.ul``;
+// export const QnAContainer = styled.ul``;

@@ -6,9 +6,12 @@ const DB_NAME = `${process.env.DB_NAME}`;
 
 let client: MongoClient | null;
 export const connectDB = async () => {
-  if (client) return client;
+  if (client) {
+    return client;
+  }
+
   client = await MongoClient.connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_CLUSTER}.40qmpum.mongodb.net?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_CLUSTER}.40qmpum.mongodb.net?retryWrites=true&w=majority&maxPoolSize=200`
   );
   return client;
 };

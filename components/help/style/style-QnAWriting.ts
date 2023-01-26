@@ -12,13 +12,6 @@ export const WritingContainer = styled.div`
     padding: 1rem;
   }
 
-  h2 {
-    color: #000;
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-  }
-
   .form-wrap {
     margin: 0 auto;
     width: 90%;

@@ -1,10 +1,9 @@
 import { connectDB, insertData, getAllData } from "../../../helpers/db-util";
 import { QnaType } from "../../../types/commonType";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { MongoClient } from "mongodb";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  let client;
+  let client = null;
   try {
     client = await connectDB();
   } catch (error) {

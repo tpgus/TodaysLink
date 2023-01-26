@@ -13,14 +13,15 @@ const QnaDetailPage = () => {
   const { qnaId } = router.query;
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch(`/api/qna/${qnaId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setQna(data.qnaItem);
-        console.log(data.qnaItem);
-      });
+    if (qnaId) {
+      setIsLoading(true);
+      fetch(`/api/qna/${qnaId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setIsLoading(false);
+          setQna(data.qnaItem);
+        });
+    }
   }, [qnaId]);
 
   if (qna === null && isLoading) return <LoadingSpinner />;
