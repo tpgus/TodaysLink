@@ -1,4 +1,5 @@
 import * as S from "./style/style-QnAWriting";
+import { RotatingLines } from "react-loader-spinner";
 import { useRef, useState } from "react";
 import { validate } from "../../helpers/validation-util";
 import { showNotification } from "../../store/notificationSlice";
@@ -10,7 +11,6 @@ import type { QnaType } from "../../types/commonType";
 
 interface PropsType {
   onComplete: () => void;
-  onUpdateQnaList: (qna: QnaType) => void;
 }
 
 const QnAWriting = (props: PropsType) => {
@@ -71,7 +71,6 @@ const QnAWriting = (props: PropsType) => {
           questionTypeRef.current!.value = "기타";
           dispatch(showNotification({ isPositive: true, message: "등록완료" }));
           props.onComplete();
-          props.onUpdateQnaList(result.question);
         } else {
           throw new Error(result.message);
         }
@@ -102,7 +101,7 @@ const QnAWriting = (props: PropsType) => {
             <input
               ref={questionTitleRef}
               id="title"
-              placeholder="최대 100자 이내로 작성해 주세요"
+              placeholder="최대 30자 이내로 작성해 주세요"
             />
           </div>
           <div className="input-wrap">

@@ -12,25 +12,7 @@ import type { QnaType } from "../../../types/commonType";
 const QnAPage: NextPageWithLayout = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [isActiveWritingArea, setIsActiveWritingArea] = useState(false);
-  const [qnaList, setQnaList] = useState<QnaType[] | null>(null);
-
-  //수정
-  useEffect(() => {
-    setIsLoading(true);
-    fetch("/api/qna")
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setQnaList(data.qnaList);
-      });
-  }, []);
-
-  const addNewQna = (qna: QnaType) => {
-    if (!qnaList) return;
-    setQnaList([qna, ...qnaList]);
-  };
 
   const toggleWritingBtn = () => {
     if (parentRef.current === null || childRef.current === null) return;
@@ -65,17 +47,11 @@ const QnAPage: NextPageWithLayout = () => {
         </div>
         <div className="parent" ref={parentRef}>
           <div ref={childRef}>
-            <QnAWriting
-              onComplete={toggleWritingBtn}
-              onUpdateQnaList={addNewQna}
-            />
+            <QnAWriting onComplete={toggleWritingBtn} />
           </div>
         </div>
+        <QnAList />
       </S.QnAHeaderContainer>
-      {isLoading ? <LoadingSpinner /> : null}
-      {!isLoading && qnaList !== null ? (
-        <QnAList qnaList={qnaList} isLoading={isLoading} />
-      ) : null}
     </>
   );
 };
