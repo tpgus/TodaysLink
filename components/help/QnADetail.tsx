@@ -1,6 +1,18 @@
+import { QnaType } from "../../types/commonType";
+import Button from "../ui/Button";
 import * as S from "./style/style-QnADetail";
 
-const QnADetail = () => {
+interface PropsType {
+  qna: QnaType | null;
+}
+
+const QnADetail = (props: PropsType) => {
+  const { qna } = props;
+  console.log(qna);
+  if (qna === null) return <p>다시 시도해 주세요</p>;
+
+  // if (qna === null) return <p>다시 시도해 주세요</p>;
+
   return (
     <S.QnALayout>
       <h1>1:1 문의 (Q&A)</h1>

@@ -1,7 +1,5 @@
 import * as S from "./style/style-QnAList";
 import { v4 as uuidv4 } from "uuid";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Pagination from "../common/Pagination";
 import QnAItem from "./QnAItem";

@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { Db, MongoClient, ObjectId } from "mongodb";
 import type { Document, Sort } from "mongodb";
 
 type CollectionType = "qna" | "test"; //컬렉션 종류
@@ -31,6 +31,16 @@ export const getAllData = async (
   const documents = await db.collection(collection).find().sort(sort).toArray();
 
   return documents;
+};
+
+export const findById = async (
+  client: MongoClient,
+  collection: CollectionType,
+  filter: { _id: ObjectId }
+) => {
+  const db = client.db(DB_NAME);
+  const documents = await db.collection(collection).find(filter).toArray();
+  return documents[0];
 };
 
 export const updateData = async () => {};
