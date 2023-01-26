@@ -26,7 +26,7 @@ const QnAItem = (props: PropsType) => {
   return (
     <tbody onClick={handleClickQnaItem}>
       <tr className={"tb-row"}>
-        <td className="td-status">
+        <td className={"td-status" + `${qna.resolved ? " emphasis" : ""}`}>
           {qna.resolved ? "답변 완료" : "답변 대기"}
         </td>
         <td className="td-type pc-tablet-only">{qna.type}</td>

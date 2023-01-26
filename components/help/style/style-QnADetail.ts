@@ -105,6 +105,10 @@ export const QnALayout = styled.div`
     }
   }
 
+  .emphasis {
+    font-weight: bold;
+  }
+
   .close {
     display: flex;
     justify-content: flex-end;

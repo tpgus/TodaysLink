@@ -89,9 +89,14 @@ export const Table = styled.div`
 
   .td-status {
     flex: 1;
-    font-size: 500;
+    font-size: 600;
     color: ${({ theme }) => theme.color["gray-900"]};
   }
+
+  .emphasis {
+    font-weight: bold;
+  }
+
   .td-type {
     flex: 1;
     color: ${({ theme }) => theme.color["gray-500"]};

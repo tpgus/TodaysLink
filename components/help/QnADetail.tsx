@@ -41,7 +41,7 @@ const QnADetail = (props: PropsType) => {
       </li>
       <li className="answer">
         <span className="answer__span">답변</span>
-        <p className="answer__p">
+        <p className={"answer__p" + `${qna.answer ? "" : " emphasis"}`}>
           {qna.answer ? qna.answer : "[답변 대기 중]"}
         </p>
       </li>
