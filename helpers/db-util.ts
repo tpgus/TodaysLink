@@ -1,7 +1,7 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
 import type { Document, Sort } from "mongodb";
 
-type CollectionType = "qna" | "test"; //컬렉션 종류
+type CollectionType = "qna" | "link"; //컬렉션 종류
 const DB_NAME = `${process.env.DB_NAME}`;
 
 let client: MongoClient | null;

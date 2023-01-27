@@ -4,6 +4,8 @@ import TagList from "../components/tags/TagList";
 import Head from "next/head";
 import { buildFilePath, readFileData } from "../helpers/api-util";
 import { GetStaticProps } from "next";
+import { connectDB } from "../helpers/db-util";
+import { getAllData } from "../helpers/db-util";
 import type { LinkListType } from "../types/commonType";
 
 interface PropsType {
@@ -32,6 +34,15 @@ export const getStaticProps: GetStaticProps = async () => {
   //api 호출은 클라이언트 사이드에서 하는 것임. 여기는 그냥 서버사이드 코드 바로 사용
   const filePath = buildFilePath("dummy-data.json");
   const linkList = await readFileData<LinkListType>(filePath);
+
+  // let client = null;
+  // try {
+  //   client = await connectDB();
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
+  // const linkItemList = await getAllData(client!, "link", { _id: -1 });
 
   return {
     props: {

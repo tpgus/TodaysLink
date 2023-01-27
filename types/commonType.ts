@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export interface LinkItemType {
-  id: number;
+  id: ObjectId;
   title: string;
   description: string;
   startDate: Date;
