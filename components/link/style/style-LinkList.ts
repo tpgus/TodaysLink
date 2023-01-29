@@ -12,7 +12,7 @@ export const LinkListContainer = styled.ul`
 
     ${media.pc} {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 3rem 3rem;
+      gap: 4rem;
       padding-top: 6rem;
       max-width: 65%;
       /* max-width: 1280px; */

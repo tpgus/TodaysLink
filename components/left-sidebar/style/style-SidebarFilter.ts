@@ -16,15 +16,13 @@ export const SidebarContainer = styled.div`
   @media (max-width: 1750px) {
     display: none;
   }
-  & > div {
-    width: 50%;
-    background-color: #fff;
-  }
-  form > div {
+
+  .filter-wrap {
     border-top: 1px solid ${({ theme }) => theme.color["gray-200"]};
     padding-top: 1rem;
     padding-bottom: 2rem;
   }
+
   legend {
     width: 100%;
     text-align: center;

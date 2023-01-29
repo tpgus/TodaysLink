@@ -1,7 +1,14 @@
-import { Db, MongoClient, ObjectId } from "mongodb";
+import { Collection, Db, MongoClient, ObjectId } from "mongodb";
 import type { Document, Sort } from "mongodb";
 
 type CollectionType = "qna" | "link"; //컬렉션 종류
+
+interface ParamsType<T> {
+  client: MongoClient;
+  collection: CollectionType;
+  options?: T;
+}
+
 const DB_NAME = `${process.env.DB_NAME}`;
 
 let client: MongoClient | null;
@@ -29,11 +36,14 @@ export const insertData = async (
 
 export const getAllData = async (
   client: MongoClient,
-  collection: CollectionType,
-  sort: Sort = {}
+  collection: CollectionType
 ) => {
   const db = client.db(DB_NAME);
-  const documents = await db.collection(collection).find().sort(sort).toArray();
+  const documents = await db
+    .collection(collection)
+    .find()
+    .sort({ _id: -1 })
+    .toArray();
 
   return documents;
 };
@@ -41,11 +51,36 @@ export const getAllData = async (
 export const findById = async (
   client: MongoClient,
   collection: CollectionType,
-  filter: { _id: ObjectId }
+  id: { _id: ObjectId }
 ) => {
   const db = client.db(DB_NAME);
-  const documents = await db.collection(collection).find(filter).toArray();
+  const documents = await db.collection(collection).find(id).toArray();
   return documents[0];
+};
+
+export const getLimitedData = async (
+  client: MongoClient,
+  collection: CollectionType,
+  options: { limit: number; skip: number }
+) => {
+  const db = client.db(DB_NAME);
+  const documents = await db
+    .collection(collection)
+    .find()
+    .limit(options.limit)
+    .skip(options.skip)
+    .toArray();
+  return documents;
+};
+
+export const getCountOfDocuments = async <T>(params: ParamsType<T>) => {
+  const { client, collection } = params;
+  const db = client.db(DB_NAME);
+  const count = await db!.collection(collection).estimatedDocumentCount();
+  //문서의 갯수를 세는 방법으로 countDocuments와 estimatedDocumentCount가 있는데
+  //estimatedDocumentCount가 더 빠르다.
+  //https://www.mongodb.com/docs/drivers/node/current/usage-examples/count/
+  return count;
 };
 
 export const updateData = async () => {};

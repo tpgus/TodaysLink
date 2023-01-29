@@ -38,3 +38,13 @@ export const searchSlice = createSlice({
     },
   },
 });
+
+export const {
+  setFlatform,
+  setWinner,
+  setTag,
+  resetFilter,
+  setKeyword,
+  resetKeyword,
+} = searchSlice.actions;
+export default searchSlice.reducer;

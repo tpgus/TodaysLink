@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { itemId } = context.params as Params;
   const filePath = buildFilePath("dummy-data.json");
   const linkList = await readFileData<LinkListType>(filePath);
-  let linkItem = linkList.find((link) => link.id === parseInt(itemId));
+  let linkItem = linkList.find((link) => link._id.toString() === itemId);
 
   if (!linkItem) {
     //fallback:true이지만(=주어진 경로값 이외에 여러 경로값의 입력을 허용하지만), 해당 경로 값에 대한 데이터를 찾지 못한 경우
@@ -63,7 +63,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const filePath = buildFilePath("dummy-data.json");
   const linkList = await readFileData<LinkListType>(filePath);
   //db의 최근 데이터 6개만 정적 생성 하겠다.
-  const ids = linkList.slice(0, 6).map((link) => link.id);
+  const ids = linkList.slice(0, 6).map((link) => link._id);
   const params = ids.map((id) => ({ params: { itemId: id.toString() } }));
 
   return {
