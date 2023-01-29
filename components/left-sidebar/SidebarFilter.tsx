@@ -2,8 +2,8 @@ import * as S from "./style/style-SidebarFilter";
 import { v4 as uuidv4 } from "uuid";
 import { BiRefresh } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { setFlatform, setWinner } from "../../store/searchSlice";
-import { useEffect } from "react";
+import { setFlatform, setNumOfWinner } from "../../store/searchOptionSlice";
+import { useEffect, useRef } from "react";
 
 const PLATFORMS = [
   { name: "인스타그램", value: "IG" },
@@ -23,16 +23,11 @@ const NUM_OF_WINNER = [
 ];
 
 const SidebarFilter = () => {
-  const { winner } = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
+  const radioRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    console.log(winner);
-  }, [winner]);
-
-  const handleWinnerFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("a");
-    dispatch(setWinner(event.target.value));
+  const handleWinnerFilter = (value: number) => {
+    dispatch(setNumOfWinner(value));
   };
 
   return (
@@ -75,6 +70,7 @@ const SidebarFilter = () => {
                       value={winner.value}
                       id={winner.name}
                       name="winner"
+                      onClick={() => handleWinnerFilter(winner.value)}
                     />
                     <label htmlFor={winner.name}>{winner.name}</label>
                   </S.CheckboxWrapper>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const LinkListContainer = styled.ul`
+export const EventListContainer = styled.ul`
   .grid-container {
     padding-top: 4.5rem;
     display: grid;

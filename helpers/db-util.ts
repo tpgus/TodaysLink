@@ -1,5 +1,6 @@
 import { Collection, Db, MongoClient, ObjectId } from "mongodb";
 import type { Document, Sort } from "mongodb";
+import type { SearchOptionType } from "../types/commonType";
 
 type CollectionType = "qna" | "link"; //컬렉션 종류
 
@@ -61,12 +62,16 @@ export const findById = async (
 export const getLimitedData = async (
   client: MongoClient,
   collection: CollectionType,
-  options: { limit: number; skip: number }
+  options: {
+    limit: number;
+    skip: number;
+    filter?: Partial<SearchOptionType>;
+  }
 ) => {
   const db = client.db(DB_NAME);
   const documents = await db
     .collection(collection)
-    .find()
+    .find(options.filter || {})
     .limit(options.limit)
     .skip(options.skip)
     .toArray();

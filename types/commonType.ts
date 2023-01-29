@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 
-export interface LinkItemType {
+export interface EventType {
   _id: string;
   title: string;
   description: string;
@@ -8,7 +8,7 @@ export interface LinkItemType {
   endDate: Date;
   announcementDate: Date;
   image: string;
-  tag: string[];
+  tags: string[];
   url: string;
   warnings: string[];
   numOfWinner: number;
@@ -31,6 +31,12 @@ export interface QnaType {
   resolved: boolean;
 }
 
-export type LinkListType = LinkItemType[];
+export interface SearchOptionType {
+  searchValue: string;
+  tags: string;
+  flatform: string;
+  numOfWinner: string;
+}
+export type EventListType = EventType[];
 
 export type FaqListType = FaqType[];

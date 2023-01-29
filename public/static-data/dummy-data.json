@@ -1,13 +1,13 @@
 [
   {
-    "id": 1,
+    "_id": 1,
     "title": "나이키 덩크 로우나이키 덩크 로우나이키 덩크 로우나이키 덩크 로우나이키 덩크 로우나이키 덩크 로우",
     "description": "(W) 나이키 덩크 로우 샌드드리프트 메탈릭 골드",
     "startDate": "2023-01-02",
     "endDate": "2023-1-27",
     "announcementDate": "2023-01-28",
     "image": "/images/test1.webp",
-    "tag": ["상품권", "오늘 마감", "댓글", "공유 & 초대", "의류"],
+    "tags": ["상품권", "오늘 마감", "댓글", "공유 & 초대", "의류"],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.",
@@ -20,14 +20,14 @@
     "numOfWinner": "8"
   },
   {
-    "id": 2,
+    "_id": 2,
     "title": "The North Face Nuptse Jackets",
     "description": "아이앱 스튜디오 피그먼트 스웨트셔츠 & 미니백",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test.webp",
-    "tag": ["기프티콘", "전자기기", "댓글"],
+    "tags": ["기프티콘", "전자기기", "댓글"],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.",
@@ -40,14 +40,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 3,
+    "_id": 3,
     "title": "Jordan 1 x Travis Scott Black Phantom",
     "description": "조던 1 x 트래비스 스캇 블랙 팬텀",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test3.webp",
-    "tag": ["오늘 마감", "현금"],
+    "tags": ["오늘 마감", "현금"],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.",
@@ -60,14 +60,14 @@
     "numOfWinner": "-"
   },
   {
-    "id": 4,
+    "_id": 4,
     "title": "Jordan 1 x Travis Scott Black Phantom",
     "description": "조던 1 x 트래비스 스캇 블랙 팬텀",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test4.webp",
-    "tag": ["식품", "설문조사", "출석 체크"],
+    "tags": ["식품", "설문조사", "출석 체크"],
     "url": "https://kream.co.kr/products/92506",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.",
@@ -80,14 +80,14 @@
     "numOfWinner": "-"
   },
   {
-    "id": 5,
+    "_id": 5,
     "title": "Apple iPad Pro 6th + Magic Keyboard + Pencil 2nd",
     "description": "애플 아이패드 프로 6세대 + 매직 키보드 + 펜슬 2세대",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test5.webp",
-    "tag": [],
+    "tags": [],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.(23년 1월 1일 이후 가입 회원 대상)",
@@ -100,14 +100,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 6,
+    "_id": 6,
     "title": "나이키 덩크 로우",
     "description": "(W) 나이키 덩크 로우 샌드드리프트 메탈릭 골드",
     "startDate": "2023-01-02",
     "endDate": "2023-1-27",
     "announcementDate": "2023-01-28",
     "image": "/images/test1.webp",
-    "tag": ["상품권", "오늘 마감", "댓글", "공유 & 초대", "의류"],
+    "tags": ["상품권", "오늘 마감", "댓글", "공유 & 초대", "의류"],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.",
@@ -120,14 +120,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 7,
+    "_id": 7,
     "title": "Apple iPad Pro 6th + Magic Keyboard + Pencil 2nd",
     "description": "애플 아이패드 프로 6세대 + 매직 키보드 + 펜슬 2세대",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test5.webp",
-    "tag": [],
+    "tags": [],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.(23년 1월 1일 이후 가입 회원 대상)",
@@ -140,14 +140,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 8,
+    "_id": 8,
     "title": "The North Face Nuptse Jackets",
     "description": "아이앱 스튜디오 피그먼트 스웨트셔츠 & 미니백",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test.webp",
-    "tag": ["기프티콘", "전자기기", "댓글"],
+    "tags": ["기프티콘", "전자기기", "댓글"],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.",
@@ -160,14 +160,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 9,
+    "_id": 9,
     "title": "Apple iPad Pro 6th + Magic Keyboard + Pencil 2nd",
     "description": "애플 아이패드 프로 6세대 + 매직 키보드 + 펜슬 2세대",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test5.webp",
-    "tag": [],
+    "tags": [],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.(23년 1월 1일 이후 가입 회원 대상)",
@@ -180,14 +180,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 10,
+    "_id": 10,
     "title": "Apple iPad Pro 6th + Magic Keyboard + Pencil 2nd",
     "description": "애플 아이패드 프로 6세대 + 매직 키보드 + 펜슬 2세대",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test5.webp",
-    "tag": [],
+    "tags": [],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.(23년 1월 1일 이후 가입 회원 대상)",
@@ -200,14 +200,14 @@
     "numOfWinner": "3"
   },
   {
-    "id": 11,
+    "_id": 11,
     "title": "Apple iPad Pro 6th + Magic Keyboard + Pencil 2nd",
     "description": "애플 아이패드 프로 6세대 + 매직 키보드 + 펜슬 2세대",
     "startDate": "2023-01-02",
     "endDate": "2022-1-27",
     "announcementDate": "2022-01-28",
     "image": "/images/test5.webp",
-    "tag": [],
+    "tags": [],
     "url": "https://kream.co.kr/exhibitions/696",
     "warnings": [
       "본 이벤트는 KREAM 1월 신규회원 대상 앱 전용 이벤트입니다.(23년 1월 1일 이후 가입 회원 대상)",

@@ -6,7 +6,7 @@ import { RiQuestionAnswerLine } from "react-icons/ri";
 import { MenuContainer, Backrop } from "./style/style-HamburgerMenu";
 import type { PropsType } from "./Hamburger";
 
-const NAV_LINK = [
+const NAV_MENU = [
   { name: "로그인", path: "/auth/signIn", icon: <BiUser /> },
   { name: "FAQ", path: "/help/faq", icon: <BsQuestionCircle /> },
   { name: "Q&A", path: "/help/qna", icon: <RiQuestionAnswerLine /> },
@@ -26,10 +26,10 @@ const HamburgerMenu = (props: PropsType) => {
         <Backrop onClick={props.onClickHamburger} />
       ) : null}
       <MenuContainer isClicked={props.isClickedHamburger}>
-        {NAV_LINK.map((link) => (
-          <li key={uuidv4()} onClick={() => handleClickMenu(link.path)}>
-            {link.icon}
-            <span>{link.name}</span>
+        {NAV_MENU.map((menu) => (
+          <li key={uuidv4()} onClick={() => handleClickMenu(menu.path)}>
+            {menu.icon}
+            <span>{menu.name}</span>
           </li>
         ))}
       </MenuContainer>
