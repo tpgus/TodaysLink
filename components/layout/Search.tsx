@@ -1,13 +1,22 @@
-import { useRef } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
 import * as S from "./style/style-Search";
+import { AiOutlineSearch } from "react-icons/ai";
+import { useRef, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../store";
+import { setSearchValue } from "../../store/searchOptionSlice";
 
 const Search = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
+  const { searchValue } = useAppSelector((state) => state.searchOption);
+
+  useEffect(() => {
+    console.log(searchValue);
+  }, [searchValue]);
 
   const search = () => {
     // 실제 검색 요청과 관련된 코드
-    alert("검색 시작");
+    if (searchInputRef.current === null) return;
+    dispatch(setSearchValue(searchInputRef.current!.value));
   };
 
   const handleSearchBtnClick = () => {
