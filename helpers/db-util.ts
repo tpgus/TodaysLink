@@ -13,6 +13,7 @@ interface ParamsType<T> {
 const DB_NAME = `${process.env.DB_NAME}`;
 
 let client: MongoClient | null;
+
 export const connectDB = async () => {
   if (client) {
     return client;
