@@ -2,7 +2,7 @@ import { Collection, Db, MongoClient, ObjectId } from "mongodb";
 import type { Document, Sort } from "mongodb";
 import type { SearchOptionType } from "../types/commonType";
 
-type CollectionType = "qna" | "link"; //컬렉션 종류
+type CollectionType = "qna" | "event"; //컬렉션 종류
 
 interface ParamsType<T> {
   client: MongoClient;

@@ -35,13 +35,14 @@ const HomePage = (props: PropsType) => {
     resetState,
   } = useFetch<EventListType>(eventAPI.getEventList);
 
-  const fetchData = useCallback(() => {
+  const fetchEventList = useCallback(() => {
     getEventList({ pageOffset, searchOption });
     setPageOffset((prevOffset) => prevOffset + 12);
   }, [getEventList, pageOffset, searchOption]);
 
   const getMoreDataBtnHandler = () => {
-    fetchData();
+    console.log("더보기 클릭");
+    fetchEventList();
   };
 
   if (!isLoading && data && !error) {
@@ -66,9 +67,11 @@ const HomePage = (props: PropsType) => {
         pageOffset={pageOffset}
         pageCount={totalDataLength}
       />
-      <Button onClick={getMoreDataBtnHandler} className="center">
-        {isLoading ? "로딩 중..." : "더 보기"}
-      </Button>
+      <div className="center">
+        <Button onClick={getMoreDataBtnHandler}>
+          {isLoading ? "로딩 중..." : "더 보기"}
+        </Button>
+      </div>
     </>
   );
 };
@@ -85,8 +88,8 @@ export const getStaticProps: GetStaticProps<{
     console.log(error);
   }
 
-  const dataList = await getLimitedData(client!, "link", {
-    limit: 12,
+  const dataList = await getLimitedData(client!, "event", {
+    limit: 4,
     skip: 0,
   });
 
@@ -100,13 +103,13 @@ export const getStaticProps: GetStaticProps<{
 
   const countOfDocuments = await getCountOfDocuments({
     client: client!,
-    collection: "link", // 이름 event로 수정
+    collection: "event",
   });
 
   return {
     props: {
       eventList,
-      pageOffset: 12,
+      pageOffset: 4,
       countOfDocuments,
     },
   };

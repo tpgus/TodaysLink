@@ -1,15 +1,19 @@
 import * as S from "./style/style-SidebarFilter";
+import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BiRefresh } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { setFlatform, setNumOfWinner } from "../../store/searchOptionSlice";
-import { useEffect, useRef } from "react";
+import searchOptionSlice, {
+  setPlatforms,
+  setNumOfWinner,
+  resetFilter,
+} from "../../store/searchOptionSlice";
 
 const PLATFORMS = [
-  { name: "인스타그램", value: "IG" },
-  { name: "페이스북", value: "FB" },
-  { name: "유튜브", value: "YT" },
-  { name: "네이버", value: "NV" },
+  { name: "인스타그램", value: "INSTAGRAM" },
+  { name: "페이스북", value: "FACEBOOK" },
+  { name: "유튜브", value: "YOUTUBE" },
+  { name: "네이버", value: "NAVER" },
   { name: "앱 전용", value: "APP_ONLY" },
   { name: "공식 홈페이지", value: "OFFICIAL_WEB" },
 ];
@@ -22,12 +26,37 @@ const NUM_OF_WINNER = [
   { name: "1000명 이상", value: 1000 },
 ];
 
+const initPlatformsState = new Array(PLATFORMS.length).fill(false);
+
 const SidebarFilter = () => {
+  const [checkedPlatformState, setCheckedPlatformState] =
+    useState<boolean[]>(initPlatformsState);
+
   const dispatch = useAppDispatch();
-  const radioRef = useRef<HTMLInputElement>(null);
+
+  const handlePlatformFilter = (position: number) => {
+    const updatedCheckedState = checkedPlatformState.map(
+      (checkedPlatform, index) =>
+        index === position ? !checkedPlatform : checkedPlatform
+    );
+    setCheckedPlatformState(updatedCheckedState);
+    const updatedSelectedPlatform: string[] = [];
+    PLATFORMS.forEach((platform, idx) => {
+      if (updatedCheckedState[idx]) {
+        updatedSelectedPlatform.push(platform.value);
+      }
+    });
+
+    dispatch(setPlatforms(updatedSelectedPlatform));
+  };
 
   const handleWinnerFilter = (value: number) => {
     dispatch(setNumOfWinner(value));
+  };
+
+  const handleReset = () => {
+    dispatch(resetFilter());
+    setCheckedPlatformState(initPlatformsState);
   };
 
   return (
@@ -40,14 +69,16 @@ const SidebarFilter = () => {
             </legend>
             <S.FilterContainer>
               <div>
-                {PLATFORMS.map((flatform) => (
+                {PLATFORMS.map((platform, idx) => (
                   <S.CheckboxWrapper key={uuidv4()}>
                     <input
                       type="checkbox"
-                      value={flatform.value}
-                      id={flatform.name}
+                      value={platform.value}
+                      id={platform.name}
+                      checked={checkedPlatformState[idx]}
+                      onChange={() => handlePlatformFilter(idx)}
                     />
-                    <label htmlFor={flatform.name}>{flatform.name}</label>
+                    <label htmlFor={platform.name}>{platform.name}</label>
                   </S.CheckboxWrapper>
                 ))}
               </div>
@@ -70,7 +101,6 @@ const SidebarFilter = () => {
                       value={winner.value}
                       id={winner.name}
                       name="winner"
-                      onClick={() => handleWinnerFilter(winner.value)}
                     />
                     <label htmlFor={winner.name}>{winner.name}</label>
                   </S.CheckboxWrapper>
@@ -80,7 +110,7 @@ const SidebarFilter = () => {
           </fieldset>
         </div>
       </div>
-      <button onClick={() => alert("초기화 클릭")}>
+      <button onClick={handleReset}>
         <BiRefresh size={20} />
         &nbsp; 선택 초기화
       </button>

@@ -8,9 +8,9 @@ interface ParamsType {
 
 export const eventAPI = {
   getEventList: async ({ pageOffset, searchOption }: ParamsType) => {
-    const { flatform, numOfWinner, searchValue, tag } = searchOption;
+    const { platforms, numOfWinner, searchValue, tags } = searchOption;
     const response = await baseURL.get<EventListType>(
-      `/event?offset=${pageOffset}&tag=${"현금"}&flatform=${flatform}&numOfWinner=${numOfWinner}&searchValue=${searchValue}`
+      `/event?offset=${pageOffset}&tags=${tags}&platforms=${platforms}&numOfWinner=${numOfWinner}&searchValue=${searchValue}`
     );
     return response.data;
   },

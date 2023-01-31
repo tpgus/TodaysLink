@@ -54,7 +54,6 @@ export const FilterContainer = styled.div`
 `;
 
 export const CheckboxWrapper = styled.div`
-  border: 1px solid red;
   display: flex;
   align-items: center;
   max-width: max-content;

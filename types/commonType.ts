@@ -34,7 +34,7 @@ export interface QnaType {
 export interface SearchOptionType {
   searchValue: string;
   tags: string;
-  flatform: string;
+  platforms: string[];
   numOfWinner: string;
 }
 export type EventListType = EventType[];

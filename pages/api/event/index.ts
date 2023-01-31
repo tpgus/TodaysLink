@@ -3,13 +3,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import type { MongoClient } from "mongodb";
 import { SearchOptionType } from "../../../types/commonType";
 
-interface Test {
-  offset: string;
-  tag: string;
-  flatform: string;
-  searchValue: string;
-  numOfWinner: string;
-}
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   let client: MongoClient | null = null;
   try {
@@ -20,15 +13,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (req.method === "GET") {
-    const { offset, tag, flatform, searchValue, numOfWinner } = req.query;
-    const options = {};
-    console.log(options);
+    const { offset } = req.query;
+    const options: { [key: string]: string } = {};
+    for (const key in req.query) {
+      if (req.query[key]) {
+        if (req.query["tags"] === "전부 보기" || key === "offset") continue;
+        options[key] = req.query[key] as string;
+      }
+    }
+
     try {
       //컬렉션 이름 event로 수정
-      const eventList = await getLimitedData(client, "link", {
-        limit: 12,
+      const eventList = await getLimitedData(client, "event", {
+        limit: 4,
         skip: Number(offset),
-        filter: options as SearchOptionType,
+        filter: options as Partial<SearchOptionType>,
       });
       res.status(200).json({ message: "success", data: eventList });
     } catch (error) {

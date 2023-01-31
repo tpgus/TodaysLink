@@ -39,6 +39,11 @@ export const GlobalStyle = createGlobalStyle`
        text-decoration:none;
     }
 
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+
     .pc-only{
         display:none;
         ${media.pc}{
