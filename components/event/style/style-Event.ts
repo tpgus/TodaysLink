@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
+import { MIXINS } from "../../../styles/theme";
 
-export const ItemContainer = styled.div<{ isHover: boolean }>`
+export const EventContainer = styled.div<{ isHover: boolean }>`
   width: 90%;
   position: relative;
   display: flex;
@@ -70,19 +71,21 @@ export const ItemContainer = styled.div<{ isHover: boolean }>`
     color: rgb(17 24 39);
     font-size: 0.875rem;
     line-height: 1.25rem;
+    ${MIXINS.lineLimit(2)}
   }
 
-  p {
+  .info-description {
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: rgba(107, 114, 128, 1);
+    ${MIXINS.lineLimit(2)}
   }
 
   .sub-info {
     display: flex;
     flex: 1;
-    flex-direction: column;
-    justify-content: end;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 1rem;
   }
 
@@ -92,12 +95,5 @@ export const ItemContainer = styled.div<{ isHover: boolean }>`
     font-style: italic;
     color: rgb(107 114 128);
     -webkit-line-clamp: 2;
-
-    :nth-of-type(2) {
-      font-size: 1rem;
-      line-height: 1.5rem;
-      font-weight: 500;
-      color: rgb(17 24 39);
-    }
   }
 `;

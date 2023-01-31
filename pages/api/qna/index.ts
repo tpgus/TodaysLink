@@ -44,7 +44,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //GET
   else if (req.method === "GET") {
     try {
-      const myQuestion = await getAllData(client!, "qna", { _id: -1 });
+      const myQuestion = await getAllData(client!, "qna");
       res
         .status(200)
         .json({ message: "내 문의 조회 완료", qnaList: myQuestion });

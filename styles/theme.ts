@@ -56,6 +56,14 @@ export const MIXINS = {
         `;
     return;
   },
+
+  lineLimit: (line = 1) => {
+    return `
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: ${line};`;
+  },
 };
 
 const customMediaQuery = (minWidth: number): string =>

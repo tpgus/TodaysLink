@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { hideNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 import * as S from "./style/style-Notification";

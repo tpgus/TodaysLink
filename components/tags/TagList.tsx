@@ -3,7 +3,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Tag from "./Tag";
 
-const Tags = [
+const TAGS = [
   "전부 보기",
   "오늘 마감",
   "전자기기",
@@ -27,7 +27,7 @@ const TagList = () => {
 
   return (
     <S.TagListContainer>
-      {Tags.map((tag, idx) => (
+      {TAGS.map((tag, idx) => (
         <Tag
           key={uuidv4()}
           tag={tag}

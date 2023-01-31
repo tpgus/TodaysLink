@@ -1,14 +1,14 @@
 import { ObjectId } from "mongodb";
 
-export interface LinkItemType {
-  id: number;
+export interface EventType {
+  _id: string;
   title: string;
   description: string;
   startDate: Date;
   endDate: Date;
   announcementDate: Date;
   image: string;
-  tag: string[];
+  tags: string[];
   url: string;
   warnings: string[];
   numOfWinner: number;
@@ -31,6 +31,12 @@ export interface QnaType {
   resolved: boolean;
 }
 
-export type LinkListType = LinkItemType[];
+export interface SearchOptionType {
+  searchValue: string;
+  tags: string;
+  platforms: string[];
+  numOfWinner: string;
+}
+export type EventListType = EventType[];
 
 export type FaqListType = FaqType[];

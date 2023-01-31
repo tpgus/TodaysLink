@@ -1,16 +1,56 @@
-import LinkList from "../components/link/LinkList";
+import EventList from "../components/event/EventList";
 import SidebarFilter from "../components/left-sidebar/SidebarFilter";
 import TagList from "../components/tags/TagList";
 import Head from "next/head";
-import { buildFilePath, readFileData } from "../helpers/api-util";
-import { GetStaticProps } from "next";
-import type { LinkListType } from "../types/commonType";
+import Button from "../components/ui/Button";
+import { useAppSelector } from "../store";
+import { eventAPI } from "../client-apis/api/event";
+import { useFetch } from "../hooks/useFetch";
+import { useCallback, useEffect, useState } from "react";
+import { eventListParser } from "../helpers/parser-util";
+import {
+  connectDB,
+  getLimitedData,
+  getCountOfDocuments,
+} from "../helpers/db-util";
+import type { GetStaticProps } from "next";
+import type { MongoClient } from "mongodb";
+import type { EventListType } from "../types/commonType";
 
 interface PropsType {
-  linkList: LinkListType;
+  eventList: EventListType;
+  pageOffset: number;
+  countOfDocuments: number;
 }
-
 const HomePage = (props: PropsType) => {
+  const searchOption = useAppSelector((state) => state.searchOption);
+  const [pageOffset, setPageOffset] = useState(props.pageOffset);
+  const [eventList, setEventList] = useState(props.eventList);
+  const totalDataLength = props.countOfDocuments;
+  const {
+    error,
+    isLoading,
+    data,
+    requestFunction: getEventList,
+    resetState,
+  } = useFetch<EventListType>(eventAPI.getEventList);
+
+  const fetchEventList = useCallback(() => {
+    getEventList({ pageOffset, searchOption });
+    setPageOffset((prevOffset) => prevOffset + 12);
+  }, [getEventList, pageOffset, searchOption]);
+
+  const getMoreDataBtnHandler = () => {
+    console.log("더보기 클릭");
+    fetchEventList();
+  };
+
+  if (!isLoading && data && !error) {
+    console.log(data);
+    setEventList([...eventList, ...data]);
+    resetState();
+  }
+
   return (
     <>
       <Head>
@@ -22,23 +62,55 @@ const HomePage = (props: PropsType) => {
       </Head>
       <TagList />
       <SidebarFilter />
-      <LinkList linkList={props.linkList} />
+      <EventList
+        eventList={eventList}
+        pageOffset={pageOffset}
+        pageCount={totalDataLength}
+      />
+      <div className="center">
+        <Button onClick={getMoreDataBtnHandler}>
+          {isLoading ? "로딩 중..." : "더 보기"}
+        </Button>
+      </div>
     </>
   );
 };
+export default HomePage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  //현재는 파일로 읽지만 나중에 데이터베이스로 코드 변경
-  //api 호출은 클라이언트 사이드에서 하는 것임. 여기는 그냥 서버사이드 코드 바로 사용
-  const filePath = buildFilePath("dummy-data.json");
-  const linkList = await readFileData<LinkListType>(filePath);
+export const getStaticProps: GetStaticProps<{
+  eventList: EventListType;
+}> = async () => {
+  let client: MongoClient | null = null;
+
+  try {
+    client = await connectDB();
+  } catch (error) {
+    console.log(error);
+  }
+
+  const dataList = await getLimitedData(client!, "event", {
+    limit: 4,
+    skip: 0,
+  });
+
+  if (!dataList) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const eventList = eventListParser(dataList);
+
+  const countOfDocuments = await getCountOfDocuments({
+    client: client!,
+    collection: "event",
+  });
 
   return {
     props: {
-      linkList,
+      eventList,
+      pageOffset: 4,
+      countOfDocuments,
     },
-    revalidate: 1800,
   };
 };
-
-export default HomePage;

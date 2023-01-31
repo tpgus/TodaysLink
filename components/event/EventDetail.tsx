@@ -1,21 +1,21 @@
-import * as S from "./style/style-LinkDetail";
+import * as S from "./style/style-EventDetail";
 import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
-import { LinkItemType } from "../../types/commonType";
+import { EventType } from "../../types/commonType";
 
 interface PropsType {
-  linkItem: LinkItemType;
+  event: EventType;
 }
 
-const LinkItemDetail = ({ linkItem }: PropsType) => {
+const EventDetail = ({ event }: PropsType) => {
   return (
-    <S.LinkDetailLayout>
-      <S.LinkDetailContainer>
+    <S.EventDetailLayout>
+      <S.EventDetailContainer>
         <Image
           className="img"
-          src={linkItem.image}
+          src={event.image}
           width={500}
           height={500}
           alt="thumbnail"
@@ -23,15 +23,11 @@ const LinkItemDetail = ({ linkItem }: PropsType) => {
         <S.InfoContainer>
           <div className="info__div info__div--header">
             <div>
-              <h3 className="item-title">{linkItem.title}</h3>
-              <p className="item-description">{linkItem.description}</p>
+              <h3 className="item-title">{event.title}</h3>
+              <p className="item-description">{event.description}</p>
             </div>
             <div className="actions">
-              <Link
-                className="actions__link"
-                href={linkItem.url}
-                target="_blank"
-              >
+              <Link className="actions__link" href={event.url} target="_blank">
                 링크 바로가기
               </Link>
               <Button className="actions__btn">참여 완료</Button>
@@ -41,20 +37,20 @@ const LinkItemDetail = ({ linkItem }: PropsType) => {
             <dl>
               <dt>응모 기간</dt>
               <dd>
-                {linkItem.startDate.toString()} - {linkItem.endDate.toString()}
+                {event.startDate.toString()} - {event.endDate.toString()}
               </dd>
             </dl>
           </div>
           <div className="info__div">
             <dl>
               <dt>당첨자 발표</dt>
-              <dd>{linkItem.announcementDate.toString()}</dd>
+              <dd>{event.announcementDate.toString()}</dd>
             </dl>
           </div>
           <div className="info__div">
             <dl>
               <dt>당첨 인원</dt>
-              <dd>{linkItem.numOfWinner}</dd>
+              <dd>{event.numOfWinner}</dd>
             </dl>
           </div>
           <div className="info__div">
@@ -62,7 +58,7 @@ const LinkItemDetail = ({ linkItem }: PropsType) => {
               <dt>유의 사항</dt>
               <dd>
                 <ul>
-                  {linkItem.warnings.map((warning) => (
+                  {event.warnings.map((warning) => (
                     <li key={uuidv4()}>{warning}</li>
                   ))}
                 </ul>
@@ -70,9 +66,9 @@ const LinkItemDetail = ({ linkItem }: PropsType) => {
             </dl>
           </div>
         </S.InfoContainer>
-      </S.LinkDetailContainer>
-    </S.LinkDetailLayout>
+      </S.EventDetailContainer>
+    </S.EventDetailLayout>
   );
 };
 
-export default LinkItemDetail;
+export default EventDetail;

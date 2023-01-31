@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
-export const LinkListContainer = styled.ul`
+export const EventListContainer = styled.ul`
   .grid-container {
     padding-top: 4.5rem;
     display: grid;
@@ -12,7 +12,7 @@ export const LinkListContainer = styled.ul`
 
     ${media.pc} {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 3rem 3rem;
+      gap: 4rem;
       padding-top: 6rem;
       max-width: 65%;
       /* max-width: 1280px; */
