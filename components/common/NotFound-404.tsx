@@ -1,15 +1,10 @@
 import Link from "next/link";
 import * as S from "./style/style-NotFound";
 
-interface PropsType {
-  errorMessage: string;
-}
-
-const NotFound = (props: PropsType) => {
+const NotFound = () => {
   return (
     <S.NotFoundContainer>
       <main>
-        {props.errorMessage ? <p>{props.errorMessage}</p> : null}
         <p>404</p>
         <div>
           <div className="message">

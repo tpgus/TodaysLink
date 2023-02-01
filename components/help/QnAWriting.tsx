@@ -118,7 +118,7 @@ const QnAWriting = (props: PropsType) => {
             <Button
               className="registration__btn"
               type="submit"
-              disable={isLoading}
+              disabled={isLoading}
             >
               {isLoading ? "등록 중..." : "등록하기"}
             </Button>

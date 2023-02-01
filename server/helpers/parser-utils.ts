@@ -36,7 +36,6 @@ export const getParsedOptions = (
     const numOfWinner = parseInt(rawOptions["numOfWinner"] as string);
 
     if (rawOptions["numOfWinner"] === "1") {
-      //1 이상 50 미만
       options["numOfWinner"] = { $gte: numOfWinner, $lt: 50 };
     } else {
       options["numOfWinner"] = {
@@ -46,7 +45,6 @@ export const getParsedOptions = (
   }
 
   //'INSTAGRAM' 'FACEBOOK' 'YOUTUBE' 'NAVER' 'APP_ONLY' 'OFFICAL_WEB'
-  // 플랫폼은 일반적으로는 한 개이지만, 예외적으로 여러 개일 수도 있는 경우를 고려
   if (rawOptions["platforms"]) {
     if (rawOptions["platforms"].includes(",")) {
       options["platforms"] = {

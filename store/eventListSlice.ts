@@ -14,6 +14,7 @@ const INITIAL_EVENTLIST: EventListType = [];
 const initialState = {
   eventList: INITIAL_EVENTLIST,
   filterOptions: INITIAL_OPTIONS,
+  totalLength: 0,
   pageOffset: 0,
 };
 
@@ -23,6 +24,10 @@ export const eventListSlice = createSlice({
   reducers: {
     setEventList: (state, action: PayloadAction<EventListType>) => {
       state.eventList = state.eventList.concat(action.payload);
+    },
+
+    setTotalLength: (state, action: PayloadAction<number>) => {
+      state.totalLength = action.payload;
     },
 
     setPageOffset: (state, action: PayloadAction<number>) => {

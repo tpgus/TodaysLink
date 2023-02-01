@@ -81,7 +81,6 @@ export const getLimitedData = async (
     .skip(options.skip)
     .toArray();
 
-  console.log("db-utils options:", options);
   return documents;
 };
 
