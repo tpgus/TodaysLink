@@ -35,6 +35,7 @@
 <summary>Todo List</summary>
 <div markdown="1">
 
+- 메인 index 코드 수정
 - FAQ 페이지 카테고리 분리
 - controller db 연결 코드 합치기
 - 클라이언트 네트워크 요청 커스텀 훅 사용하기 -> api 폴더
