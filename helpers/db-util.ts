@@ -1,6 +1,6 @@
 import { Collection, Db, MongoClient, ObjectId } from "mongodb";
 import type { Document, Sort } from "mongodb";
-import type { SearchOptionType } from "../types/commonType";
+import type { SearchOptionType } from "../types";
 
 type CollectionType = "qna" | "event"; //컬렉션 종류
 
@@ -72,16 +72,22 @@ export const getLimitedData = async (
   const db = client.db(DB_NAME);
   const documents = await db
     .collection(collection)
-    .find(options.filter || {})
+    .find({
+      platforms: { $in: ["INSTAGRAM", "APP_ONLY"] },
+      numOfWinner: { $gt: 1 },
+      tags: "전자기기",
+    })
     .limit(options.limit)
     .skip(options.skip)
     .toArray();
+
+  console.log("db-utils options:", options);
   return documents;
 };
 
 export const getCountOfDocuments = async <T>(params: ParamsType<T>) => {
   const { client, collection } = params;
-  const db = client.db(DB_NAME);
+  const db = client.db(process.env.DB_NAME);
   const count = await db!.collection(collection).estimatedDocumentCount();
   //문서의 갯수를 세는 방법으로 countDocuments와 estimatedDocumentCount가 있는데
   //estimatedDocumentCount가 더 빠르다.

@@ -11,7 +11,7 @@ export const useFetch = <T>(ApiFunction: Function) => {
       try {
         setIsLoading(true);
         const response = await ApiFunction(params);
-        setData(response.data);
+        setData(response);
       } catch (error) {
         if (error instanceof AxiosError) {
           setError(error);

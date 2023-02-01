@@ -1,7 +1,7 @@
 import EventDetail from "../../components/event/EventDetail";
 import Head from "next/head";
-import { buildFilePath, readFileData } from "../../helpers/api-util";
-import type { EventType, EventListType } from "../../types/commonType";
+import { buildFilePath, readFileData } from "../../server/helpers/file-utils";
+import type { EventType, EventListType } from "../../types";
 import type { ParsedUrlQuery } from "querystring";
 import type { GetStaticPaths, GetStaticProps } from "next";
 

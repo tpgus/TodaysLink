@@ -9,10 +9,6 @@ const Search = () => {
   const dispatch = useAppDispatch();
   const { searchValue } = useAppSelector((state) => state.searchOption);
 
-  useEffect(() => {
-    console.log(searchValue);
-  }, [searchValue]);
-
   const search = () => {
     // 실제 검색 요청과 관련된 코드
     if (searchInputRef.current === null) return;

@@ -96,4 +96,8 @@ export const EventContainer = styled.div<{ isHover: boolean }>`
     color: rgb(107 114 128);
     -webkit-line-clamp: 2;
   }
+
+  .end-time {
+    font-weight: bold;
+  }
 `;

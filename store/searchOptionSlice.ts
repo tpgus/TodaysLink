@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { SearchOptionType } from "../types/commonType";
+import type { SearchOptionType } from "../types";
 
 const initialState: SearchOptionType = {
   searchValue: "",
@@ -34,8 +34,6 @@ export const searchOptionSlice = createSlice({
     },
 
     resetFilter: (state) => {
-      state.searchValue = "";
-      state.tags = "전부 보기";
       state.platforms = [];
       state.numOfWinner = "";
     },

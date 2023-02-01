@@ -1,4 +1,4 @@
-import { QnaType } from "../../types/commonType";
+import { QnaType } from "../../types";
 import { useRouter } from "next/router";
 import Button from "../ui/Button";
 import * as S from "./style/style-QnADetail";

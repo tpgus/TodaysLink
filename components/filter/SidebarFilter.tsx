@@ -38,10 +38,6 @@ const SidebarFilter = () => {
   );
 
   const dispatch = useAppDispatch();
-  const test = useAppSelector((state) => state.searchOption);
-  useEffect(() => {
-    console.log(test);
-  }, [test]);
 
   const handlePlatformFilter = (idx: number) => {
     const updatedCheckedState = checkedPlatformState.slice();

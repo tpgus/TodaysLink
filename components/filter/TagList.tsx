@@ -1,7 +1,9 @@
 import * as S from "./style/style-TagList";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Tag from "./Tag";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { setTag } from "../../store/searchOptionSlice";
 
 const TAGS = [
   "전부 보기",
@@ -19,10 +21,13 @@ const TAGS = [
 ];
 
 const TagList = () => {
+  //상태 한 곳에서 관리하기
   const [clickedTagIdx, setClickedTagIdx] = useState(0);
+  const dispatch = useAppDispatch();
 
-  const handleClickTag = (index: number) => {
-    setClickedTagIdx(index);
+  const handleClickTag = (idx: number) => {
+    setClickedTagIdx(idx);
+    dispatch(setTag(TAGS[idx]));
   };
 
   return (

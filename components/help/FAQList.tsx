@@ -3,7 +3,7 @@ import { useState } from "react";
 import Pagination from "../common/Pagination";
 import FAQitem from "./FAQitem";
 import * as S from "./style/style-FAQList";
-import type { FaqListType } from "../../types/commonType";
+import type { FaqListType } from "../../types";
 
 interface PropsType {
   faqList: FaqListType;

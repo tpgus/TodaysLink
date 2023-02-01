@@ -1,10 +1,10 @@
 import Head from "next/head";
 import FAQList from "../../components/help/FAQList";
 import HelpPageLayout from "../../components/help/HelpPageLayout";
-import { buildFilePath, readFileData } from "../../helpers/api-util";
+import { buildFilePath, readFileData } from "../../server/helpers/file-utils";
 import type { GetStaticProps } from "next";
 import type { ReactElement } from "react";
-import type { FaqListType } from "../../types/commonType";
+import type { FaqListType } from "../../types";
 
 interface PropsType {
   faqList: FaqListType;

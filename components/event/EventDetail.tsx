@@ -3,7 +3,7 @@ import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
-import { EventType } from "../../types/commonType";
+import { EventType } from "../../types";
 
 interface PropsType {
   event: EventType;
