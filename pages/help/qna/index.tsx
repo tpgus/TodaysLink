@@ -7,7 +7,7 @@ import HelpPageLayout from "../../../components/help/HelpPageLayout";
 import LoadingSpinner from "../../../components/common/LoadingSpinner";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../../pages/_app";
-import type { QnaType } from "../../../types/commonType";
+import type { QnaType } from "../../../types";
 
 const QnAPage: NextPageWithLayout = () => {
   const parentRef = useRef<HTMLDivElement>(null);

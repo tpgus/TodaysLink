@@ -1,5 +1,5 @@
 import { connectDB, insertData, getAllData } from "../../../helpers/db-util";
-import { QnaType } from "../../../types/commonType";
+import { QnaType } from "../../../types";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

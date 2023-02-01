@@ -1,13 +1,13 @@
 import * as S from "./style/style-QnAWriting";
 import { RotatingLines } from "react-loader-spinner";
 import { useRef, useState } from "react";
-import { validate } from "../../helpers/validation-util";
+import { validate } from "../../helpers/checkValidation-util";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 import Joi from "joi";
 import Notification from "../common/Notification";
 import Button from "../ui/Button";
-import type { QnaType } from "../../types/commonType";
+import type { QnaType } from "../../types";
 
 interface PropsType {
   onComplete: () => void;
@@ -118,7 +118,7 @@ const QnAWriting = (props: PropsType) => {
             <Button
               className="registration__btn"
               type="submit"
-              disable={isLoading}
+              disabled={isLoading}
             >
               {isLoading ? "등록 중..." : "등록하기"}
             </Button>

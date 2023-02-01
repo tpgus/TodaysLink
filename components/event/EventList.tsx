@@ -1,21 +1,23 @@
 import * as S from "./style/style-EventList";
 import Event from "./Event";
-import Button from "../ui/Button";
 import { v4 as uuidv4 } from "uuid";
-import { useEffect, useState } from "react";
-import { useAppSelector } from "../../store";
-import type { EventListType } from "../../types/commonType";
+import { ImSad } from "react-icons/im";
+import type { EventListType } from "../../types";
 
 interface PropsType {
   eventList: EventListType;
-  pageOffset: number;
-  pageCount: number;
+  isLoading: boolean;
 }
 
 const EventList = (props: PropsType) => {
-  const currentPage = Math.ceil(props.eventList.length / 12);
-  const totalPage = Math.ceil(props.pageCount / 12);
-
+  if (props.eventList.length === 0 && !props.isLoading) {
+    return (
+      <S.NothingToShow>
+        <ImSad size={100} />
+        <p>데이터가 존재하지 않습니다.</p>
+      </S.NothingToShow>
+    );
+  }
   return (
     <>
       <S.EventListContainer>
@@ -25,15 +27,6 @@ const EventList = (props: PropsType) => {
           ))}
         </div>
       </S.EventListContainer>
-      {/* <S.MoreButtonContainer>
-        <Button
-          onClick={handleClickMoreBtn}
-          disable={currentPage === totalPage}
-        >
-          더 보기&nbsp;
-          <span>{`${currentPage}/${totalPage}`}</span>
-        </Button>
-      </S.MoreButtonContainer> */}
     </>
   );
 };

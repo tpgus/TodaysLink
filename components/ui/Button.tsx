@@ -7,7 +7,7 @@ interface PropsType {
   className?: string;
   bg?: string;
   type?: "submit";
-  disable?: boolean;
+  disabled?: boolean;
 }
 
 const Button = (props: PropsType) => {
@@ -17,7 +17,7 @@ const Button = (props: PropsType) => {
       onClick={props.onClick}
       bg={props.bg}
       type={props.type}
-      disabled={props.disable}
+      disabled={props.disabled}
     >
       {props.children}
     </S.Button>

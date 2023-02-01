@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../../styles/theme";
+import { MIXINS } from "../../../styles/theme";
 
 export const EventListContainer = styled.ul`
   .grid-container {
@@ -24,6 +25,14 @@ export const EventListContainer = styled.ul`
       place-items: center;
     }
   }
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
 `;
 
 export const MoreButtonContainer = styled.div`
@@ -46,5 +55,16 @@ export const MoreButtonContainer = styled.div`
     span {
       font-size: 0.9rem;
     }
+  }
+`;
+
+export const NothingToShow = styled.div`
+  ${MIXINS.positionCenter()}
+  text-align: center;
+
+  p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
   }
 `;

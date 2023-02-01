@@ -1,8 +1,8 @@
+import * as S from "./style/style-Notification";
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
 import { hideNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
-import * as S from "./style/style-Notification";
 
 const Notification = () => {
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import type { QnaType } from "../../types/commonType";
+import type { QnaType } from "../../types";
 import { useRouter } from "next/router";
 interface PropsType {
   qna: QnaType;

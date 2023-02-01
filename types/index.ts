@@ -34,9 +34,10 @@ export interface QnaType {
 export interface SearchOptionType {
   searchValue: string;
   tags: string;
-  platforms: string[];
+  platforms: string[] | string;
   numOfWinner: string;
 }
+
 export type EventListType = EventType[];
 
 export type FaqListType = FaqType[];

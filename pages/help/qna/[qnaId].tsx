@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import QnADetail from "../../../components/help/QnADetail";
 import HelpPageLayout from "../../../components/help/HelpPageLayout";
 import LoadingSpinner from "../../../components/common/LoadingSpinner";
-import { QnaType } from "../../../types/commonType";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import type { QnaType } from "../../../types";
 import type { ReactElement } from "react";
 
 const QnaDetailPage = () => {

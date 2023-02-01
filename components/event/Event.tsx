@@ -2,7 +2,7 @@ import * as S from "./style/style-Event";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import type { EventType } from "../../types/commonType";
+import type { EventType } from "../../types";
 
 interface PropsType {
   event: EventType;
@@ -45,7 +45,10 @@ const Event = ({ event }: PropsType) => {
           <br />
           <p className="info-description">{event.description}</p>
           <div className="sub-info">
-            <span className="sub-info__span">{"종료 : " + parsedEndDate}</span>
+            <span className="sub-info__span">
+              <span className="end-time"> ~ </span>
+              {parsedEndDate}까지
+            </span>
           </div>
         </div>
       </S.EventContainer>

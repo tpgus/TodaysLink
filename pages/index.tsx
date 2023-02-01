@@ -1,53 +1,81 @@
+import * as S from "../components/event/style/style-EventList";
 import EventList from "../components/event/EventList";
-import SidebarFilter from "../components/left-sidebar/SidebarFilter";
-import TagList from "../components/tags/TagList";
+import SidebarFilter from "../components/filter/SidebarFilter";
+import TagList from "../components/filter/TagList";
 import Head from "next/head";
 import Button from "../components/ui/Button";
-import { useAppSelector } from "../store";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../store";
 import { eventAPI } from "../client-apis/api/event";
 import { useFetch } from "../hooks/useFetch";
-import { useCallback, useEffect, useState } from "react";
-import { eventListParser } from "../helpers/parser-util";
-import {
-  connectDB,
-  getLimitedData,
-  getCountOfDocuments,
-} from "../helpers/db-util";
+import { resetFilter, setTag } from "../store/searchOptionSlice";
+import { eventListParser } from "../server/helpers/parser-utils";
+import { getEventList } from "../server/controller/eventController";
 import type { GetStaticProps } from "next";
-import type { MongoClient } from "mongodb";
-import type { EventListType } from "../types/commonType";
+import type { EventListType } from "../types";
+
+//일정 지난 것 불러오지 않기
+//상세페이지 ㄱ
+//상태 관리 (리덕스)
+//홈으로 이동시 상태 초기화 ?
 
 interface PropsType {
   eventList: EventListType;
-  pageOffset: number;
-  countOfDocuments: number;
+  totalLength: number;
 }
+
+interface ResponseType {
+  message: string;
+  data: EventListType;
+  totalLength: number;
+}
+
+let isSecondRendering = false;
+
 const HomePage = (props: PropsType) => {
+  const dispatch = useAppDispatch();
   const searchOption = useAppSelector((state) => state.searchOption);
-  const [pageOffset, setPageOffset] = useState(props.pageOffset);
+
   const [eventList, setEventList] = useState(props.eventList);
-  const totalDataLength = props.countOfDocuments;
+  const [pageOffset, setPageOffset] = useState(props.eventList.length);
+  const [totalLength, setTotalLength] = useState(props.totalLength);
+
+  const currentPage = Math.ceil(eventList.length / 12);
+  const totalPage = Math.ceil(totalLength / 12);
+
   const {
     error,
     isLoading,
     data,
     requestFunction: getEventList,
     resetState,
-  } = useFetch<EventListType>(eventAPI.getEventList);
+  } = useFetch<ResponseType>(eventAPI.getEventList);
 
-  const fetchEventList = useCallback(() => {
-    getEventList({ pageOffset, searchOption });
-    setPageOffset((prevOffset) => prevOffset + 12);
-  }, [getEventList, pageOffset, searchOption]);
+  useEffect(() => {
+    return () => {
+      dispatch(setTag("전부 보기"));
+      dispatch(resetFilter());
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isSecondRendering) {
+      setPageOffset(0);
+      setEventList([]);
+      getEventList({ pageOffset: 0, searchOption });
+    } else {
+      isSecondRendering = true;
+    }
+  }, [searchOption, getEventList]);
 
   const getMoreDataBtnHandler = () => {
-    console.log("더보기 클릭");
-    fetchEventList();
+    getEventList({ pageOffset, searchOption });
   };
 
   if (!isLoading && data && !error) {
-    console.log(data);
-    setEventList([...eventList, ...data]);
+    setEventList([...eventList, ...data.data]);
+    setPageOffset(data.data.length);
+    setTotalLength(data.totalLength);
     resetState();
   }
 
@@ -62,16 +90,18 @@ const HomePage = (props: PropsType) => {
       </Head>
       <TagList />
       <SidebarFilter />
-      <EventList
-        eventList={eventList}
-        pageOffset={pageOffset}
-        pageCount={totalDataLength}
-      />
-      <div className="center">
-        <Button onClick={getMoreDataBtnHandler}>
-          {isLoading ? "로딩 중..." : "더 보기"}
-        </Button>
-      </div>
+      <EventList eventList={eventList} isLoading={isLoading} />
+
+      {eventList.length > 0 ? (
+        <S.MoreButtonContainer>
+          <Button
+            onClick={getMoreDataBtnHandler}
+            disabled={currentPage === totalPage}
+          >
+            {isLoading ? "로딩 중..." : `더 보기 ${currentPage}/${totalPage}`}
+          </Button>
+        </S.MoreButtonContainer>
+      ) : null}
     </>
   );
 };
@@ -80,18 +110,7 @@ export default HomePage;
 export const getStaticProps: GetStaticProps<{
   eventList: EventListType;
 }> = async () => {
-  let client: MongoClient | null = null;
-
-  try {
-    client = await connectDB();
-  } catch (error) {
-    console.log(error);
-  }
-
-  const dataList = await getLimitedData(client!, "event", {
-    limit: 4,
-    skip: 0,
-  });
+  const { documents: dataList, totalLength } = await getEventList();
 
   if (!dataList) {
     return {
@@ -101,16 +120,10 @@ export const getStaticProps: GetStaticProps<{
 
   const eventList = eventListParser(dataList);
 
-  const countOfDocuments = await getCountOfDocuments({
-    client: client!,
-    collection: "event",
-  });
-
   return {
     props: {
       eventList,
-      pageOffset: 4,
-      countOfDocuments,
+      totalLength,
     },
   };
 };
