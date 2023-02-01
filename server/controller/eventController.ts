@@ -1,4 +1,4 @@
-import { Db, MongoError, ObjectId } from "mongodb";
+import { Db, ObjectId } from "mongodb";
 import { connectDB } from "../db";
 
 export const getEventById = async (id: string) => {
