@@ -1,16 +1,11 @@
-import { connectDB, insertData, getAllData } from "../../../helpers/db-util";
-import { QnaType } from "../../../types";
+import {
+  getQnaList,
+  insertQna,
+} from "../../../server/controller/qnaController";
+import type { QnaType } from "../../../types";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  let client = null;
-  try {
-    client = await connectDB();
-  } catch (error) {
-    res.status(500).json({ message: "DB 연결 실패" });
-    return;
-  }
-
   //POST
   if (req.method === "POST") {
     const { type, title, content } = req.body;
@@ -27,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
-      const result = await insertData(client!, "qna", question);
+      const result = await insertQna(question);
       const createdQuestion: QnaType = {
         ...question,
         _id: result.insertedId,
@@ -44,10 +39,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //GET
   else if (req.method === "GET") {
     try {
-      const myQuestion = await getAllData(client!, "qna");
-      res
-        .status(200)
-        .json({ message: "내 문의 조회 완료", qnaList: myQuestion });
+      const qnaList = await getQnaList();
+      res.status(200).json({ message: "내 문의 조회 완료", qnaList });
     } catch (error) {
       res.status(500).json({ message: "내 문의 조회 실패" });
     }
