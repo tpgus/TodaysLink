@@ -35,6 +35,7 @@
 <summary>Todo List</summary>
 <div markdown="1">
 
+- 현재 helpers 폴더에 dateParse 함수를 만들어 두고 사용하지는 않고 있음(추후 개선 기록). `EventDetail`, `QnaDetail` 컴포넌트에서 사용하는 코드로 수정 후 기록
 - 서버에서 유효성 -> 422에러
 - 배포시 요청 속도 느림 -> 
 - 메인 index 코드 수정
