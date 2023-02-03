@@ -1,6 +1,6 @@
 import { QnaType } from "../../types";
 import { useRouter } from "next/router";
-import { dateParser } from "../../helpers/date-utils";
+import { dateParser } from "../../helpers/parser-utils";
 import Button from "../ui/Button";
 import * as S from "./style/style-QnADetail";
 

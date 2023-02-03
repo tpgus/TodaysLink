@@ -9,7 +9,8 @@ interface PropsType {
   event: EventType;
 }
 
-const EventDetail = ({ event }: PropsType) => {
+const EventDetail = (props: PropsType) => {
+  const { event } = props;
   const { startDate, endDate, announcementDate } = event;
   const dates = [startDate, endDate, announcementDate];
 

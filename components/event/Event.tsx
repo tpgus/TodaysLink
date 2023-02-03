@@ -12,6 +12,7 @@ const Event = ({ event }: PropsType) => {
   const router = useRouter();
   const [isHover, setIsHover] = useState(false);
 
+  //dateParser 함수 사용하기 -> 개선 기록
   const endDate = new Date(event.endDate);
   const year = endDate.getFullYear();
   const month = endDate.getMonth() + 1;

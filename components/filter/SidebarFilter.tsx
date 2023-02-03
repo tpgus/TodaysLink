@@ -1,8 +1,8 @@
 import * as S from "./style/style-SidebarFilter";
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BiRefresh } from "react-icons/bi";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch } from "../../store";
 import {
   setPlatforms,
   setNumOfWinner,
@@ -26,6 +26,7 @@ const NUM_OF_WINNER = [
   { name: "1000명 이상", value: "1000" },
 ];
 
+//플랫폼 체크박스 초기 상태
 const initPlatformsState = new Array(PLATFORMS.length).fill(false);
 
 const SidebarFilter = () => {

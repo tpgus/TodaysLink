@@ -1,7 +1,6 @@
 import * as S from "./style/style-QnAWriting";
-import { RotatingLines } from "react-loader-spinner";
 import { useRef, useState } from "react";
-import { validate } from "../../helpers/checkValidation-util";
+import { checkNull, validate } from "../../helpers/checkValidation-utils";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 import Joi from "joi";
@@ -15,25 +14,35 @@ interface PropsType {
 }
 
 const QnAWriting = (props: PropsType) => {
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const questionTypeRef = useRef<HTMLSelectElement>(null);
   const questionTitleRef = useRef<HTMLInputElement>(null);
   const questionContentRef = useRef<HTMLTextAreaElement>(null);
   const notificationState = useAppSelector((state) => state.notification);
-  const dispatch = useAppDispatch();
+
+  const resetInputValue = () => {
+    questionTitleRef.current!.value = "";
+    questionContentRef.current!.value = "";
+    questionTypeRef.current!.value = "기타";
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (
-      questionTitleRef.current === null ||
-      questionContentRef.current === null ||
-      questionTypeRef.current === null
+      checkNull([
+        questionTitleRef.current,
+        questionTitleRef.current,
+        questionContentRef.current,
+      ])
     ) {
       return;
     }
-    const title = questionTitleRef.current.value;
-    const content = questionContentRef.current.value;
-    const type = questionTypeRef.current.value;
+
+    const title = questionTitleRef.current!.value;
+    const content = questionContentRef.current!.value;
+    const type = questionTypeRef.current!.value;
 
     const validationOptions = Joi.object({
       title: Joi.string().min(3).max(30).required().label("제목"),
@@ -67,10 +76,8 @@ const QnAWriting = (props: PropsType) => {
       .then(async (response) => {
         let result = await response.json();
         if (response.ok) {
-          questionTitleRef.current!.value = "";
-          questionContentRef.current!.value = "";
-          questionTypeRef.current!.value = "기타";
           dispatch(showNotification({ isPositive: true, message: "등록완료" }));
+          resetInputValue();
           props.onComplete();
           props.onAddQnaToList(result.question);
         } else {

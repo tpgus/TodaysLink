@@ -1,5 +1,13 @@
 import Joi, { ValidationError } from "joi";
 
+export const checkNull = (target: any) => {
+  if (Array.isArray(target)) {
+    return target.every((item) => item === null);
+  }
+  return target === null;
+};
+
+//아래 validate 함수에서 호출
 export const getErrorMessage = (error: ValidationError) => {
   const { context: errorCtx, type: errorType } = error.details[0];
   const target = `[${errorCtx?.label}]`;

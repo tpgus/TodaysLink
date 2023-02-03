@@ -10,8 +10,6 @@ const Notification = () => {
     (state) => state.notification
   );
 
-  const portalElement = document.getElementById("overlay-root") as HTMLElement;
-
   useEffect(() => {
     if (isActive) {
       const timer = setTimeout(() => {
@@ -23,6 +21,8 @@ const Notification = () => {
       };
     }
   });
+
+  const portalElement = document.getElementById("overlay-root") as HTMLElement;
 
   return (
     <>
