@@ -35,7 +35,7 @@
 <summary>Todo List</summary>
 <div markdown="1">
 
-- 서버에서 유효성 
+- 서버에서 유효성 -> 422에러
 - 배포시 요청 속도 느림 -> 
 - 메인 index 코드 수정
 - FAQ 페이지 카테고리 분리
