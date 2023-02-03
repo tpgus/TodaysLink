@@ -3,13 +3,29 @@ import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
-import { EventType } from "../../types";
+import type { EventType } from "../../types";
 
 interface PropsType {
   event: EventType;
 }
 
 const EventDetail = ({ event }: PropsType) => {
+  const { startDate, endDate, announcementDate } = event;
+  const dates = [startDate, endDate, announcementDate];
+
+  //추후 아래의 코드를 주석 코드로 변경 및 개선 기록
+  // const [...] = dates.map((date)=>(dateParser(date));
+  const [formattedStartDate, formattedEndDate, formattedAnnouncementDate] =
+    dates.map((date) =>
+      new Date(date).toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+    );
+
   return (
     <S.EventDetailLayout>
       <S.EventDetailContainer>
@@ -18,7 +34,7 @@ const EventDetail = ({ event }: PropsType) => {
           src={event.image}
           width={500}
           height={500}
-          alt="thumbnail"
+          alt="event-product"
         />
         <S.InfoContainer>
           <div className="info__div info__div--header">
@@ -37,14 +53,14 @@ const EventDetail = ({ event }: PropsType) => {
             <dl>
               <dt>응모 기간</dt>
               <dd>
-                {event.startDate.toString()} - {event.endDate.toString()}
+                {formattedStartDate} - {formattedEndDate}
               </dd>
             </dl>
           </div>
           <div className="info__div">
             <dl>
               <dt>당첨자 발표</dt>
-              <dd>{event.announcementDate.toString()}</dd>
+              <dd>{formattedAnnouncementDate}</dd>
             </dl>
           </div>
           <div className="info__div">

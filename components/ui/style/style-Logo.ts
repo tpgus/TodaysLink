@@ -16,3 +16,10 @@ export const PcLogo = styled.span<{ txtColor?: string }>`
     font-size: 1.3rem;
   }
 `;
+
+export const Logo = styled.div`
+  button {
+    border: transparent;
+    background-color: transparent;
+  }
+`;
