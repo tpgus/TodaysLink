@@ -1,5 +1,6 @@
 import { QnaType } from "../../types";
 import { useRouter } from "next/router";
+import { dateParser } from "../../helpers/date-utils";
 import Button from "../ui/Button";
 import * as S from "./style/style-QnADetail";
 
@@ -13,12 +14,18 @@ const QnADetail = (props: PropsType) => {
 
   if (!qna) return <p>다시 시도해 주세요</p>;
 
-  const registeredDate = new Date(qna.registeredDate);
-  const year = registeredDate.getFullYear();
-  const month = registeredDate.getMonth() + 1;
-  const day = registeredDate.getDate();
-  const hour = registeredDate.getHours();
-  const min = registeredDate.getMinutes();
+  //추후 아래의 코드를 주석 코드로 변경 및 개선 기록
+  // const formattedDate = dateParser(qna.registeredDate);
+  const formattedDate = new Date(qna.registeredDate).toLocaleDateString(
+    "ko-KR",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    }
+  );
 
   return (
     <S.QnALayout>
@@ -33,7 +40,7 @@ const QnADetail = (props: PropsType) => {
       </li>
       <li>
         <span>작성일</span>
-        <p>{`${year}-${month}-${day} ${hour}:${min}`}</p>
+        <p>{formattedDate}</p>
       </li>
       <li className="content">
         <span className="content__span">문의 내용</span>

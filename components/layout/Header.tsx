@@ -39,19 +39,21 @@ const Header = () => {
               onClickHamburger={handleHamburgerBtnClick}
             />
           </div>
-          <div className="pc-tablet-only">
-            {NAVIGATION_MENU.map((menu) => (
-              <Link
-                href={menu.path}
-                key={uuidv4()}
-                className={
-                  "nav__link" + `${isActivePath(menu.path) ? " active" : ""}`
-                }
-              >
-                {menu.name}
-              </Link>
-            ))}
-          </div>
+          <ul className="pc-tablet-only">
+            <li>
+              {NAVIGATION_MENU.map((menu) => (
+                <Link
+                  href={menu.path}
+                  key={uuidv4()}
+                  className={
+                    "nav__link" + `${isActivePath(menu.path) ? " active" : ""}`
+                  }
+                >
+                  {menu.name}
+                </Link>
+              ))}
+            </li>
+          </ul>
         </div>
       </nav>
     </HeaderContainer>

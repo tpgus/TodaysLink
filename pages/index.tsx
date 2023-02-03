@@ -15,7 +15,6 @@ import type { GetStaticProps } from "next";
 import type { EventListType } from "../types";
 
 //일정 지난 것 불러오지 않기
-//상세페이지 ㄱ
 //상태 관리 (리덕스)
 //홈으로 이동시 상태 초기화 ?
 
