@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { ObjectId } from "mongodb";
 
 export interface EventType {
@@ -20,14 +21,14 @@ export interface FaqType {
 }
 
 export interface QnaType {
-  _id: ObjectId | null;
+  id: string;
   type: string;
   title: string;
   content: string;
   userId: string;
   answer: string | null;
-  registeredDate: Date;
-  answeredDate: Date | null;
+  registeredDate: Timestamp;
+  answeredDate: Timestamp | null;
   resolved: boolean;
 }
 
