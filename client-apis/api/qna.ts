@@ -40,7 +40,7 @@ export const createQnA = async (qna: any) => {
 };
 
 export const getQnAList = async () => {
-  console.log(process.env.apiKey);
+  console.log(process.env.NEXT_PUBLIC_apiKey);
   console.log(process.env.NODE_ENV);
   try {
     const qnaRef = getRef();
