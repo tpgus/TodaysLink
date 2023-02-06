@@ -8,7 +8,7 @@ const QnAItem = (props: PropsType) => {
   const router = useRouter();
   const { qna } = props;
 
-  const registeredDate = new Date(qna.registeredDate);
+  const registeredDate = qna.registeredDate.toDate();
   const year = registeredDate.getFullYear();
   const month = registeredDate.getMonth() + 1;
   const day = registeredDate.getDate();
@@ -16,10 +16,10 @@ const QnAItem = (props: PropsType) => {
   const handleClickQnaItem = () => {
     router.push(
       {
-        pathname: `/help/qna/${qna._id}`,
+        pathname: `/help/qna/${qna.id}`,
         query: { qna: JSON.stringify(qna) },
       },
-      `/help/qna/${qna._id}`
+      `/help/qna/${qna.id}`
     );
   };
 

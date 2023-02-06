@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { checkNull, validate } from "../../helpers/checkValidation-utils";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
+import { createQnA } from "../../client-apis/api/qna";
 import Joi from "joi";
 import Notification from "../common/Notification";
 import Button from "../ui/Button";
@@ -30,26 +31,17 @@ const QnAWriting = (props: PropsType) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (
-      checkNull([
-        questionTitleRef.current,
-        questionTitleRef.current,
-        questionContentRef.current,
-      ])
-    ) {
-      return;
-    }
-
+    // 요소들이 렌더링된 이후 등록 버튼을 누를 수 있으므로 이 시점에서는 존재한다.
     const title = questionTitleRef.current!.value;
     const content = questionContentRef.current!.value;
     const type = questionTypeRef.current!.value;
 
-    const validationOptions = Joi.object({
+    const validationSchema = Joi.object({
       title: Joi.string().min(3).max(30).required().label("제목"),
       content: Joi.string().min(10).max(500).required().label("내용"),
     });
 
-    const validationResult = await validate(validationOptions, {
+    const validationResult = await validate(validationSchema, {
       title,
       content,
     });
@@ -64,32 +56,23 @@ const QnAWriting = (props: PropsType) => {
       return;
     }
 
-    const bodyData = JSON.stringify({ type, title, content });
-    setIsLoading(true);
-    fetch("/api/qna", {
-      method: "POST",
-      body: bodyData,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(async (response) => {
-        let result = await response.json();
-        if (response.ok) {
-          dispatch(showNotification({ isPositive: true, message: "등록완료" }));
-          resetInputValue();
-          props.onComplete();
-          props.onAddQnaToList(result.question);
-        } else {
-          throw new Error(result.message);
-        }
-      })
-      .catch((err) =>
-        dispatch(showNotification({ isPositive: false, message: err.message }))
-      )
-      .finally(() => {
-        setIsLoading(false);
-      });
+    try {
+      setIsLoading(true);
+      const result = await createQnA({ type, title, content });
+      dispatch(showNotification({ isPositive: true, message: "등록완료" }));
+      resetInputValue();
+      props.onComplete();
+      props.onAddQnaToList(result.createdQnA);
+    } catch (error) {
+      dispatch(
+        showNotification({
+          isPositive: false,
+          message: "문의 등록에 실패했습니다. 다시 시도해 주세요",
+        })
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

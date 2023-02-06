@@ -13,7 +13,7 @@ import { useFetch } from "../hooks/useFetch";
 import { resetFilter, setTag } from "../store/searchOptionSlice";
 import { eventListParser } from "../server/helpers/parser-utils";
 import { getEventList } from "../server/controller/eventController";
-import type { GetStaticProps } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import type { EventListType } from "../types";
 
 //일정 지난 것 불러오지 않기

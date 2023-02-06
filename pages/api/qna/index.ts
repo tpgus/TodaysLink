@@ -4,19 +4,20 @@ import {
 } from "../../../server/controller/qnaController";
 import type { QnaType } from "../../../types";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Timestamp } from "firebase/firestore";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //POST
   if (req.method === "POST") {
     const { type, title, content } = req.body;
     const question: QnaType = {
-      _id: null,
+      id: "",
       type,
       title,
       content,
       userId: "", //유저 아이디 추가
       answer: null,
-      registeredDate: new Date(Date.now()),
+      registeredDate: Timestamp.fromDate(new Date(Date.now())),
       answeredDate: null,
       resolved: false,
     };
@@ -25,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const result = await insertQna(question);
       const createdQuestion: QnaType = {
         ...question,
-        _id: result.insertedId,
+        id: result.insertedId.toString(),
       };
 
       res

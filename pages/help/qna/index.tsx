@@ -1,5 +1,6 @@
 import * as S from "../../../components/help/style/style-QnAWriting";
 import { useRef, useState, useEffect } from "react";
+import { getQnAList } from "../../../client-apis/api/qna";
 import Head from "next/head";
 import QnAList from "../../../components/help/QnAList";
 import QnAWriting from "../../../components/help/QnAWriting";
@@ -16,15 +17,20 @@ const QnAPage: NextPageWithLayout = () => {
   const [isActiveWritingArea, setIsActiveWritingArea] = useState(false);
   const [qnaList, setQnaList] = useState<QnaType[] | null>(null);
 
-  //수정
   useEffect(() => {
-    setIsLoading(true);
-    fetch("/api/qna")
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setQnaList(data.qnaList);
-      });
+    const fetchQnA = async () => {
+      const result = await getQnAList();
+      setQnaList(result.qnaList);
+    };
+
+    try {
+      setIsLoading(true);
+      fetchQnA();
+    } catch (error) {
+      //에러 처리
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   const addNewQna = (qna: QnaType) => {
