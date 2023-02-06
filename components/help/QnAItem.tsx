@@ -13,6 +13,7 @@ const QnAItem = (props: PropsType) => {
   const month = registeredDate.getMonth() + 1;
   const day = registeredDate.getDate();
 
+  //
   const handleClickQnaItem = () => {
     router.push(
       {
