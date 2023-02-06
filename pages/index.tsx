@@ -4,8 +4,10 @@ import SidebarFilter from "../components/filter/SidebarFilter";
 import TagList from "../components/filter/TagList";
 import Head from "next/head";
 import Button from "../components/ui/Button";
+import Notification from "../components/common/Notification";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
+import { showNotification } from "../store/notificationSlice";
 import { eventAPI } from "../client-apis/api/event";
 import { useFetch } from "../hooks/useFetch";
 import { resetFilter, setTag } from "../store/searchOptionSlice";
@@ -34,6 +36,7 @@ let isSecondRendering = false;
 const HomePage = (props: PropsType) => {
   const dispatch = useAppDispatch();
   const searchOption = useAppSelector((state) => state.searchOption);
+  const notificationState = useAppSelector((state) => state.notification);
 
   const [eventList, setEventList] = useState(props.eventList);
   const [pageOffset, setPageOffset] = useState(props.eventList.length);
@@ -68,6 +71,15 @@ const HomePage = (props: PropsType) => {
   }, [searchOption, getEventList]);
 
   const getMoreDataBtnHandler = () => {
+    if (currentPage === totalPage) {
+      dispatch(
+        showNotification({
+          isPositive: false,
+          message: "더이상 불러올 데이터가 없습니다",
+        })
+      );
+      return;
+    }
     getEventList({ pageOffset, searchOption });
   };
 
@@ -90,13 +102,10 @@ const HomePage = (props: PropsType) => {
       <TagList />
       <SidebarFilter />
       <EventList eventList={eventList} isLoading={isLoading} />
-
+      {notificationState.isActive ? <Notification /> : null}
       {eventList.length > 0 ? (
         <S.MoreButtonContainer>
-          <Button
-            onClick={getMoreDataBtnHandler}
-            disabled={currentPage === totalPage}
-          >
+          <Button onClick={getMoreDataBtnHandler}>
             {isLoading ? "로딩 중..." : `더 보기 ${currentPage}/${totalPage}`}
           </Button>
         </S.MoreButtonContainer>

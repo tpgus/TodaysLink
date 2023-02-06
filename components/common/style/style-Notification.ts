@@ -2,18 +2,18 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const NotificationContainer = styled.div<{ isPositive: boolean }>`
-  border-radius: 0.375rem; /* 6px */
+  border-radius: 0.375rem;
   background-color: ${({ isPositive }) =>
     isPositive ? "#f0fdf4" : "rgb(254 242 242)"};
   position: fixed;
-  top: 20%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   z-index: 10;
   display: flex;
   padding: 1rem;
-  color: ${({ isPositive }) => (isPositive ? "#276749" : "rgb(153 27 27)")};
   font-weight: 500;
+  color: ${({ isPositive }) => (isPositive ? "#276749" : "rgb(153 27 27)")};
 
   ${media["fix-mobile"]} {
     width: 60%;
