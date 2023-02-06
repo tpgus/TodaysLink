@@ -16,16 +16,13 @@ const QnADetail = (props: PropsType) => {
 
   //추후 아래의 코드를 주석 코드로 변경 및 개선 기록
   // const formattedDate = dateParser(qna.registeredDate);
-  const formattedDate = new Date(qna.registeredDate).toLocaleDateString(
-    "ko-KR",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-    }
-  );
+  const formattedDate = qna.registeredDate.toDate().toLocaleString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
 
   return (
     <S.QnALayout>
