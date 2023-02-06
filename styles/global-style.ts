@@ -39,6 +39,10 @@ export const GlobalStyle = createGlobalStyle`
        text-decoration:none;
     }
 
+    .test {
+        border: 1px solid red;
+        margin-top: 10rem;
+    }
     .pc-only{
         display:none;
         ${media.pc}{
