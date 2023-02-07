@@ -56,14 +56,12 @@ export const getEventById = async (id: string) => {
     const eventRef = getRef();
     const docRef = doc(eventRef, id);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.data());
+    const event = docSnap.data() as EventType;
     return {
-      ...(docSnap.data() as EventType),
-      startDate: (docSnap.data() as EventType).startDate.toDate().toString(),
-      endDate: (docSnap.data() as EventType).endDate.toDate().toString(),
-      announcementDate: (docSnap.data() as EventType).announcementDate
-        .toDate()
-        .toString(),
+      ...event,
+      startDate: event.startDate.toDate().toString(),
+      endDate: event.endDate.toDate().toString(),
+      announcementDate: event.announcementDate.toDate().toString(),
     };
   } catch (error) {
     throw error;

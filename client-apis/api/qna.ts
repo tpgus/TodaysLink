@@ -59,3 +59,15 @@ export const getQnAList = async () => {
     throw error;
   }
 };
+
+export const getQnAById = async (id: string) => {
+  try {
+    const eventRef = getRef();
+    const docRef = doc(eventRef, id);
+    const docSnap = await getDoc(docRef);
+    const qna = docSnap.data() as QnaType;
+    return qna;
+  } catch (error) {
+    throw error;
+  }
+};
