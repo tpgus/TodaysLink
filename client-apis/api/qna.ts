@@ -5,6 +5,8 @@ import {
   getDoc,
   getDocs,
   doc,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "../../helpers/firestore";
 import { QnaType } from "../../types";
@@ -40,6 +42,8 @@ export const createQnA = async (qna: any) => {
 };
 
 export const getQnAList = async () => {
+  console.log(process.env.apiKey);
+  console.log(process.env.NEXT_PUBLIC_apikey);
   try {
     const qnaRef = getRef();
     const docSanp = await getDocs(qnaRef);
@@ -51,7 +55,6 @@ export const getQnAList = async () => {
         id: doc.id,
       });
     });
-
     return { message: "success", qnaList };
   } catch (error) {
     throw error;
