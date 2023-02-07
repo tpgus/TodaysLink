@@ -13,19 +13,19 @@ const Event = ({ event }: PropsType) => {
   const [isHover, setIsHover] = useState(false);
 
   //dateParser 함수 사용하기 -> 개선 기록
-  const endDate = new Date(event.endDate);
+  const endDate = new Date(event.endDate.toString());
   const year = endDate.getFullYear();
   const month = endDate.getMonth() + 1;
   const day = endDate.getDate();
   const hour = endDate.getHours();
   const min = endDate.getMinutes();
-  const parsedEndDate = `${year}년 ${month}월 ${day}일 16시 40분`;
+  const parsedEndDate = `${year}년 ${month}월 ${day}일 ${hour}시 ${min}분`;
 
   return (
     <>
       <S.EventContainer
         isHover={isHover}
-        onClick={() => router.push(`/detail/${event._id}`)}
+        onClick={() => router.push(`/detail/${event.id}`)}
         onMouseOver={() => setIsHover(true)}
         onMouseOut={() => setIsHover(false)}
       >

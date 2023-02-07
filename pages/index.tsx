@@ -8,13 +8,10 @@ import Notification from "../components/common/Notification";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import { showNotification } from "../store/notificationSlice";
-import { eventAPI } from "../client-apis/api/event";
-import { useFetch } from "../hooks/useFetch";
+import { getEventList } from "../client-apis/api/event";
 import { resetFilter, setTag } from "../store/searchOptionSlice";
-import { eventListParser } from "../server/helpers/parser-utils";
-import { getEventList } from "../server/controller/eventController";
-import type { GetStaticProps, NextPage } from "next";
-import type { EventListType } from "../types";
+import type { GetStaticProps } from "next";
+import type { EventListType, SearchOptionType } from "../types";
 
 //일정 지난 것 불러오지 않기
 //상태 관리 (리덕스)
@@ -22,13 +19,7 @@ import type { EventListType } from "../types";
 
 interface PropsType {
   eventList: EventListType;
-  totalLength: number;
-}
-
-interface ResponseType {
-  message: string;
-  data: EventListType;
-  totalLength: number;
+  lastDocumentId: string;
 }
 
 let isSecondRendering = false;
@@ -39,21 +30,10 @@ const HomePage = (props: PropsType) => {
   const notificationState = useAppSelector((state) => state.notification);
 
   const [eventList, setEventList] = useState(props.eventList);
-  const [pageOffset, setPageOffset] = useState(props.eventList.length);
-  const [totalLength, setTotalLength] = useState(props.totalLength);
-
-  const currentPage = Math.ceil(eventList.length / 12);
-  const totalPage = Math.ceil(totalLength / 12);
-
-  const {
-    error,
-    isLoading,
-    data,
-    requestFunction: getEventList,
-    resetState,
-  } = useFetch<ResponseType>(eventAPI.getEventList);
+  const [pageOffset, setPageOffset] = useState(props.lastDocumentId);
 
   useEffect(() => {
+    //페이지 벗어날 때 -> 다른 방법
     return () => {
       dispatch(setTag("전부 보기"));
       dispatch(resetFilter());
@@ -61,34 +41,27 @@ const HomePage = (props: PropsType) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isSecondRendering) {
-      setPageOffset(0);
-      setEventList([]);
-      getEventList({ pageOffset: 0, searchOption });
-    } else {
-      isSecondRendering = true;
-    }
-  }, [searchOption, getEventList]);
+    //리덕스 상태 초기화 + 페이지 사전렌더링 관련
+    const fetchEventList = async () => {
+      if (isSecondRendering) {
+        const { eventList } = await getEventList(searchOption);
+        setEventList(eventList);
+      } else {
+        isSecondRendering = true;
+      }
+    };
+    fetchEventList();
+  }, [searchOption]);
 
-  const getMoreDataBtnHandler = () => {
-    if (currentPage === totalPage) {
-      dispatch(
-        showNotification({
-          isPositive: false,
-          message: "더이상 불러올 데이터가 없습니다",
-        })
-      );
-      return;
-    }
-    getEventList({ pageOffset, searchOption });
+  const getMoreDataBtnHandler = async () => {
+    const { eventList: newEventList, lastDocumentId } = await getEventList(
+      searchOption,
+      pageOffset
+    );
+    if (newEventList.length === 0) return;
+    setEventList([...eventList, ...newEventList]);
+    setPageOffset(lastDocumentId!);
   };
-
-  if (!isLoading && data && !error) {
-    setEventList([...eventList, ...data.data]);
-    setPageOffset(data.data.length);
-    setTotalLength(data.totalLength);
-    resetState();
-  }
 
   return (
     <>
@@ -101,13 +74,11 @@ const HomePage = (props: PropsType) => {
       </Head>
       <TagList />
       <SidebarFilter />
-      <EventList eventList={eventList} isLoading={isLoading} />
+      <EventList eventList={eventList} />
       {notificationState.isActive ? <Notification /> : null}
       {eventList.length > 0 ? (
         <S.MoreButtonContainer>
-          <Button onClick={getMoreDataBtnHandler}>
-            {isLoading ? "로딩 중..." : `더 보기 ${currentPage}/${totalPage}`}
-          </Button>
+          <Button onClick={getMoreDataBtnHandler}>더 보기</Button>
         </S.MoreButtonContainer>
       ) : null}
     </>
@@ -118,20 +89,24 @@ export default HomePage;
 export const getStaticProps: GetStaticProps<{
   eventList: EventListType;
 }> = async () => {
-  const { documents: dataList, totalLength } = await getEventList();
+  const initialState: SearchOptionType = {
+    searchValue: "",
+    tags: "전부 보기",
+    platforms: [],
+    numOfWinner: 0,
+  };
+  const { eventList, lastDocumentId } = await getEventList(initialState);
 
-  if (!dataList) {
+  if (!eventList) {
     return {
       notFound: true,
     };
   }
 
-  const eventList = eventListParser(dataList);
-
   return {
     props: {
-      eventList,
-      totalLength,
+      eventList: eventList,
+      lastDocumentId,
     },
   };
 };

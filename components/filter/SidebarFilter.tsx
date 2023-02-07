@@ -58,7 +58,7 @@ const SidebarFilter = () => {
   const handleWinnerFilter = (idx: number) => {
     const numOfWinner = NUM_OF_WINNER[idx].value;
     setCheckedNumOfWinner(idx);
-    dispatch(setNumOfWinner(numOfWinner));
+    dispatch(setNumOfWinner(Number(numOfWinner)));
   };
 
   const handleReset = () => {

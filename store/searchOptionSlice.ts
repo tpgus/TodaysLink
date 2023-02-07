@@ -6,7 +6,7 @@ const initialState: SearchOptionType = {
   searchValue: "",
   tags: "전부 보기",
   platforms: [],
-  numOfWinner: "",
+  numOfWinner: 0,
 };
 
 export const searchOptionSlice = createSlice({
@@ -29,13 +29,13 @@ export const searchOptionSlice = createSlice({
       state.platforms = action.payload;
     },
 
-    setNumOfWinner: (state, action: PayloadAction<string>) => {
+    setNumOfWinner: (state, action: PayloadAction<number>) => {
       state.numOfWinner = action.payload;
     },
 
     resetFilter: (state) => {
       state.platforms = [];
-      state.numOfWinner = "";
+      state.numOfWinner = 0;
     },
   },
 });

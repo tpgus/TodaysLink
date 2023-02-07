@@ -42,11 +42,10 @@ export const createQnA = async (qna: any) => {
 };
 
 export const getQnAList = async () => {
-  console.log(process.env.apiKey);
-  console.log(process.env.NEXT_PUBLIC_apikey);
   try {
     const qnaRef = getRef();
-    const docSanp = await getDocs(qnaRef);
+    const q = query(qnaRef, orderBy("registeredDate", "desc"));
+    const docSanp = await getDocs(q);
 
     const qnaList: QnaType[] = [];
     docSanp.forEach((doc) => {

@@ -18,7 +18,7 @@ const EventDetail = (props: PropsType) => {
   // const [...] = dates.map((date)=>(dateParser(date));
   const [formattedStartDate, formattedEndDate, formattedAnnouncementDate] =
     dates.map((date) =>
-      new Date(date).toLocaleDateString("ko-KR", {
+      new Date(date.toString()).toLocaleDateString("ko-KR", {
         year: "numeric",
         month: "long",
         day: "numeric",
