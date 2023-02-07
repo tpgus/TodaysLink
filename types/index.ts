@@ -1,13 +1,12 @@
 import { Timestamp } from "firebase/firestore";
-import { ObjectId } from "mongodb";
 
 export interface EventType {
-  _id: string;
+  id: string;
   title: string;
   description: string;
-  startDate: Date;
-  endDate: Date;
-  announcementDate: Date;
+  startDate: Timestamp;
+  endDate: Timestamp;
+  announcementDate: Timestamp;
   image: string;
   tags: string[];
   url: string;
@@ -36,7 +35,7 @@ export interface SearchOptionType {
   searchValue: string;
   tags: string;
   platforms: string[] | string;
-  numOfWinner: string;
+  numOfWinner: number;
 }
 
 export type EventListType = EventType[];

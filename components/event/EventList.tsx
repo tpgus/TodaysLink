@@ -6,11 +6,10 @@ import type { EventListType } from "../../types";
 
 interface PropsType {
   eventList: EventListType;
-  isLoading: boolean;
 }
 
 const EventList = (props: PropsType) => {
-  if (props.eventList.length === 0 && !props.isLoading) {
+  if (props.eventList.length === 0) {
     return (
       <S.NothingToShow>
         <ImSad size={100} />

@@ -1,20 +1,88 @@
-import { baseURL } from "../config/index";
-import type { EventListType, SearchOptionType } from "../../types";
+import {
+  collection,
+  getDoc,
+  getDocs,
+  doc,
+  query,
+  orderBy,
+  limit,
+  startAfter,
+  Query,
+  DocumentData,
+} from "firebase/firestore";
+import { db } from "../../helpers/firestore";
+import { EventListType, EventType, SearchOptionType } from "../../types";
 
-interface ParamsType {
-  pageOffset: number;
-  searchOption: SearchOptionType;
-}
+export const getRef = () => collection(db, "event");
 
-export const eventAPI = {
-  getEventList: async ({ pageOffset, searchOption }: ParamsType) => {
-    const { platforms, numOfWinner, searchValue, tags } = searchOption;
-    //tags는 '공유 & 초대'로 인해 '&'문자가 필요하다. 따라서 encoding 과정이 필요하다
-    const response = await baseURL.get<EventListType>(
-      `/event?tags=${encodeURIComponent(
-        tags
-      )}&platforms=${platforms}&numOfWinner=${numOfWinner}&searchValue=${searchValue}&pageOffset=${pageOffset}`
-    );
-    return response.data;
-  },
+export const getEventList = async (
+  options: SearchOptionType,
+  beforeDocumentId?: string
+) => {
+  try {
+    const eventRef = getRef();
+    let q: Query<DocumentData>;
+    if (beforeDocumentId) {
+      //페이지 네이션
+      const docRef = doc(eventRef, beforeDocumentId);
+      const docSnap = await getDoc(docRef);
+      q = query(eventRef, limit(4), orderBy("endDate"), startAfter(docSnap));
+    } else {
+      q = query(eventRef, limit(4), orderBy("endDate"));
+    }
+
+    const documents = await getDocs(q);
+    if (documents.size === 0) return { eventList: [] };
+    const lastDocumentId = documents.docs[documents.docs.length - 1].id;
+    const eventList: EventListType = [];
+    documents.forEach((document) => {
+      eventList.push({
+        ...(document.data() as EventType),
+        startDate: document.data().startDate.toDate().toString(),
+        endDate: document.data().endDate.toDate().toString(),
+        announcementDate: document.data().announcementDate.toDate().toString(),
+        id: document.id,
+      });
+    });
+
+    return { eventList, lastDocumentId };
+  } catch (error) {
+    throw error;
+  }
 };
+
+export const getEventById = async (id: string) => {
+  try {
+    const eventRef = getRef();
+    const docRef = doc(eventRef, id);
+    const docSnap = await getDoc(docRef);
+    console.log(docSnap.data());
+    return {
+      ...(docSnap.data() as EventType),
+      startDate: (docSnap.data() as EventType).startDate.toDate().toString(),
+      endDate: (docSnap.data() as EventType).endDate.toDate().toString(),
+      announcementDate: (docSnap.data() as EventType).announcementDate
+        .toDate()
+        .toString(),
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getEventIds = async () => {
+  try {
+    const eventRef = getRef();
+    const q = query(eventRef, limit(4), orderBy("endDate"));
+    const documents = await getDocs(q);
+    const ids: string[] = [];
+    documents.forEach((document) => {
+      ids.push(document.id);
+    });
+    return ids;
+  } catch (error) {
+    throw error;
+  }
+};
+
+//51,222,1,50,999999999,999999999,54

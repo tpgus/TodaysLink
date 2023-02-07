@@ -1,10 +1,6 @@
 import EventDetail from "../../components/event/EventDetail";
 import Head from "next/head";
-import { eventListParser } from "../../server/helpers/parser-utils";
-import {
-  getEventIds,
-  getEventById,
-} from "../../server/controller/eventController";
+import { getEventIds, getEventById } from "../../client-apis/api/event";
 import type { EventType } from "../../types";
 import type { ParsedUrlQuery } from "querystring";
 import type { GetStaticPaths, GetStaticProps } from "next";
@@ -46,8 +42,7 @@ interface Params extends ParsedUrlQuery {
 //현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
 export const getStaticProps: GetStaticProps = async (context) => {
   const { eventId } = context.params as Params;
-  const rawEvent = await getEventById(eventId);
-  const event = eventListParser(rawEvent)[0];
+  const event = await getEventById(eventId);
 
   if (!event) {
     //fallback:true이지만(=주어진 경로값 이외에 여러 경로값의 입력을 허용하지만), 해당 경로 값에 대한 데이터를 찾지 못한 경우
@@ -63,9 +58,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const rawIds = await getEventIds();
-  const ids = rawIds.map((rawId) => rawId._id);
-  const params = ids.map((id) => ({ params: { eventId: id.toString() } }));
+  const ids = await getEventIds();
+  const params = ids.map((id) => ({ params: { eventId: id } }));
 
   return {
     paths: params,
