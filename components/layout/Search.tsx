@@ -1,7 +1,10 @@
 import * as S from "./style/style-Search";
+import Joi from "joi";
 import { AiOutlineSearch } from "react-icons/ai";
+import { validate } from "../../helpers/checkValidation-utils";
 import { useRef, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store";
+import { showNotification } from "../../store/notificationSlice";
 import { setSearchValue } from "../../store/searchOptionSlice";
 
 const Search = () => {
@@ -9,10 +12,28 @@ const Search = () => {
   const dispatch = useAppDispatch();
   const { searchValue } = useAppSelector((state) => state.searchOption);
 
-  const search = () => {
+  const search = async () => {
     // 실제 검색 요청과 관련된 코드
-    if (searchInputRef.current === null) return;
-    dispatch(setSearchValue(searchInputRef.current!.value));
+    const value = searchInputRef.current!.value;
+    const validationSchema = Joi.object({
+      value: Joi.string().min(2).max(10).label("검색어"),
+    });
+
+    const validationResult = await validate(validationSchema, {
+      value,
+    });
+
+    if (validationResult.errorMessage) {
+      dispatch(
+        showNotification({
+          isPositive: false,
+          message: validationResult.errorMessage,
+        })
+      );
+      return;
+    }
+
+    dispatch(setSearchValue(value));
   };
 
   const handleSearchBtnClick = () => {

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { SearchOptionType } from "../types";
+import type { SearchOptionType, TAG, PLATFORM } from "../types";
 
 const initialState: SearchOptionType = {
-  searchValue: "",
+  searchValue: null,
   tags: "전부 보기",
-  platforms: [],
+  platform: null,
   numOfWinner: 0,
 };
 
@@ -17,16 +17,16 @@ export const searchOptionSlice = createSlice({
       state.searchValue = action.payload;
     },
 
-    resetSearchValue: (state, action) => {
-      state.searchValue = "";
+    resetSearchValue: (state) => {
+      state.searchValue = null;
     },
 
-    setTag: (state, action: PayloadAction<string>) => {
+    setTag: (state, action: PayloadAction<TAG>) => {
       state.tags = action.payload;
     },
 
-    setPlatforms: (state, action: PayloadAction<string[]>) => {
-      state.platforms = action.payload;
+    setPlatforms: (state, action: PayloadAction<PLATFORM>) => {
+      state.platform = action.payload;
     },
 
     setNumOfWinner: (state, action: PayloadAction<number>) => {
@@ -34,7 +34,7 @@ export const searchOptionSlice = createSlice({
     },
 
     resetFilter: (state) => {
-      state.platforms = [];
+      state.platform = null;
       state.numOfWinner = 0;
     },
   },

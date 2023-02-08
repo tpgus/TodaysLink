@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { setTag } from "../../store/searchOptionSlice";
+import type { TAG } from "../../types";
 
 const TAGS = [
   "전부 보기",
@@ -11,7 +12,6 @@ const TAGS = [
   "전자기기",
   "기프티콘",
   "상품권",
-  "현금",
   "의류",
   "식품",
   "설문 조사",
@@ -27,7 +27,7 @@ const TagList = () => {
 
   const handleClickTag = (idx: number) => {
     setClickedTagIdx(idx);
-    dispatch(setTag(TAGS[idx]));
+    dispatch(setTag(TAGS[idx] as TAG));
   };
 
   return (

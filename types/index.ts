@@ -1,5 +1,27 @@
 import { Timestamp } from "firebase/firestore";
 
+export type PLATFORM =
+  | "INSTAGRAM"
+  | "FACEBOOK"
+  | "APP_ONLY"
+  | "NAVER"
+  | "YOUTUBE"
+  | "OFFICIAL_WEB"
+  | "ETC"
+  | null;
+export type TAG =
+  | "전부 보기"
+  | "오늘 마감"
+  | "전자기기"
+  | "기프티콘"
+  | "상품권"
+  | "의류"
+  | "식품"
+  | "설문조사"
+  | "댓글"
+  | "출석 체크"
+  | "공유 & 초대";
+
 export interface EventType {
   id: string;
   title: string;
@@ -8,10 +30,11 @@ export interface EventType {
   endDate: Timestamp;
   announcementDate: Timestamp;
   image: string;
-  tags: string[];
+  tags: TAG;
   url: string;
   warnings: string[];
   numOfWinner: number;
+  platform: PLATFORM;
 }
 
 export interface FaqType {
@@ -21,7 +44,7 @@ export interface FaqType {
 
 export interface QnaType {
   id: string;
-  type: string;
+  type: "기타" | "계정" | "사이트 이용";
   title: string;
   content: string;
   userId: string;
@@ -32,9 +55,9 @@ export interface QnaType {
 }
 
 export interface SearchOptionType {
-  searchValue: string;
-  tags: string;
-  platforms: string[] | string;
+  searchValue: string | null;
+  tags: TAG;
+  platform: PLATFORM;
   numOfWinner: number;
 }
 

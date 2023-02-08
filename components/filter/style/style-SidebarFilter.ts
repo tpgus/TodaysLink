@@ -53,7 +53,7 @@ export const FilterContainer = styled.div`
   justify-content: center;
 `;
 
-export const CheckboxWrapper = styled.div`
+export const RadioWrapper = styled.div`
   display: flex;
   align-items: center;
   max-width: max-content;
