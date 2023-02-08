@@ -1,5 +1,7 @@
-import type { QnaType } from "../../types";
 import { useRouter } from "next/router";
+import { dateParser } from "../../helpers/parser-utils";
+import type { QnaType } from "../../types";
+
 interface PropsType {
   qna: QnaType;
 }
@@ -10,10 +12,9 @@ const QnAItem = (props: PropsType) => {
 
   const registeredDate = qna.registeredDate.toDate();
   const year = registeredDate.getFullYear();
-  const month = registeredDate.getMonth() + 1;
-  const day = registeredDate.getDate();
+  const month = registeredDate.getMonth();
+  const day = registeredDate.getDay();
 
-  //
   const handleClickQnaItem = () => {
     router.push(
       {

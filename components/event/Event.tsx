@@ -1,5 +1,6 @@
 import * as S from "./style/style-Event";
 import Image from "next/image";
+import { dateParser } from "../../helpers/parser-utils";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import type { EventType } from "../../types";
@@ -12,14 +13,7 @@ const Event = ({ event }: PropsType) => {
   const router = useRouter();
   const [isHover, setIsHover] = useState(false);
 
-  //dateParser 함수 사용하기 -> 개선 기록
-  const endDate = new Date(event.endDate.toString());
-  const year = endDate.getFullYear();
-  const month = endDate.getMonth() + 1;
-  const day = endDate.getDate();
-  const hour = endDate.getHours();
-  const min = endDate.getMinutes();
-  const parsedEndDate = `${year}년 ${month}월 ${day}일 ${hour}시 ${min}분`;
+  const parsedEndDate = dateParser(event.endDate);
 
   return (
     <>

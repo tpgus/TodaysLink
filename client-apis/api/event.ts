@@ -9,47 +9,14 @@ import {
   startAfter,
   Query,
   DocumentData,
+  getCountFromServer,
 } from "firebase/firestore";
 import { db } from "../../helpers/firestore";
-import { EventListType, EventType, SearchOptionType } from "../../types";
+import { fieldOptionBuilder } from "../../helpers/query-utils";
+import type { QueryFieldFilterConstraint } from "firebase/firestore";
+import type { EventListType, EventType, SearchOptionType } from "../../types";
 
 export const getRef = () => collection(db, "event");
-
-export const getEventList = async (
-  options: SearchOptionType,
-  beforeDocumentId?: string
-) => {
-  try {
-    const eventRef = getRef();
-    let q: Query<DocumentData>;
-    if (beforeDocumentId) {
-      //페이지 네이션
-      const docRef = doc(eventRef, beforeDocumentId);
-      const docSnap = await getDoc(docRef);
-      q = query(eventRef, limit(4), orderBy("endDate"), startAfter(docSnap));
-    } else {
-      q = query(eventRef, limit(4), orderBy("endDate"));
-    }
-
-    const documents = await getDocs(q);
-    if (documents.size === 0) return { eventList: [] };
-    const lastDocumentId = documents.docs[documents.docs.length - 1].id;
-    const eventList: EventListType = [];
-    documents.forEach((document) => {
-      eventList.push({
-        ...(document.data() as EventType),
-        startDate: document.data().startDate.toDate().toString(),
-        endDate: document.data().endDate.toDate().toString(),
-        announcementDate: document.data().announcementDate.toDate().toString(),
-        id: document.id,
-      });
-    });
-
-    return { eventList, lastDocumentId };
-  } catch (error) {
-    throw error;
-  }
-};
 
 export const getEventById = async (id: string) => {
   try {
@@ -83,4 +50,66 @@ export const getEventIds = async () => {
   }
 };
 
-//51,222,1,50,999999999,999999999,54
+export const getTotalLength = async (
+  options: QueryFieldFilterConstraint[] = []
+) => {
+  try {
+    const eventRef = getRef();
+    const q = query(eventRef, ...options);
+    const snapShot = await getCountFromServer(q);
+    return snapShot.data().count;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getEventList = async (
+  options: SearchOptionType,
+  beforeDocumentId: string | null
+) => {
+  try {
+    const eventRef = getRef();
+    const fieldOptions = await fieldOptionBuilder(options);
+    const totalLength = await getTotalLength(fieldOptions);
+
+    let q: Query<DocumentData>;
+    if (beforeDocumentId) {
+      //페이지 네이션
+      const docRef = doc(eventRef, beforeDocumentId);
+      const docSnap = await getDoc(docRef);
+      q = query(
+        eventRef,
+        ...fieldOptions,
+        orderBy("numOfWinner"),
+        orderBy("endDate"),
+        startAfter(docSnap),
+        limit(4)
+      );
+    } else {
+      q = query(
+        eventRef,
+        ...fieldOptions,
+        orderBy("numOfWinner"),
+        orderBy("endDate"),
+        limit(4)
+      );
+    }
+
+    const documents = await getDocs(q);
+    const lastDocumentId = documents.docs[documents.docs.length - 1]?.id;
+    const eventList: EventListType = [];
+    documents.forEach((document) => {
+      eventList.push({
+        ...(document.data() as EventType),
+        startDate: document.data().startDate.toDate().toString(),
+        endDate: document.data().endDate.toDate().toString(),
+        announcementDate: document.data().announcementDate.toDate().toString(),
+        id: document.id,
+      });
+    });
+
+    return { eventList, totalLength, lastDocumentId };
+  } catch (error) {
+    throw error;
+  }
+};
