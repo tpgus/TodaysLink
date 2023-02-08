@@ -12,8 +12,8 @@ const QnAItem = (props: PropsType) => {
 
   const registeredDate = qna.registeredDate.toDate();
   const year = registeredDate.getFullYear();
-  const month = registeredDate.getMonth();
-  const day = registeredDate.getDay();
+  const month = registeredDate.getMonth() + 1;
+  const day = registeredDate.getDate();
 
   const handleClickQnaItem = () => {
     router.push(
