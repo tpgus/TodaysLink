@@ -14,15 +14,7 @@ const QnADetail = (props: PropsType) => {
 
   if (!qna) return <p>다시 시도해 주세요</p>;
 
-  //추후 아래의 코드를 주석 코드로 변경 및 개선 기록
-  // const formattedDate = dateParser(qna.registeredDate);
-  const formattedDate = qna.registeredDate.toDate().toLocaleString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
+  const registeredDate = dateParser(qna.registeredDate.toDate());
 
   return (
     <S.QnALayout>
@@ -37,7 +29,7 @@ const QnADetail = (props: PropsType) => {
       </li>
       <li>
         <span>작성일</span>
-        <p>{formattedDate}</p>
+        <p>{registeredDate}</p>
       </li>
       <li className="content">
         <span className="content__span">문의 내용</span>

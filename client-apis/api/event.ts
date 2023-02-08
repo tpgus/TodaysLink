@@ -9,13 +9,12 @@ import {
   startAfter,
   Query,
   DocumentData,
-  QueryFieldFilterConstraint,
-  where,
   getCountFromServer,
 } from "firebase/firestore";
 import { db } from "../../helpers/firestore";
 import { fieldOptionBuilder } from "../../helpers/query-utils";
-import { EventListType, EventType, SearchOptionType } from "../../types";
+import type { QueryFieldFilterConstraint } from "firebase/firestore";
+import type { EventListType, EventType, SearchOptionType } from "../../types";
 
 export const getRef = () => collection(db, "event");
 

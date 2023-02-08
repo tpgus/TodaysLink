@@ -1,6 +1,5 @@
 import notifiactionReducer from "./notificationSlice";
 import searchOptionReducer from "./searchOptionSlice";
-import eventListReducer from "./eventListSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";
@@ -12,7 +11,6 @@ export const store = configureStore({
   reducer: {
     notification: notifiactionReducer,
     searchOption: searchOptionReducer,
-    eventList: eventListReducer,
   },
 });
 

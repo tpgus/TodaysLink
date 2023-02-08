@@ -2,6 +2,7 @@ import * as S from "./style/style-EventDetail";
 import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
+import { dateParser } from "../../helpers/parser-utils";
 import { v4 as uuidv4 } from "uuid";
 import type { EventType } from "../../types";
 
@@ -17,15 +18,7 @@ const EventDetail = (props: PropsType) => {
   //추후 아래의 코드를 주석 코드로 변경 및 개선 기록
   // const [...] = dates.map((date)=>(dateParser(date));
   const [formattedStartDate, formattedEndDate, formattedAnnouncementDate] =
-    dates.map((date) =>
-      new Date(date.toString()).toLocaleDateString("ko-KR", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      })
-    );
+    dates.map((date) => dateParser(date));
 
   return (
     <S.EventDetailLayout>

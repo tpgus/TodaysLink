@@ -1,11 +1,12 @@
-import {
-  getQnaList,
-  insertQna,
-} from "../../../server/controller/qnaController";
+// import {
+//   getQnaList,
+//   insertQna,
+// } from "../../../server/controller/qnaController";
 import type { QnaType } from "../../../types";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Timestamp } from "firebase/firestore";
 
+// deprecated
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //POST
   if (req.method === "POST") {
@@ -23,10 +24,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
-      const result = await insertQna(question);
+      // const result = await insertQna(question);
       const createdQuestion: QnaType = {
         ...question,
-        id: result.insertedId.toString(),
+        // id: result.insertedId.toString(),
       };
 
       res
@@ -40,8 +41,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //GET
   else if (req.method === "GET") {
     try {
-      const qnaList = await getQnaList();
-      res.status(200).json({ message: "내 문의 조회 완료", qnaList });
+      // const qnaList = await getQnaList();
+      res.status(200).json({ message: "내 문의 조회 완료" });
     } catch (error) {
       res.status(500).json({ message: "내 문의 조회 실패" });
     }

@@ -24,14 +24,12 @@ export const fieldOptionBuilder = async (options: SearchOptionType) => {
       ? [where("numOfWinner", ">=", 1), where("numOfWinner", "<", 50)]
       : [where("numOfWinner", ">=", options.numOfWinner)];
 
+  const platformOption = where("platform", "==", options.platform);
+
   let fieldOptions: QueryFieldFilterConstraint[] = [];
 
   if (options.platform) {
-    fieldOptions = [
-      tagsOption,
-      ...winnerOption,
-      where("platform", "==", options.platform),
-    ];
+    fieldOptions = [tagsOption, platformOption, ...winnerOption];
   } else {
     fieldOptions = [tagsOption, ...winnerOption];
   }

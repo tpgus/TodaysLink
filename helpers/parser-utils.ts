@@ -1,5 +1,7 @@
-export const dateParser = (date: Date) => {
-  return new Date(date).toLocaleDateString("ko-KR", {
+import { Timestamp } from "firebase/firestore";
+
+export const dateParser = (date: Timestamp | Date) => {
+  return new Date(date.toString()).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
