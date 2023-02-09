@@ -45,6 +45,11 @@ export const SidebarContainer = styled.div`
       display: none;
     }
   }
+
+  .actions-wrap {
+    margin-top: 0.7rem;
+    text-align: center;
+  }
 `;
 
 export const FilterContainer = styled.div`

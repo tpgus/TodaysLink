@@ -27,7 +27,7 @@ const Event = ({ event }: PropsType) => {
           <Image
             src={event.image}
             alt="preview-image"
-            width={240}
+            width={300}
             height={300}
             priority
           ></Image>
@@ -38,7 +38,7 @@ const Event = ({ event }: PropsType) => {
         <div className="info-wrap">
           <h3 className="info-title">{event.title}</h3>
           <br />
-          <p className="info-description">{event.description}</p>
+          <p className="info-description">{event.subTitle}</p>
           <div className="sub-info">
             <span className="sub-info__span">
               <span className="end-time"> ~ </span>

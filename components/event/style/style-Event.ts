@@ -29,14 +29,16 @@ export const EventContainer = styled.div<{ isHover: boolean }>`
     position: relative;
     aspect-ratio: 1/1;
     height: 15rem;
+    padding: 1rem;
 
     ${media.pc} {
-      aspect-ratio: 3/4;
-      height: 14rem;
+      aspect-ratio: 1/1;
+      height: 10rem;
     }
   }
 
   img {
+    object-fit: contain;
     width: 100%;
     height: 100%;
   }

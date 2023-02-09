@@ -33,6 +33,15 @@ export const searchOptionSlice = createSlice({
       state.numOfWinner = action.payload;
     },
 
+    setFilter: (state, action: PayloadAction<key, string>) => {
+      const { key, value } = action.payload;
+      if (key === "platform") {
+        state.platform = value as PLATFORM;
+      } else if (key === "numOfWinner") {
+        state.numOfWinner = Number(value);
+      }
+    },
+
     resetFilter: (state) => {
       state.platform = null;
       state.numOfWinner = 0;
@@ -47,5 +56,6 @@ export const {
   resetFilter,
   setSearchValue,
   resetSearchValue,
+  setFilter,
 } = searchOptionSlice.actions;
 export default searchOptionSlice.reducer;

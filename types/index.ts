@@ -25,7 +25,8 @@ export type TAG =
 export interface EventType {
   id: string;
   title: string;
-  description: string;
+  subTitle: string;
+  content: string;
   startDate: Timestamp;
   endDate: Timestamp;
   announcementDate: Timestamp;
@@ -35,6 +36,7 @@ export interface EventType {
   warnings: string[];
   numOfWinner: number;
   platform: PLATFORM;
+  prize: string[];
 }
 
 export interface FaqType {
