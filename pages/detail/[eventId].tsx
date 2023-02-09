@@ -23,7 +23,7 @@ const EventDetailPage = (props: PropsType) => {
         <title>{event.title}</title>
         <meta
           name="description"
-          content={`${event.title} - ${event.description}`}
+          content={`${event.title} - ${event.subTitle}`}
         />
       </Head>
       <EventDetail event={event} />
