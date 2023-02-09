@@ -1,5 +1,5 @@
 import * as S from "./style/style-SidebarFilter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BiRefresh } from "react-icons/bi";
 import { useAppDispatch } from "../../store";
@@ -7,10 +7,13 @@ import {
   setPlatforms,
   setNumOfWinner,
   resetFilter,
+  setFilter,
 } from "../../store/searchOptionSlice";
 import type { PLATFORM } from "../../types";
+import { platform } from "os";
 
 const PLATFORMS = [
+  { name: "카카오톡", value: "KAKAO" },
   { name: "인스타그램", value: "INSTAGRAM" },
   { name: "페이스북", value: "FACEBOOK" },
   { name: "유튜브", value: "YOUTUBE" },
@@ -28,6 +31,12 @@ const NUM_OF_WINNER = [
   { name: "1000명 이상", value: "1000" },
 ];
 
+const FILTERS = [
+  { key: "platform", KWord: "플랫폼", option: PLATFORMS },
+  { key: "numOfWinner", KWord: "당첨자 수", option: NUM_OF_WINNER },
+];
+
+//둘 다 라디오에 같은 값 -> map 이용 코드 개선
 const SidebarFilter = () => {
   const [checkedPlatform, setCheckedPlatform] = useState<number | null>(null);
 

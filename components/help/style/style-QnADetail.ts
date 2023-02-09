@@ -70,9 +70,8 @@ export const QnALayout = styled.div`
   .content__p {
     padding-right: 2rem;
     height: auto;
-    border: 1px solid red;
     line-height: 2.5rem;
-    border: transparent;
+    border-bottom: 1px solid #e5e5e5;
     white-space: normal;
 
     ${media.pc} {

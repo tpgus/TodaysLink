@@ -95,9 +95,10 @@ export const InfoContainer = styled.div`
     font-size: 1.5rem;
   }
 
-  .item-description {
+  .item-subTitle {
     color: #aaa;
     margin-top: 0.3rem;
+    line-height: 1.2rem;
   }
 
   .actions {
@@ -159,6 +160,10 @@ export const InfoContainer = styled.div`
 
   dd {
     margin-top: 0.7rem;
+  }
+
+  .content {
+    line-height: 2rem;
   }
 
   li {
