@@ -7,7 +7,6 @@ import {
   setPlatforms,
   setNumOfWinner,
   resetFilter,
-  setFilter,
 } from "../../store/searchOptionSlice";
 import type { PLATFORM } from "../../types";
 import { platform } from "os";
