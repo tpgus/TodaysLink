@@ -1,4 +1,5 @@
 import { Timestamp } from "firebase/firestore";
+import { EventDate } from "../types";
 
 enum DAY {
   "일요일" = 0,
@@ -10,8 +11,9 @@ enum DAY {
   "토요일",
 }
 
-export const dateParser = (date: Timestamp | Date) => {
-  const rawDate = new Date(date.toString());
+export const dateParser = (date: EventDate) => {
+  const { year, month, day, hour, minites } = date;
+  const rawDate = new Date(year, month - 1, day, hour, minites);
   const formattedDate = rawDate.toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
@@ -21,11 +23,11 @@ export const dateParser = (date: Timestamp | Date) => {
   });
 
   const dayIdx = rawDate.getDay();
-  const day = DAY[dayIdx];
+  const day1 = DAY[dayIdx];
 
   // "년 월 일 시간 분" 형식에서 시간 앞에 요일을 추가
   const splitedDate = formattedDate.split(" ");
-  splitedDate.splice(3, 0, day);
+  splitedDate.splice(3, 0, day1);
   const parsedDate = splitedDate.join(" ");
 
   //요일이 넘어가는 오전 12:00는 제외 (혼란 방지)

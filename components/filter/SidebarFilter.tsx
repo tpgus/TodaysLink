@@ -1,5 +1,5 @@
 import * as S from "./style/style-SidebarFilter";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BiRefresh } from "react-icons/bi";
 import { useAppDispatch } from "../../store";
@@ -9,7 +9,6 @@ import {
   resetFilter,
 } from "../../store/searchOptionSlice";
 import type { PLATFORM } from "../../types";
-import { platform } from "os";
 
 const PLATFORMS = [
   { name: "카카오톡", value: "KAKAO" },

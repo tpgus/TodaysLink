@@ -26,9 +26,6 @@ export const getEventById = async (id: string) => {
     const event = docSnap.data() as EventType;
     return {
       ...event,
-      startDate: event.startDate.toDate().toString(),
-      endDate: event.endDate.toDate().toString(),
-      announcementDate: event.announcementDate.toDate().toString(),
     };
   } catch (error) {
     throw error;
@@ -81,18 +78,11 @@ export const getEventList = async (
         eventRef,
         ...fieldOptions,
         orderBy("numOfWinner"),
-        orderBy("endDate"),
         startAfter(docSnap),
         limit(4)
       );
     } else {
-      q = query(
-        eventRef,
-        ...fieldOptions,
-        orderBy("numOfWinner"),
-        orderBy("endDate"),
-        limit(4)
-      );
+      q = query(eventRef, ...fieldOptions, orderBy("numOfWinner"), limit(4));
     }
 
     const documents = await getDocs(q);
@@ -101,9 +91,6 @@ export const getEventList = async (
     documents.forEach((document) => {
       eventList.push({
         ...(document.data() as EventType),
-        startDate: document.data().startDate.toDate().toString(),
-        endDate: document.data().endDate.toDate().toString(),
-        announcementDate: document.data().announcementDate.toDate().toString(),
         id: document.id,
       });
     });
