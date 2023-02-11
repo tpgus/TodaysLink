@@ -11,9 +11,8 @@ enum DAY {
   "토요일",
 }
 
-export const dateParser = (date: EventDate) => {
-  const { year, month, day, hour, minites } = date;
-  const rawDate = new Date(year, month - 1, day, hour, minites);
+export const dateParser = (date: Date) => {
+  const rawDate = new Date(date);
   const formattedDate = rawDate.toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
