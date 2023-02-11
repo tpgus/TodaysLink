@@ -4,6 +4,7 @@ import { media } from "../../../styles/theme";
 export const EventDetailLayout = styled.div`
   max-width: 1280px;
   margin: 0 auto;
+  position: relative;
 `;
 
 export const EventDetailContainer = styled.div`
@@ -17,31 +18,40 @@ export const EventDetailContainer = styled.div`
 
   ${media.tablet} {
     align-items: center;
-    margin-top: 15%;
+    margin-top: 5%;
   }
 
   .img {
     ${media["fix-mobile"]} {
-      margin: 2rem auto;
+      padding: 2rem;
       width: 80%;
       height: 30%;
     }
+  }
+`;
 
-    ${media.pc} {
-      height: 50%;
-      position: fixed;
-      top: 9.8rem;
-    }
+export const ImageTagContainer = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    ${media.tablet} {
-      position: unset;
-      width: 70%;
-    }
+  ${media.tablet} {
+    width: 70%;
+    margin-top: 5rem;
+  }
+  ${media.pc} {
+    width: calc(640px - 6rem);
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
 
 export const InfoContainer = styled.div`
   margin: 0 auto;
+  padding: 0 2rem;
   width: 90%;
 
   ${media["fix-mobile"]} {
@@ -50,7 +60,7 @@ export const InfoContainer = styled.div`
 
   ${media.pc} {
     position: absolute;
-    padding: 0 2rem;
+    /* padding: 0 1rem; */
     right: 0;
     width: 50%;
   }

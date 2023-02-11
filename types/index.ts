@@ -1,5 +1,13 @@
 import { Timestamp } from "firebase/firestore";
 
+export interface EventDate {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minites: number;
+}
+
 export type PLATFORM =
   | "INSTAGRAM"
   | "FACEBOOK"
@@ -27,11 +35,11 @@ export interface EventType {
   title: string;
   subTitle: string;
   content: string;
-  startDate: Timestamp;
-  endDate: Timestamp;
-  announcementDate: Timestamp;
+  startDate: EventDate;
+  endDate: EventDate;
+  announcementDate: EventDate;
   image: string;
-  tags: TAG;
+  tags: string[];
   url: string;
   warnings: string[];
   numOfWinner: number;

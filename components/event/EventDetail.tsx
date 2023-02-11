@@ -2,6 +2,7 @@ import * as S from "./style/style-EventDetail";
 import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
+import DetailTagList from "./DetailTagList";
 import { dateParser, separateLine } from "../../helpers/parser-utils";
 import { v4 as uuidv4 } from "uuid";
 import type { EventType } from "../../types";
@@ -14,7 +15,6 @@ const EventDetail = (props: PropsType) => {
   const { event } = props;
   const { startDate, endDate, announcementDate } = event;
   const dates = [startDate, endDate, announcementDate];
-
   const [formattedStartDate, formattedEndDate, formattedAnnouncementDate] =
     dates.map((date) => dateParser(date));
 
@@ -24,16 +24,23 @@ const EventDetail = (props: PropsType) => {
     alert("개발 중입니다...");
   };
 
+  if (typeof event.tags === "string") {
+    console.log("tags");
+  }
+
   return (
     <S.EventDetailLayout>
       <S.EventDetailContainer>
-        <Image
-          className="img"
-          src={event.image}
-          width={500}
-          height={500}
-          alt="event-product"
-        />
+        <S.ImageTagContainer>
+          <Image
+            className="img"
+            src={event.image}
+            width={400}
+            height={400}
+            alt="event-product"
+          />
+          <DetailTagList tags={event.tags} />
+        </S.ImageTagContainer>
         <S.InfoContainer>
           <div className="info__div info__div--header">
             <div>
