@@ -13,7 +13,9 @@ const Event = ({ event }: PropsType) => {
   const router = useRouter();
   const [isHover, setIsHover] = useState(false);
 
-  const parsedEndDate = dateParser(event.endDate);
+  const { year, month, day, hour, minites } = event.endDate;
+  const date = new Date(year, month - 1, day, hour, minites);
+  const parsedEndDate = dateParser(date);
 
   return (
     <>

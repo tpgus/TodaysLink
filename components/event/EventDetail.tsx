@@ -16,7 +16,11 @@ const EventDetail = (props: PropsType) => {
   const { startDate, endDate, announcementDate } = event;
   const dates = [startDate, endDate, announcementDate];
   const [formattedStartDate, formattedEndDate, formattedAnnouncementDate] =
-    dates.map((date) => dateParser(date));
+    dates.map((date) => {
+      const { year, month, day, hour, minites } = date;
+      const dateType = new Date(year, month - 1, day, hour, minites);
+      return dateParser(dateType);
+    });
 
   const content = separateLine(event.content);
 
