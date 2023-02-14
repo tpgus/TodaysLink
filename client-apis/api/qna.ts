@@ -8,10 +8,10 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-import { db } from "../../helpers/firestore";
+import { db } from "../../lib/firestore";
 import { QnaType } from "../../types";
 
-export const getRef = () => collection(db, "qna");
+export const getQnARef = () => collection(db, "qna");
 
 export const createQnA = async (qna: any) => {
   const { type, title, content } = qna;
@@ -27,7 +27,7 @@ export const createQnA = async (qna: any) => {
   };
 
   try {
-    const qnaRef = getRef();
+    const qnaRef = getQnARef();
     const addedDocument = await addDoc(qnaRef, newQnA);
     const docRef = doc(qnaRef, addedDocument.id);
     const docSnap = await getDoc(docRef);
@@ -43,7 +43,7 @@ export const createQnA = async (qna: any) => {
 
 export const getQnAList = async () => {
   try {
-    const qnaRef = getRef();
+    const qnaRef = getQnARef();
     const q = query(qnaRef, orderBy("registeredDate", "desc"));
     const docSanp = await getDocs(q);
 
@@ -62,7 +62,7 @@ export const getQnAList = async () => {
 
 export const getQnAById = async (id: string) => {
   try {
-    const eventRef = getRef();
+    const eventRef = getQnARef();
     const docRef = doc(eventRef, id);
     const docSnap = await getDoc(docRef);
     const qna = docSnap.data() as QnaType;

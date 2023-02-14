@@ -16,6 +16,7 @@
     "@types/uuid": "^9.0.0",
     "@vercel/analytics": "^0.1.8",
     "axios": "^1.2.6",
+    "bcryptjs": "^2.4.3",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "firebase": "^9.17.1",
@@ -33,6 +34,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/node": "^18.11.18",
     "@types/styled-components": "^5.1.26",
     "@types/validator": "^13.7.11",

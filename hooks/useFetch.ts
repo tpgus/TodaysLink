@@ -6,7 +6,7 @@ export const useFetch = <T>(ApiFunction: Function) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<T | null>(null);
 
-  const requestFunction = useCallback(
+  const sendRequest = useCallback(
     async <T>(params?: T) => {
       try {
         setIsLoading(true);
@@ -33,5 +33,5 @@ export const useFetch = <T>(ApiFunction: Function) => {
     setIsLoading(false);
   };
 
-  return { error, isLoading, data, resetState, requestFunction };
+  return { error, isLoading, data, resetState, sendRequest };
 };

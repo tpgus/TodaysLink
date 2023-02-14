@@ -6,7 +6,7 @@ interface PropsType {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   bg?: string;
-  type?: "submit";
+  type?: "submit" | "button";
   disabled?: boolean;
 }
 
