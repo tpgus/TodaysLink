@@ -1,5 +1,5 @@
 import * as S from "./style/style-SignUp";
-import { useRef, useState, useEffect, useCallback, use } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import { validate, checkNull } from "../../utils/checkValidation-utils";
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -50,7 +50,7 @@ const SignUp = () => {
   const [verifiedEmail, setVerifiedEmail] = useState<string | null>(null);
   const [isSentMail, setIsSentMail] = useState(false);
   const [verificationCode, setVerificationCode] = useState<string | null>(null);
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(180);
 
   const createUserFetch = useFetch<CreateUser>(createUser);
   const checkIdFetch = useFetch<CheckId>(checkDuplicateId);
@@ -148,7 +148,7 @@ const SignUp = () => {
       setVerifiedEmail(email);
       setIsSentMail(true);
       setVerificationCode(verifyEmailFetch.data.verificationCode);
-      setTimer(30);
+      setTimer(180);
     } else if (verifyEmailFetch.error) {
       activateNotification(verifyEmailFetch.error.message);
       setVerifiedEmail(null);
@@ -164,7 +164,6 @@ const SignUp = () => {
         setTimer((prevTime) => {
           const currentTime = prevTime - 1;
           if (currentTime === 0) {
-            console.log("30초가 경과했습니다.");
             clearInterval(timer);
           }
           return currentTime;
@@ -237,7 +236,6 @@ const SignUp = () => {
       !createUserFetch.error &&
       createUserFetch.data?.createdUserId
     ) {
-      //뒤로가기 x
       router.replace("/auth/signIn");
     } else if (createUserFetch.error) {
       activateNotification(createUserFetch.error.message);
@@ -264,7 +262,7 @@ const SignUp = () => {
                 ref={userIdRef}
               />
               <Button type="button" onClick={handleCheckId} className="id__btn">
-                중복 체크
+                {checkIdFetch.isLoading ? "요청 중..." : "중복 체크"}
               </Button>
             </div>
             {checkNull(isDuplicateId) ? null : (
@@ -309,7 +307,7 @@ const SignUp = () => {
                 onClick={handleVerifyEmail}
                 className="email__btn"
               >
-                인증
+                {verifyEmailFetch.isLoading ? "요청 중..." : "인증"}
               </Button>
             </div>
             {isSentMail ? (
