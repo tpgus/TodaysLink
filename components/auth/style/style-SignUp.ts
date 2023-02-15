@@ -31,12 +31,8 @@ export const SingUpForm = styled.form`
   flex-direction: column;
   width: 100%;
 
-  .form__div {
-    margin-top: 1rem;
-  }
-
-  .form__div:nth-of-type(2) {
-    margin-top: 1rem;
+  .form__div:not(:nth-of-type(1)) {
+    margin-top: 0.7rem;
   }
 
   .form__btn {
@@ -68,7 +64,8 @@ export const SingUpForm = styled.form`
     height: 1.5rem;
   }
 
-  .id__p {
+  .id__p,
+  .email__p {
     font-size: 0.8rem;
     padding: 0.2rem;
     color: #49c1ff;

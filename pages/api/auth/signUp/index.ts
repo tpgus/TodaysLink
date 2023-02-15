@@ -10,8 +10,8 @@ import {
 import { addDoc, collection } from "firebase/firestore";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { userId, password, email } = req.body;
   if (req.method === "POST") {
+    const { userId, password, email } = req.body;
     //서버측 유효성 검사
     const validationSchema = Joi.object({
       userId: idSchema,
@@ -22,8 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { error } = validationSchema.validate({ userId, password, email });
     if (error) {
       res.status(422).json({
-        message: "Invalid Id, Password or Email",
-        createdUserId: null,
+        message: "아이디, 비밀번호, 이메일을 확인해 주세요",
       });
       return;
     }
@@ -39,9 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
       res.status(201).json({ message: "success", createdUserId: result.id });
     } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Internal Server Error", createdUserId: null });
+      res.status(500).json({ message: "Internal Server Error" });
     }
   }
 };

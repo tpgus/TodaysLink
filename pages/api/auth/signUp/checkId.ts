@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const validationSchema = Joi.object({ userId: idSchema });
     const { error } = validationSchema.validate({ userId });
     if (error) {
-      res.status(422).json({ message: "Invalid ID", isExist: null });
+      res.status(422).json({ message: "아이디를 확인해 주세요" });
     }
 
     try {
