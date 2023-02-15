@@ -2,7 +2,7 @@ import { where, Timestamp } from "firebase/firestore";
 import type { SearchOptionType } from "../types";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
 
-const parser = () => {
+const dateParser = () => {
   const currentDate = new Date(Date.now());
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -12,7 +12,7 @@ const parser = () => {
 };
 
 export const fieldOptionBuilder = async (options: SearchOptionType) => {
-  const { year, month, day } = parser();
+  const { year, month, day } = dateParser();
 
   const tagsOption =
     options.tags === "전부 보기"

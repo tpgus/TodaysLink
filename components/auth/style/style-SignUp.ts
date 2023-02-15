@@ -31,8 +31,8 @@ export const SingUpForm = styled.form`
   flex-direction: column;
   width: 100%;
 
-  .form__div {
-    margin-top: 1rem;
+  .form__div:not(:nth-of-type(1)) {
+    margin-top: 0.7rem;
   }
 
   .form__btn {
@@ -64,20 +64,39 @@ export const SingUpForm = styled.form`
     height: 1.5rem;
   }
 
+  .id__p,
+  .email__p {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+    color: #49c1ff;
+  }
+
+  .duplicate {
+    color: #ff0000;
+  }
+
+  .id__div,
   .email__div {
     margin-top: 0.25rem;
     display: flex;
     justify-content: space-between;
   }
 
+  .id__input,
   .email__input {
     width: 70%;
     margin: unset;
   }
 
+  .id__btn,
   .email__btn {
+    font-size: 0.9rem;
     width: 20%;
     padding: unset;
+
+    ${media["fix-mobile"]} {
+      font-size: 0.8rem;
+    }
   }
 
   .form__div--agreement {

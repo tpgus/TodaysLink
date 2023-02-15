@@ -22,11 +22,11 @@ export const dateParser = (date: Date) => {
   });
 
   const dayIdx = rawDate.getDay();
-  const day1 = DAY[dayIdx];
+  const day = DAY[dayIdx];
 
   // "년 월 일 시간 분" 형식에서 시간 앞에 요일을 추가
   const splitedDate = formattedDate.split(" ");
-  splitedDate.splice(3, 0, day1);
+  splitedDate.splice(3, 0, day);
   const parsedDate = splitedDate.join(" ");
 
   //요일이 넘어가는 오전 12:00는 제외 (혼란 방지)

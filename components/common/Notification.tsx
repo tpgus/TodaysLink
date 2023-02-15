@@ -11,16 +11,16 @@ const Notification = () => {
   );
 
   useEffect(() => {
+    let timer: NodeJS.Timer;
     if (isActive) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         dispatch(hideNotification());
       }, 1300);
-
-      return () => {
-        clearTimeout(timer);
-      };
     }
-  });
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [dispatch, isActive]);
 
   const portalElement = document.getElementById("overlay-root") as HTMLElement;
 

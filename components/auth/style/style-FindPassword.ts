@@ -31,6 +31,18 @@ export const FindPasswordLayout = styled.div`
     height: 1.5rem;
   }
 
+  .message {
+    padding-top: 0.5rem;
+  }
+
+  .positive {
+    color: #49c1ff;
+  }
+
+  .negative {
+    color: #ff0000;
+  }
+
   button {
     margin-top: 2rem;
     display: block;

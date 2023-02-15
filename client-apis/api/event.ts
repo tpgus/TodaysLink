@@ -11,16 +11,16 @@ import {
   DocumentData,
   getCountFromServer,
 } from "firebase/firestore";
-import { db } from "../../helpers/firestore";
-import { fieldOptionBuilder } from "../../helpers/query-utils";
+import { db } from "../../lib/firestore";
+import { fieldOptionBuilder } from "../../utils/query-utils";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
 import type { EventListType, EventType, SearchOptionType } from "../../types";
 
-export const getRef = () => collection(db, "event");
+export const getEventRef = () => collection(db, "event");
 
 export const getEventById = async (id: string) => {
   try {
-    const eventRef = getRef();
+    const eventRef = getEventRef();
     const docRef = doc(eventRef, id);
     const docSnap = await getDoc(docRef);
     const event = docSnap.data() as EventType;
@@ -34,7 +34,7 @@ export const getEventById = async (id: string) => {
 
 export const getEventIds = async () => {
   try {
-    const eventRef = getRef();
+    const eventRef = getEventRef();
     const q = query(eventRef, limit(4), orderBy("endDate"));
     const documents = await getDocs(q);
     const ids: string[] = [];
@@ -51,7 +51,7 @@ export const getTotalLength = async (
   options: QueryFieldFilterConstraint[] = []
 ) => {
   try {
-    const eventRef = getRef();
+    const eventRef = getEventRef();
     const q = query(eventRef, ...options);
     const snapShot = await getCountFromServer(q);
     return snapShot.data().count;
@@ -65,7 +65,7 @@ export const getEventList = async (
   beforeDocumentId: string | null
 ) => {
   try {
-    const eventRef = getRef();
+    const eventRef = getEventRef();
     const fieldOptions = await fieldOptionBuilder(options);
     const totalLength = await getTotalLength(fieldOptions);
 

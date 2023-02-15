@@ -1,7 +1,7 @@
 import * as S from "./style/style-Search";
 import Joi from "joi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { validate } from "../../helpers/checkValidation-utils";
+import { validate } from "../../utils/checkValidation-utils";
 import { useRef, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store";
 import { showNotification } from "../../store/notificationSlice";
@@ -34,6 +34,7 @@ const Search = () => {
     }
 
     dispatch(setSearchValue(value));
+    alert("개발 중입니다...");
   };
 
   const handleSearchBtnClick = () => {

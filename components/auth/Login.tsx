@@ -25,8 +25,9 @@ const Login = () => {
         </S.LoginForm>
         <S.UtilBox>
           <div className="keep-wrap">
-            <input id="keep-login" type="checkbox" />
-            <label htmlFor="keep-login">로그인 유지</label>
+            {/* todo */}
+            {/* <input id="keep-login" type="checkbox" /> */}
+            {/* <label htmlFor="keep-login">로그인 유지</label> */}
           </div>
           <nav>
             <Link className="nav__link--id" href="/auth/findId">

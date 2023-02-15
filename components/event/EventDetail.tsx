@@ -3,7 +3,7 @@ import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
 import DetailTagList from "./DetailTagList";
-import { dateParser, separateLine } from "../../helpers/parser-utils";
+import { dateParser, separateLine } from "../../utils/parser-utils";
 import { v4 as uuidv4 } from "uuid";
 import type { EventType } from "../../types";
 

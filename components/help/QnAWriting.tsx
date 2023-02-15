@@ -1,6 +1,6 @@
 import * as S from "./style/style-QnAWriting";
 import { useRef, useState } from "react";
-import { checkNull, validate } from "../../helpers/checkValidation-utils";
+import { checkNull, validate } from "../../utils/checkValidation-utils";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { createQnA } from "../../client-apis/api/qna";

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { dateParser } from "../../helpers/parser-utils";
+import { dateParser } from "../../utils/parser-utils";
 import type { QnaType } from "../../types";
 
 interface PropsType {
