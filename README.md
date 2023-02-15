@@ -34,20 +34,19 @@
 
 - 2023.02.08 : 데이터 필터 완료 (firebase)
 
+- 2023.02.11 : 실제 데이터 추가 및 이벤트 디테일 페이지 수정 (태그 추가)
+
+- 2023.02.14 ~ 02.16 : 회원가입 페이지
+
 </div>
 </details>
 
 <details>
 <summary>Todo List</summary>
 <div markdown="1">
-
-- 현재 utils 폴더에 dateParse 함수를 만들어 두고 사용하지는 않고 있음(추후 개선 기록). `Event`, `EventDetail`, `QnaDetail` 컴포넌트에서 사용하는 코드로 수정 후 기록
-- 서버에서 유효성 -> 422에러
-- 배포시 요청 속도 느림 ->
+  
 - 메인 index 코드 수정
 - FAQ 페이지 카테고리 분리
-- controller db 연결 코드 합치기
-- 클라이언트 네트워크 요청 커스텀 훅 사용하기 -> api 폴더
 </details>
 
 <details>
