@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme";
 
 export const SingUpLayout = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
