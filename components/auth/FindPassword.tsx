@@ -103,7 +103,9 @@ const FindPassword = () => {
             </Button>
           ) : null}
         </div>
-        <Button type="submit">비밀번호 찾기</Button>
+        <Button type="submit">
+          {findPwdFetch.isLoading ? "요청 중..." : "비밀번호 찾기"}
+        </Button>
       </form>
     </S.FindPasswordLayout>
   );
