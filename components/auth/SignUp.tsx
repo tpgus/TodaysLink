@@ -16,6 +16,7 @@ import {
   emailSchema,
 } from "../../utils/common-utils";
 import Joi from "joi";
+import PrivacyAgreement from "./PrivacyAgreement";
 import Notification from "../common/Notification";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
@@ -51,6 +52,9 @@ const SignUp = () => {
   const [isSentMail, setIsSentMail] = useState(false);
   const [verificationCode, setVerificationCode] = useState<string | null>(null);
   const [timer, setTimer] = useState(180);
+  const [isCheckedPrivacyAgreement, setIsCheckedPrivacyAgreement] =
+    useState(false);
+  const [isActivePrivacyModal, setIsActivePrivacyModal] = useState(false);
 
   const createUserFetch = useFetch<CreateUser>(createUser);
   const checkIdFetch = useFetch<CheckId>(checkDuplicateId);
@@ -174,6 +178,8 @@ const SignUp = () => {
   }, [isSentMail]);
   /* 이메일 인증 끝 */
 
+  /* 개인정보 수집 동의*/
+
   /* 회원가입 시작 */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -213,19 +219,30 @@ const SignUp = () => {
       return;
     }
 
-    //회원가입 과정에서 모든 경우의 수를 통과하고 최종적으로 이메일 인증 코드를 제대로 입력할 경우
-    const enteredCode = verificationCodeRef.current!.value;
-
-    if (verificationCode === enteredCode && timer > 0) {
-      createUserFetch.resetState();
-      await createUserFetch.sendRequest({ userId, password, email });
-    } else if (timer === 0) {
+    if (timer <= 0) {
       setIsSentMail(false);
       activateNotification(
         "시간이 모두 경과했습니다. 이메일 인증을 다시 진행해 주세요"
       );
-    } else {
+      return;
+    }
+
+    const enteredCode = verificationCodeRef.current!.value;
+
+    if (verificationCode !== enteredCode) {
       activateNotification("인증 번호가 틀렸습니다");
+      return;
+    }
+
+    if (!isCheckedPrivacyAgreement) {
+      activateNotification("개인정보 수집 및 이용에 동의해야 합니다.");
+      return;
+    }
+
+    //회원가입 과정에서 모든 경우의 수를 통과하고 최종적으로 이메일 인증 코드를 제대로 입력할 경우
+    if (verificationCode === enteredCode) {
+      createUserFetch.resetState();
+      await createUserFetch.sendRequest({ userId, password, email });
     }
   };
 
@@ -246,6 +263,9 @@ const SignUp = () => {
   return (
     <S.SingUpLayout>
       {notificationState.isActive ? <Notification /> : null}
+      {isActivePrivacyModal ? (
+        <PrivacyAgreement onActivateModal={setIsActivePrivacyModal} />
+      ) : null}
       <h2>회원가입</h2>
       <S.SignUpContainer>
         <S.SingUpForm onSubmit={handleSubmit}>
@@ -301,6 +321,7 @@ const SignUp = () => {
                 id="email"
                 type="text"
                 ref={emailRef}
+                placeholder="example@email.com"
               />
               <Button
                 type="button"
@@ -332,10 +353,18 @@ const SignUp = () => {
               id="checkobx"
               type="checkbox"
               className="agreement__checkbox"
+              onChange={() =>
+                setIsCheckedPrivacyAgreement((prevState) => !prevState)
+              }
+              checked={isCheckedPrivacyAgreement}
             />
             <label htmlFor="checkobx">
               [필수] 개인정보 수집 및 이용 동의
-              <button type="button" className="agreement__btn--detail">
+              <button
+                type="button"
+                className="agreement__btn--detail"
+                onClick={() => setIsActivePrivacyModal(true)}
+              >
                 자세히 보기
               </button>
             </label>
