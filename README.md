@@ -51,6 +51,8 @@
 <summary>Todo List</summary>
 <div markdown="1">
 
+- 토큰 유무에 따른 페이지 접근 -> getSession -> gerServerSession으로 개선하기
+
 - 헤더 네비게이션 
 - 상세페이지 모바일 
 - 메인 index 코드 수정
