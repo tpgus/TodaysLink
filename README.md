@@ -50,7 +50,9 @@
 <details>
 <summary>Todo List</summary>
 <div markdown="1">
-  
+
+- 헤더 네비게이션 
+- 상세페이지 모바일 
 - 메인 index 코드 수정
 - FAQ 페이지 카테고리 분리
 </details>
