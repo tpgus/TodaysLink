@@ -1,16 +1,53 @@
 import styled from "styled-components";
+import { media } from "../../../styles/theme";
 
 export const MyPageLayout = styled.div`
-  height: calc(100vh - 6.8rem);
-  max-width: 65%;
   margin: 0 auto;
+  text-align: center;
+
+  ${media.pc} {
+    max-width: 80%;
+  }
+`;
+
+export const MenuContainer = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.color["gray-100"]};
+
+  ${media["fix-mobile"]} {
+    height: calc(100vh - 5rem);
+  }
+
+  ${media.pc} {
+    width: 50%;
+    height: calc(100vh - 6.8rem);
+  }
+
+  h2 {
+    margin-top: 15%;
+    text-align: center;
+    font-size: 1.5rem;
+
+    ${media.pc} {
+      font-size: 2.5rem;
+      padding: 4rem 0;
+      margin-top: 10%;
+    }
+  }
 
   .menu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    height: 100%;
+    margin-top: 10%;
+    height: auto;
+  }
+
+  li {
+    margin: 1rem 0;
   }
 `;

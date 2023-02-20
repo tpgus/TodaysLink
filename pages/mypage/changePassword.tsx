@@ -1,6 +1,7 @@
 import Head from "next/head";
 import ChangePassword from "../../components/mypage/ChangePassword";
-import { getSession } from "next-auth/react";
+import { authOptions } from "../api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 import type { GetServerSideProps } from "next";
 
 const changePasswordPage = () => {
@@ -16,10 +17,7 @@ const changePasswordPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession({ req: context.req });
-  //const session = await getServerSession(context.req, context.res, authOptions);
-  //getSession에 비해 속도가 빠르다 and +++
-  //공식문서 https://next-auth.js.org/configuration/nextjs#in-getserversideprops
+  const session = await getServerSession(context.req, context.res, authOptions);
   if (!session) {
     return {
       redirect: {

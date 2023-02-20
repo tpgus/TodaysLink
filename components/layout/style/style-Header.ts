@@ -49,11 +49,17 @@ export const HeaderContainer = styled.div`
     padding-bottom: 0.4rem;
   }
 
-  ul {
-    display: flex;
+  .pc-tablet__ul {
+    display: none;
+    ${media.pc} {
+      display: flex;
+    }
+    ${media.tablet} {
+      display: flex;
+    }
   }
 
-  li:not(:nth-of-type(1)) {
+  .pc-tablet__li:not(:nth-of-type(1)) {
     margin-left: 1.2rem;
   }
 `;

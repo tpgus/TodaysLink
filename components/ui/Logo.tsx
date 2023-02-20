@@ -9,7 +9,6 @@ interface PropsType {
 }
 
 const Logo = (props: PropsType) => {
-  const router = useRouter;
   //모바일임에도 PC와 같은 형태의 로고를 보여줘야 할 경우
   if (props.pc) {
     return (

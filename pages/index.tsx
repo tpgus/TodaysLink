@@ -13,10 +13,6 @@ import { resetFilter, setTag } from "../store/searchOptionSlice";
 import type { GetStaticProps } from "next";
 import type { EventType, SearchOptionType } from "../types";
 
-//일정 지난 것 불러오지 않기
-//상태 관리 (리덕스)
-//홈으로 이동시 상태 초기화 ?
-
 interface PropsType {
   eventList: EventType[];
   lastDocumentId: string;
@@ -36,8 +32,8 @@ const HomePage = (props: PropsType) => {
   );
   const [totalLength, setTotalLength] = useState(props.totalLength);
 
-  const currentPage = Math.ceil(eventList.length / 4);
-  const totalPage = Math.ceil(totalLength / 4);
+  const currentPage = Math.ceil(eventList.length / 8);
+  const totalPage = Math.ceil(totalLength / 8);
 
   useEffect(() => {
     //페이지 벗어날 때 -> 다른 방법
@@ -106,7 +102,6 @@ const HomePage = (props: PropsType) => {
     </>
   );
 };
-export default HomePage;
 
 export const getStaticProps: GetStaticProps<{
   eventList: EventType[];
@@ -136,3 +131,5 @@ export const getStaticProps: GetStaticProps<{
     },
   };
 };
+
+export default HomePage;

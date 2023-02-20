@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { v4 as uuidv4 } from "uuid";
 
-const STATIC_NAVIGATION_MENU = [
+const NAVIGATION_MENU = [
   { name: "FAQ", path: "/help/faq" },
   { name: "Q&A", path: "/help/qna" },
 ];
@@ -40,9 +40,9 @@ const Header = () => {
               onClickHamburger={handleHamburgerBtnClick}
             />
           </div>
-          <ul className="pc-tablet-only">
-            {STATIC_NAVIGATION_MENU.map((menu) => (
-              <li key={uuidv4()}>
+          <ul className="pc-tablet__ul">
+            {NAVIGATION_MENU.map((menu) => (
+              <li key={uuidv4()} className="pc-tablet__li">
                 <Link
                   href={menu.path}
                   className={
@@ -54,15 +54,20 @@ const Header = () => {
               </li>
             ))}
             {!session && status === "unauthenticated" ? (
-              <li>
+              <li className="pc-tablet__li">
                 <Link href="/auth/signIn" className={"nav__link"}>
                   로그인
                 </Link>
               </li>
             ) : null}
             {session && status === "authenticated" ? (
-              <li>
-                <Link href="/mypage" className={"nav__link"}>
+              <li className="pc-tablet__li">
+                <Link
+                  href="/mypage"
+                  className={
+                    "nav__link" + `${isActivePath("/mypage") ? " active" : ""}`
+                  }
+                >
                   마이페이지
                 </Link>
               </li>

@@ -12,7 +12,7 @@ export const FindPasswordLayout = styled.div`
     font-weight: bold;
     text-align: center;
     color: ${({ theme }) => theme.color["gray-600"]};
-    margin-top: 20%;
+    margin-top: 10%;
   }
 
   form {

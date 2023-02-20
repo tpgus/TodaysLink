@@ -96,6 +96,8 @@ const SignUp = () => {
     }
 
     //아이디 유효성 검사 통과 후, 아이디 중복 체크 API 요청 시작
+    //resetState()가 과연 필요한 것인지?
+    checkIdFetch.resetState();
     await checkIdFetch.sendRequest(userId);
   };
 
@@ -114,7 +116,6 @@ const SignUp = () => {
     } else if (checkIdFetch.error) {
       activateNotification(checkIdFetch.error.message);
     }
-    checkIdFetch.resetState();
   }, [checkIdFetch, dispatch, activateNotification]);
   /* 아이디 중복 체크 끝 */
 
@@ -135,6 +136,8 @@ const SignUp = () => {
     }
 
     //유효성 검사 통과후 이메일 인증 API 요청
+    //resetState()가 과연 필요한 것인지??
+    verifyEmailFetch.resetState();
     await verifyEmailFetch.sendRequest(email);
   };
 
@@ -155,8 +158,6 @@ const SignUp = () => {
       setVerifiedEmail(null);
       setIsSentMail(false);
     }
-
-    verifyEmailFetch.resetState();
   }, [verifyEmailFetch, dispatch, activateNotification]);
 
   useEffect(() => {

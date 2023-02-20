@@ -1,5 +1,5 @@
-import Header from "./Header";
 import * as S from "./style/style-AppLayout";
+import Header from "./Header";
 import { useRouter } from "next/router";
 
 interface PropsType {

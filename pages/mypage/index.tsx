@@ -20,6 +20,7 @@ const MyPage = ({
   //서버사이드 함수로부터 받아오는 데이터를 이런식으로 타입 지정해줄 수 있다.
   // https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props
   //아직 세션은 쓰이지 않고 있는 상태 -> 추후 코드 변경
+
   return (
     <>
       <Head>
@@ -32,10 +33,10 @@ const MyPage = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // const session = await getSession({ req: context.req });
   const session = await getServerSession(context.req, context.res, authOptions);
   //getSession에 비해 속도가 빠르다
   //공식문서 https://next-auth.js.org/configuration/nextjs#in-getserversideprops
+
   if (!session) {
     return {
       redirect: {

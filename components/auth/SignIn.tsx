@@ -16,7 +16,7 @@ const SignIn = () => {
   const dispatch = useAppDispatch();
   const notificationState = useAppSelector((state) => state.notification);
 
-  //유효성 검사는 서버 APIㅇㅔ서도 수행해야 한다.
+  //유효성 검사는 서버 API에서도 수행해야 한다.
   const hanldeSumbit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -42,6 +42,12 @@ const SignIn = () => {
 
     if (result && result.error) {
       //실패
+      dispatch(
+        showNotification({
+          isPositive: false,
+          message: result.error,
+        })
+      );
       return;
     }
 
