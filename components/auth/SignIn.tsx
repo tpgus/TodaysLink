@@ -2,9 +2,9 @@ import * as S from "./style/style-SignIn";
 import Link from "next/link";
 import Button from "../ui/Button";
 import Notification from "../common/Notification";
-import { useRef } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useRef, useState } from "react";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
 
@@ -12,6 +12,7 @@ const SignIn = () => {
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const notificationState = useAppSelector((state) => state.notification);
@@ -34,6 +35,7 @@ const SignIn = () => {
       return;
     }
 
+    setIsLoading(true);
     const result = await signIn("credentials", {
       redirect: false,
       userId: enteredId,
@@ -48,7 +50,11 @@ const SignIn = () => {
           message: result.error,
         })
       );
+      setIsLoading(false);
       return;
+    }
+    if (result?.ok) {
+      setIsLoading(false);
     }
 
     //성공
@@ -74,7 +80,7 @@ const SignIn = () => {
               ref={passwordRef}
             />
           </div>
-          <Button type="submit">로그인</Button>
+          <Button type="submit">{isLoading ? "요청 중..." : "로그인"}</Button>
         </S.LoginForm>
         <S.UtilBox>
           <div className="keep-wrap">
