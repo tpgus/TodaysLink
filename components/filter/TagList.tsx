@@ -1,9 +1,9 @@
 import * as S from "./style/style-TagList";
 import Tag from "./Tag";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useState } from "react";
 import { setTag } from "../../store/searchOptionSlice";
+import { v4 as uuidv4 } from "uuid";
+import { useAppDispatch } from "../../store";
 import type { TAG } from "../../types";
 
 const TAGS = [

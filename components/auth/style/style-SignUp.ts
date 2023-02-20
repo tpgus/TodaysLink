@@ -14,7 +14,7 @@ export const SingUpLayout = styled.div`
     font-weight: bold;
     text-align: center;
     color: ${({ theme }) => theme.color["gray-600"]};
-    margin-top: 20%;
+    margin-top: 10%;
   }
 `;
 
@@ -85,14 +85,14 @@ export const SingUpForm = styled.form`
 
   .id__input,
   .email__input {
-    width: 70%;
+    width: 65%;
     margin: unset;
   }
 
   .id__btn,
   .email__btn {
     font-size: 0.9rem;
-    width: 20%;
+    width: 25%;
     padding: unset;
 
     ${media["fix-mobile"]} {

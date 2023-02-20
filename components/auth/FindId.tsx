@@ -1,16 +1,16 @@
 import * as S from "./style/style-FindId";
-import { useRef, useEffect } from "react";
-import { useRouter } from "next/router";
-import { useFetch } from "../../hooks/useFetch";
-import { emailSchema } from "../../utils/common-utils";
-import { validate } from "../../utils/checkValidation-utils";
-import { findId } from "../../client-apis/api/auth";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { showNotification } from "../../store/notificationSlice";
 import Joi from "joi";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import Notification from "../common/Notification";
+import { findId } from "../../client-apis/api/auth";
+import { useRouter } from "next/router";
+import { useFetch } from "../../hooks/useFetch";
+import { validate } from "../../utils/checkValidation-utils";
+import { emailSchema } from "../../utils/common-utils";
+import { useRef, useEffect } from "react";
+import { showNotification } from "../../store/notificationSlice";
+import { useAppDispatch, useAppSelector } from "../../store";
 
 interface FindId {
   message: string;
@@ -22,14 +22,16 @@ const FindId = () => {
   const findIdFetch = useFetch<FindId>(findId);
 
   const router = useRouter();
-
   const dispatch = useAppDispatch();
   const notificationState = useAppSelector((state) => state.notification);
 
+  //아이디 찾기 함수 시작
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const enteredEmail = emailRef.current!.value;
+
+    //아이디 유효성 검사 시작
     const validationSchema = Joi.object({ email: emailSchema });
     const validationResult = await validate(validationSchema, {
       email: enteredEmail,

@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { AiFillHome } from "react-icons/ai";
 import * as S from "./style/style-Logo";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { AiFillHome } from "react-icons/ai";
 
 interface PropsType {
   txtColor?: string;
@@ -21,7 +22,7 @@ const Logo = (props: PropsType) => {
 
   return (
     <S.Logo>
-      <button onClick={() => (location.href = "/  ")}>
+      <button onClick={() => (location.href = "/")}>
         <S.MobileLogo txtColor={props.txtColor} className="mobile-only">
           <AiFillHome />
         </S.MobileLogo>

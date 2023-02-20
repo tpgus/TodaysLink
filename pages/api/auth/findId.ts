@@ -1,8 +1,8 @@
 import Joi from "joi";
-import { NextApiRequest, NextApiResponse } from "next";
-import { emailSchema } from "../../../utils/common-utils";
 import { db } from "../../../lib/firestore";
+import { emailSchema } from "../../../utils/common-utils";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -24,8 +24,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .status(200)
           .json({ message: "등록되지 않은 이메일입니다.", userId: null });
       } else {
-        let userId;
-        querySnapshot.forEach((document) => (userId = document.data().userId));
+        //에러 발생 가능성?
+        const { userId } = querySnapshot.docs[0].data();
         res.status(200).json({ message: "조회 성공", userId });
       }
     } catch (error) {

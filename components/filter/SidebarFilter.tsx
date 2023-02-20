@@ -1,7 +1,7 @@
 import * as S from "./style/style-SidebarFilter";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { BiRefresh } from "react-icons/bi";
+import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch } from "../../store";
 import {
   setPlatforms,
@@ -29,15 +29,14 @@ const NUM_OF_WINNER = [
   { name: "1000명 이상", value: "1000" },
 ];
 
-const FILTERS = [
-  { key: "platform", KWord: "플랫폼", option: PLATFORMS },
-  { key: "numOfWinner", KWord: "당첨자 수", option: NUM_OF_WINNER },
-];
+// const FILTERS = [
+//   { key: "platform", KWord: "플랫폼", option: PLATFORMS },
+//   { key: "numOfWinner", KWord: "당첨자 수", option: NUM_OF_WINNER },
+// ];
 
-//둘 다 라디오에 같은 값 -> map 이용 코드 개선
+//둘 다 라디오에 같은 값 -> map 이용 코드 개선 -> 개선할 때 오류 다수 발생
 const SidebarFilter = () => {
   const [checkedPlatform, setCheckedPlatform] = useState<number | null>(null);
-
   const [checkedNumOfWinner, setCheckedNumOfWinner] = useState<number | null>(
     null
   );

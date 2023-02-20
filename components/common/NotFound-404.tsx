@@ -1,5 +1,5 @@
-import Link from "next/link";
 import * as S from "./style/style-NotFound";
+import Link from "next/link";
 
 const NotFound = () => {
   return (

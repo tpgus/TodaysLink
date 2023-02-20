@@ -17,6 +17,7 @@ export type PLATFORM =
   | "OFFICIAL_WEB"
   | "ETC"
   | null;
+
 export type TAG =
   | "전부 보기"
   | "오늘 마감"
@@ -70,7 +71,3 @@ export interface SearchOptionType {
   platform: PLATFORM;
   numOfWinner: number;
 }
-
-export type EventListType = EventType[];
-
-export type FaqListType = FaqType[];

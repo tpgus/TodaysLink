@@ -1,6 +1,3 @@
-import { Timestamp } from "firebase/firestore";
-import { EventDate } from "../types";
-
 enum DAY {
   "일요일" = 0,
   "월요일",

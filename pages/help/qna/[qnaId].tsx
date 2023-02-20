@@ -14,9 +14,8 @@ interface Query extends ParsedUrlQuery {
 
 const QnaDetailPage = () => {
   const router = useRouter();
-  const [qna, setQna] = useState<QnaType | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const { qnaId } = router.query as Query;
+  const [qna, setQna] = useState<QnaType | null>(null);
 
   useEffect(() => {
     const fetchQnA = async () => {
@@ -25,9 +24,6 @@ const QnaDetailPage = () => {
     };
     fetchQnA();
   }, [qnaId]);
-
-  if (qna === null && isLoading) return <LoadingSpinner />;
-  if (qna === null && !isLoading) return <p>다시 시도해 주세요</p>;
 
   return <QnADetail qna={qna} />;
 };

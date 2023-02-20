@@ -1,5 +1,5 @@
-import EventDetail from "../../components/event/EventDetail";
 import Head from "next/head";
+import EventDetail from "../../components/event/EventDetail";
 import { getEventIds, getEventById } from "../../client-apis/api/event";
 import type { EventType } from "../../types";
 import type { ParsedUrlQuery } from "querystring";
@@ -36,8 +36,8 @@ interface Params extends ParsedUrlQuery {
 }
 
 //첫 페이지의 링크 아이템을 정적 생성? 아니면 동적 생성?해야 하는 것인가
-//121번 강의에서 이런 데이터는 staticProps 이용했음.
-//댓글 같은 기능이 있다면 serverSideProps가 적합했을 듯
+//121번 강의에서 이런 데이터는 staticProps 이용했다.
+//댓글 같은 기능이 있다면 serverSideProps가 적합
 //만약, getStaticProps를 이용하면, 나중에 데이터가 추가될 수 있으니 revalidate를 이용
 //현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
 export const getStaticProps: GetStaticProps = async (context) => {

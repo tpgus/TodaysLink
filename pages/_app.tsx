@@ -1,11 +1,12 @@
+import Head from "next/head";
+import AppLayout from "../components/layout/AppLayout";
+import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
 import { store } from "../store";
 import { Provider } from "react-redux";
-import AppLayout from "../components/layout/AppLayout";
-import Head from "next/head";
 import type { ReactElement, ReactNode } from "react";
 import type { AppProps } from "next/app";
 import type { NextPage } from "next";
@@ -35,7 +36,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+          <SessionProvider session={pageProps.session}>
+            <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+          </SessionProvider>
         </Provider>
       </ThemeProvider>
     </>

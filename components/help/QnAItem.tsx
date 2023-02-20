@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { dateParser } from "../../utils/parser-utils";
 import type { QnaType } from "../../types";
 
 interface PropsType {
@@ -7,8 +6,8 @@ interface PropsType {
 }
 
 const QnAItem = (props: PropsType) => {
-  const router = useRouter();
   const { qna } = props;
+  const router = useRouter();
 
   const registeredDate = qna.registeredDate.toDate();
   const year = registeredDate.getFullYear();

@@ -1,3 +1,4 @@
+import { db } from "../../lib/firestore";
 import {
   collection,
   addDoc,
@@ -8,8 +9,7 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-import { db } from "../../lib/firestore";
-import { QnaType } from "../../types";
+import type { QnaType } from "../../types";
 
 export const getQnARef = () => collection(db, "qna");
 

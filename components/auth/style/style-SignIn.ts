@@ -14,16 +14,19 @@ export const LoginLayout = styled.div`
     font-weight: bold;
     text-align: center;
     color: ${({ theme }) => theme.color["gray-600"]};
-    margin-top: 20%;
+    margin-top: 10%;
   }
 `;
 
 export const LoginContainer = styled.section`
   width: 80%;
-  margin-top: 15%;
+  margin-top: 10%;
+
+  ${media.pc} {
+    margin-top: 20%;
+  }
 
   .signup__btn {
-    margin-top: 5rem;
     width: 100%;
   }
 `;

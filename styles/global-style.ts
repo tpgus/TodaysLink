@@ -38,20 +38,19 @@ export const GlobalStyle = createGlobalStyle`
     a {
        text-decoration:none;
     }
-
     .pc-only{
         display:none;
         ${media.pc}{
             display:block;
         }
     }
-
     .pc-tablet-only {
         display: none;
         ${media.mobile} {
             display: block;
         }
     }
+    
     .tablet-mobile-only{
         display: block;
         ${media.tablet}{

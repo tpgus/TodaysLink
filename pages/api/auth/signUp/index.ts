@@ -1,13 +1,13 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { hashPassword } from "../../../../server/utils/auth-utils";
-import { db } from "../../../../lib/firestore";
 import Joi from "joi";
+import { db } from "../../../../lib/firestore";
+import { hashPassword } from "../../../../server/utils/auth-utils";
+import { addDoc, collection } from "firebase/firestore";
 import {
   idSchema,
   emailSchema,
   passwordSchema,
 } from "../../../../utils/common-utils";
-import { addDoc, collection } from "firebase/firestore";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -24,12 +24,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(422).json({
         message: "아이디, 비밀번호, 이메일을 확인해 주세요",
       });
-      return;
     }
 
     try {
       const usersRef = collection(db, "users");
-
       const hashedPassword = await hashPassword(password);
       const result = await addDoc(usersRef, {
         userId,

@@ -1,8 +1,8 @@
 import * as S from "./style/style-Event";
 import Image from "next/image";
-import { dateParser } from "../../utils/parser-utils";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { dateParser } from "../../utils/parser-utils";
 import type { EventType } from "../../types";
 
 interface PropsType {

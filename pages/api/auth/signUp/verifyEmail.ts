@@ -1,11 +1,13 @@
 import Joi from "joi";
-import { transporter } from "../../../../server/utils/mail-utils";
-import { emailSchema } from "../../../../utils/common-utils";
 import { db } from "../../../../lib/firestore";
-import { getMailFormat } from "../../../../server/utils/mail-utils";
+import { emailSchema } from "../../../../utils/common-utils";
 import { v4 as uuidv4, parse } from "uuid";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { NextApiRequest, NextApiResponse } from "next";
+import {
+  getMailFormat,
+  transporter,
+} from "../../../../server/utils/mail-utils";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -22,14 +24,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("email", "==", email));
       const querySnapshot = await getDocs(q);
+
       if (!querySnapshot.empty) {
-        //해당 이메일 이미 사용 중
         res.status(422).json({
           message: "이미 사용 중인 이메일입니다.",
         });
       } else {
         //해당 이메일 사용 가능할 경우
-        //6자리 난수 생성
+        //6자리 난수 생성 방법 변경 하기 uuidv4 -> randomString
         const uniqueValue = parse(uuidv4());
         const verificationCode = (
           uniqueValue[0].toString() +

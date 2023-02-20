@@ -1,16 +1,15 @@
 import * as S from "./style/style-Search";
 import Joi from "joi";
-import { AiOutlineSearch } from "react-icons/ai";
+import { useRef } from "react";
 import { validate } from "../../utils/checkValidation-utils";
-import { useRef, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../store";
-import { showNotification } from "../../store/notificationSlice";
 import { setSearchValue } from "../../store/searchOptionSlice";
+import { useAppDispatch } from "../../store";
+import { AiOutlineSearch } from "react-icons/ai";
+import { showNotification } from "../../store/notificationSlice";
 
 const Search = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
-  const { searchValue } = useAppSelector((state) => state.searchOption);
 
   const search = async () => {
     // 실제 검색 요청과 관련된 코드

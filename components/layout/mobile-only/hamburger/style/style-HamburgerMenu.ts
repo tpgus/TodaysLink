@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../../../../styles/theme";
 
 interface PropsType {
   isClicked: boolean;
@@ -25,10 +26,14 @@ export const MenuContainer = styled.ul<PropsType>`
     justify-content: center;
     height: 2.5rem;
     font-weight: 500;
+
+    ${media["fix-mobile"]} {
+      font-size: 0.9rem;
+    }
   }
 
   span {
-    width: 40%;
+    width: 50%;
   }
 `;
 

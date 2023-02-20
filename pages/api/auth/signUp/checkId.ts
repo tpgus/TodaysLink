@@ -1,8 +1,8 @@
 import Joi from "joi";
-import { idSchema } from "../../../../utils/common-utils";
-import { NextApiRequest, NextApiResponse } from "next";
 import { db } from "../../../../lib/firestore";
+import { idSchema } from "../../../../utils/common-utils";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -19,13 +19,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("userId", "==", userId));
       const querySnapshot = await getDocs(q);
-      let isExist = true;
+
+      let isExistsId = true;
       if (querySnapshot.empty) {
-        isExist = false;
+        isExistsId = false;
       }
-      res.status(200).json({ message: "success", isExist });
+
+      res.status(200).json({ message: "success", isExistsId });
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error", isExist: null });
+      res.status(500).json({ message: "Internal Server Error" });
     }
   }
 };

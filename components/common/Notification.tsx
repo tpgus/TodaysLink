@@ -15,7 +15,7 @@ const Notification = () => {
     if (isActive) {
       timer = setTimeout(() => {
         dispatch(hideNotification());
-      }, 1300);
+      }, 700);
     }
     return () => {
       clearTimeout(timer);

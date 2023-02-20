@@ -1,3 +1,5 @@
+import { db } from "../../lib/firestore";
+import { fieldOptionBuilder } from "../../utils/query-utils";
 import {
   collection,
   getDoc,
@@ -11,10 +13,8 @@ import {
   DocumentData,
   getCountFromServer,
 } from "firebase/firestore";
-import { db } from "../../lib/firestore";
-import { fieldOptionBuilder } from "../../utils/query-utils";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
-import type { EventListType, EventType, SearchOptionType } from "../../types";
+import type { EventType, SearchOptionType } from "../../types";
 
 export const getEventRef = () => collection(db, "event");
 
@@ -35,7 +35,7 @@ export const getEventById = async (id: string) => {
 export const getEventIds = async () => {
   try {
     const eventRef = getEventRef();
-    const q = query(eventRef, limit(4), orderBy("endDate"));
+    const q = query(eventRef, limit(8), orderBy("endDate"));
     const documents = await getDocs(q);
     const ids: string[] = [];
     documents.forEach((document) => {
@@ -79,15 +79,15 @@ export const getEventList = async (
         ...fieldOptions,
         orderBy("numOfWinner"),
         startAfter(docSnap),
-        limit(4)
+        limit(8)
       );
     } else {
-      q = query(eventRef, ...fieldOptions, orderBy("numOfWinner"), limit(4));
+      q = query(eventRef, ...fieldOptions, orderBy("numOfWinner"), limit(8));
     }
 
     const documents = await getDocs(q);
     const lastDocumentId = documents.docs[documents.docs.length - 1]?.id;
-    const eventList: EventListType = [];
+    const eventList: EventType[] = [];
     documents.forEach((document) => {
       eventList.push({
         ...(document.data() as EventType),

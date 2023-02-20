@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 type MailType = "signUp" | "findPassword";
 
-const redirectUrl = "https://todayslinkt.net/help/qna";
+const redirectUrl = "https://todayslink.net/help/qna";
 
 export const transporter = nodemailer.createTransport({
   service: "Naver",

@@ -51,8 +51,12 @@ export const getErrorMessage = (error: ValidationError) => {
       break;
 
     case "any.only":
-      //현재 Joi.ref를 비밀번호 재입력에서만 사용하고 있으므로 any.only 하나만으로 분기가 가능한 상태
+      //현재 Joi.ref를 비밀번호 재입력에서만 사용하고 있으므로 any.only 하나만으로도 분기가 가능한 상태
       errorMessage = `비밀번호를 확인해 주세요`;
+      break;
+
+    case "object.unkown":
+      errorMessage = "조건 검사식 오류입니다 (오타)";
       break;
 
     default:
