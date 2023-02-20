@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(401).json({ message: "인증되지 않은 사용자입니다." });
     }
 
-    const id = session?.user?.id!;
+    const id = session?.user?.id;
     const usersRef = collection(db, "users");
     const userRef = doc(usersRef, id);
     const docSnap = await getDoc(userRef);
