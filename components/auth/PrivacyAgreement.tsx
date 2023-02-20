@@ -1,15 +1,17 @@
-import { Dispatch, SetStateAction } from "react";
+import * as S from "./style/style-PrivacyAgreement";
+import Button from "../ui/Button";
 import { detail } from "../../public/static-data/privacy-agreement";
 import { v4 as uuidv4 } from "uuid";
-import Button from "../ui/Button";
-import * as S from "./style/style-PrivacyAgreement";
+import { Dispatch, SetStateAction } from "react";
 
 interface PropsType {
   onActivateModal: Dispatch<SetStateAction<boolean>>;
 }
+
 //개인정보 수집 및 이용 동의 모달
 const PrivacyAgreement = (props: PropsType) => {
   const privacyDetail = detail.split("\n");
+
   return (
     <>
       <S.Backdrop onClick={() => props.onActivateModal(false)} />

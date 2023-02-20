@@ -1,6 +1,6 @@
+import Head from "next/head";
 import FindId from "../../components/auth/FindId";
 import AuthPageLayout from "../../components/auth/AuthPageLayout";
-import Head from "next/head";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../pages/_app";
 

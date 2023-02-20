@@ -1,16 +1,17 @@
+import * as S from "./style/style-FAQItem";
 import { useState, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import * as S from "./style/style-FAQItem";
 
 interface PropsType {
   question: string;
   answer: string;
 }
 
-const FAQitem = (props: PropsType) => {
+const FaqItem = (props: PropsType) => {
+  const [isOpen, setIsClosed] = useState(false);
+
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsClosed] = useState(false);
 
   const handleClickQuestion = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -47,4 +48,4 @@ const FAQitem = (props: PropsType) => {
   );
 };
 
-export default FAQitem;
+export default FaqItem;

@@ -1,25 +1,25 @@
 import * as S from "./style/style-SignUp";
-import { useRef, useState, useEffect, useCallback } from "react";
+import Joi from "joi";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
+import Notification from "../common/Notification";
+import PrivacyAgreement from "./PrivacyAgreement";
 import { useRouter } from "next/router";
+import { useFetch } from "../../hooks/useFetch";
+import { showNotification } from "../../store/notificationSlice";
 import { validate, checkNull } from "../../utils/checkValidation-utils";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { showNotification } from "../../store/notificationSlice";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   createUser,
   checkDuplicateId,
   verifyEmail,
 } from "../../client-apis/api/auth";
-import { useFetch } from "../../hooks/useFetch";
 import {
   idSchema,
   passwordSchema,
   emailSchema,
 } from "../../utils/common-utils";
-import Joi from "joi";
-import PrivacyAgreement from "./PrivacyAgreement";
-import Notification from "../common/Notification";
-import Input from "../ui/Input";
-import Button from "../ui/Button";
 
 const validationSchema = Joi.object({
   userId: idSchema,
@@ -28,15 +28,13 @@ const validationSchema = Joi.object({
   email: emailSchema,
 }).with("password", "confirmPassword");
 
-type Validation = boolean | null;
-
 interface CreateUser {
   message: string;
   createdUserId: string;
 }
 interface CheckId {
   message: string;
-  isExist: boolean;
+  isExistsId: boolean;
 }
 
 interface VerifyEmail {
@@ -46,11 +44,11 @@ interface VerifyEmail {
 
 //컴포넌트 시작
 const SignUp = () => {
-  const [isDuplicateId, setIsDuplicateId] = useState<Validation>(null); //아이디 중복확인
   const [verifiedId, setVerifiedId] = useState<string | null>(null);
   const [verifiedEmail, setVerifiedEmail] = useState<string | null>(null);
-  const [isSentMail, setIsSentMail] = useState(false);
+  const [isDuplicateId, setIsDuplicateId] = useState<boolean | null>(null); //아이디 중복확인
   const [verificationCode, setVerificationCode] = useState<string | null>(null);
+  const [isSentMail, setIsSentMail] = useState(false);
   const [timer, setTimer] = useState(180);
   const [isCheckedPrivacyAgreement, setIsCheckedPrivacyAgreement] =
     useState(false);
@@ -67,10 +65,10 @@ const SignUp = () => {
   const verificationCodeRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
-  const notificationState = useAppSelector((state) => state.notification);
   const dispatch = useAppDispatch();
+  const notificationState = useAppSelector((state) => state.notification);
 
-  //사용자 피드백을 위한 Notification 컴포넌트 렌더링을 트리거하는 함수
+  //사용자 피드백을 위해 Notification 컴포넌트를 렌더링 하기 위한 함수
   const activateNotification = useCallback(
     (message: string, isPositive: boolean = false) => {
       dispatch(showNotification({ isPositive, message }));
@@ -78,7 +76,7 @@ const SignUp = () => {
     [dispatch]
   );
 
-  /* 아이디 중복 체크 시작 */
+  /* 아이디 중복 체크 함수 시작 */
   const handleCheckId = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -97,17 +95,16 @@ const SignUp = () => {
       return;
     }
 
-    //유효성 검사 통과 후 요청 시작
+    //아이디 유효성 검사 통과 후, 아이디 중복 체크 API 요청 시작
     await checkIdFetch.sendRequest(userId);
   };
 
+  //아이디 중복 체크 API 요청 이후 로직
   useEffect(() => {
-    //아이디 중복 체크 서버 API 요청 이후
     if (!checkIdFetch.isLoading && !checkIdFetch.error && checkIdFetch.data) {
-      const { isExist } = checkIdFetch.data;
-      const userId = userIdRef.current!.value;
-
-      if (!isExist) {
+      const { isExistsId } = checkIdFetch.data;
+      if (!isExistsId) {
+        const userId = userIdRef.current!.value;
         setIsDuplicateId(false);
         setVerifiedId(userId);
       } else {
@@ -121,13 +118,13 @@ const SignUp = () => {
   }, [checkIdFetch, dispatch, activateNotification]);
   /* 아이디 중복 체크 끝 */
 
-  /* 이메일 인증 시작 */
+  /* 이메일 인증 함수 시작 */
   const handleVerifyEmail = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.stopPropagation();
 
-    //이메일 인증 서버 API 요청 이전에 유효성 검사
+    //이메일 인증 관련 서버 API 요청 이전에 이메일 유효성 검사
     const email = emailRef.current!.value;
     const validationSchema = Joi.object({ email: emailSchema });
     const validationResult = await validate(validationSchema, { email });
@@ -149,8 +146,8 @@ const SignUp = () => {
       verifyEmailFetch.data
     ) {
       const email = emailRef.current!.value;
-      setVerifiedEmail(email);
       setIsSentMail(true);
+      setVerifiedEmail(email);
       setVerificationCode(verifyEmailFetch.data.verificationCode);
       setTimer(180);
     } else if (verifyEmailFetch.error) {
@@ -158,11 +155,13 @@ const SignUp = () => {
       setVerifiedEmail(null);
       setIsSentMail(false);
     }
+
     verifyEmailFetch.resetState();
   }, [verifyEmailFetch, dispatch, activateNotification]);
 
   useEffect(() => {
     let timer: NodeJS.Timer;
+
     if (isSentMail) {
       timer = setInterval(() => {
         setTimer((prevTime) => {
@@ -176,9 +175,7 @@ const SignUp = () => {
     }
     return () => clearInterval(timer);
   }, [isSentMail]);
-  /* 이메일 인증 끝 */
-
-  /* 개인정보 수집 동의*/
+  /* 이메일 인증 관련 함수 끝 */
 
   /* 회원가입 시작 */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -202,14 +199,14 @@ const SignUp = () => {
       return;
     }
 
+    //아이디 중복 체크 이후, 다른 아이디로 변경하고 가입 버튼을 누르는 경우
     if (verifiedId !== userId) {
-      //아이디 중복 체크 이후, 다른 아이디로 변경하고 가입 버튼을 누르는 경우
       activateNotification("아이디 중복 체크를 진행해 주세요");
       return;
     }
 
+    //이메일 인증 이후, 다른 이메일로 변경하고 가입 버튼을 누르는 경우
     if (verifiedEmail !== email) {
-      //이메일 인증 이후, 다른 이메일로 변경하고 가입 버튼을 누르는 경우
       activateNotification("인증된 이메일이어야 합니다.");
       return;
     }
@@ -246,8 +243,8 @@ const SignUp = () => {
     }
   };
 
+  //회원가입 API 요청 이후 로직
   useEffect(() => {
-    //회원가입 API 요청 이후 로직
     if (
       !createUserFetch.isLoading &&
       !createUserFetch.error &&

@@ -1,24 +1,24 @@
-import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
-import Pagination from "../common/Pagination";
-import FAQitem from "./FAQitem";
 import * as S from "./style/style-FAQList";
-import type { FaqListType } from "../../types";
+import FaqItem from "./FaqItem";
+import Pagination from "../common/Pagination";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import type { FaqType } from "../../types";
 
 interface PropsType {
-  faqList: FaqListType;
+  faqList: FaqType[];
 }
 
 const itemsPerPage = 9;
 
-const FAQList = (props: PropsType) => {
+const FaqList = (props: PropsType) => {
   const [currentPage, setCurrentPage] = useState(1);
   const fisrtItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
   const faqList = props.faqList
     .slice(fisrtItemIdxOfPage, fisrtItemIdxOfPage + itemsPerPage)
     .map((faq) => (
-      <FAQitem key={uuidv4()} question={faq.question} answer={faq.answer} />
+      <FaqItem key={uuidv4()} question={faq.question} answer={faq.answer} />
     ));
 
   return (
@@ -35,4 +35,4 @@ const FAQList = (props: PropsType) => {
   );
 };
 
-export default FAQList;
+export default FaqList;

@@ -4,15 +4,16 @@ import QnAList from "../../../components/help/QnAList";
 import QnAWriting from "../../../components/help/QnAWriting";
 import HelpPageLayout from "../../../components/help/HelpPageLayout";
 import LoadingSpinner from "../../../components/common/LoadingSpinner";
-import { useRef, useState, useEffect } from "react";
 import { getQnAList } from "../../../client-apis/api/qna";
+import { useRef, useState, useEffect } from "react";
+import type { QnaType } from "../../../types";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../../pages/_app";
-import type { QnaType } from "../../../types";
 
 const QnAPage: NextPageWithLayout = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isActiveWritingArea, setIsActiveWritingArea] = useState(false);
   const [qnaList, setQnaList] = useState<QnaType[] | null>(null);

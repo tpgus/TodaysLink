@@ -1,32 +1,33 @@
 import * as S from "./style/style-FindPassword";
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
-import { idSchema, emailSchema } from "../../utils/common-utils";
-import { validate } from "../../utils/checkValidation-utils";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { showNotification } from "../../store/notificationSlice";
-import { findPassword } from "../../client-apis/api/auth";
-import { useFetch } from "../../hooks/useFetch";
-import Notification from "../common/Notification";
-import Input from "../ui/Input";
-import Button from "../ui/Button";
 import Joi from "joi";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import Notification from "../common/Notification";
+import { validate } from "../../utils/checkValidation-utils";
+import { useFetch } from "../../hooks/useFetch";
+import { useRouter } from "next/router";
+import { findPassword } from "../../client-apis/api/auth";
+import { showNotification } from "../../store/notificationSlice";
+import { useEffect, useRef } from "react";
+import { idSchema, emailSchema } from "../../utils/common-utils";
+import { useAppDispatch, useAppSelector } from "../../store";
 
 interface FindPassword {
   message: string;
-  success: boolean;
+  isSuccess: boolean;
 }
 
 const FindPassword = () => {
   const userIdRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
 
-  const findPwdFetch = useFetch<FindPassword>(findPassword);
+  const findPasswordFetch = useFetch<FindPassword>(findPassword);
 
   const router = useRouter();
   const dispatch = useAppDispatch();
   const notificationState = useAppSelector((state) => state.notification);
 
+  //비밀번호 변경 함수 시작
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -54,24 +55,24 @@ const FindPassword = () => {
     }
 
     //서버 API 요청
-    findPwdFetch.resetState();
-    await findPwdFetch.sendRequest({
+    findPasswordFetch.resetState();
+    await findPasswordFetch.sendRequest({
       userId: enteredUserId,
       email: enteredEmail,
     });
   };
 
   useEffect(() => {
-    if (!findPwdFetch.isLoading && findPwdFetch.error) {
+    if (findPasswordFetch.error) {
       dispatch(
         showNotification({
           isPositive: false,
-          message: findPwdFetch.error.message,
+          message: findPasswordFetch.error.message,
         })
       );
-      findPwdFetch.resetState();
+      findPasswordFetch.resetState();
     }
-  }, [findPwdFetch, dispatch]);
+  }, [findPasswordFetch, dispatch]);
 
   return (
     <S.FindPasswordLayout>
@@ -89,12 +90,12 @@ const FindPassword = () => {
         <div>
           <p
             className={`message ${
-              findPwdFetch.data?.success ? "positive" : "negative"
+              findPasswordFetch.data?.isSuccess ? "positive" : "negative"
             }`}
           >
-            {findPwdFetch.data?.message}
+            {findPasswordFetch.data?.message}
           </p>
-          {findPwdFetch.data?.success ? (
+          {findPasswordFetch.data?.isSuccess ? (
             <Button
               type="button"
               onClick={() => router.replace("/auth/signIn")}
@@ -104,7 +105,7 @@ const FindPassword = () => {
           ) : null}
         </div>
         <Button type="submit">
-          {findPwdFetch.isLoading ? "요청 중..." : "비밀번호 찾기"}
+          {findPasswordFetch.isLoading ? "요청 중..." : "비밀번호 찾기"}
         </Button>
       </form>
     </S.FindPasswordLayout>

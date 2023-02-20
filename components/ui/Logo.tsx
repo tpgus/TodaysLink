@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { AiFillHome } from "react-icons/ai";
 import * as S from "./style/style-Logo";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { AiFillHome } from "react-icons/ai";
 
 interface PropsType {
   txtColor?: string;
@@ -8,6 +9,7 @@ interface PropsType {
 }
 
 const Logo = (props: PropsType) => {
+  const router = useRouter;
   //모바일임에도 PC와 같은 형태의 로고를 보여줘야 할 경우
   if (props.pc) {
     return (
@@ -21,7 +23,7 @@ const Logo = (props: PropsType) => {
 
   return (
     <S.Logo>
-      <button onClick={() => (location.href = "/  ")}>
+      <button onClick={() => (location.href = "/")}>
         <S.MobileLogo txtColor={props.txtColor} className="mobile-only">
           <AiFillHome />
         </S.MobileLogo>

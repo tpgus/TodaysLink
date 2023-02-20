@@ -1,3 +1,5 @@
+import { db } from "../../lib/firestore";
+import { fieldOptionBuilder } from "../../utils/query-utils";
 import {
   collection,
   getDoc,
@@ -11,10 +13,8 @@ import {
   DocumentData,
   getCountFromServer,
 } from "firebase/firestore";
-import { db } from "../../lib/firestore";
-import { fieldOptionBuilder } from "../../utils/query-utils";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
-import type { EventListType, EventType, SearchOptionType } from "../../types";
+import type { EventType, SearchOptionType } from "../../types";
 
 export const getEventRef = () => collection(db, "event");
 
@@ -87,7 +87,7 @@ export const getEventList = async (
 
     const documents = await getDocs(q);
     const lastDocumentId = documents.docs[documents.docs.length - 1]?.id;
-    const eventList: EventListType = [];
+    const eventList: EventType[] = [];
     documents.forEach((document) => {
       eventList.push({
         ...(document.data() as EventType),

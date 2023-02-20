@@ -1,6 +1,6 @@
 import * as S from "./style/style-DetailTagList";
-import { v4 as uuidv4 } from "uuid";
 import DetailTag from "./DetailTag";
+import { v4 as uuidv4 } from "uuid";
 
 interface PropsType {
   tags: string[];

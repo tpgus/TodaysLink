@@ -1,8 +1,8 @@
 import * as S from "./style/style-QnAList";
-import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
-import Pagination from "../common/Pagination";
 import QnAItem from "./QnAItem";
+import Pagination from "../common/Pagination";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import type { QnaType } from "../../types";
 
 interface PropsType {

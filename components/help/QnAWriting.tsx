@@ -1,12 +1,12 @@
 import * as S from "./style/style-QnAWriting";
+import Joi from "joi";
+import Button from "../ui/Button";
+import Notification from "../common/Notification";
+import { validate } from "../../utils/checkValidation-utils";
+import { createQnA } from "../../client-apis/api/qna";
 import { useRef, useState } from "react";
-import { checkNull, validate } from "../../utils/checkValidation-utils";
 import { showNotification } from "../../store/notificationSlice";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { createQnA } from "../../client-apis/api/qna";
-import Joi from "joi";
-import Notification from "../common/Notification";
-import Button from "../ui/Button";
 import type { QnaType } from "../../types";
 
 interface PropsType {
@@ -28,6 +28,7 @@ const QnAWriting = (props: PropsType) => {
     questionTypeRef.current!.value = "기타";
   };
 
+  //문의 등록
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -59,10 +60,12 @@ const QnAWriting = (props: PropsType) => {
     try {
       setIsLoading(true);
       const result = await createQnA({ type, title, content });
-      dispatch(showNotification({ isPositive: true, message: "등록완료" }));
-      resetInputValue();
-      props.onComplete();
-      props.onAddQnaToList(result.createdQnA);
+      if (result.createdQnA) {
+        dispatch(showNotification({ isPositive: true, message: "등록완료" }));
+        resetInputValue();
+        props.onComplete();
+        props.onAddQnaToList(result.createdQnA);
+      }
     } catch (error) {
       dispatch(
         showNotification({

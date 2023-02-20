@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { v4 as uuidv4 } from "uuid";
-import { IoMdArrowDropright } from "react-icons/io";
 import * as S from "./style/style-HelpPageLayout";
+import Link from "next/link";
+import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
+import { IoMdArrowDropright } from "react-icons/io";
 
 interface PropsType {
   children: React.ReactNode;

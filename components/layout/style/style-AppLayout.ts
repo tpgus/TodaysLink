@@ -3,6 +3,7 @@ import { media } from "../../../styles/theme";
 
 export const Main = styled.div`
   margin: 0 auto;
+
   ${media["fix-mobile"]} {
     padding-top: 5rem;
   }

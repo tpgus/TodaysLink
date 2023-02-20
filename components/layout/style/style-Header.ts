@@ -37,9 +37,7 @@ export const HeaderContainer = styled.div`
     &:hover {
       color: rgba(255, 255, 255, 0.7);
     }
-    &:not(:nth-of-type(1)) {
-      margin-left: 1.2rem;
-    }
+
     ${media.tablet} {
       font-size: 1.1rem;
     }
@@ -49,5 +47,13 @@ export const HeaderContainer = styled.div`
     color: rgba(255, 255, 255, 0.7);
     border-bottom: 3px solid #fff;
     padding-bottom: 0.4rem;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  li:not(:nth-of-type(1)) {
+    margin-left: 1.2rem;
   }
 `;

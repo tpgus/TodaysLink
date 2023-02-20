@@ -1,8 +1,7 @@
-import Joi from "joi";
-
 /* 
-  클라이언트와 서버에서 공통으로 사용하는 유틸 
+  common-utils.ts : 클라이언트와 서버에서 공통으로 사용하는 유틸 
 */
+import Joi from "joi";
 
 const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
 

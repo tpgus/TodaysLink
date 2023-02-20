@@ -3,8 +3,8 @@ import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
 import DetailTagList from "./DetailTagList";
-import { dateParser, separateLine } from "../../utils/parser-utils";
 import { v4 as uuidv4 } from "uuid";
+import { dateParser, separateLine } from "../../utils/parser-utils";
 import type { EventType } from "../../types";
 
 interface PropsType {
@@ -15,6 +15,7 @@ const EventDetail = (props: PropsType) => {
   const { event } = props;
   const { startDate, endDate, announcementDate } = event;
   const dates = [startDate, endDate, announcementDate];
+
   const [formattedStartDate, formattedEndDate, formattedAnnouncementDate] =
     dates.map((date) => {
       const { year, month, day, hour, minites } = date;
@@ -27,10 +28,6 @@ const EventDetail = (props: PropsType) => {
   const handleClickCompleteBtn = () => {
     alert("개발 중입니다...");
   };
-
-  if (typeof event.tags === "string") {
-    console.log("tags");
-  }
 
   return (
     <S.EventDetailLayout>

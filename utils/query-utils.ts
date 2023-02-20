@@ -1,4 +1,4 @@
-import { where, Timestamp } from "firebase/firestore";
+import { where } from "firebase/firestore";
 import type { SearchOptionType } from "../types";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
 

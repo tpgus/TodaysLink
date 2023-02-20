@@ -1,16 +1,16 @@
-import { QnaType } from "../../types";
+import * as S from "./style/style-QnADetail";
+import Button from "../ui/Button";
 import { useRouter } from "next/router";
 import { dateParser } from "../../utils/parser-utils";
-import Button from "../ui/Button";
-import * as S from "./style/style-QnADetail";
+import type { QnaType } from "../../types";
 
 interface PropsType {
   qna: QnaType | null;
 }
 
 const QnADetail = (props: PropsType) => {
-  const router = useRouter();
   const { qna } = props;
+  const router = useRouter();
 
   if (!qna) return <p>다시 시도해 주세요</p>;
 
