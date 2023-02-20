@@ -53,13 +53,13 @@ const ChangePassword = () => {
       return;
     }
 
-    if (window.confirm("비밀번호를 변경하시겠습니까?")) {
-      changePasswordFetch.resetState();
-      await changePasswordFetch.sendRequest({
-        oldPassword,
-        newPassword,
-      });
-    }
+    // if (window.confirm("비밀번호를 변경하시겠습니까?")) {
+    changePasswordFetch.resetState();
+    await changePasswordFetch.sendRequest({
+      oldPassword,
+      newPassword,
+    });
+    // }
   };
 
   useEffect(() => {
@@ -82,6 +82,7 @@ const ChangePassword = () => {
           message: changePasswordFetch.error.message,
         })
       );
+      changePasswordFetch.resetState();
     }
   }, [changePasswordFetch, dispatch, router]);
 

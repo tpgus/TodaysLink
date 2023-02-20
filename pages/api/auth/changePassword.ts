@@ -23,7 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const id = session?.user?.id;
+    const id = session?.user?.id!;
     const usersRef = collection(db, "users");
     const userRef = doc(usersRef, id);
     const docSnap = await getDoc(userRef);
@@ -32,6 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!user) {
       res.status(404).json({ message: "해당 사용자를 찾을 수 없습니다" });
     }
+    //
 
     const currentPassword = user.password;
     const { oldPassword, newPassword } = req.body;

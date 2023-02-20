@@ -51,7 +51,7 @@ const SignIn = () => {
       return;
     }
 
-    //성공 -> 상태 관리 로직
+    //성공
     router.replace("/");
   };
 
