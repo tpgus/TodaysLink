@@ -51,8 +51,8 @@
 <summary>Todo List</summary>
 <div markdown="1">
 
-- 토큰 유무에 따른 페이지 접근 -> getSession -> gerServerSession으로 개선하기
-
+- 토큰 유무에 따른 페이지 접근 -> getSession 사용하는 곳 전부 검색해서 -> gerServerSession으로 개선하기
+- pages/api/auth/signUp/verifyEmail -> 난수 생성 방법 변경하기 -> pages/api/auth/findPassword 참조
 - 헤더 네비게이션 
 - 상세페이지 모바일 
 - 메인 index 코드 수정
