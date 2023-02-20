@@ -15,14 +15,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const session = await getSession({ req });
-  //gerServerSession으로 가능?
-
-  if (!session) {
-    res.status(401).json({ message: "인증되지 않은 사용자입니다." });
-  }
-
   try {
+    const session = await getSession({ req });
+    //gerServerSession으로 가능?
+
+    if (!session) {
+      res.status(401).json({ message: "인증되지 않은 사용자입니다." });
+    }
+
     const id = session?.user?.id!;
     const usersRef = collection(db, "users");
     const userRef = doc(usersRef, id);
