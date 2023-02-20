@@ -44,6 +44,10 @@
 
 - 2023.02.20 : 유저 토큰작업 (클라이언트측 UI, 서버측 권한 체크)
 
+- 2023.02.21 : 인증 관련 클라이언트 UI 수정 및
+
+- 2023.02.21 : 투데이링크 프로젝트 1차 완료 및 배포 (v1.0.0)
+
 </div>
 </details>
 
@@ -53,6 +57,7 @@
 
 - 토큰 유무에 따른 페이지 접근 -> getSession 사용하는 곳 전부 검색해서 -> gerServerSession으로 개선하기
 - pages/api/auth/signUp/verifyEmail -> 난수 생성 방법 변경하기 -> pages/api/auth/findPassword 참조
+- qna 암호화
 - 헤더 네비게이션 
 - 상세페이지 모바일 
 - 메인 index 코드 수정
