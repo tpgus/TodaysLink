@@ -52,9 +52,9 @@ const EventDetail = (props: PropsType) => {
               <Link className="actions__link" href={event.url} target="_blank">
                 링크 바로가기
               </Link>
-              <Button onClick={handleClickCompleteBtn} className="actions__btn">
+              {/* <Button onClick={handleClickCompleteBtn} className="actions__btn">
                 참여 완료
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="info__div">

@@ -60,7 +60,6 @@ export const InfoContainer = styled.div`
 
   ${media.pc} {
     position: absolute;
-    /* padding: 0 1rem; */
     right: 0;
     width: 50%;
   }
@@ -134,12 +133,11 @@ export const InfoContainer = styled.div`
     text-align: center;
     color: #fff;
     background-color: ${({ theme }) => theme.color.dark};
-    width: 80%;
+    width: 100%;
     margin-right: 2rem;
     ${media["fix-mobile"]} {
       padding: unset;
       padding: 0.5rem 0.5rem;
-      width: 50%;
       font-size: 0.8rem;
     }
     ${media.pc} {
