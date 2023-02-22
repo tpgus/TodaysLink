@@ -1,4 +1,5 @@
 import Joi from "joi";
+import randomString from "randomstring";
 import { db } from "../../../../lib/firestore";
 import { emailSchema } from "../../../../utils/common-utils";
 import { v4 as uuidv4, parse } from "uuid";
@@ -31,13 +32,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
       } else {
         //해당 이메일 사용 가능할 경우
-        //6자리 난수 생성 방법 변경 하기 uuidv4 -> randomString
-        const uniqueValue = parse(uuidv4());
-        const verificationCode = (
-          uniqueValue[0].toString() +
-          uniqueValue[1].toString() +
-          uniqueValue[2].toString()
-        ).slice(0, 6);
+        const verificationCode = randomString.generate({
+          length: 6,
+          charset: "1234567890",
+        });
 
         await transporter.sendMail({
           from: `"no-reply@TodaysLink Admin" <${"todayslink@naver.com"}>`,
