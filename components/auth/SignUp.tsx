@@ -326,7 +326,7 @@ const SignUp = () => {
                 onClick={handleVerifyEmail}
                 className="email__btn"
               >
-                인증
+                {verifyEmailFetch.isLoading ? "요청 중..." : "인증"}
               </Button>
             </div>
             {isSentMail ? (
