@@ -137,6 +137,7 @@ const SignUp = () => {
 
     //유효성 검사 통과후 이메일 인증 API 요청
     //resetState()가 과연 필요한 것인지??
+    verifyEmailFetch.resetState();
     await verifyEmailFetch.sendRequest(email);
   };
 
@@ -157,7 +158,6 @@ const SignUp = () => {
       setVerifiedEmail(null);
       setIsSentMail(false);
     }
-    verifyEmailFetch.resetState();
   }, [verifyEmailFetch, dispatch, activateNotification]);
 
   useEffect(() => {
