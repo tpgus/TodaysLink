@@ -55,9 +55,6 @@
 <summary>Todo List</summary>
 <div markdown="1">
 
-- 메인 페이지 새로고침시 토큰 유무에 따라 순간적으로 메뉴 갯수 차이 발생
-- 토큰 유무에 따른 페이지 접근 -> getSession 사용하는 곳 전부 검색해서 -> gerServerSession으로 개선하기
-- pages/api/auth/signUp/verifyEmail -> 난수 생성 방법 변경하기 -> pages/api/auth/findPassword 참조
 - qna 암호화
 - 상세페이지 모바일 너비 수정
 - 메인 index 코드 수정
