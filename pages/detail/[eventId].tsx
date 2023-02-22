@@ -35,9 +35,7 @@ interface Params extends ParsedUrlQuery {
   eventId: string;
 }
 
-//첫 페이지의 링크 아이템을 정적 생성? 아니면 동적 생성?해야 하는 것인가
-//121번 강의에서 이런 데이터는 staticProps 이용했다.
-//댓글 같은 기능이 있다면 serverSideProps가 적합
+//댓글 같은 기능이 있다면 serverSideProps가 적합할 수도
 //만약, getStaticProps를 이용하면, 나중에 데이터가 추가될 수 있으니 revalidate를 이용
 //현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -58,6 +56,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  //방문 확률이 높은, 첫 페이지에서 보이는 12개의 게시물에 대한 ID를 가져온다.
   const ids = await getEventIds();
   const params = ids.map((id) => ({ params: { eventId: id } }));
 

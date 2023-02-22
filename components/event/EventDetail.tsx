@@ -1,6 +1,5 @@
 import * as S from "./style/style-EventDetail";
 import Image from "next/image";
-import Button from "../ui/Button";
 import Link from "next/link";
 import DetailTagList from "./DetailTagList";
 import { v4 as uuidv4 } from "uuid";

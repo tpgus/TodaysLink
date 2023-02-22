@@ -3,7 +3,7 @@ import { media } from "../../../styles/theme";
 
 export const HeaderContainer = styled.div`
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   top: 0;
   width: 100%;
 

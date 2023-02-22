@@ -6,7 +6,7 @@ import { DefaultTheme } from "styled-components";
 export const theme: DefaultTheme = {
   //d.ts에 선언한 타입대로
   color: {
-    indigo: " #5047e5;",
+    indigo: "#5047e5;",
     "indigo-100": "rgb(224 231 255);",
     "indigo-200": "rgb(199 210 254);",
     "indigo-300": "rgb(165 180 252);",

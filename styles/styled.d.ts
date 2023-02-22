@@ -5,7 +5,7 @@ declare module "styled-components" {
     //타입을 정의
     //string 등 다양한 타입도 되지만, 아래와 같은 경우는 리터럴 타입을 사용 (해당 문자열만 가능)
     color: {
-      indigo: " #5047e5;";
+      indigo: "#5047e5;";
       "indigo-100": "rgb(224 231 255);";
       "indigo-200": "rgb(199 210 254);";
       "indigo-300": "rgb(165 180 252);";

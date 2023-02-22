@@ -1,7 +1,8 @@
 import { db } from "../../../lib/firestore";
-import { getSession } from "next-auth/react";
+import { authOptions } from "../../api/auth/[...nextauth]";
 import { verifyPassword, hashPassword } from "../../../server/utils/auth-utils";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getServerSession } from "next-auth";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 interface UserInfo {
@@ -16,8 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const session = await getSession({ req });
-    //gerServerSession으로 가능?
+    const session = await getServerSession(req, res, authOptions);
 
     if (!session) {
       res.status(401).json({ message: "인증되지 않은 사용자입니다." });

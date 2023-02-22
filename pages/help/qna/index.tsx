@@ -53,7 +53,7 @@ const QnAPage: NextPageWithLayout = () => {
   return (
     <>
       <Head>
-        <title>투데이 링크 - Q&A (1:1 문의)</title>
+        <title>투데이 링크 - Q&A (문의 게시판)</title>
         <meta
           name="description"
           content="사이트 이용과 관련하여 궁금한 내용을 문의하실 수 있습니다"
@@ -62,7 +62,7 @@ const QnAPage: NextPageWithLayout = () => {
       <S.QnAHeaderContainer>
         <div className="header-wrap">
           <div className="title-wrap">
-            <h1>1:1 문의 (Q&A)</h1>
+            <h1>문의 게시판(Q&A)</h1>
           </div>
           <div className="btn-wrap">
             <button onClick={toggleWritingBtn}>

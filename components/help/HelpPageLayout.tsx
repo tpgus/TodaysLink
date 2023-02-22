@@ -10,7 +10,7 @@ interface PropsType {
 
 const MENU_LIST = [
   { name: "자주 묻는 질문", path: "/help/faq" },
-  { name: "1:1 문의 (Q&A)", path: "/help/qna" },
+  { name: "문의 게시판 (Q&A)", path: "/help/qna" },
 ];
 
 const HelpPageLayout = (props: PropsType) => {

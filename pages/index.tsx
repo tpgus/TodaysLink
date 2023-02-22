@@ -36,7 +36,7 @@ const HomePage = (props: PropsType) => {
   const totalPage = Math.ceil(totalLength / 8);
 
   useEffect(() => {
-    //페이지 벗어날 때 -> 다른 방법
+    //페이지 벗어날 때 혹은 router 이벤트
     return () => {
       dispatch(setTag("전부 보기"));
       dispatch(resetFilter());

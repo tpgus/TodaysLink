@@ -4,22 +4,12 @@ import { authOptions } from "../api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 
-/* 
-useSession VS getSession ?
-useSession => 즉시 세션과 상태를 가져옴 
-로그아웃해서 세션이 없다면 세션, 상태는 변경되지 않음 (그대로)
-즉, 최신의 상태는 아닐 수 있다.
-
-getSession은 새 요청을 보내 최근의 세션 데이터를 가져옴
-세션의 유무 상태를 가져옴 -> 그리고 그것을 로컬 상태로 관리   
-*/
-
 const MyPage = ({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   //서버사이드 함수로부터 받아오는 데이터를 이런식으로 타입 지정해줄 수 있다.
   // https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props
-  //아직 세션은 쓰이지 않고 있는 상태 -> 추후 코드 변경
+  // 아직 세션은 쓰이지 않고 있는 상태 -> 추후 코드 변경
 
   return (
     <>
@@ -34,7 +24,8 @@ const MyPage = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getServerSession(context.req, context.res, authOptions);
-  //getSession에 비해 속도가 빠르다
+  //서버사이드에서 세션을 얻는 방법으로 getSession 보다 getServerSession을 추천한다 from 공식문서
+  //getSession에 비해 속도가 빠르다(세션을 얻기 위한 추가적인 네트워크 요청을 수행하지 않는다),
   //공식문서 https://next-auth.js.org/configuration/nextjs#in-getserversideprops
 
   if (!session) {
