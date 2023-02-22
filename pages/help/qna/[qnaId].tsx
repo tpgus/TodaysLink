@@ -7,8 +7,13 @@ import { getQnAById } from "../../../client-apis/api/qna";
 import type { QnaType } from "../../../types";
 import type { ReactElement } from "react";
 import type { ParsedUrlQuery } from "querystring";
+import { GetServerSideProps } from "next";
 
 interface Query extends ParsedUrlQuery {
+  qnaId: string;
+}
+
+interface Params extends ParsedUrlQuery {
   qnaId: string;
 }
 
@@ -24,6 +29,10 @@ const QnaDetailPage = () => {
     };
     fetchQnA();
   }, [qnaId]);
+
+  if (!qna) {
+    return <p>로딩 중...</p>;
+  }
 
   return <QnADetail qna={qna} />;
 };

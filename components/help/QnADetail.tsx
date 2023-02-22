@@ -5,14 +5,12 @@ import { dateParser } from "../../utils/parser-utils";
 import type { QnaType } from "../../types";
 
 interface PropsType {
-  qna: QnaType | null;
+  qna: QnaType;
 }
 
 const QnADetail = (props: PropsType) => {
   const { qna } = props;
   const router = useRouter();
-
-  if (!qna) return <p>다시 시도해 주세요</p>;
 
   const registeredDate = dateParser(qna.registeredDate.toDate());
 
