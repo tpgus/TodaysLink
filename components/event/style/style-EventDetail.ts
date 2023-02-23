@@ -20,14 +20,6 @@ export const EventDetailContainer = styled.div`
     align-items: center;
     margin-top: 5%;
   }
-
-  .img {
-    ${media["fix-mobile"]} {
-      padding: 2rem;
-      width: 50%;
-      height: 30%;
-    }
-  }
 `;
 
 export const ImageTagContainer = styled.div`
@@ -47,12 +39,20 @@ export const ImageTagContainer = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
+
+  .img {
+    ${media["fix-mobile"]} {
+      padding: 2rem;
+      width: 50%;
+      height: 30%;
+    }
+  }
 `;
 
 export const InfoContainer = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
-  width: 90%;
+  width: 80%;
 
   ${media["fix-mobile"]} {
     font-size: 0.8rem;

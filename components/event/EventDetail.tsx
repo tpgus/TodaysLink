@@ -39,7 +39,7 @@ const EventDetail = (props: PropsType) => {
             height={400}
             alt="event-product"
           />
-          {/* <DetailTagList tags={event.tags} /> */}
+          <DetailTagList tags={event.tags} />
         </S.ImageTagContainer>
         <S.InfoContainer>
           <div className="info__div info__div--header">
