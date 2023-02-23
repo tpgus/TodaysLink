@@ -1,6 +1,25 @@
 # TodaysLink
+---
 
-- 배포 : [www.todayslink.net](https://www.todayslink.net/)
+### 배포 : [www.todayslink.net](https://www.todayslink.net/)
+
+---
+
+목적,목표,개선, 하고 싶었던 것, 하지 않았던 것
+각 기술 스택에 대해서 nextjs
+
+---
+
+
+### 기술 스택
+
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
+<img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"> 
+<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+---
 
 <details>
 <summary>개발 기록</summary>
@@ -44,7 +63,7 @@
 
 - 2023.02.20 : 유저 토큰작업 (클라이언트측 UI, 서버측 권한 체크)
 
-- 2023.02.21 : 인증 관련 클라이언트 UI 수정 및
+- 2023.02.21 : 인증 관련 클라이언트 UI 수정
 
 - 2023.02.21 : 투데이링크 프로젝트 1차 완료 및 배포 (v1.0.0)
 
@@ -58,18 +77,15 @@
 - qna 암호화
 - 상세페이지 모바일 너비 수정
 - 메인 index 코드 수정
-
+  
+</div>
 </details>
 
-<details>
-<summary>디자인 참고</summary>
-<div markdown="1">
+### 디자인 참고 사이트
 
-- [상세 페이지 디자인 참고 - 크림](https://kream.co.kr/products/92506)
-- [FAQ 페이지 디자인 참고 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005)
-- [Q&A 페이지 디자인 참고 - SSF샵](https://www.ssfshop.com/secured/mypage/myInquiryList)
-- [메인 페이지 헤더 및 태그 디자인 참고 - 유튜브](https://www.youtube.com/)
-- [로그인 및 회원가입 디자인 참고 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
-- [기본 요소 디자인 참고 - Tailwind](https://tailwindui.com/components)
+- [이벤트 상세 페이지 - 크림](https://kream.co.kr/products/92506)
+- [FAQ 페이지 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005)
+- [Q&A 페이지 - SSF샵](https://www.ssfshop.com/secured/mypage/myInquiryList)
+- [메인 페이지 - 유튜브](https://www.youtube.com/)
+- [로그인 및 회원가입 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
 
-</details>
