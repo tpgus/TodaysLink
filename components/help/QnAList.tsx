@@ -1,6 +1,7 @@
 import * as S from "./style/style-QnAList";
 import QnAItem from "./QnAItem";
 import Pagination from "../common/Pagination";
+import PasswordModal from "./PasswordModal";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import type { QnaType } from "../../types";
@@ -13,15 +14,21 @@ interface PropsType {
 const itemsPerPage = 10;
 
 const QnAList = (props: PropsType) => {
+  const [isClickedItem, setIsClickedItem] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
   const qnaList = props.qnaList
     .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
-    .map((qna) => <QnAItem qna={qna} key={uuidv4()} />);
+    .map((qna) => (
+      <QnAItem qna={qna} key={uuidv4()} onActivateModal={setIsClickedItem} />
+    ));
 
   return (
     <S.ListContainer>
+      {isClickedItem ? (
+        <PasswordModal onActivateModal={setIsClickedItem} />
+      ) : null}
       <S.Table>
         <table>
           <thead>
@@ -30,6 +37,7 @@ const QnAList = (props: PropsType) => {
               <th className="th-type pc-tablet-only">문의 유형</th>
               <th className="th-title">문의 내용</th>
               <th className="th-date pc-tablet-only">작성일</th>
+              <th className="th-lock"></th>
             </tr>
           </thead>
           {qnaList}

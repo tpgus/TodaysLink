@@ -1,8 +1,11 @@
 import { useRouter } from "next/router";
+import { AiFillLock } from "react-icons/ai";
 import type { QnaType } from "../../types";
+import type { Dispatch, SetStateAction } from "react";
 
 interface PropsType {
   qna: QnaType;
+  onActivateModal: Dispatch<SetStateAction<boolean>>;
 }
 
 const QnAItem = (props: PropsType) => {
@@ -15,6 +18,12 @@ const QnAItem = (props: PropsType) => {
   const day = registeredDate.getDate();
 
   const handleClickQnaItem = () => {
+    //암호가 있는 경우
+    if (qna.password) {
+      props.onActivateModal(true);
+      return;
+    }
+
     router.push(
       {
         pathname: `/help/qna/${qna.id}`,
@@ -33,6 +42,7 @@ const QnAItem = (props: PropsType) => {
         <td className="td-type pc-tablet-only">{qna.type}</td>
         <td className="td-title">{qna.title}</td>
         <td className="td-date pc-tablet-only">{`${year}-${month}-${day}`}</td>
+        <td className="td-lock">{qna.password ? <AiFillLock /> : ""}</td>
       </tr>
     </tbody>
   );

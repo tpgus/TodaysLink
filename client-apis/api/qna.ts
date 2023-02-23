@@ -1,4 +1,5 @@
 import { db } from "../../lib/firestore";
+import { hash } from "bcryptjs";
 import {
   collection,
   addDoc,
@@ -14,7 +15,15 @@ import type { QnaType } from "../../types";
 export const getQnARef = () => collection(db, "qna");
 
 export const createQnA = async (qna: any) => {
-  const { type, title, content } = qna;
+  const { type, title, content, password } = qna;
+  let hashedPassword;
+
+  if (password) {
+    hashedPassword = await hash(password, 12);
+  } else {
+    hashedPassword = "";
+  }
+
   const newQnA = {
     type,
     title,
@@ -24,6 +33,7 @@ export const createQnA = async (qna: any) => {
     registeredDate: Timestamp.fromDate(new Date(Date.now())),
     answeredDate: null,
     resolved: false,
+    password: hashedPassword,
   };
 
   try {
