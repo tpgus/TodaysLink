@@ -4,6 +4,12 @@
 ### 배포 : [www.todayslink.net](https://www.todayslink.net/)
 
 ---
+
+목적,목표,개선, 하고 싶었던 것, 하지 
+
+---
+
+
 ### 기술 스택
 
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
