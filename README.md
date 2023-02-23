@@ -70,18 +70,15 @@
 - qna 암호화
 - 상세페이지 모바일 너비 수정
 - 메인 index 코드 수정
-
+  
+</div>
 </details>
 
-<details>
-<summary>디자인 참고</summary>
-<div markdown="1">
+### 디자인 참고 사이트
 
-- [상세 페이지 디자인 참고 - 크림](https://kream.co.kr/products/92506)
-- [FAQ 페이지 디자인 참고 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005)
-- [Q&A 페이지 디자인 참고 - SSF샵](https://www.ssfshop.com/secured/mypage/myInquiryList)
-- [메인 페이지 헤더 및 태그 디자인 참고 - 유튜브](https://www.youtube.com/)
-- [로그인 및 회원가입 디자인 참고 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
-- [기본 요소 디자인 참고 - Tailwind](https://tailwindui.com/components)
+- [이벤트 상세 페이지 - 크림](https://kream.co.kr/products/92506)
+- [FAQ 페이지 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005)
+- [Q&A 페이지 - SSF샵](https://www.ssfshop.com/secured/mypage/myInquiryList)
+- [메인 페이지 - 유튜브](https://www.youtube.com/)
+- [로그인 및 회원가입 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
 
-</details>
