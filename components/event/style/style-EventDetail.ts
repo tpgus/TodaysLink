@@ -24,7 +24,7 @@ export const EventDetailContainer = styled.div`
   .img {
     ${media["fix-mobile"]} {
       padding: 2rem;
-      width: 80%;
+      width: 50%;
       height: 30%;
     }
   }

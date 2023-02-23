@@ -21,6 +21,7 @@ interface PropsType {
 
 let isSecondRendering = false;
 
+//코드 간결하게 개선하기
 const HomePage = (props: PropsType) => {
   const dispatch = useAppDispatch();
   const searchOption = useAppSelector((state) => state.searchOption);

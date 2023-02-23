@@ -24,9 +24,9 @@ const EventDetail = (props: PropsType) => {
 
   const content = separateLine(event.content);
 
-  const handleClickCompleteBtn = () => {
-    alert("개발 중입니다...");
-  };
+  // const handleClickCompleteBtn = () => {
+  //   alert("개발 중입니다...");
+  // };
 
   return (
     <S.EventDetailLayout>
