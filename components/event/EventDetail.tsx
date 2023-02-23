@@ -30,88 +30,87 @@ const EventDetail = (props: PropsType) => {
 
   return (
     <S.EventDetailLayout>
-      <S.EventDetailContainer>
-      </S.EventDetailContainer>
+      <S.EventDetailContainer></S.EventDetailContainer>
     </S.EventDetailLayout>
   );
 };
-{/* <S.ImageTagContainer>
-<Image
-  className="img"
-  src={event.image}
-  width={400}
-  height={400}
-  alt="event-product"
-/>
-<DetailTagList tags={event.tags} />
-</S.ImageTagContainer>
-<S.InfoContainer>
-<div className="info__div info__div--header">
-  <div>
-    <h3 className="item-title">{event.title}</h3>
-    <p className="item-subTitle">{event.subTitle}</p>
-  </div>
-  <div className="actions">
-    <Link className="actions__link" href={event.url} target="_blank">
-      링크 바로가기
-    </Link>
-    {/* <Button onClick={handleClickCompleteBtn} className="actions__btn">
-      참여 완료
-    </Button> */}
-  </div>
-</div>
-<div className="info__div">
-  <dl>
-    <dt>응모 기간</dt>
-    <dd>
-      {formattedStartDate} - {formattedEndDate}
-    </dd>
-  </dl>
-</div>
-<div className="info__div">
-  <dl>
-    <dt>당첨자 발표</dt>
-    <dd>{formattedAnnouncementDate}</dd>
-  </dl>
-</div>
-<div className="info__div">
-  <dl>
-    <dt>당첨 인원 및 상품</dt>
-    <ul>
-      {event.prize.map((prize) => (
-        <li key={uuidv4()}>
-          <dd>{prize}</dd>
-        </li>
-      ))}
-    </ul>
-  </dl>
-</div>
-<div className="info__div">
-  <dl>
-    <dt>이벤트 내용</dt>
-    <dd className="content">
-      {content.map((line) => (
-        <p key={uuidv4()}>{line ? line : null}&nbsp;</p>
-      ))}
-    </dd>
-  </dl>
-</div>
-<div className="info__div">
-  <dl>
-    <dt>유의 사항</dt>
-    <dd>
-      {event.warnings.length > 0 ? (
-        <ul>
-          {event.warnings.map((warning) => (
-            <li key={uuidv4()}>{warning}</li>
-          ))}
-        </ul>
-      ) : (
-        "자세한 사항은 해당 링크를 통해 확인해 주세요"
-      )}
-    </dd>
-  </dl>
-</div>
-</S.InfoContainer> */}
+// {/* <S.ImageTagContainer>
+// <Image
+//   className="img"
+//   src={event.image}
+//   width={400}
+//   height={400}
+//   alt="event-product"
+// />
+// <DetailTagList tags={event.tags} />
+// </S.ImageTagContainer>
+// <S.InfoContainer>
+// <div className="info__div info__div--header">
+//   <div>
+//     <h3 className="item-title">{event.title}</h3>
+//     <p className="item-subTitle">{event.subTitle}</p>
+//   </div>
+//   <div className="actions">
+//     <Link className="actions__link" href={event.url} target="_blank">
+//       링크 바로가기
+//     </Link>
+//     {/* <Button onClick={handleClickCompleteBtn} className="actions__btn">
+//       참여 완료
+//     </Button> */}
+//   </div>
+// </div>
+// <div className="info__div">
+//   <dl>
+//     <dt>응모 기간</dt>
+//     <dd>
+//       {formattedStartDate} - {formattedEndDate}
+//     </dd>
+//   </dl>
+// </div>
+// <div className="info__div">
+//   <dl>
+//     <dt>당첨자 발표</dt>
+//     <dd>{formattedAnnouncementDate}</dd>
+//   </dl>
+// </div>
+// <div className="info__div">
+//   <dl>
+//     <dt>당첨 인원 및 상품</dt>
+//     <ul>
+//       {event.prize.map((prize) => (
+//         <li key={uuidv4()}>
+//           <dd>{prize}</dd>
+//         </li>
+//       ))}
+//     </ul>
+//   </dl>
+// </div>
+// <div className="info__div">
+//   <dl>
+//     <dt>이벤트 내용</dt>
+//     <dd className="content">
+//       {content.map((line) => (
+//         <p key={uuidv4()}>{line ? line : null}&nbsp;</p>
+//       ))}
+//     </dd>
+//   </dl>
+// </div>
+// <div className="info__div">
+//   <dl>
+//     <dt>유의 사항</dt>
+//     <dd>
+//       {event.warnings.length > 0 ? (
+//         <ul>
+//           {event.warnings.map((warning) => (
+//             <li key={uuidv4()}>{warning}</li>
+//           ))}
+//         </ul>
+//       ) : (
+//         "자세한 사항은 해당 링크를 통해 확인해 주세요"
+//       )}
+//     </dd>
+//   </dl>
+// </div>
+// </S.InfoContainer> */}
 
 export default EventDetail;
