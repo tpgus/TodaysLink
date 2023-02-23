@@ -84,7 +84,7 @@
 ### 디자인 참고 사이트
 
 - [이벤트 상세 페이지 - 크림](https://kream.co.kr/products/92506)
-- [FAQ 페이지 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005) - 문제점
+- [FAQ 페이지 - 우리은행](https://spot.wooribank.com/pot/Dream?withyou=MYETC0005)
 - [Q&A 페이지 - SSF샵](https://www.ssfshop.com/secured/mypage/myInquiryList)
 - [메인 페이지 - 유튜브](https://www.youtube.com/)
 - [로그인 및 회원가입 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
