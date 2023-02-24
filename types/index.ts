@@ -63,6 +63,7 @@ export interface QnaType {
   registeredDate: Timestamp;
   answeredDate: Timestamp | null;
   resolved: boolean;
+  password: string;
 }
 
 export interface SearchOptionType {

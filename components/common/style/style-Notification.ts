@@ -9,7 +9,7 @@ export const NotificationContainer = styled.div<{ isPositive: boolean }>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 20;
+  z-index: 201;
   display: flex;
   padding: 1rem;
   font-weight: 500;

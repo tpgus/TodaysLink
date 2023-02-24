@@ -7,6 +7,7 @@ interface PropsType {
   name?: string;
   id?: string;
   type: "text" | "password" | "checkbox" | "email";
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {

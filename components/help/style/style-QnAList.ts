@@ -69,6 +69,10 @@ export const Table = styled.div`
     flex: 1;
   }
 
+  .th-lock {
+    flex: 0.5;
+  }
+
   .tb-row {
     cursor: pointer;
     :hover {
@@ -116,6 +120,10 @@ export const Table = styled.div`
   .td-date {
     flex: 1;
     color: ${({ theme }) => theme.color["gray-500"]};
+  }
+
+  .td-lock {
+    flex: 0.5;
   }
 `;
 

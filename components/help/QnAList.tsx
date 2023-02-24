@@ -30,6 +30,7 @@ const QnAList = (props: PropsType) => {
               <th className="th-type pc-tablet-only">문의 유형</th>
               <th className="th-title">문의 내용</th>
               <th className="th-date pc-tablet-only">작성일</th>
+              <th className="th-lock"></th>
             </tr>
           </thead>
           {qnaList}

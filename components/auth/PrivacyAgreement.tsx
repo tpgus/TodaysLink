@@ -1,5 +1,6 @@
 import * as S from "./style/style-PrivacyAgreement";
 import Button from "../ui/Button";
+import { useEffect } from "react";
 import { detail } from "../../public/static-data/privacy-agreement";
 import { v4 as uuidv4 } from "uuid";
 import { Dispatch, SetStateAction } from "react";
@@ -11,6 +12,13 @@ interface PropsType {
 //개인정보 수집 및 이용 동의 모달
 const PrivacyAgreement = (props: PropsType) => {
   const privacyDetail = detail.split("\n");
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <>
