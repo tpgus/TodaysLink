@@ -68,15 +68,7 @@
 
 - 2023.02.21 : 투데이링크 프로젝트 1차 완료 및 배포 (v1.0.0)
 
-</div>
-</details>
-
-<details>
-<summary>Todo List</summary>
-<div markdown="1">
-
-- qna 암호화
-- 메인 index 코드 수정
+- 2023.02.23 ~ 2023.02.24 : Q&A 페이지 각 Q&A별 암호 설정 추가
 
 </div>
 </details>
