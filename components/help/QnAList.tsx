@@ -1,7 +1,6 @@
 import * as S from "./style/style-QnAList";
 import QnAItem from "./QnAItem";
 import Pagination from "../common/Pagination";
-import PasswordModal from "./PasswordModal";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import type { QnaType } from "../../types";
@@ -14,21 +13,15 @@ interface PropsType {
 const itemsPerPage = 10;
 
 const QnAList = (props: PropsType) => {
-  const [isClickedItem, setIsClickedItem] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
   const qnaList = props.qnaList
     .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
-    .map((qna) => (
-      <QnAItem qna={qna} key={uuidv4()} onActivateModal={setIsClickedItem} />
-    ));
+    .map((qna) => <QnAItem qna={qna} key={uuidv4()} />);
 
   return (
     <S.ListContainer>
-      {isClickedItem ? (
-        <PasswordModal onActivateModal={setIsClickedItem} />
-      ) : null}
       <S.Table>
         <table>
           <thead>

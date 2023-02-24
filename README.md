@@ -1,4 +1,5 @@
 # TodaysLink
+
 ---
 
 ### 배포 : [www.todayslink.net](https://www.todayslink.net/)
@@ -10,15 +11,15 @@
 
 ---
 
-
 ### 기술 스택
 
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
 <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
 <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
 <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
-<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"> 
+<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black">
 <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+
 ---
 
 <details>
@@ -75,9 +76,8 @@
 <div markdown="1">
 
 - qna 암호화
-- 상세페이지 모바일 너비 수정
 - 메인 index 코드 수정
-  
+
 </div>
 </details>
 
@@ -88,4 +88,3 @@
 - [Q&A 페이지 - SSF샵](https://www.ssfshop.com/secured/mypage/myInquiryList)
 - [메인 페이지 - 유튜브](https://www.youtube.com/)
 - [로그인 및 회원가입 - 무신사](https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fapp%2F%3FNaPm%3Dct%253Dlcx9kubh%257Cci%253Dcheckout%257Ctr%253Dds%257Ctrx%253D%257Chk%253D156c70095c470bd22f83fe7c9e3003ed42ebae73)
-

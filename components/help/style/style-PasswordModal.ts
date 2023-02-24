@@ -48,11 +48,32 @@ export const ModalContainer = styled.div`
     height: 2rem;
   }
 
+  .password__input {
+    ${media["fix-mobile"]} {
+      width: 80%;
+    }
+  }
+
   .actions {
     text-align: center;
   }
 
-  button {
+  .cancel {
+    background-color: #ff0000;
+    color: #fff;
+  }
+
+  .confirm {
+    background-color: ${({ theme }) => theme.color["gray-300"]};
+  }
+
+  .cancel,
+  .confirm {
+    border: transparent;
+    border-radius: 0.3rem;
     margin: 0.1rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    cursor: pointer;
   }
 `;
