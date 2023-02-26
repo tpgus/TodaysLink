@@ -38,6 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     a {
        text-decoration:none;
     }
+    
     .pc-only{
         display:none;
         ${media.pc}{

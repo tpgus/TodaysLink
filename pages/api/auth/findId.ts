@@ -24,7 +24,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .status(200)
           .json({ message: "등록되지 않은 이메일입니다.", userId: null });
       } else {
-        //에러 발생 가능성?
         const { userId } = querySnapshot.docs[0].data();
         res.status(200).json({ message: "조회 성공", userId });
       }

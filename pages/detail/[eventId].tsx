@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  //방문 확률이 높은, 첫 페이지에서 보이는 12개의 게시물에 대한 ID를 가져온다.
+  //방문 확률이 높은, 첫 페이지에서 보이는 8개의 게시물에 대한 ID를 가져온다.
   const ids = await getEventIds();
   const params = ids.map((id) => ({ params: { eventId: id } }));
 

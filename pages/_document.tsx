@@ -51,7 +51,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap"
             rel="preload"
     as="style"/> */}
-          {/* og 이미지 태그 동작 확인하기*/}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://todayslink.net/" />
           <meta

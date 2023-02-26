@@ -35,7 +35,7 @@ export const getEventById = async (id: string) => {
 export const getEventIds = async () => {
   try {
     const eventRef = getEventRef();
-    const q = query(eventRef, limit(12), orderBy("endDate"));
+    const q = query(eventRef, limit(8), orderBy("endDate"));
     const documents = await getDocs(q);
     const ids: string[] = [];
     documents.forEach((document) => {

@@ -62,7 +62,7 @@ const HomePage = (props: PropsType) => {
     fetchEventList();
   }, [searchOption]);
 
-  const getMoreDataHandler = async () => {
+  const handleGetMoreData = async () => {
     if (currentPage === totalPage) {
       dispatch(
         showNotification({
@@ -91,12 +91,12 @@ const HomePage = (props: PropsType) => {
       </Head>
       <TagList />
       <SidebarFilter />
-      <EventList eventList={eventList} />
       {notificationState.isActive ? <Notification /> : null}
+      <EventList eventList={eventList} />
       {eventList.length > 0 ? (
         <S.MoreButtonContainer>
           <Button
-            onClick={getMoreDataHandler}
+            onClick={handleGetMoreData}
           >{`더 보기 ${currentPage}/${totalPage}`}</Button>
         </S.MoreButtonContainer>
       ) : null}

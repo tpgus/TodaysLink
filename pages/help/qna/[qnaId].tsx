@@ -1,19 +1,13 @@
 import QnADetail from "../../../components/help/QnADetail";
 import HelpPageLayout from "../../../components/help/HelpPageLayout";
-import LoadingSpinner from "../../../components/common/LoadingSpinner";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getQnAById } from "../../../client-apis/api/qna";
 import type { QnaType } from "../../../types";
 import type { ReactElement } from "react";
 import type { ParsedUrlQuery } from "querystring";
-import { GetServerSideProps } from "next";
 
 interface Query extends ParsedUrlQuery {
-  qnaId: string;
-}
-
-interface Params extends ParsedUrlQuery {
   qnaId: string;
 }
 
