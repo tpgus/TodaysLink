@@ -22,7 +22,7 @@ const LoginPage: NextPageWithLayout = () => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getServerSession(context.req, context.res, authOptions);
 
-  //이미 로그인된 경우
+  //이미 로그인된 경우 리다이렉트
   if (session) {
     return {
       redirect: {

@@ -26,6 +26,8 @@ const FaqPage = (props: PropsType) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  //자주 바뀌지 않는 데이터이므로 정적 생성
+  //네트워크 요청을 피하기 위해 데이터를 파일로 보관하고 있지만, db에 보관하는 것이 맞을지?
   const filePath = buildFilePath("faq.json");
   const faqList = await readFileData<FaqType[]>(filePath);
 

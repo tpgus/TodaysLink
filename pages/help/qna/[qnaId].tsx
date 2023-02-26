@@ -11,10 +11,6 @@ interface Query extends ParsedUrlQuery {
   qnaId: string;
 }
 
-interface Params extends ParsedUrlQuery {
-  qnaId: string;
-}
-
 const QnaDetailPage = () => {
   const router = useRouter();
   const { qnaId } = router.query as Query;

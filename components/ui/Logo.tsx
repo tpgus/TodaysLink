@@ -1,6 +1,5 @@
 import * as S from "./style/style-Logo";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { AiFillHome } from "react-icons/ai";
 
 interface PropsType {

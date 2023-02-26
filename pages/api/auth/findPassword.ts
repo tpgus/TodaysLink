@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           isSuccess: false,
         });
       } else {
-        //임시 비밀번호 생성 및 메일 전송
+        //임시 비밀번호 생성(특수 문자 조합 8글자 이상) 및 메일 전송
         const temporalPassword =
           randomString.generate(8) +
           randomString.generate({ length: 1, charset: "~!@#$%^&*" });

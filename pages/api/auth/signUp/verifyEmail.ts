@@ -2,7 +2,6 @@ import Joi from "joi";
 import randomString from "randomstring";
 import { db } from "../../../../lib/firestore";
 import { emailSchema } from "../../../../utils/common-utils";
-import { v4 as uuidv4, parse } from "uuid";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import {
   getMailFormat,
@@ -31,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           message: "이미 사용 중인 이메일입니다.",
         });
       } else {
-        //해당 이메일 사용 가능할 경우
+        //해당 이메일 사용 가능할 경우 인증 코드 6자리 생성
         const verificationCode = randomString.generate({
           length: 6,
           charset: "1234567890",

@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         //permanent : true: 308 : 영구 리다이렉트
         //permanent : false : 307 -> 임시 리다이렉트 -> 사용자가 로그인 하지 않았기 때문에
         //일시적으로 로그인으로 리다이렉트 함 (로그인 되었다면 리다이렉트 x)
-        //permanent : true 해당 라우트는 서비스 되지 않는 라우트이므로 쭈욱~ 리다이렉트
+        //permanent : true 해당 라우트는 서비스 되지 않는 라우트(페이지)이므로 앞으로도 쭈욱~ 리다이렉트 한다
       },
     };
   }

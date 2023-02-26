@@ -32,7 +32,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!user) {
       res.status(404).json({ message: "해당 사용자를 찾을 수 없습니다" });
     }
-    //
 
     const currentPassword = user.password;
     const { oldPassword, newPassword } = req.body;
@@ -43,13 +42,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!isValidPassword) {
       res.status(403).json({ message: "기존 비밀번호가 틀렸습니다." });
     }
-    //403: 클라이언트 오류 상태 : 응답 코드는 서버에 요청이 전달되었지만, 권한 때문에 거절되었다는 것을 의미합니다.
-    //이 상태는 401과 비슷하지만, 로그인 로직(틀린 비밀번호로 로그인 행위)처럼 반응하여 재인증(re-authenticating)을 하더라도 지속적으로 접속을 거절합니다.
+    //403: 클라이언트 오류 상태 : 응답 코드는 서버에 요청이 전달되었지만,
+    //권한 때문에 거절되었다는 것을 의미합니다.
     //401 상태는 403과 비슷하지만, 401 Unauthorized의 경우에는 인증이 가능합니다.
 
     //여기까지 도달했다는 것은 인증은 이미 된 사용자이다(로그인한 유저)
-    //하지만 비밀번호를 변경할 권한은 없다. (틀렸으니까)
+    //하지만 비밀번호를 변경할 권한은 없다. (틀렸으니까) (인증과 인가의 차이)
     //또한 사용자 입력값이 틀렸다는 의미에선 422코드도 가능하다.
+    //은행의 계좌개설 - 신분확인 = 인증
+    //놀이공원의 티켓 - 누군지 관심x - but, 입장표 있어?(권한) = 인가
     else {
       const hashedPassword = await hashPassword(newPassword);
       await updateDoc(userRef, { password: hashedPassword });
