@@ -1,12 +1,15 @@
 import Head from "next/head";
 import AppLayout from "../components/layout/AppLayout";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import { theme } from "../styles/theme";
+import { store } from "../store";
+import { Provider } from "react-redux";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global-style";
-import { theme } from "../styles/theme";
-import { store } from "../store";
-import { Provider } from "react-redux";
 import type { ReactElement, ReactNode } from "react";
 import type { AppProps } from "next/app";
 import type { NextPage } from "next";
@@ -20,7 +23,27 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const [isRouterChanging, setIsRouterChanging] = useState(false);
   const getLayout = Component.getLayout ?? ((page) => page);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouterChangeStart = () => {
+      setIsRouterChanging(true);
+    };
+
+    const handleRouterChangeStop = () => {
+      setIsRouterChanging(false);
+    };
+
+    router.events.on("routeChangeStart", handleRouterChangeStart);
+    router.events.on("routeChangeComplete", handleRouterChangeStop);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouterChangeStart);
+      router.events.off("routeChangeComplete", handleRouterChangeStop);
+    };
+  });
 
   return (
     <>
@@ -37,7 +60,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <SessionProvider session={pageProps.session}>
-            <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+            {isRouterChanging ? (
+              <LoadingSpinner />
+            ) : (
+              <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+            )}
           </SessionProvider>
         </Provider>
       </ThemeProvider>
