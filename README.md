@@ -1,4 +1,4 @@
-# [WIKI 바로가기](https://www.naver.com)
+# 🔗 [WIKI 바로가기](https://www.naver.com)
 
 # 💁‍♂️ 투데이 링크 서비스 소개
 무료로 참여할 수 있는 다양한 이벤트 정보를 한 곳에 모아놓은 웹 서비스입니다.
