@@ -1,19 +1,16 @@
-# Todays Link : 투데이 링크
-![스크린샷, 2023-02-27 12-43-37](https://user-images.githubusercontent.com/43470398/221471647-43eb5a10-1f20-43ab-9421-9995cba058c0.png)
-
-
-# 서비스 소개
+# 💁‍♂️ 투데이 링크 서비스 소개
 무료로 참여할 수 있는 다양한 이벤트 정보를 한 곳에 모아놓은 웹 서비스입니다.
 
 사용자들은 **투데이 링크** 서비스를 통해 다양한 이벤트 정보를 확인하고 링크 접속을 통해 이벤트에 참여할 수 있습니다.
 
+[WIKI 바로가기](https://www.naver.com)
 
-# 배포
+# 💻 배포
 
 ### [https://www.todayslink.net](https://www.todayslink.net/)
 
 
-# 주요 기능 및 화면
+# ⚒️ 주요 기능 및 화면
 <details>
 <summary><h4>메인 화면 & 필터링</h4></summary>
 <div markdown="1">
@@ -76,7 +73,9 @@
 </div>
 </details>
 
-# WIKI
+---
+
+# [WIKI 바로가기](https://www.naver.com)
 
 # 사용 기술 스택
 
