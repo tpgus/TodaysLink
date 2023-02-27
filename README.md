@@ -1,13 +1,10 @@
-# 🔗 [WIKI 바로가기](https://www.naver.com)
-
-# 💁‍♂️ 투데이 링크 서비스 소개
+<h1>💁‍♂️ 투데이 링크 서비스 소개</h1>
 무료로 참여할 수 있는 다양한 이벤트 정보를 한 곳에 모아놓은 웹 서비스입니다.
 
 사용자들은 **투데이 링크** 서비스를 통해 다양한 이벤트 정보를 확인하고 링크 접속을 통해 이벤트에 참여할 수 있습니다.
 
-# 💻 배포
 
-### [https://www.todayslink.net](https://)
+# 💻 배포 [https://www.todayslink.net](https://todayslink.net)
 
 
 # ⚒️ 주요 기능 및 화면
@@ -74,7 +71,7 @@
 </details>
 
 
-# 사용 기술 스택
+# ⚙️ 사용 기술 스택
 
 |기술|버전|
 |---|---|
@@ -87,7 +84,10 @@
 |<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">|배포|
 
 
----
+
+# 🔗 WiKi 문서 [바로가기](https://github.com/tpgus/TodaysLink-client/wiki)
+
+
 
 목적,목표,개선, 하고 싶었던 것, 하지 않았던 것
 각 기술 스택에 대해서 nextjs
