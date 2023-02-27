@@ -7,7 +7,7 @@
 
 # 💻 배포
 
-### [https://www.todayslink.net](https://www.todayslink.net/)
+### [https://www.todayslink.net](https://github.com/tpgus/TodaysLink-client/wiki)
 
 
 # ⚒️ 주요 기능 및 화면
