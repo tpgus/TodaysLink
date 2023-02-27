@@ -15,6 +15,14 @@
 </div>
 </details>
 
+<details>
+<summary><h4>회원가입 및 이메일 인증</h4></summary>
+<div markdown="1">
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/43470398/221482825-a49ea4e5-a04d-46fc-8033-171ee02210e9.gif)
+
+</div>
+</details>
 
 <details>
 <summary><h4>로그인</h4></summary>
@@ -25,14 +33,6 @@
 </div>
 </details>
 
-<details>
-<summary><h4>회원가입 및 이메일 인증</h4></summary>
-<div markdown="1">
-
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/43470398/221482825-a49ea4e5-a04d-46fc-8033-171ee02210e9.gif)
-
-</div>
-</details>
 
 <details>
 <summary><h4>마이페이지 - 비밀번호 변경</h4></summary>
