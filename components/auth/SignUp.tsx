@@ -157,6 +157,7 @@ const SignUp = () => {
       activateNotification(verifyEmailFetch.error.message);
       setVerifiedEmail(null);
       setIsSentMail(false);
+      verifyEmailFetch.resetState();
     }
   }, [verifyEmailFetch, dispatch, activateNotification]);
 
