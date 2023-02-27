@@ -3,7 +3,7 @@
 
 사용자들은 **투데이 링크** 서비스를 통해 다양한 이벤트 정보를 확인하고 링크 접속을 통해 이벤트에 참여할 수 있습니다.
 
-[WIKI 바로가기]([https://www.naver.com](https://github.com/tpgus/TodaysLink-client/wiki))
+[WIKI 바로가기](https://github.com/tpgus/TodaysLink-client/wiki)
 
 # 💻 배포
 
