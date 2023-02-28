@@ -7,6 +7,13 @@
 # 💻 배포 [https://www.todayslink.net](https://todayslink.net)
 
 
+# 🔍 테스트 계정
+
+`아이디 : test123`
+
+`비밀번호 : @xptmxm12`
+
+
 # ⚒️ 주요 기능 및 화면
 <details>
 <summary><h4>메인 화면 & 필터링</h4></summary>
@@ -83,11 +90,6 @@
 |<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black">|v9.17.1|
 |<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">|배포|
 
-# 🔍 테스트 계정
-
-`아이디 : test123`
-
-`비밀번호 : @xptmxm12`
 
 # 🔗 WiKi 문서 [바로가기](https://github.com/tpgus/TodaysLink-client/wiki)
 
