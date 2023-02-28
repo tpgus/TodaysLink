@@ -83,9 +83,6 @@
 |<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black">|v9.17.1|
 |<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">|배포|
 
-
-# 프로젝트 실행 방법
-
 # 테스트 계정
 
 `아이디 : test123`
