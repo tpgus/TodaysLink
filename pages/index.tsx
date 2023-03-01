@@ -21,7 +21,6 @@ interface PropsType {
 
 let isFirstRendering = true;
 
-//코드 간결하게 개선하기
 const HomePage = (props: PropsType) => {
   const dispatch = useAppDispatch();
   const searchOption = useAppSelector((state) => state.searchOption);
@@ -37,7 +36,7 @@ const HomePage = (props: PropsType) => {
   const totalPage = Math.ceil(totalLength / 8);
 
   useEffect(() => {
-    //페이지 벗어날 때 혹은 router 이벤트
+    //페이지 벗어날 때 혹은 router 이벤트 이용
     return () => {
       dispatch(setTag("전부 보기"));
       dispatch(resetFilter());
@@ -45,7 +44,6 @@ const HomePage = (props: PropsType) => {
   }, [dispatch]);
 
   useEffect(() => {
-    //리덕스 상태 초기화 + 페이지 사전렌더링 관련
     const fetchEventList = async () => {
       const { eventList, totalLength, lastDocumentId } = await getEventList(
         searchOption,
