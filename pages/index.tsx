@@ -19,7 +19,7 @@ interface PropsType {
   totalLength: number;
 }
 
-let isSecondRendering = false;
+let isFirstRendering = true;
 
 //코드 간결하게 개선하기
 const HomePage = (props: PropsType) => {
@@ -47,19 +47,20 @@ const HomePage = (props: PropsType) => {
   useEffect(() => {
     //리덕스 상태 초기화 + 페이지 사전렌더링 관련
     const fetchEventList = async () => {
-      if (isSecondRendering) {
-        const { eventList, totalLength, lastDocumentId } = await getEventList(
-          searchOption,
-          null
-        );
-        setEventList(eventList);
-        setTotalLength(totalLength);
-        setPageOffset(lastDocumentId);
-      } else {
-        isSecondRendering = true;
-      }
+      const { eventList, totalLength, lastDocumentId } = await getEventList(
+        searchOption,
+        null
+      );
+      setEventList(eventList);
+      setTotalLength(totalLength);
+      setPageOffset(lastDocumentId);
     };
-    fetchEventList();
+
+    if (isFirstRendering) {
+      isFirstRendering = false;
+    } else {
+      fetchEventList();
+    }
   }, [searchOption]);
 
   const handleGetMoreData = async () => {
@@ -113,6 +114,7 @@ export const getStaticProps: GetStaticProps<{
     platform: null,
     numOfWinner: 0,
   };
+
   const { eventList, totalLength, lastDocumentId } = await getEventList(
     searchOptions,
     null
@@ -130,6 +132,7 @@ export const getStaticProps: GetStaticProps<{
       lastDocumentId,
       totalLength,
     },
+    revalidate: 3600,
   };
 };
 
