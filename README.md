@@ -19,6 +19,8 @@
 <summary><h4>메인 화면 & 필터링</h4></summary>
 <div markdown="1">
 
+![ezgif com-video-to-gif (12)](https://user-images.githubusercontent.com/43470398/222310026-3da760b0-3734-4581-913d-5e7ad6c3c2a7.gif)
+
 </div>
 </details>
 
