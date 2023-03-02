@@ -25,6 +25,16 @@
 </details>
 
 <details>
+<summary><h4>이벤트 상세 페이지</h4></summary>
+<div markdown="1">
+
+![ezgif com-video-to-gif (13)](https://user-images.githubusercontent.com/43470398/222310802-305bf522-bc14-44e2-a178-80723d6a583d.gif)
+
+</div>
+</details>
+
+
+<details>
 <summary><h4>회원가입 및 이메일 인증</h4></summary>
 <div markdown="1">
 
