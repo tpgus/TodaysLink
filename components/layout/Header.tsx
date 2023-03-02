@@ -53,7 +53,7 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            {!session && status === "unauthenticated" ? (
+            {!session ? (
               <li className="pc-tablet__li">
                 <Link href="/auth/signIn" className={"nav__link"}>
                   로그인
