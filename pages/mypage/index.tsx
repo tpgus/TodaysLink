@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/auth/signIn",
         permanent: false,
         //permanent 대신 상태코드 statusCode 옵션을 이용할 수 있음.
         //즉 permanent는 상태 코드를 결정하는 옵션이라고 봐도되고
