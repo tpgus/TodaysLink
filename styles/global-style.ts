@@ -7,9 +7,9 @@ export const GlobalStyle = createGlobalStyle`
 
     html {
         height: 100vh;
-        font-size: 1rem;
         font-family: 'Roboto','Noto',sans-serif; 
     }
+
     body {
         height: 100vh;
         overflow: overlay;
