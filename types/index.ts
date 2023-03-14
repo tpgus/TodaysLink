@@ -16,6 +16,7 @@ export type PLATFORM =
   | "YOUTUBE"
   | "OFFICIAL_WEB"
   | "ETC"
+  | "KAKAO"
   | null;
 
 export type TAG =
