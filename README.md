@@ -104,9 +104,3 @@
 
 
 # 🔗 WiKi 문서 [바로가기](https://github.com/tpgus/TodaysLink-client/wiki)
-
-
-목적,목표,개선, 하고 싶었던 것, 하지 않았던 것
-각 기술 스택에 대해서 nextjs
-
----
