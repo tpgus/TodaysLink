@@ -33,9 +33,12 @@ export const searchOptionSlice = createSlice({
       state.numOfWinner = action.payload;
     },
 
-    resetFilter: (state) => {
-      state.platform = null;
+    resetNumOfWinner: (state) => {
       state.numOfWinner = 0;
+    },
+
+    resetPlatform: (state) => {
+      state.platform = null;
     },
   },
 });
@@ -43,7 +46,8 @@ export const {
   setPlatforms,
   setNumOfWinner,
   setTag,
-  resetFilter,
+  resetNumOfWinner,
+  resetPlatform,
   setSearchValue,
   resetSearchValue,
 } = searchOptionSlice.actions;

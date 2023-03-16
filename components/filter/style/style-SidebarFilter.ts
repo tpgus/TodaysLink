@@ -21,34 +21,33 @@ export const SidebarContainer = styled.div`
     border-top: 1px solid ${({ theme }) => theme.color["gray-200"]};
     padding-top: 1rem;
     padding-bottom: 2rem;
+    text-align: center;
   }
 
   legend {
     width: 100%;
     text-align: center;
   }
+
   span {
     font-size: 1rem;
     line-height: 1.25rem;
     font-weight: 500;
     color: ${({ theme }) => theme.color.dark};
   }
-  button {
+
+  .reset__btn {
+    display: inline-flex;
     border: transparent;
     font-weight: 500;
     color: #000;
     border-radius: 0.2rem;
     padding: 0.5rem 1rem;
     background-color: ${({ theme }) => theme.color["gray-200"]};
-    display: inline-flex;
+    margin: 0.5rem;
     ${media["fix-mobile"]} {
       display: none;
     }
-  }
-
-  .actions-wrap {
-    margin-top: 0.7rem;
-    text-align: center;
   }
 `;
 

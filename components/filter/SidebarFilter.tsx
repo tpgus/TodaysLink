@@ -6,7 +6,8 @@ import { useAppDispatch } from "../../store";
 import {
   setPlatforms,
   setNumOfWinner,
-  resetFilter,
+  resetNumOfWinner,
+  resetPlatform,
 } from "../../store/searchOptionSlice";
 import type { PLATFORM } from "../../types";
 
@@ -55,9 +56,13 @@ const SidebarFilter = () => {
     dispatch(setNumOfWinner(Number(numOfWinner)));
   };
 
-  const handleReset = () => {
-    dispatch(resetFilter());
+  const handleResetNumOfWinenr = () => {
+    dispatch(resetNumOfWinner());
     setCheckedNumOfWinner(null);
+  };
+
+  const handleResetPlatform = () => {
+    dispatch(resetPlatform());
     setCheckedPlatform(null);
   };
 
@@ -87,6 +92,10 @@ const SidebarFilter = () => {
               </div>
             </S.FilterContainer>
           </fieldset>
+          <button onClick={handleResetPlatform} className="reset__btn">
+            <BiRefresh size={20} />
+            &nbsp; 선택 초기화
+          </button>
         </div>
       </div>
       <div className="pc-only">
@@ -113,12 +122,12 @@ const SidebarFilter = () => {
               </div>
             </S.FilterContainer>
           </fieldset>
+          <button onClick={handleResetNumOfWinenr} className="reset__btn">
+            <BiRefresh size={20} />
+            &nbsp; 선택 초기화
+          </button>
         </div>
       </div>
-      <button onClick={handleReset}>
-        <BiRefresh size={20} />
-        &nbsp; 선택 초기화
-      </button>
     </S.SidebarContainer>
   );
 };
