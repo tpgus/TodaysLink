@@ -49,7 +49,7 @@ const SignUp = () => {
   const [isDuplicateId, setIsDuplicateId] = useState<boolean | null>(null); //아이디 중복확인
   const [verificationCode, setVerificationCode] = useState<string | null>(null);
   const [isSentMail, setIsSentMail] = useState(false);
-  const [timer, setTimer] = useState(180);
+  const [timer, setTimer] = useState(10);
   const [isCheckedPrivacyAgreement, setIsCheckedPrivacyAgreement] =
     useState(false);
   const [isActivePrivacyModal, setIsActivePrivacyModal] = useState(false);
@@ -125,6 +125,12 @@ const SignUp = () => {
   ) => {
     event.stopPropagation();
 
+    //인증 메일 중복 요청 금지
+    if (isSentMail) {
+      activateNotification("인증 메일이 이미 전송되었습니다.");
+      return;
+    }
+
     //이메일 인증 관련 서버 API 요청 이전에 이메일 유효성 검사
     const email = emailRef.current!.value;
     const validationSchema = Joi.object({ email: emailSchema });
@@ -152,12 +158,10 @@ const SignUp = () => {
       setIsSentMail(true);
       setVerifiedEmail(email);
       setVerificationCode(verifyEmailFetch.data.verificationCode);
-      setTimer(180);
     } else if (verifyEmailFetch.error) {
       activateNotification(verifyEmailFetch.error.message);
       setVerifiedEmail(null);
       setIsSentMail(false);
-      verifyEmailFetch.resetState();
     }
   }, [verifyEmailFetch, dispatch, activateNotification]);
 
@@ -218,11 +222,14 @@ const SignUp = () => {
       return;
     }
 
+    //인증 시간 초과
     if (timer <= 0) {
-      setIsSentMail(false);
       activateNotification(
         "시간이 모두 경과했습니다. 이메일 인증을 다시 진행해 주세요"
       );
+      verifyEmailFetch.resetState();
+      setIsSentMail(false);
+      setTimer(10);
       return;
     }
 
