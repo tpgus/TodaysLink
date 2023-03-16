@@ -162,6 +162,7 @@ const SignUp = () => {
       activateNotification(verifyEmailFetch.error.message);
       setVerifiedEmail(null);
       setIsSentMail(false);
+      verifyEmailFetch.resetState();
     }
   }, [verifyEmailFetch, dispatch, activateNotification]);
 
@@ -229,7 +230,7 @@ const SignUp = () => {
       );
       verifyEmailFetch.resetState();
       setIsSentMail(false);
-      setTimer(10);
+      setTimer(180);
       return;
     }
 
