@@ -1,6 +1,9 @@
 import { db } from "../../../lib/firestore";
 import { authOptions } from "../../api/auth/[...nextauth]";
-import { verifyPassword, hashPassword } from "../../../server/utils/auth-utils";
+import {
+  verifyPassword,
+  hashPassword,
+} from "../../../server/utils/encryption-utils";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { getServerSession } from "next-auth";
 import type { NextApiRequest, NextApiResponse } from "next";

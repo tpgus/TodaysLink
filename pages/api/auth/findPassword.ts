@@ -1,7 +1,7 @@
 import Joi from "joi";
 import randomString from "randomstring";
 import { db } from "../../../lib/firestore";
-import { hashPassword } from "../../../server/utils/auth-utils";
+import { hashPassword } from "../../../server/utils/encryption-utils";
 import { emailSchema, idSchema } from "../../../utils/common-utils";
 import { transporter, getMailFormat } from "../../../server/utils/mail-utils";
 import {

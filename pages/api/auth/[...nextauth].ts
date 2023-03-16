@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProviders from "next-auth/providers/credentials";
 import { db } from "../../../lib/firestore";
-import { verifyPassword } from "../../../server/utils/auth-utils";
+import { verifyPassword } from "../../../server/utils/encryption-utils";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import type { NextAuthOptions } from "next-auth";
 
