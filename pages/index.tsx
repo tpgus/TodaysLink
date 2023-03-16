@@ -9,7 +9,11 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import { showNotification } from "../store/notificationSlice";
 import { getEventList } from "../client-apis/api/event";
-import { resetFilter, setTag } from "../store/searchOptionSlice";
+import {
+  resetNumOfWinner,
+  resetPlatform,
+  setTag,
+} from "../store/searchOptionSlice";
 import type { GetStaticProps } from "next";
 import type { EventType, SearchOptionType } from "../types";
 
@@ -39,7 +43,8 @@ const HomePage = (props: PropsType) => {
     //페이지 벗어날 때 혹은 router 이벤트 이용
     return () => {
       dispatch(setTag("전부 보기"));
-      dispatch(resetFilter());
+      dispatch(resetNumOfWinner());
+      dispatch(resetPlatform());
     };
   }, [dispatch]);
 
