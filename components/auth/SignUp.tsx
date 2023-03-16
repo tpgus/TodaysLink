@@ -49,7 +49,7 @@ const SignUp = () => {
   const [isDuplicateId, setIsDuplicateId] = useState<boolean | null>(null); //아이디 중복확인
   const [verificationCode, setVerificationCode] = useState<string | null>(null);
   const [isSentMail, setIsSentMail] = useState(false);
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(180);
   const [isCheckedPrivacyAgreement, setIsCheckedPrivacyAgreement] =
     useState(false);
   const [isActivePrivacyModal, setIsActivePrivacyModal] = useState(false);
