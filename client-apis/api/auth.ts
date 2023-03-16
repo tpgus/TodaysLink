@@ -5,15 +5,15 @@ const axiosInstance: AxiosInstance = axios.create({
   baseURL: BASE_URL,
 });
 
-interface CreateUserParams {
+interface User {
   userId: string;
   password: string;
+}
+
+interface CreateUserParams extends User {
   email: string;
 }
-interface FindPwdParams {
-  userId: string;
-  email: string;
-}
+interface FindPwdParams extends User {}
 
 interface ChangePasswordParams {
   oldPassword: string;
