@@ -32,7 +32,7 @@ const Search = () => {
       return;
     }
 
-    dispatch(setSearchValue(value));
+    // dispatch(setSearchValue(value));
     alert("개발 중입니다...");
   };
 
