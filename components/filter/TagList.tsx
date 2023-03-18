@@ -3,7 +3,7 @@ import Tag from "./Tag";
 import { useState } from "react";
 import { setTag } from "../../store/searchOptionSlice";
 import { v4 as uuidv4 } from "uuid";
-import { useAppDispatch } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import type { TAG } from "../../types";
 
 const TAGS = [
@@ -21,12 +21,12 @@ const TAGS = [
 ];
 
 const TagList = () => {
-  //상태 한 곳에서 관리하기
-  const [clickedTagIdx, setClickedTagIdx] = useState(0);
+  const tagState = useAppSelector((state) => state.searchOption);
+
+  const currentTagIdx = TAGS.indexOf(tagState.tags);
   const dispatch = useAppDispatch();
 
   const handleClickTag = (idx: number) => {
-    setClickedTagIdx(idx);
     dispatch(setTag(TAGS[idx] as TAG));
   };
 
@@ -36,7 +36,7 @@ const TagList = () => {
         <Tag
           key={uuidv4()}
           tag={tag}
-          activated={idx === clickedTagIdx}
+          activated={idx === currentTagIdx}
           clickHandler={() => handleClickTag(idx)}
         />
       ))}
