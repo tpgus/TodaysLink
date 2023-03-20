@@ -2,7 +2,6 @@ import { db } from "../../lib/firestore";
 import { fieldOptionBuilder } from "../../utils/query-utils";
 import {
   collection,
-  where,
   getDoc,
   getDocs,
   doc,
@@ -14,7 +13,6 @@ import {
   DocumentData,
   getCountFromServer,
   updateDoc,
-  connectFirestoreEmulator,
   Timestamp,
 } from "firebase/firestore";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
