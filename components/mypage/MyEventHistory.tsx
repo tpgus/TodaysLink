@@ -63,25 +63,24 @@ const MyEventHistory = () => {
           {fetchStatus === "loading" ? getFeedbackMessage("로딩 중...") : null}
           {fetchStatus === "complete" && myEvent.length === 0
             ? getFeedbackMessage("참여한 이벤트가 존재하지 않습니다.")
-            : null}
-          {myEvent
-            .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
-            .map((event) => (
-              <tbody
-                onClick={() => handleClickEventItem(event.url)}
-                key={uuidv4()}
-              >
-                <tr className="tb-row">
-                  <td className="td-title">{event.title}</td>
-                  <td className="td-participation-date pc-tablet-only">
-                    {dateParser(event.participationDate.toDate())}
-                  </td>
-                  <td className="td-announcement-date">
-                    {getDateFormat(event.announcementDate)}
-                  </td>
-                </tr>
-              </tbody>
-            ))}
+            : myEvent
+                .slice(firstItemIdxOfPage, firstItemIdxOfPage + itemsPerPage)
+                .map((event) => (
+                  <tbody
+                    onClick={() => handleClickEventItem(event.url)}
+                    key={uuidv4()}
+                  >
+                    <tr className="tb-row">
+                      <td className="td-title">{event.title}</td>
+                      <td className="td-participation-date pc-tablet-only">
+                        {dateParser(event.participationDate.toDate())}
+                      </td>
+                      <td className="td-announcement-date">
+                        {getDateFormat(event.announcementDate)}
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
         </table>
       </S.MyEventHistoryContainer>
       <Pagination
