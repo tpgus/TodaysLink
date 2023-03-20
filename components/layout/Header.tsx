@@ -32,7 +32,7 @@ const Header = () => {
       <nav>
         <div className="nav-wrapper">
           <Logo />
-          <Search />
+          {/* <Search /> */}
           <div className="mobile-only">
             {/* 모바일에서만 보이는 햄버거 버튼*/}
             <Hamburger
