@@ -63,6 +63,15 @@
 </details>
 
 <details>
+<summary><h4>마이페이지 - 참여한 이벤트 목록</h4></summary>
+<div markdown="1">
+
+
+
+</div>
+</details>
+
+<details>
 <summary><h4>Q&A 페이지</h4></summary>
 <div markdown="1">
 
