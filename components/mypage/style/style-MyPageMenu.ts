@@ -38,6 +38,10 @@ export const MenuContainer = styled.div`
     }
   }
 
+  .login-info {
+    color: ${({ theme }) => theme.color["gray-500"]};
+  }
+
   .menu {
     display: flex;
     flex-direction: column;

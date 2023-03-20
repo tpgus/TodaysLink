@@ -38,6 +38,10 @@ export const GlobalStyle = createGlobalStyle`
     a {
        text-decoration:none;
     }
+
+    .center {
+        margin: 0 auto;
+    }
     
     .pc-only{
         display:none;

@@ -117,11 +117,6 @@ export const InfoContainer = styled.div`
     align-items: center;
   }
 
-  .actions__div {
-    width: 50%;
-    text-align: center;
-  }
-
   .actions__link {
     display: block;
     border-radius: 0.375rem;
@@ -133,7 +128,7 @@ export const InfoContainer = styled.div`
     text-align: center;
     color: #fff;
     background-color: ${({ theme }) => theme.color.dark};
-    width: 100%;
+    width: 50%;
     margin-right: 2rem;
     ${media["fix-mobile"]} {
       padding: unset;
@@ -148,12 +143,10 @@ export const InfoContainer = styled.div`
 
   .actions__btn {
     display: block;
-    width: 80%;
-    margin-right: 2rem;
+    width: 50%;
     ${media["fix-mobile"]} {
       padding: unset;
       padding: 0.5rem 0.5rem;
-      width: 50%;
       font-size: 0.8rem;
     }
   }

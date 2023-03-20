@@ -49,6 +49,10 @@ export interface EventType {
   prize: string[];
 }
 
+export interface MyEventType extends EventType {
+  participationDate: Timestamp;
+}
+
 export interface FaqType {
   question: string;
   answer: string;
