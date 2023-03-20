@@ -1,5 +1,6 @@
 import Head from "next/head";
 import EventDetail from "../../components/event/EventDetail";
+import { useRouter } from "next/router";
 import { getEventIds, getEventById } from "../../client-apis/api/event";
 import type { EventType } from "../../types";
 import type { ParsedUrlQuery } from "querystring";
@@ -14,7 +15,7 @@ const EventDetailPage = (props: PropsType) => {
 
   //true일 경우 폴백체크 필요 : 현재 유효하지 않은 값일 경우 모두 loading으로 처리 됨
   if (!event) {
-    return <p>loading...</p>;
+    <p>loading...</p>;
   }
 
   return (

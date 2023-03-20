@@ -17,7 +17,7 @@ const MyPage = ({
         <title>마이페이지</title>
         <meta name="description" content="마이페이지" />
       </Head>
-      <MyPageMenu />
+      <MyPageMenu session={session} />
     </>
   );
 };
