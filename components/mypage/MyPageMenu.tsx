@@ -24,22 +24,24 @@ const MyPageMenu = (props: PropsType) => {
     <S.MyPageLayout>
       <S.MenuContainer>
         <h2>마이페이지</h2>
-        <p className="login-info">아이디 : {props.session.user.userId}</p>
-        <ul className="menu">
-          <li>
-            <Button onClick={() => router.push("/mypage/myEvent")}>
-              이벤트 참여 기록
-            </Button>
-          </li>
-          <li>
-            <Button onClick={() => router.push("/mypage/changePassword")}>
-              비밀번호 변경
-            </Button>
-          </li>
-          <li>
-            <Button onClick={handleLogout}>로그아웃</Button>
-          </li>
-        </ul>
+        <div className="menu">
+          <p className="login-info">아이디 : {props.session.user.userId}</p>
+          <ul className="menu_ul">
+            <li>
+              <button onClick={() => router.push("/mypage/myEvent")}>
+                이벤트 참여 기록
+              </button>
+            </li>
+            <li>
+              <button onClick={() => router.push("/mypage/changePassword")}>
+                비밀번호 변경
+              </button>
+            </li>
+            <li>
+              <button onClick={handleLogout}>로그아웃</button>
+            </li>
+          </ul>
+        </div>
       </S.MenuContainer>
     </S.MyPageLayout>
   );

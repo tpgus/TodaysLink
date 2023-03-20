@@ -43,6 +43,12 @@ export const MenuContainer = styled.div`
   }
 
   .menu {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .menu_ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,5 +59,14 @@ export const MenuContainer = styled.div`
 
   li {
     margin: 1rem 0;
+    width: 100%;
+  }
+
+  button {
+    border: transparent;
+    background-color: transparent;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-bottom: 2px solid #000;
   }
 `;
