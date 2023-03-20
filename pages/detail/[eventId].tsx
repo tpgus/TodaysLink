@@ -1,6 +1,8 @@
 import Head from "next/head";
 import EventDetail from "../../components/event/EventDetail";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import NotFound from "../../components/common/NotFound-404";
 import { getEventIds, getEventById } from "../../client-apis/api/event";
 import type { EventType } from "../../types";
 import type { ParsedUrlQuery } from "querystring";
@@ -11,23 +13,28 @@ interface PropsType {
 }
 
 const EventDetailPage = (props: PropsType) => {
-  const { event } = props;
+  const [event, setEvent] = useState(props.event);
+  const router = useRouter();
 
   //true일 경우 폴백체크 필요 : 현재 유효하지 않은 값일 경우 모두 loading으로 처리 됨
   if (!event) {
-    <p>loading...</p>;
+    return <p>로딩 중...</p>;
   }
 
   return (
     <>
       <Head>
-        <title>{event.title}</title>
+        <title>{event ? event.title : "투데이 링크"}</title>
         <meta
           name="description"
-          content={`${event.title} - ${event.subTitle}`}
+          content={
+            event
+              ? `${event.title} - ${event.subTitle}`
+              : "투데이 링크 이벤트 상세 페이지"
+          }
         />
       </Head>
-      <EventDetail event={event} />
+      {event ? <EventDetail event={event} /> : null}
     </>
   );
 };
