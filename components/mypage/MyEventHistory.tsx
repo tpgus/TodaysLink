@@ -1,6 +1,7 @@
 import * as S from "./style/style-MyEventHistory";
 import Pagination from "../common/Pagination";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { dateParser } from "../../utils/parser-utils";
 import { v4 as uuidv4 } from "uuid";
 import { getMyEventHistory } from "../../client-apis/api/event";
@@ -26,7 +27,9 @@ const itemsPerPage = 12;
 
 //컴포넌트 시작
 const MyEventHistory = () => {
+  const router = useRouter();
   const { data: session } = useSession();
+  const [user, setUser] = useState(session);
   const [fetchStatus, setFetchStatus] = useState<FetchStatus>("pending");
   const [myEvent, setMyEvent] = useState<MyEventType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,12 +41,22 @@ const MyEventHistory = () => {
 
   useEffect(() => {
     const fetchMyEventHistory = async () => {
-      const myEvent = await getMyEventHistory(session!);
+      const myEvent = await getMyEventHistory(user!);
       setMyEvent(myEvent);
       setFetchStatus("complete");
     };
-    setFetchStatus("loading");
-    fetchMyEventHistory();
+    if (user) {
+      setFetchStatus("loading");
+      fetchMyEventHistory();
+    } else {
+      router.replace("/auth/signIn");
+    }
+  }, [user, router]);
+
+  useEffect(() => {
+    if (!session) {
+      setUser(null);
+    }
   }, [session]);
 
   return (
