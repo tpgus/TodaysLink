@@ -21,7 +21,7 @@ const Logo = (props: PropsType) => {
 
   return (
     <S.Logo>
-      <button onClick={() => (location.href = "/")}>
+      <button type="button" onClick={() => (location.href = "/")}>
         <S.MobileLogo txtColor={props.txtColor} className="mobile-only">
           <AiFillHome />
         </S.MobileLogo>
