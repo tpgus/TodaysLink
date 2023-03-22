@@ -12,8 +12,8 @@ import type { MyEventType, EventDate } from "../../types";
 type FetchStatus = "pending" | "complete" | "loading";
 
 const getDateFormat = (date: EventDate) => {
-  const { year, month, day, hour, minites } = date;
-  return dateParser(new Date(year, month - 1, day, hour, minites));
+  const { year, month, day } = date;
+  return dateParser(new Date(year, month - 1, day));
 };
 
 const getFeedbackMessage = (message: string) => (

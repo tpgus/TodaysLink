@@ -29,7 +29,7 @@ export const MyEventHistoryContainer = styled.div`
   }
 
   ${media.tablet} {
-    max-width: 70%;
+    max-width: 80%;
   }
   ${media.pc} {
     max-width: 60%;
@@ -55,7 +55,7 @@ export const MyEventHistoryContainer = styled.div`
   }
 
   th {
-    text-align: left;
+    text-align: center;
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 600;
@@ -65,14 +65,11 @@ export const MyEventHistoryContainer = styled.div`
   }
 
   .th-title {
-    flex: 4;
-    ${media["fix-mobile"]} {
-      flex: 3;
-    }
+    flex: 1;
   }
 
   .th-participation-date {
-    flex: 2;
+    flex: 1;
   }
 
   .th-announcement-date {
@@ -98,23 +95,22 @@ export const MyEventHistoryContainer = styled.div`
   }
 
   .td-title {
-    flex: 4;
+    flex: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: ${({ theme }) => theme.color["gray-500"]};
-    ${media["fix-mobile"]} {
-      flex: 3;
-    }
   }
 
   .td-participation-date {
-    flex: 2;
+    flex: 1;
+    text-align: center;
     color: ${({ theme }) => theme.color["gray-500"]};
   }
 
   .td-announcement-date {
     flex: 1;
+    text-align: center;
     color: ${({ theme }) => theme.color["gray-500"]};
   }
 
@@ -122,6 +118,5 @@ export const MyEventHistoryContainer = styled.div`
     border: transparent;
     text-align: center;
     background-color: ${({ theme }) => theme.color["gray-300"]};
-    padding: 0.2rem;
   }
 `;
