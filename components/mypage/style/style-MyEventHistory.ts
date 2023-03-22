@@ -24,6 +24,10 @@ export const MyEventHistoryContainer = styled.div`
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   border: 1px solid rgba(167, 164, 164, 0.5);
 
+  ${media["galaxy-fold"]} {
+    width: 100%;
+  }
+
   ${media.tablet} {
     max-width: 70%;
   }
@@ -114,9 +118,10 @@ export const MyEventHistoryContainer = styled.div`
     color: ${({ theme }) => theme.color["gray-500"]};
   }
 
-  /* .empty-data__p {
+  .order__btn {
+    border: transparent;
     text-align: center;
-    font-weight: bold;
-    padding: 1rem;
-  } */
+    background-color: ${({ theme }) => theme.color["gray-300"]};
+    padding: 0.2rem;
+  }
 `;

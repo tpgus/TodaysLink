@@ -1,4 +1,6 @@
 import { db } from "../../lib/firestore";
+import { Session } from "next-auth";
+import { dateParser } from "../../utils/parser-utils";
 import { fieldOptionBuilder } from "../../utils/query-utils";
 import {
   collection,
@@ -14,10 +16,15 @@ import {
   getCountFromServer,
   updateDoc,
   Timestamp,
+  where,
 } from "firebase/firestore";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
-import type { EventType, MyEventType, SearchOptionType } from "../../types";
-import { Session } from "next-auth";
+import type {
+  EventType,
+  MyEventType,
+  SearchOptionType,
+  EventDate,
+} from "../../types";
 
 export const getEventRef = () => collection(db, "event");
 
@@ -105,6 +112,15 @@ export const getEventList = async (
   }
 };
 
+const compare = (key: "announcementDate", subKey: "year" | "month" | "day") => {
+  return (a: EventType, b: EventType) =>
+    a[key][subKey] > b[key][subKey]
+      ? 1
+      : a[key][subKey] < b[key][subKey]
+      ? -1
+      : 0;
+};
+
 export const getMyEventHistory = async (session: Session) => {
   const { user } = session;
 
@@ -112,8 +128,11 @@ export const getMyEventHistory = async (session: Session) => {
     const usersRef = collection(db, "users");
     const docRef = doc(usersRef, user.id);
     const docSanp = await getDoc(docRef);
-    const myEvent = docSanp.data()!.myEvent as MyEventType[];
-    return myEvent;
+    const myEventList = docSanp.data()!.myEvent as MyEventType[];
+    myEventList.sort(compare("announcementDate", "day"));
+    myEventList.sort(compare("announcementDate", "month"));
+    myEventList.sort(compare("announcementDate", "year"));
+    return myEventList;
   } catch (error) {
     throw error;
   }

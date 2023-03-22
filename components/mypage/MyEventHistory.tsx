@@ -6,6 +6,7 @@ import { dateParser } from "../../utils/parser-utils";
 import { v4 as uuidv4 } from "uuid";
 import { getMyEventHistory } from "../../client-apis/api/event";
 import { useEffect, useState } from "react";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import type { MyEventType, EventDate } from "../../types";
 
 type FetchStatus = "pending" | "complete" | "loading";
@@ -30,14 +31,11 @@ const MyEventHistory = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [user, setUser] = useState(session);
+  const [isDescOrder, setIsDescOrder] = useState(false);
   const [fetchStatus, setFetchStatus] = useState<FetchStatus>("pending");
   const [myEvent, setMyEvent] = useState<MyEventType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
-
-  const handleClickEventItem = (url: string) => {
-    window.open(url, "_blank");
-  };
 
   useEffect(() => {
     const fetchMyEventHistory = async () => {
@@ -59,6 +57,15 @@ const MyEventHistory = () => {
     }
   }, [session]);
 
+  const handleClickEventItem = (url: string) => {
+    window.open(url, "_blank");
+  };
+
+  const handleSetOrder = () => {
+    setMyEvent((prevState) => prevState.reverse());
+    setIsDescOrder((prevState) => !prevState);
+  };
+
   return (
     <S.MyEventHistoryLayout>
       <h2>내가 참여한 이벤트</h2>
@@ -70,7 +77,13 @@ const MyEventHistory = () => {
               <th className="th-participation-date pc-tablet-only">
                 참여 일자
               </th>
-              <th className="th-announcement-date">당첨자 발표일</th>
+              <th className="th-announcement-date">
+                당첨자 발표일&nbsp;
+                <button onClick={handleSetOrder} className="order__btn">
+                  {isDescOrder ? "내림차순" : "오름차순"}
+                  {isDescOrder ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+                </button>
+              </th>
             </tr>
           </thead>
           {fetchStatus === "loading" ? getFeedbackMessage("로딩 중...") : null}
