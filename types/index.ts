@@ -77,3 +77,10 @@ export interface SearchOptionType {
   platform: PLATFORM;
   numOfWinner: number;
 }
+
+export interface UserInfo {
+  id: string;
+  userId: string;
+  password?: string;
+  email: string;
+}

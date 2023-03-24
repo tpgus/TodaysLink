@@ -34,6 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         userId,
         password: hashedPassword,
         email,
+        myEvent: [],
       });
       res.status(201).json({ message: "success", createdUserId: result.id });
     } catch (error) {
