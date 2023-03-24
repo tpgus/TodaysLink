@@ -4,17 +4,13 @@ import { db } from "../../../lib/firestore";
 import { verifyPassword } from "../../../server/utils/encryption-utils";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import type { NextAuthOptions } from "next-auth";
-
-interface UserInfo {
-  id: string;
-  userId: string;
-  password?: string;
-}
+import type { UserInfo } from "../../../types";
 
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+
   providers: [
     CredentialsProviders({
       name: "Credentials",
@@ -50,7 +46,11 @@ export const authOptions: NextAuthOptions = {
         }
 
         //성공
-        const user = { id: userInfo.id, userId: userInfo.userId };
+        const user = {
+          id: userInfo.id,
+          userId: userInfo.userId,
+          email: userInfo.email,
+        };
         return user;
       },
     }),

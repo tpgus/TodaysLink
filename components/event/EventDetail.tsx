@@ -22,6 +22,7 @@ const EventDetail = (props: PropsType) => {
   const dates = [startDate, endDate, announcementDate];
 
   const { data: session, status } = useSession();
+  console.log(session);
   const dispatch = useAppDispatch();
   const notificationState = useAppSelector((state) => state.notification);
 
