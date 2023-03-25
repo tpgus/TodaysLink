@@ -70,7 +70,7 @@ const EventDetail = (props: PropsType) => {
             src={event.image}
             width={400}
             height={400}
-            alt="event-product"
+            alt="event-platform"
             priority
           />
           <DetailTagList tags={event.tags} />
