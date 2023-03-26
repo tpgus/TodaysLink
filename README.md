@@ -66,7 +66,7 @@
 <summary><h4>마이페이지 - 참여한 이벤트 목록</h4></summary>
 <div markdown="1">
 
-![ezgif com-video-to-gif (18)](https://user-images.githubusercontent.com/43470398/226324914-e7e4bfcd-b19e-4e45-b154-81a5f3064e98.gif)
+![ezgif com-video-to-gif (19)](https://user-images.githubusercontent.com/43470398/227782173-f1bb79d2-98c0-487b-841c-5c54ddf4922b.gif)
 
 </div>
 </details>
