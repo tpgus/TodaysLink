@@ -16,15 +16,10 @@ import {
   getCountFromServer,
   updateDoc,
   Timestamp,
-  where,
 } from "firebase/firestore";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
-import type {
-  EventType,
-  MyEventType,
-  SearchOptionType,
-  EventDate,
-} from "../../types";
+import type { EventType, MyEventType, SearchOptionType } from "../../types";
+import { FirebaseError } from "firebase/app";
 
 export const getEventRef = () => collection(db, "event");
 
@@ -112,6 +107,7 @@ export const getEventList = async (
   }
 };
 
+//정렬 함수
 const compare = (key: "announcementDate", subKey: "year" | "month" | "day") => {
   return (a: EventType, b: EventType) =>
     a[key][subKey] > b[key][subKey]
@@ -121,14 +117,21 @@ const compare = (key: "announcementDate", subKey: "year" | "month" | "day") => {
       : 0;
 };
 
+//특정 유저의 document 반환 함수
+const getUserDocument = async (userId: string) => {
+  const usersRef = collection(db, "users");
+  const docRef = doc(usersRef, userId);
+  const docSanp = await getDoc(docRef);
+  return docSanp;
+};
+
+//특정 유저의 참여한 이벤트 목록
 export const getMyEventHistory = async (session: Session) => {
   const { user } = session;
 
   try {
-    const usersRef = collection(db, "users");
-    const docRef = doc(usersRef, user.id);
-    const docSanp = await getDoc(docRef);
-    const myEventList = docSanp.data()!.myEvent as MyEventType[];
+    const userDocument = await getUserDocument(user.id);
+    const myEventList = userDocument.data()!.myEvent as MyEventType[];
     myEventList.sort(compare("announcementDate", "day"));
     myEventList.sort(compare("announcementDate", "month"));
     myEventList.sort(compare("announcementDate", "year"));
@@ -138,19 +141,42 @@ export const getMyEventHistory = async (session: Session) => {
   }
 };
 
-export const addMyEventHistory = async (session: Session, event: EventType) => {
-  //이미 참여했는지 확인
+//특정 유저의 특정 이벤트 참여 여부
+export const checkIsParticipatedEvent = async (
+  session: Session,
+  targetEventId: string
+) => {
   const { user } = session;
 
   try {
+    const userDocument = await getUserDocument(user.id);
+    const myEvent = userDocument.data()!.myEvent as MyEventType[];
+
+    if (myEvent.find((event) => event.id === targetEventId)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+//이벤트 참여 목록 추가
+export const addMyEventHistory = async (session: Session, event: EventType) => {
+  const { user } = session;
+
+  try {
+    //이미 참여했는지 확인
+    const isParticipated = await checkIsParticipatedEvent(session, event.id);
+    if (isParticipated) {
+      return { success: false, message: "이미 참여한 이벤트입니다." };
+    }
+
     const usersRef = collection(db, "users");
     const docRef = doc(usersRef, user.id);
     const docSanp = await getDoc(docRef);
     const prevMyEvent = docSanp.data()!.myEvent as MyEventType[];
-
-    if (prevMyEvent.find((preEvent) => preEvent.id === event.id)) {
-      return { success: false, message: "이미 참여한 이벤트입니다." };
-    }
 
     const newMyEvent = {
       ...event,
@@ -160,6 +186,7 @@ export const addMyEventHistory = async (session: Session, event: EventType) => {
     await updateDoc(docRef, {
       myEvent: [...prevMyEvent, newMyEvent],
     });
+
     return { success: true, message: "참여 완료!!!" };
   } catch (error) {
     throw error;

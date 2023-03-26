@@ -5,19 +5,25 @@ import Button from "../ui/Button";
 import DetailTagList from "./DetailTagList";
 import Notification from "../common/Notification";
 import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { showNotification } from "../../store/notificationSlice";
 import { addMyEventHistory } from "../../client-apis/api/event";
 import { dateParser, separateLine } from "../../utils/parser-utils";
 import { useAppDispatch, useAppSelector } from "../../store";
+import { AiOutlineCheck } from "react-icons/ai";
 import type { EventType } from "../../types";
 
 interface PropsType {
   event: EventType;
+  isParticipated: boolean;
 }
 
 const EventDetail = (props: PropsType) => {
   const { event } = props;
+  const [isParticipated, setIsParticipated] = useState(props.isParticipated);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { startDate, endDate, announcementDate } = event;
   const dates = [startDate, endDate, announcementDate];
 
@@ -34,8 +40,9 @@ const EventDetail = (props: PropsType) => {
   const content = separateLine(event.content);
 
   const handleClickCompleteBtn = async () => {
+    setIsLoading(true);
     if (status === "authenticated" && session) {
-      //로그인 유저
+      //로그인한 유저
       const result = await addMyEventHistory(session, event);
       if (result.success) {
         dispatch(
@@ -44,6 +51,7 @@ const EventDetail = (props: PropsType) => {
             message: result.message,
           })
         );
+        setIsParticipated(true);
       } else {
         dispatch(
           showNotification({
@@ -54,9 +62,11 @@ const EventDetail = (props: PropsType) => {
       }
     } else if (status === "unauthenticated" || !session) {
       //비로그인 유저
+      setIsLoading(false);
       alert("로그인이 필요합니다.");
       return;
     }
+    setIsLoading(false);
   };
 
   return (
@@ -84,8 +94,13 @@ const EventDetail = (props: PropsType) => {
               <Link className="actions__link" href={event.url} target="_blank">
                 링크 바로가기
               </Link>
-              <Button onClick={handleClickCompleteBtn} className="actions__btn">
-                참여 완료
+              <Button
+                onClick={handleClickCompleteBtn}
+                className="actions__btn"
+                disabled={isParticipated}
+              >
+                {isLoading ? "참여 중..." : " 참여 완료"}
+                {isParticipated ? <AiOutlineCheck /> : null}
               </Button>
             </div>
           </div>
