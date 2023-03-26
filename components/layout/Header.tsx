@@ -3,7 +3,7 @@ import Link from "next/link";
 import Logo from "../ui/Logo";
 import Search from "./Search";
 import Hamburger from "./mobile-only/hamburger/Hamburger";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { v4 as uuidv4 } from "uuid";
@@ -40,39 +40,44 @@ const Header = () => {
               onClickHamburger={handleHamburgerBtnClick}
             />
           </div>
-          <ul className="pc-tablet__ul">
-            {NAVIGATION_MENU.map((menu) => (
-              <li key={uuidv4()} className="pc-tablet__li">
-                <Link
-                  href={menu.path}
-                  className={
-                    "nav__link" + `${isActivePath(menu.path) ? " active" : ""}`
-                  }
-                >
-                  {menu.name}
-                </Link>
-              </li>
-            ))}
-            {!session ? (
-              <li className="pc-tablet__li">
-                <Link href="/auth/signIn" className={"nav__link"}>
-                  로그인
-                </Link>
-              </li>
-            ) : null}
-            {session && status === "authenticated" ? (
-              <li className="pc-tablet__li">
-                <Link
-                  href="/mypage"
-                  className={
-                    "nav__link" + `${isActivePath("/mypage") ? " active" : ""}`
-                  }
-                >
-                  마이페이지
-                </Link>
-              </li>
-            ) : null}
-          </ul>
+          {status !== "loading" ? (
+            <ul className="pc-tablet__ul">
+              {NAVIGATION_MENU.map((menu) => (
+                <li key={uuidv4()} className="pc-tablet__li">
+                  <Link
+                    href={menu.path}
+                    className={
+                      "nav__link" +
+                      `${isActivePath(menu.path) ? " active" : ""}`
+                    }
+                  >
+                    {menu.name}
+                  </Link>
+                </li>
+              ))}
+
+              {!session ? (
+                <li className="pc-tablet__li">
+                  <Link href="/auth/signIn" className={"nav__link"}>
+                    로그인
+                  </Link>
+                </li>
+              ) : null}
+              {session && status === "authenticated" ? (
+                <li className="pc-tablet__li">
+                  <Link
+                    href="/mypage"
+                    className={
+                      "nav__link" +
+                      `${isActivePath("/mypage") ? " active" : ""}`
+                    }
+                  >
+                    마이페이지
+                  </Link>
+                </li>
+              ) : null}
+            </ul>
+          ) : null}
         </div>
       </nav>
     </S.HeaderContainer>
