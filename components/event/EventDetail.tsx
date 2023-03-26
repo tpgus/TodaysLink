@@ -45,13 +45,13 @@ const EventDetail = (props: PropsType) => {
       //로그인한 유저
       const result = await addMyEventHistory(session, event);
       if (result.success) {
+        setIsParticipated(true);
         dispatch(
           showNotification({
             isPositive: true,
             message: result.message,
           })
         );
-        setIsParticipated(true);
       } else {
         dispatch(
           showNotification({
