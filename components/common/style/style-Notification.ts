@@ -5,7 +5,7 @@ export const NotificationContainer = styled.div<{ isPositive: boolean }>`
   border-radius: 0.375rem;
   background-color: ${({ isPositive }) =>
     isPositive ? "#f0fdf4" : "rgb(254 242 242)"};
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
