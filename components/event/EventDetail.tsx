@@ -22,7 +22,6 @@ const EventDetail = (props: PropsType) => {
   const dates = [startDate, endDate, announcementDate];
 
   const { data: session, status } = useSession();
-  console.log(session);
   const dispatch = useAppDispatch();
   const notificationState = useAppSelector((state) => state.notification);
 
@@ -70,7 +69,7 @@ const EventDetail = (props: PropsType) => {
             src={event.image}
             width={400}
             height={400}
-            alt="event-product"
+            alt="event-platform"
             priority
           />
           <DetailTagList tags={event.tags} />
