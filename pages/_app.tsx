@@ -60,14 +60,20 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <SessionProvider session={pageProps.session}>
-            {isRouterChanging ? (
-              <LoadingSpinner />
-            ) : (
-              <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
-            )}
+            <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
           </SessionProvider>
         </Provider>
       </ThemeProvider>
     </>
   );
 }
+
+// {
+/* <SessionProvider session={pageProps.session}>
+{isRouterChanging ? (
+  <LoadingSpinner />
+) : (
+  <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
+)}
+</SessionProvider> */
+// }
