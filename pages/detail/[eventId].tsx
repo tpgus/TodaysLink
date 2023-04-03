@@ -70,9 +70,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-//댓글 같은 기능이 있다면 serverSideProps가 적합할 수도
-//만약, getStaticProps를 이용하면, 나중에 데이터가 추가될 수 있으니 revalidate를 이용
-//현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
+// 댓글 같은 기능이 있다면 serverSideProps가 적합할 수도
+// 만약, getStaticProps를 이용하면, 나중에 데이터가 추가될 수 있으니 revalidate를 이용
+// 현재는 정적 생성 : 빌드 시점 + AND revalidate 이용 가능
 // export const getStaticProps: GetStaticProps = async (context) => {
 //   const { eventId } = context.params as Params;
 //   const event = await getEventById(eventId);

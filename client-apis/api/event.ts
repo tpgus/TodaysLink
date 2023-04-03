@@ -1,6 +1,5 @@
 import { db } from "../../lib/firestore";
 import { Session } from "next-auth";
-import { dateParser } from "../../utils/parser-utils";
 import { fieldOptionBuilder } from "../../utils/query-utils";
 import {
   collection,
@@ -19,7 +18,6 @@ import {
 } from "firebase/firestore";
 import type { QueryFieldFilterConstraint } from "firebase/firestore";
 import type { EventType, MyEventType, SearchOptionType } from "../../types";
-import { FirebaseError } from "firebase/app";
 
 export const getEventRef = () => collection(db, "event");
 

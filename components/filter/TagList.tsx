@@ -27,7 +27,6 @@ const TagList = () => {
   const dispatch = useAppDispatch();
 
   const handleClickTag = (idx: number) => {
-    console.log(TAGS[idx]);
     dispatch(setTag(TAGS[idx] as TAG));
   };
 

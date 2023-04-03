@@ -32,7 +32,7 @@ export const fieldOptionBuilder = async (options: SearchOptionType) => {
       : options.tags === "오늘 마감"
       ? [
           where("endDate.year", "==", year),
-          where("endDate.month", "==", month),
+          where("endDate.month", "==", month + 1),
           where("endDate.day", "==", day),
         ]
       : [where("tags", "array-contains", options.tags)];
