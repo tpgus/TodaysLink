@@ -2,6 +2,7 @@ import * as S from "./style/style-EventList";
 import Event from "./Event";
 import { v4 as uuidv4 } from "uuid";
 import { ImSad } from "react-icons/im";
+import "react-loading-skeleton/dist/skeleton.css";
 import type { EventType } from "../../types";
 
 interface PropsType {

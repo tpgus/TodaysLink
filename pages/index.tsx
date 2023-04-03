@@ -27,6 +27,7 @@ let isFirstRendering = true;
 
 const HomePage = (props: PropsType) => {
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const searchOption = useAppSelector((state) => state.searchOption);
   const notificationState = useAppSelector((state) => state.notification);
 
@@ -67,6 +68,7 @@ const HomePage = (props: PropsType) => {
   }, [searchOption]);
 
   const handleGetMoreData = async () => {
+    setIsLoading(true);
     if (currentPage === totalPage) {
       dispatch(
         showNotification({
@@ -81,6 +83,7 @@ const HomePage = (props: PropsType) => {
       pageOffset
     );
     setEventList([...eventList, ...newEventList]);
+    setIsLoading(false);
     setPageOffset(lastDocumentId!);
   };
 

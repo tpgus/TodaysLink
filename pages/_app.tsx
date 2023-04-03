@@ -1,6 +1,5 @@
 import Head from "next/head";
 import AppLayout from "../components/layout/AppLayout";
-import LoadingSpinner from "../components/common/LoadingSpinner";
 import { theme } from "../styles/theme";
 import { store } from "../store";
 import { Provider } from "react-redux";

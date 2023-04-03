@@ -9,9 +9,10 @@ interface PropsType {
   event: EventType;
 }
 
-const Event = ({ event }: PropsType) => {
-  const router = useRouter();
+const Event = (props: PropsType) => {
+  const { event } = props;
   const [isHover, setIsHover] = useState(false);
+  const router = useRouter();
 
   const { year, month, day, hour, minites } = event.endDate;
   const date = new Date(year, month - 1, day, hour, minites);
