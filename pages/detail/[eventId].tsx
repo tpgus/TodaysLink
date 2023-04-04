@@ -12,16 +12,10 @@ import type { GetServerSideProps } from "next";
 interface PropsType {
   event: EventType;
   isParticipated: boolean;
-  hasError: boolean;
 }
 
 const EventDetailPage = (props: PropsType) => {
-  const [event, setEvent] = useState(props.event);
-
-  //true일 경우 폴백체크 필요 : 현재 유효하지 않은 값일 경우 모두 loading으로 처리 됨
-  // if (!event) {
-  //   return <p>로딩 중...</p>;
-  // }
+  const event = useState<EventType>(props.event)[0];
 
   return (
     <>
@@ -49,6 +43,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { eventId } = context.params as Params;
   const session = await getServerSession(context.req, context.res, authOptions);
   const event = await getEventById(eventId);
+
+  if (!event) {
+    return {
+      notFound: true,
+    };
+  }
 
   if (!session) {
     //로그인 하지 않은 유저일 경우,

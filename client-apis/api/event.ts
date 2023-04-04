@@ -26,7 +26,11 @@ export const getEventById = async (id: string) => {
     const eventRef = getEventRef();
     const docRef = doc(eventRef, id);
     const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      return null;
+    }
     const event = docSnap.data() as EventType;
+
     return {
       ...event,
       id,
