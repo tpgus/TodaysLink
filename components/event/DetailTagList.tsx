@@ -7,6 +7,7 @@ interface PropsType {
 }
 
 const DetailTagList = (props: PropsType) => {
+  ("컴포넌트 DetailTagList.tsx 렌더링");
   return (
     <S.TagListContainer>
       {props.tags.map((tag) => (

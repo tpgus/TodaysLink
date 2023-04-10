@@ -5,6 +5,7 @@ import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../../pages/_app";
 
 const findIdPage: NextPageWithLayout = () => {
+  ("/auth/findId.tsx 렌더링");
   return (
     <>
       <Head>

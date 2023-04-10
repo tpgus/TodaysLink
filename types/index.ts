@@ -8,7 +8,7 @@ export interface EventDate {
   minites: number;
 }
 
-export type PLATFORM =
+export type PlatformType =
   | "INSTAGRAM"
   | "FACEBOOK"
   | "APP_ONLY"
@@ -19,7 +19,7 @@ export type PLATFORM =
   | "KAKAO"
   | null;
 
-export type TAG =
+export type TagType =
   | "전부 보기"
   | "오늘 마감"
   | "전자기기"
@@ -45,7 +45,7 @@ export interface EventType {
   url: string;
   warnings: string[];
   numOfWinner: number;
-  platform: PLATFORM;
+  platform: PlatformType;
   prize: string[];
 }
 
@@ -72,9 +72,8 @@ export interface QnaType {
 }
 
 export interface SearchOptionType {
-  searchValue: string | null;
-  tags: TAG;
-  platform: PLATFORM;
+  tags: TagType;
+  platform: PlatformType;
   numOfWinner: number;
 }
 

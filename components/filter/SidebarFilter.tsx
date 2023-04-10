@@ -9,7 +9,7 @@ import {
   resetNumOfWinner,
   resetPlatform,
 } from "../../store/searchOptionSlice";
-import type { PLATFORM } from "../../types";
+import type { PlatformType } from "../../types";
 
 const PLATFORMS = [
   { name: "카카오톡", value: "KAKAO" },
@@ -47,7 +47,7 @@ const SidebarFilter = () => {
   const handlePlatformFilter = (idx: number) => {
     const platform = PLATFORMS[idx].value;
     setCheckedPlatform(idx);
-    dispatch(setPlatforms(platform as PLATFORM));
+    dispatch(setPlatforms(platform as PlatformType));
   };
 
   const handleWinnerFilter = (idx: number) => {

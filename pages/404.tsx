@@ -1,5 +1,5 @@
 import Head from "next/head";
-import NotFound from "../components/common/NotFound-404";
+import NotFound from "../components/common/NotFound";
 import type { NextPage } from "next";
 
 const NotFoundPage: NextPage = () => {

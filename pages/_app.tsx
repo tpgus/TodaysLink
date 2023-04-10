@@ -22,27 +22,27 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const [isRouterChanging, setIsRouterChanging] = useState(false);
+  // const [isRouterChanging, setIsRouterChanging] = useState(false);
   const getLayout = Component.getLayout ?? ((page) => page);
   const router = useRouter();
 
-  useEffect(() => {
-    const handleRouterChangeStart = () => {
-      setIsRouterChanging(true);
-    };
+  // useEffect(() => {
+  //   const handleRouterChangeStart = () => {
+  //     setIsRouterChanging(true);
+  //   };
 
-    const handleRouterChangeStop = () => {
-      setIsRouterChanging(false);
-    };
+  //   const handleRouterChangeStop = () => {
+  //     setIsRouterChanging(false);
+  //   };
 
-    router.events.on("routeChangeStart", handleRouterChangeStart);
-    router.events.on("routeChangeComplete", handleRouterChangeStop);
+  //   router.events.on("routeChangeStart", handleRouterChangeStart);
+  //   router.events.on("routeChangeComplete", handleRouterChangeStop);
 
-    return () => {
-      router.events.off("routeChangeStart", handleRouterChangeStart);
-      router.events.off("routeChangeComplete", handleRouterChangeStop);
-    };
-  });
+  //   return () => {
+  //     router.events.off("routeChangeStart", handleRouterChangeStart);
+  //     router.events.off("routeChangeComplete", handleRouterChangeStop);
+  //   };
+  // });
 
   return (
     <>
@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           content="누구나 쉽게 참여할 수 있는 다양한 추첨 이벤트 링크를 제공합니다."
         />
       </Head>
-      <Analytics />
+      {/* <Analytics /> */}
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Provider store={store}>

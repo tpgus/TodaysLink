@@ -2,7 +2,7 @@ import * as S from "./style/style-Search";
 import Joi from "joi";
 import { useRef } from "react";
 import { validate } from "../../utils/checkValidation-utils";
-import { setSearchValue } from "../../store/searchOptionSlice";
+// import { setSearchValue } from "../../store/searchOptionSlice";
 import { useAppDispatch } from "../../store";
 import { AiOutlineSearch } from "react-icons/ai";
 import { showNotification } from "../../store/notificationSlice";

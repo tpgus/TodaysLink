@@ -4,7 +4,7 @@ import { useState } from "react";
 import { setTag } from "../../store/searchOptionSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch, useAppSelector } from "../../store";
-import type { TAG } from "../../types";
+import type { TagType } from "../../types";
 
 const TAGS = [
   "전부 보기",
@@ -27,7 +27,7 @@ const TagList = () => {
   const dispatch = useAppDispatch();
 
   const handleClickTag = (idx: number) => {
-    dispatch(setTag(TAGS[idx] as TAG));
+    dispatch(setTag(TAGS[idx] as TagType));
   };
 
   return (
