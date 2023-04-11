@@ -3,7 +3,7 @@ import Input from "../ui/Input";
 import ReactDOM from "react-dom";
 import Notification from "../common/Notification";
 import { showNotification } from "../../store/notificationSlice";
-import { checkQnAPassword } from "../../client-apis/api/qna";
+import { checkQnaPassword } from "../../client-apis/api/qna";
 import { useEffect, useRef } from "react";
 import { useAppSelector, useAppDispatch } from "../../store";
 import type { Dispatch, SetStateAction } from "react";
@@ -14,7 +14,7 @@ interface PropsType {
   qnaId: string;
 }
 
-const PasswordModal = (props: PropsType) => {
+const PasswordCheckModal = (props: PropsType) => {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ const PasswordModal = (props: PropsType) => {
 
   const handleCheckPassword = async () => {
     const enteredPassword = passwordRef.current!.value;
-    const isValid = await checkQnAPassword(enteredPassword, props.qnaId);
+    const isValid = await checkQnaPassword(enteredPassword, props.qnaId);
     if (isValid) {
       props.onChangePage();
     } else {
@@ -95,4 +95,4 @@ const PasswordModal = (props: PropsType) => {
   );
 };
 
-export default PasswordModal;
+export default PasswordCheckModal;

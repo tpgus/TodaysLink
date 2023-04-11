@@ -1,10 +1,10 @@
 import * as S from "../../../components/help/style/style-QnAWriting";
 import Head from "next/head";
-import QnAList from "../../../components/help/QnAList";
-import QnAWriting from "../../../components/help/QnAWriting";
+import QnAList from "../../../components/help/QnaList";
+import QnAWriting from "../../../components/help/QnaWriting";
 import HelpPageLayout from "../../../components/help/HelpPageLayout";
 import LoadingSpinner from "../../../components/common/LoadingSpinner";
-import { getQnAList } from "../../../client-apis/api/qna";
+import { getQnaList } from "../../../client-apis/api/qna";
 import { useRef, useState, useEffect } from "react";
 import type { QnaType } from "../../../types";
 import type { ReactElement } from "react";
@@ -20,7 +20,7 @@ const QnAPage: NextPageWithLayout = () => {
 
   useEffect(() => {
     const fetchQnA = async () => {
-      const result = await getQnAList();
+      const result = await getQnaList();
       setQnaList(result.qnaList);
     };
 

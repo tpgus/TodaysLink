@@ -14,7 +14,7 @@ interface PropsType {
   onAddQnaToList: (qna: QnaType) => void;
 }
 
-const QnAWriting = (props: PropsType) => {
+const QnaWriting = (props: PropsType) => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const questionTypeRef = useRef<HTMLSelectElement>(null);
@@ -137,4 +137,4 @@ const QnAWriting = (props: PropsType) => {
   );
 };
 
-export default QnAWriting;
+export default QnaWriting;

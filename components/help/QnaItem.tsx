@@ -8,7 +8,7 @@ interface PropsType {
   qna: QnaType;
 }
 
-const QnAItem = (props: PropsType) => {
+const QnaItem = (props: PropsType) => {
   const { qna } = props;
   const router = useRouter();
 
@@ -63,4 +63,4 @@ const QnAItem = (props: PropsType) => {
   );
 };
 
-export default QnAItem;
+export default QnaItem;

@@ -1,8 +1,8 @@
-import QnADetail from "../../../components/help/QnADetail";
+import QnADetail from "../../../components/help/QnaDetail";
 import HelpPageLayout from "../../../components/help/HelpPageLayout";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getQnAById } from "../../../client-apis/api/qna";
+import { getQnaById } from "../../../client-apis/api/qna";
 import type { QnaType } from "../../../types";
 import type { ReactElement } from "react";
 import type { ParsedUrlQuery } from "querystring";
@@ -18,7 +18,11 @@ const QnaDetailPage = () => {
 
   useEffect(() => {
     const fetchQnA = async () => {
-      const qna = await getQnAById(qnaId);
+      const qna = await getQnaById(qnaId);
+      if (!qna) {
+        router.replace("/404");
+        return;
+      }
       setQna(qna);
     };
     fetchQnA();

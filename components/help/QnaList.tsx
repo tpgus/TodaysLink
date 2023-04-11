@@ -1,5 +1,5 @@
 import * as S from "./style/style-QnAList";
-import QnAItem from "./QnAItem";
+import QnAItem from "./QnaItem";
 import Pagination from "../common/Pagination";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -12,7 +12,7 @@ interface PropsType {
 
 const itemsPerPage = 10;
 
-const QnAList = (props: PropsType) => {
+const QnaList = (props: PropsType) => {
   const [currentPage, setCurrentPage] = useState(1);
   const firstItemIdxOfPage = (currentPage - 1) * itemsPerPage;
 
@@ -49,4 +49,4 @@ const QnAList = (props: PropsType) => {
   );
 };
 
-export default QnAList;
+export default QnaList;

@@ -1,6 +1,6 @@
 import * as S from "./style/style-TagList";
 import Tag from "./Tag";
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { setTag } from "../../store/searchOptionSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -21,14 +21,14 @@ const TAGS = [
 ];
 
 const TagList = () => {
-  const tagState = useAppSelector((state) => state.searchOption);
+  const tagState = useAppSelector((state) => state.searchOption.tags);
 
-  const currentTagIdx = TAGS.indexOf(tagState.tags);
+  const currentTagIdx = TAGS.indexOf(tagState);
   const dispatch = useAppDispatch();
 
-  const handleClickTag = (idx: number) => {
+  const handleClickTag = useCallback((idx: number) => {
     dispatch(setTag(TAGS[idx] as TagType));
-  };
+  }, []);
 
   return (
     <S.TagListContainer>
@@ -44,4 +44,4 @@ const TagList = () => {
   );
 };
 
-export default TagList;
+export default React.memo(TagList);
