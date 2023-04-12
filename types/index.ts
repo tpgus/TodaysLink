@@ -25,12 +25,11 @@ export type TagType =
   | "전자기기"
   | "기프티콘"
   | "상품권"
-  | "의류"
   | "식품"
   | "설문조사"
   | "댓글"
   | "출석 체크"
-  | "공유 & 초대";
+  | "공유";
 
 export interface EventType {
   id: string;
