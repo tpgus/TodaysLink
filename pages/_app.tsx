@@ -4,7 +4,6 @@ import { theme } from "../styles/theme";
 import { store } from "../store";
 import { Provider } from "react-redux";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "styled-components";
@@ -54,7 +53,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           content="누구나 쉽게 참여할 수 있는 다양한 추첨 이벤트 링크를 제공합니다."
         />
       </Head>
-      {/* <Analytics /> */}
+      <Analytics />
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Provider store={store}>
