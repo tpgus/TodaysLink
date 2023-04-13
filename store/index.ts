@@ -1,5 +1,4 @@
 import notifiactionReducer from "./notificationSlice";
-import searchOptionReducer from "./searchOptionSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";
@@ -10,7 +9,6 @@ type AppDispatch = typeof store.dispatch;
 export const store = configureStore({
   reducer: {
     notification: notifiactionReducer,
-    searchOption: searchOptionReducer,
   },
 });
 

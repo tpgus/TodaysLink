@@ -9,13 +9,13 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import { showNotification } from "../store/notificationSlice";
 import { getEventList } from "../client-apis/api/event";
-import {
-  resetNumOfWinner,
-  resetPlatform,
-  setTag,
-} from "../store/searchOptionSlice";
 import type { GetStaticProps } from "next";
-import type { EventType, SearchOptionType } from "../types";
+import type {
+  EventType,
+  PlatformType,
+  SearchOptionType,
+  TagType,
+} from "../types";
 
 interface PropsType {
   eventList: EventType[];
@@ -27,8 +27,11 @@ let isFirstRendering = true;
 
 const HomePage = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState(false);
-  const searchOption = useAppSelector((state) => state.searchOption);
+
+  const [currentTag, setCurrentTag] = useState<TagType>("전부 보기");
+  const [currentPlatform, setCurrentPlatform] = useState<PlatformType>(null);
+  const [currentNumOfWinner, setCurrentNumOfWinner] = useState(0);
+
   const notificationState = useAppSelector((state) => state.notification);
 
   const [eventList, setEventList] = useState(props.eventList);
@@ -43,16 +46,20 @@ const HomePage = (props: PropsType) => {
   useEffect(() => {
     //페이지 벗어날 때 혹은 router 이벤트 이용
     return () => {
-      dispatch(setTag("전부 보기"));
-      dispatch(resetNumOfWinner());
-      dispatch(resetPlatform());
+      setCurrentTag("전부 보기");
+      setCurrentPlatform(null);
+      setCurrentNumOfWinner(0);
     };
   }, [dispatch]);
 
   useEffect(() => {
     const fetchEventList = async () => {
       const { eventList, totalLength, lastDocumentId } = await getEventList(
-        searchOption,
+        {
+          tags: currentTag,
+          platform: currentPlatform,
+          numOfWinner: currentNumOfWinner,
+        },
         null
       );
       setEventList(eventList);
@@ -65,10 +72,9 @@ const HomePage = (props: PropsType) => {
     } else {
       fetchEventList();
     }
-  }, [searchOption]);
+  }, [currentTag, currentNumOfWinner, currentPlatform]);
 
   const handleGetMoreData = async () => {
-    setIsLoading(true);
     if (currentPage === totalPage) {
       dispatch(
         showNotification({
@@ -79,11 +85,14 @@ const HomePage = (props: PropsType) => {
       return;
     }
     const { eventList: newEventList, lastDocumentId } = await getEventList(
-      searchOption,
+      {
+        tags: currentTag,
+        platform: currentPlatform,
+        numOfWinner: currentNumOfWinner,
+      },
       pageOffset
     );
     setEventList([...eventList, ...newEventList]);
-    setIsLoading(false);
     setPageOffset(lastDocumentId!);
   };
 
@@ -96,8 +105,13 @@ const HomePage = (props: PropsType) => {
           content="누구나 쉽게 참여할 수 있는 다양한 추첨 이벤트 링크를 제공합니다. 다양한 이벤트에 참여하여 행운을 누려보세요!"
         />
       </Head>
-      <TagList />
-      <SidebarFilter />
+      <TagList currentTag={currentTag} onChangeTag={setCurrentTag} />
+      <SidebarFilter
+        currentNumOfWinner={currentNumOfWinner}
+        currentPlatform={currentPlatform}
+        onChangeNumOfWinner={setCurrentNumOfWinner}
+        onChangePlatform={setCurrentPlatform}
+      />
       {notificationState.isActive ? <Notification /> : null}
       <EventList eventList={eventList} />
       {eventList.length > 0 ? (

@@ -2,14 +2,8 @@ import * as S from "./style/style-SidebarFilter";
 import { useState } from "react";
 import { BiRefresh } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
-import { useAppDispatch } from "../../store";
-import {
-  setPlatforms,
-  setNumOfWinner,
-  resetNumOfWinner,
-  resetPlatform,
-} from "../../store/searchOptionSlice";
 import type { PlatformType } from "../../types";
+import type { Dispatch, SetStateAction } from "react";
 
 const PLATFORMS = [
   { name: "카카오톡", value: "KAKAO" },
@@ -35,34 +29,39 @@ const NUM_OF_WINNER = [
 //   { key: "numOfWinner", KWord: "당첨자 수", option: NUM_OF_WINNER },
 // ];
 
+interface PropsType {
+  currentPlatform: PlatformType;
+  currentNumOfWinner: number;
+  onChangePlatform: Dispatch<SetStateAction<PlatformType>>;
+  onChangeNumOfWinner: Dispatch<SetStateAction<number>>;
+}
+
 //둘 다 라디오에 같은 값 -> map 이용 코드 개선 -> 개선할 때 오류 다수 발생
-const SidebarFilter = () => {
+const SidebarFilter = (props: PropsType) => {
   const [checkedPlatform, setCheckedPlatform] = useState<number | null>(null);
   const [checkedNumOfWinner, setCheckedNumOfWinner] = useState<number | null>(
     null
   );
 
-  const dispatch = useAppDispatch();
-
   const handlePlatformFilter = (idx: number) => {
-    const platform = PLATFORMS[idx].value;
     setCheckedPlatform(idx);
-    dispatch(setPlatforms(platform as PlatformType));
+    const platform = PLATFORMS[idx].value;
+    props.onChangePlatform(platform as PlatformType);
   };
 
   const handleWinnerFilter = (idx: number) => {
-    const numOfWinner = NUM_OF_WINNER[idx].value;
     setCheckedNumOfWinner(idx);
-    dispatch(setNumOfWinner(Number(numOfWinner)));
+    const numOfWinner = NUM_OF_WINNER[idx].value;
+    props.onChangeNumOfWinner(Number(numOfWinner));
   };
 
   const handleResetNumOfWinenr = () => {
-    dispatch(resetNumOfWinner());
+    props.onChangePlatform(null);
     setCheckedNumOfWinner(null);
   };
 
   const handleResetPlatform = () => {
-    dispatch(resetPlatform());
+    props.onChangeNumOfWinner(0);
     setCheckedPlatform(null);
   };
 
