@@ -45,3 +45,11 @@ const TagList = (props: PropsType) => {
 };
 
 export default React.memo(TagList);
+
+/*
+기존 : 다른 검색 옵션(당첨자 수, 플랫폼)이 변경될 때, 선택된 Tag는 변하지 않지만, 
+부모 컴포넌트의 재렌더링으로 인해 TagList 컴포넌트 또한 재렌더링이 발생
+
+개선 : React.memo를 통해 부모로부터 전달받는 props가 변경되지 않을 경우 TagList 컴포넌트는
+재렌더링 하지 않는다.
+*/
