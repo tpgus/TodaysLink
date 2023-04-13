@@ -1,9 +1,7 @@
 import * as S from "./style/style-TagList";
 import Tag from "./Tag";
-import React, { useState, useCallback } from "react";
-import { setTag } from "../../store/searchOptionSlice";
+import React, { Dispatch, SetStateAction, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useAppDispatch, useAppSelector } from "../../store";
 import type { TagType } from "../../types";
 
 const TAGS = [
@@ -19,14 +17,17 @@ const TAGS = [
   "공유",
 ];
 
-const TagList = () => {
-  const tagState = useAppSelector((state) => state.searchOption.tags);
+interface PropsType {
+  currentTag: TagType;
+  onChangeTag: Dispatch<SetStateAction<TagType>>;
+}
 
-  const currentTagIdx = TAGS.indexOf(tagState);
-  const dispatch = useAppDispatch();
+const TagList = (props: PropsType) => {
+  const currentTagIdx = TAGS.indexOf(props.currentTag);
 
   const handleClickTag = useCallback((idx: number) => {
-    dispatch(setTag(TAGS[idx] as TagType));
+    const currentTag = TAGS[idx];
+    props.onChangeTag(currentTag as TagType);
   }, []);
 
   return (
