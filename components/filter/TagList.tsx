@@ -25,25 +25,22 @@ interface PropsType {
 const TagList = (props: PropsType) => {
   const currentTagIdx = TAGS.indexOf(props.currentTag);
 
-  const handleClickTag = useCallback((idx: number) => {
-    const currentTag = TAGS[idx];
-    props.onChangeTag(currentTag as TagType);
-  }, []);
+  const handleClickTag = (
+    event: React.MouseEvent<HTMLUListElement, MouseEvent>
+  ) => {
+    if (event.target instanceof HTMLLIElement) {
+      props.onChangeTag(event.target.textContent as TagType);
+    }
+  };
 
   return (
-    <S.TagListContainer>
+    <S.TagListContainer onClick={handleClickTag}>
       {TAGS.map((tag, idx) => (
-        <Tag
-          key={uuidv4()}
-          tag={tag}
-          activated={idx === currentTagIdx}
-          clickHandler={() => handleClickTag(idx)}
-        />
+        <Tag key={uuidv4()} tag={tag} activated={idx === currentTagIdx} />
       ))}
     </S.TagListContainer>
   );
 };
-
 export default React.memo(TagList);
 
 /*
