@@ -104,7 +104,7 @@
 
 (2023.04.13) **React.memo ,useCallback, useMemo를 통한 TagList 컴포넌트 렌더링 최적화 ([코드 보기](https://github.com/tpgus/TodaysLink/blob/main/components/filter/TagList.tsx))**
 
-(2023.04.15) **태그 선택시 이벤트 버블링 및 이벤트 위임을 통한 이벤트 핸들러 등록 최소화 및 유지보수성 향상 ([블로그 기록](https://velog.io/@tpgus758/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81%EA%B3%BC-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84%EC%9D%84-%ED%86%B5%ED%95%9C-%EC%BD%94%EB%93%9C-%EA%B0%9C%EC%84%A0))**
+(2023.04.15) **이벤트 버블링 및 이벤트 위임을 통한 최적화 ([블로그 기록](https://velog.io/@tpgus758/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81%EA%B3%BC-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84%EC%9D%84-%ED%86%B5%ED%95%9C-%EC%BD%94%EB%93%9C-%EA%B0%9C%EC%84%A0))**
 
 ---
 
