@@ -56,12 +56,12 @@ const SidebarFilter = (props: PropsType) => {
   };
 
   const handleResetNumOfWinenr = () => {
-    props.onChangePlatform(null);
+    props.onChangeNumOfWinner(0);
     setCheckedNumOfWinner(null);
   };
 
   const handleResetPlatform = () => {
-    props.onChangeNumOfWinner(0);
+    props.onChangePlatform(null);
     setCheckedPlatform(null);
   };
 
