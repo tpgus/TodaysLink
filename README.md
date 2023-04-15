@@ -100,7 +100,7 @@
 
 ---
 
-# 투데이 링크 1차 배포 이후에 적용된 개선 및 최적화 기록
+# 최적화 기록
 
 (2023.04.13) **React.memo ,useCallback, useMemo를 통한 TagList 컴포넌트 렌더링 최적화 ([코드 보기](https://github.com/tpgus/TodaysLink/blob/main/components/filter/TagList.tsx))**
 
