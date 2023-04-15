@@ -102,8 +102,6 @@
 
 # 투데이 링크 1차 배포 이후에 적용된 개선 및 최적화 기록
 
-(2023.03.26) **참여 완료 버튼 UI/UX 개선 ([블로그 기록](https://velog.io/@tpgus758/%ED%88%AC%EB%8D%B0%EC%9D%B4-%EB%A7%81%ED%81%AC-%EC%B0%B8%EC%97%AC-%EC%99%84%EB%A3%8C-%EB%B2%84%ED%8A%BC-UI-%EA%B0%9C%EC%84%A0%EC%9D%84-%EA%B5%AC%ED%98%84%ED%95%98%EB%A9%B0))**
-
 (2023.04.13) **React.memo ,useCallback, useMemo를 통한 TagList 컴포넌트 렌더링 최적화 ([코드 보기](https://github.com/tpgus/TodaysLink/blob/main/components/filter/TagList.tsx))**
 
 (2023.04.15) **이벤트 버블링 및 이벤트 위임을 통한 최적화 ([블로그 기록](https://velog.io/@tpgus758/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81%EA%B3%BC-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84%EC%9D%84-%ED%86%B5%ED%95%9C-%EC%BD%94%EB%93%9C-%EA%B0%9C%EC%84%A0))**
