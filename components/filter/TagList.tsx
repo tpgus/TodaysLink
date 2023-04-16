@@ -25,13 +25,14 @@ interface PropsType {
 const TagList = (props: PropsType) => {
   const currentTagIdx = TAGS.indexOf(props.currentTag);
 
-  const handleClickTag = (
-    event: React.MouseEvent<HTMLUListElement, MouseEvent>
-  ) => {
-    if (event.target instanceof HTMLLIElement) {
-      props.onChangeTag(event.target.textContent as TagType);
-    }
-  };
+  const handleClickTag = useCallback(
+    (event: React.MouseEvent<HTMLUListElement, MouseEvent>) => {
+      if (event.target instanceof HTMLLIElement) {
+        props.onChangeTag(event.target.textContent as TagType);
+      }
+    },
+    [props.onChangeTag]
+  );
 
   return (
     <S.TagListContainer onClick={handleClickTag}>
