@@ -26,7 +26,7 @@ interface PropsType {
 let isFirstRendering = true;
 
 const HomePage = (props: PropsType) => {
-  //kraken 테스트
+  // asd;asdasd
   const dispatch = useAppDispatch();
 
   const [currentTag, setCurrentTag] = useState<TagType>("전부 보기");
