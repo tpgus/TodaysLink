@@ -26,6 +26,7 @@ interface PropsType {
 let isFirstRendering = true;
 
 const HomePage = (props: PropsType) => {
+  //kraken 테스트
   const dispatch = useAppDispatch();
 
   const [currentTag, setCurrentTag] = useState<TagType>("전부 보기");
@@ -53,6 +54,7 @@ const HomePage = (props: PropsType) => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.debug(currentTag);
     const fetchEventList = async () => {
       const { eventList, totalLength, lastDocumentId } = await getEventList(
         {
