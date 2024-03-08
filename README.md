@@ -117,4 +117,4 @@ So, you can check the event information that you can participate in for free on 
 |<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">|Deploy|
 
 
-# 🔗 [WiKi Docs](https://github.com/tpgus/TodaysLink-client/wiki)
+# 🔗 [Wiki](https://github.com/tpgus/TodaysLink-client/wiki)
