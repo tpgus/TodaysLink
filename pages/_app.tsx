@@ -21,27 +21,8 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  // const [isRouterChanging, setIsRouterChanging] = useState(false);
   const getLayout = Component.getLayout ?? ((page) => page);
   const router = useRouter();
-
-  // useEffect(() => {
-  //   const handleRouterChangeStart = () => {
-  //     setIsRouterChanging(true);
-  //   };
-
-  //   const handleRouterChangeStop = () => {
-  //     setIsRouterChanging(false);
-  //   };
-
-  //   router.events.on("routeChangeStart", handleRouterChangeStart);
-  //   router.events.on("routeChangeComplete", handleRouterChangeStop);
-
-  //   return () => {
-  //     router.events.off("routeChangeStart", handleRouterChangeStart);
-  //     router.events.off("routeChangeComplete", handleRouterChangeStop);
-  //   };
-  // });
 
   return (
     <>
