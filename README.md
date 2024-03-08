@@ -2,7 +2,7 @@
 
 This is a web service that collects information on various events that you can participate in for free in one place.
 
-This service allows users to view various event information and participate in the event through link access.
+This service allows users to view various event information and participate in the event through the link provided.
 
 
 # ⚒️ Screens & Features
