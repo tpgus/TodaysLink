@@ -4,7 +4,7 @@ This is a web service that collects information on various events that you can p
 
 So, you can check the event information that you can participate in for free on the site and participate in the event through the link provided.
 
-# ⚒️ Screens & Features
+# ⚒️ Page GIF
 <details>
 <summary><b> Home</b></summary>
 
