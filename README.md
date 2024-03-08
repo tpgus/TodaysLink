@@ -109,7 +109,7 @@ This service allows users to view various event information and participate in t
 |<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">|v8.0.5|
 |<img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">|v5.3.6|
 |<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black">|v9.17.1|
-|<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">|배포|
+|<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">|Deploy|
 
 
 # 🔗 [WiKi Docs](https://github.com/tpgus/TodaysLink-client/wiki)
