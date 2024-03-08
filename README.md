@@ -104,9 +104,9 @@ So, you can check the event information that you can participate in for free on 
 
 ---
 
-# ⚙️ Library used in the project
+# ⚙️ Technologies Used
 
-|Library|Version|
+|Thec|Version|
 |---|---|
 |<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">|v18.2.0|
 |<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">|v13.1.1|
