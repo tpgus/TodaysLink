@@ -100,7 +100,7 @@ So, you can check the event information that you can participate in for free on 
 
 (2023.04.13) Optimizing component rending with React.memo, useCallback, and useMemo ([code](https://github.com/tpgus/TodaysLink/blob/main/components/filter/TagList.tsx))
 
-(2023.04.15) Optimization with Event Bubbling & Event Delegation ([Blog](https://velog.io/@tpgus758/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81%EA%B3%BC-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9C%84%EC%9E%84%EC%9D%84-%ED%86%B5%ED%95%9C-%EC%BD%94%EB%93%9C-%EA%B0%9C%EC%84%A0))
+(2023.04.15) Optimization with Event Bubbling & Event Delegation ([Blog](https://velog.io/@tpgus758/Optimization-with-event-bubbling-and-event-delegation))
 
 ---
 
